@@ -1,7 +1,3 @@
-programme ecrire_cst 
-
-debut {
-
-ecrire 1
-
-} fin
+programme idf debut
+ecrire 1 ;
+fin
