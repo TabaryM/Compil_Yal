@@ -28,11 +28,22 @@ public class BlocDInstructions extends ArbreAbstrait {
 
     @Override
     public void verifier() {
+        for(ArbreAbstrait ligne : programme){
+            ligne.verifier();
+        }
     }
     
     @Override
     public String toMIPS() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(".text\n" +
+                "main:\n");
+        for (ArbreAbstrait ligne : programme) {
+            stringBuilder.append(ligne.toMIPS());
+        }
+        stringBuilder.append("end:\n");
+        stringBuilder.append("li $v0, 10\n");
+        stringBuilder.append("syscall\n");
+        return stringBuilder.toString();
     }
-
 }
