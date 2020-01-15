@@ -37,13 +37,13 @@ public class BlocDInstructions extends ArbreAbstrait {
     public String toMIPS() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(".text\n" +
-                "main:\n");
+                "main:\n\n");
         for (ArbreAbstrait ligne : programme) {
             stringBuilder.append(ligne.toMIPS());
         }
         stringBuilder.append("end:\n");
-        stringBuilder.append("li $v0, 10\n");
-        stringBuilder.append("syscall\n");
+        stringBuilder.append("\tli $v0, 10\n");
+        stringBuilder.append("\tsyscall\n");
         return stringBuilder.toString();
     }
 }

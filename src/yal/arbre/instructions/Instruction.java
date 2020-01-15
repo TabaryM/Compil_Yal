@@ -8,4 +8,5 @@ public abstract class Instruction extends ArbreAbstrait {
         super(n);
     }
 
+    protected abstract String getNomInstruction();
 }

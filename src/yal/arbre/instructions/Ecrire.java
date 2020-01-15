@@ -17,10 +17,14 @@ public class Ecrire extends Instruction {
 
     @Override
     public String toMIPS() {
-        return "li $v0, 1\n" +
-                "li $a0, "+exp.toMIPS()+"\n"+
-                "syscall\n";
-        //throw new UnsupportedOperationException("Not supported yet.");
+        return "\t# "+getNomInstruction()+" la valeur : "+exp.toMIPS()+"\n"+
+                "\tli $v0, 1\n" +
+                "\tli $a0, "+exp.toMIPS()+"\n"+
+                "\tsyscall\n";
     }
 
+    @Override
+    protected String getNomInstruction() {
+        return "Ecrire";
+    }
 }
