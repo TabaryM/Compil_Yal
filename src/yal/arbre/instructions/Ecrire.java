@@ -21,7 +21,7 @@ public class Ecrire extends Instruction {
                 "\tli $v0, 1\n" +
                 "\tli $a0, "+exp.toMIPS()+"\n"+
                 "\tsyscall\n"+
-                "#new line\n"+
+                "\n\t# new line\n"+
                 "\tli $v0, 4\n" +
                 "\tla $a0, newline\n" +
                 "\tsyscall\n";

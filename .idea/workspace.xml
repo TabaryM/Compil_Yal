@@ -6,21 +6,19 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b9335fe-b57b-4762-b494-42646bacb547" name="Default Changelist" comment="Modification">
+    <list default="true" id="8b9335fe-b57b-4762-b494-42646bacb547" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Compilateur_Yal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Compilateur_Yal.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/BlocDInstructions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/BlocDInstructions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/analyse/UnitesLexicales.jflex" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/analyse/UnitesLexicales.jflex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/yal/arbre/instructions/Ecrire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/instructions/Ecrire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/files/ecrire_cst.yal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/files/ecrire_float.yal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/files/ligne_ecrire_commentee.yal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/files/minimise.yal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/files/pas_la_fin.yal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/files/program_faux.yal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/files/programme_sans_debut.yal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/files/programme_sans_fin.yal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/out/ecrire_cst.mips" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/out/pas_la_fin.mips" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/src/ecrire_cst.yal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/src/ecrire_float.yal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/src/ligne_ecrire_commentee.yal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/src/minimise.yal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/src/pas_la_fin.yal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/src/program_faux.yal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/src/programme_sans_debut.yal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/src/programme_sans_fin.yal" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,8 +35,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/yal/Yal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+            <state relative-caret-position="252">
+              <caret line="15" column="78" selection-start-line="15" selection-start-column="78" selection-end-line="15" selection-end-column="78" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -46,21 +47,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/yal/arbre/instructions/Ecrire.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-              <folding>
-                <element signature="e#581#582#0" expanded="true" />
-                <element signature="e#612#613#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="414">
+              <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/yal/arbre/BlocDInstructions.java">
+        <entry file="file://$PROJECT_DIR$/src/yal/analyse/UnitesLexicales.jflex">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="38" column="69" selection-start-line="38" selection-start-column="69" selection-end-line="38" selection-end-column="69" />
+            <state relative-caret-position="251">
+              <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/yal/analyse/Grammaire.cup">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="281">
+              <caret line="85" column="57" selection-start-line="85" selection-start-column="57" selection-end-line="85" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -82,6 +88,10 @@
         <option value="$PROJECT_DIR$/tests/src/ecire.yal" />
         <option value="$PROJECT_DIR$/tests/YalTest.java" />
         <option value="$PROJECT_DIR$/src/yal/arbre/BlocDInstructions.java" />
+        <option value="$PROJECT_DIR$/src/yal/Yal.java" />
+        <option value="$PROJECT_DIR$/src/yal/analyse/CodesLexicaux.java" />
+        <option value="$PROJECT_DIR$/src/yal/analyse/Grammaire.cup" />
+        <option value="$PROJECT_DIR$/src/yal/analyse/UnitesLexicales.jflex" />
         <option value="$PROJECT_DIR$/src/yal/arbre/instructions/Ecrire.java" />
       </list>
     </option>
@@ -98,9 +108,9 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="67" />
-    <option name="y" value="605" />
-    <option name="width" value="1213" />
-    <option name="height" value="419" />
+    <option name="y" value="25" />
+    <option name="width" value="845" />
+    <option name="height" value="875" />
   </component>
   <component name="ProjectId" id="1WQu0HWckQKiUI4KoF6xS9kXwsf" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -140,6 +150,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="yal" type="462c0819:PsiDirectoryNode" />
               <item name="arbre" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="YAL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YAL" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="yal" type="462c0819:PsiDirectoryNode" />
+              <item name="arbre" type="462c0819:PsiDirectoryNode" />
+              <item name="expressions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="YAL" type="b2602c69:ProjectViewProjectNode" />
@@ -197,7 +215,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Test Ecrire" type="Application" factoryName="Application">
+    <configuration name="Test" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="yal.Yal" />
       <module name="Compilateur_Yal" />
       <option name="PROGRAM_PARAMETERS" value="&quot;$PROJECT_DIR$/../test_files/ecrire_cst.yal&quot;" />
@@ -245,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579097723206</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Prise en charge du retour a la ligne avec la fonction écrire">
+      <created>1579185294179</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1579185294179</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -255,17 +280,17 @@
       <window_info id="UI Designer" order="0" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.2027129" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.14770158" />
       <window_info id="Structure" order="4" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="5" />
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32988507" />
-      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="2" />
+      <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50113034" side_tool="true" weight="0.3297587" />
+      <window_info anchor="bottom" id="Messages" order="2" sideWeight="0.49886963" weight="0.3297587" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.3297587" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.3297587" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -286,7 +311,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Mise en place initiale" />
     <MESSAGE value="Production d'un fichier .mips à partir d'un fichier .yal simple" />
-    <option name="LAST_COMMIT_MESSAGE" value="Production d'un fichier .mips à partir d'un fichier .yal simple" />
+    <MESSAGE value="Prise en charge du retour a la ligne avec la fonction écrire" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prise en charge du retour a la ligne avec la fonction écrire" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="70" key="#Project_Structure" />
@@ -425,13 +451,6 @@
     <entry file="file://$PROJECT_DIR$/module_compilateur_yal.xml" />
     <entry file="file://$PROJECT_DIR$/yal.properties" />
     <entry file="file://$PROJECT_DIR$/yal.xml" />
-    <entry file="file://$PROJECT_DIR$/src/yal/Yal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/yal/arbre/BlocDInstructions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
@@ -439,14 +458,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="67" column="18" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/yal/Yal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="15" column="78" selection-start-line="15" selection-start-column="78" selection-end-line="15" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/yal/analyse/CodesLexicaux.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/yal/analyse/AnalyseurLexical.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="673" column="41" selection-start-line="673" selection-start-column="41" selection-end-line="673" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/yal/analyse/Grammaire.cup">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="85" column="57" selection-start-line="85" selection-start-column="57" selection-end-line="85" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/yal/analyse/UnitesLexicales.jflex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/yal/arbre/instructions/Ecrire.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-          <folding>
-            <element signature="e#581#582#0" expanded="true" />
-            <element signature="e#612#613#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="414">
+          <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
         </state>
       </provider>
     </entry>
