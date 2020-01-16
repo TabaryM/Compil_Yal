@@ -36,6 +36,7 @@ public class BlocDInstructions extends ArbreAbstrait {
     @Override
     public String toMIPS() {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(".data\nnewline:\t.asciiz\t\t  \"\\n\"\n");
         stringBuilder.append(".text\n" +
                 "main:\n\n");
         for (ArbreAbstrait ligne : programme) {
