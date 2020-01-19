@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="yal:jar">
+  <artifact type="jar" name="yal:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/yal_jar</output-path>
     <root id="archive" name="yal.jar">
       <element id="module-output" name="Compilateur_Yal" />
-      <element id="extracted-dir" path="/opt/depot/compilation/jflex-1.6.1.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="/opt/depot/compilation/java-cup-11a.jar" path-in-jar="/" />
+      <element id="library" level="project" name="java-cup-11a" />
+      <element id="library" level="project" name="jflex-1.6.1" />
     </root>
   </artifact>
 </component>
