@@ -51,6 +51,7 @@ commentaire = "//".*{finDeLigne}
 "entier"               { return symbol(CodesLexicaux.ENTIER); }
 
 ";"                    { return symbol(CodesLexicaux.POINTVIRGULE); }
+"="                    { return symbol(CodesLexicaux.EGAL); }
 
 {csteE}      	       { return symbol(CodesLexicaux.CSTENTIERE, yytext()); }
 
