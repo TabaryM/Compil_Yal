@@ -89,8 +89,8 @@ LINST   ::=     LINST:li  INST:i
 INST    ::=     ECRIRE EXP:e POINTVIRGULE
                 {: RESULT = new Ecrire(e, eleft + 1) ; :}
                 |
-                IDF:i EGAL EXP:e
-                {: RESULT = new Affectation(e, i, eleft + 1) :}
+                IDF:i EGAL EXP:e POINTVIRGULE
+                {: RESULT = new Affectation(e, i, eleft + 1) ;:}
                 ;
 
 EXP    ::=     CSTENTIERE:c
@@ -108,5 +108,5 @@ LDECL   ::=    LDECL:ld  DECL:d
                 ;
 
 DECL    ::=     ENTIER IDF:e POINTVIRGULE
-                {: new Entier(e, eleft + 1);:}
+                {: new DeclarationEntier(e, eleft + 1);:}
                 ;
