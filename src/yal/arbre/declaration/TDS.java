@@ -1,5 +1,7 @@
 package yal.arbre.declaration;
 
+import yal.exceptions.AnalyseSemantiqueException;
+
 import java.util.HashMap;
 
 public class TDS {
@@ -8,7 +10,7 @@ public class TDS {
     private int cpt;
 
     private TDS(){
-        table = new HashMap<Entree, Symbole>();
+        table = new HashMap<>();
         cpt = 0;
     }
 
@@ -19,8 +21,12 @@ public class TDS {
         return instance;
     }
 
-    public void ajouter(Entree e, Symbole s){
-        System.out.println("mabit");
+    public void ajouter(Entree e, Symbole s) throws Exception{
+        if(table.containsKey(e)){
+            throw new Exception("Double déclaration de la variable "+e.getIdf());
+        } else {
+            table.put(e, s);
+        }
     }
 
     public Symbole identifier(Entree e){

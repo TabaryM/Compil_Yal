@@ -104,6 +104,6 @@ LDECL   ::=    LDECL:ld  DECL:d
                    RESULT = b ; :}
                 ;
 
-DECL_VAR    ::=     ENTIER IDF:e POINTVIRGULE
-                {: TDS.getInstance().ajouter(new Entree(e), new Symbole("entier", TDS.getInstance().getCpt())) ; :}
+DECL    ::=     ENTIER IDF:e POINTVIRGULE
+                {: new Entier(e, eleft + 1);:}
                 ;

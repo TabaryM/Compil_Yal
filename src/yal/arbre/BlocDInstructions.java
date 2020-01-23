@@ -1,5 +1,7 @@
 package yal.arbre;
 
+import yal.arbre.declaration.ErreurSemantique;
+
 import java.util.ArrayList;
 
 /**
@@ -30,6 +32,9 @@ public class BlocDInstructions extends ArbreAbstrait {
     public void verifier() {
         for(ArbreAbstrait ligne : programme){
             ligne.verifier();
+        }
+        if(!ErreurSemantique.getInstance().isEmpty()){
+            ErreurSemantique.getInstance().afficherErreurs();
         }
     }
     
