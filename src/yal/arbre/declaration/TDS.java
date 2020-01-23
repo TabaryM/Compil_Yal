@@ -26,6 +26,7 @@ public class TDS {
             throw new Exception("Double déclaration de la variable "+e.getIdf());
         } else {
             table.put(e, s);
+            cpt -= 4;       // Pour le moment on fait que ça,  car il n'y a que des entiers
         }
     }
 

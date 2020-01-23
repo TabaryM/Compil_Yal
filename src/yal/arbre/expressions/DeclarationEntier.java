@@ -6,8 +6,8 @@ import yal.arbre.declaration.Symbole;
 import yal.arbre.declaration.TDS;
 import yal.exceptions.AnalyseSemantiqueException;
 
-public class Entier extends Idf {
-    public Entier(String idf, int numLig) {
+public class DeclarationEntier extends Idf {
+    public DeclarationEntier(String idf, int numLig) {
         super(idf, numLig);
         try {
             TDS.getInstance().ajouter(new Entree(idf), new Symbole("entier", TDS.getInstance().getCpt()));
