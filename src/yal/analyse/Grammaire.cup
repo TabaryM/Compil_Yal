@@ -4,6 +4,7 @@ import java.util.*;
 import yal.arbre.* ;
 import yal.arbre.expressions.* ;
 import yal.arbre.instructions.* ;
+import yal.arbre.declaration.* ;
 import yal.exceptions.AnalyseSyntaxiqueException;
 
 import java_cup.runtime.*;
@@ -103,6 +104,6 @@ LDECL   ::=    LDECL:ld  DECL:d
                    RESULT = b ; :}
                 ;
 
-DECL    ::=     ENTIER IDF:e POINTVIRGULE
-                {: RESULT = new Entier(e, eleft + 1) ; :}
+DECL_VAR    ::=     ENTIER IDF:e POINTVIRGULE
+                {: TDS.getInstance().ajouter(new Entree(e), new Symbole("entier", TDS.getInstance().getCpt())) ; :}
                 ;

@@ -20,10 +20,14 @@ public class TDS {
     }
 
     public void ajouter(Entree e, Symbole s){
-
+        System.out.println("mabit");
     }
 
     public Symbole identifier(Entree e){
         return table.get(e);
+    }
+
+    public int getCpt() {
+        return cpt;
     }
 }
