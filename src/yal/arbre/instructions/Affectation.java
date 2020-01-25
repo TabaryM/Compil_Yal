@@ -35,13 +35,11 @@ public class Affectation extends Instruction {
         // Commentaire du code mips
         stringBuilder.append("\t#Assigner à ");
         stringBuilder.append(idf).append(" la valeur ");
-        stringBuilder.append(e.toMIPS());
+        stringBuilder.append(e.toString());
         stringBuilder.append("\n");
 
-        // chargement en mémoire de la constante
-        stringBuilder.append("\tli $v0, ");
+        // chargement en mémoire de l'expression
         stringBuilder.append(e.toMIPS());
-        stringBuilder.append("\n");
 
         // Récupération du déplacement en mémoire de la variable
         Symbole tmp = TDS.getInstance().identifier(new Entree((idf)));
