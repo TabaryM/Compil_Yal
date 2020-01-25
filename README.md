@@ -1,17 +1,16 @@
 # YAL
 
   - ~~Commentaires~~
-  - Instruction écrire 
+  - ~~Instruction écrire~~
     - ~~Constantes~~
     - ~~Variables~~
     - ~~Vérifier que la variable est déclarée~~
-  - Déclaration
+  - ~~Déclaration~~
     - ~~Double déclaration~~
     - ~~Allouer la pile~~
-  - Affectation
+  - ~~Affectation~~
     - ~~Constante~~
     - ~~Variable~~
     - ~~Vérifier que la variable est déclarée~~
-  - Lecture
+  - ~~Lecture~~
     -  ~~Vérifier que la variable est déclarée~~
-    -  Que c'est un entier ?

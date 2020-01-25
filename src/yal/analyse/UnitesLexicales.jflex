@@ -48,6 +48,7 @@ commentaire = "//".*{finDeLigne}
 "fin"              	   { return symbol(CodesLexicaux.FIN); }
 
 "ecrire"               { return symbol(CodesLexicaux.ECRIRE); }
+"lire"                 { return symbol(CodesLexicaux.LIRE); }
 "entier"               { return symbol(CodesLexicaux.ENTIER); }
 
 ";"                    { return symbol(CodesLexicaux.POINTVIRGULE); }
