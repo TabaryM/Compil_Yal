@@ -10,7 +10,7 @@
     - Allouer la pile ✓
   - Affectation
     - Constante ✓
-    - Variable
+    - Variable ✓
     - Vérifier que la variable est déclarée
   - Expression réduite à une constante entière ou une variable
   - Lecture
