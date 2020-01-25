@@ -3,7 +3,7 @@
   - Commentaires ✓
   - Instruction écrire 
     - Constantes ✓
-    - Variables
+    - Variables ✓
     - Vérifier que la variable est déclarée
   - Déclaration
     - Double déclaration ✓
