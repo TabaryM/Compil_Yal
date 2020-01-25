@@ -1,6 +1,7 @@
 package yal.arbre.instructions;
 
 import yal.arbre.declaration.Entree;
+import yal.arbre.declaration.ErreurSemantique;
 import yal.arbre.declaration.Symbole;
 import yal.arbre.declaration.TDS;
 import yal.arbre.expressions.Expression;
@@ -24,8 +25,10 @@ public class Affectation extends Instruction {
 
     @Override
     public void verifier() {
+        e.verifier();
         if(TDS.getInstance().identifier(new Entree(idf)) == null){
-            throw new AnalyseSemantiqueException(super.noLigne, "Variable"+idf+" non déclarée");
+            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Variable "+idf+" non déclarée");
+            ErreurSemantique.getInstance().ajouter(exception);
         }
     }
 

@@ -21,8 +21,11 @@ public class Entier extends Idf {
     }
 
     @Override
-    public void verifier() {
-
+    public void verifier(){
+        if(TDS.getInstance().identifier(new Entree(getIdf())) == null){
+            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Variable "+getIdf()+" non déclarée");
+            ErreurSemantique.getInstance().ajouter(exception);
+        }
     }
 
     @Override
