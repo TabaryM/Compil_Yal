@@ -12,6 +12,5 @@
     - Constante ✓
     - Variable ✓
     - Vérifier que la variable est déclarée
-  - Expression réduite à une constante entière ou une variable
   - Lecture
     -  Vérifier que la variable est déclarée
