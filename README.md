@@ -8,7 +8,6 @@
   - Déclaration
     - Double déclaration ✓
     - Allouer la pile ✓
-    - Déclarer avec une valeur
   - Affectation
     - Constante ✓
     - Variable
