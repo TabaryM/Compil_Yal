@@ -3,8 +3,8 @@
     <output-path>$PROJECT_DIR$/out/artifacts/yal_jar</output-path>
     <root id="archive" name="yal.jar">
       <element id="module-output" name="Compilateur_Yal" />
-      <element id="library" level="project" name="java-cup-11a" />
-      <element id="library" level="project" name="jflex-1.6.1" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../java-cup-11a.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../jflex-1.6.1.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
