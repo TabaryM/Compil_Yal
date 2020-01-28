@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Test;
 import yal.arbre.expressions.Entier;
 import yal.arbre.instructions.Lecture;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class LectureTest {
 
     @Test

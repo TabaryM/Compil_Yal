@@ -3,10 +3,7 @@ package yal.tests;
 import org.junit.jupiter.api.Test;
 import yal.arbre.expressions.ConstanteEntiere;
 import yal.arbre.expressions.Entier;
-import yal.arbre.expressions.Expression;
 import yal.arbre.instructions.Ecrire;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class EcrireTest {
 

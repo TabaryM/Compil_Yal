@@ -5,8 +5,6 @@ import yal.arbre.expressions.ConstanteEntiere;
 import yal.arbre.expressions.Entier;
 import yal.arbre.instructions.Affectation;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class AffectationTest {
 
     @Test
