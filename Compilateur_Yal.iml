@@ -7,8 +7,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="java-cup-11a" level="project" />
-    <orderEntry type="library" exported="" name="jflex-1.6.1" level="project" />
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit5.3">
         <CLASSES>
@@ -33,5 +31,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="java-cup-11a" level="project" />
+    <orderEntry type="library" name="jflex-1.6.1" level="project" />
   </component>
 </module>
