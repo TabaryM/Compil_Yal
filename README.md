@@ -22,12 +22,12 @@
     - ( )
     - EXP OPER EXP
   - Opérations
-    -opérateurs entier X entier retourne entier
+    - Opérateurs entier X entier retourne entier
         - '+'
         - '-'
         - '*'
         - '/' DIV/0 INTERDITE
-    -comparateurs retourne booléens
+    - Comparateurs retourne booléens
         - entier X entier
             - '>'
             - '<'
@@ -38,10 +38,10 @@
             - '=='
             - '!='
   - Instruction Conditionnelle
-    -tant que
+    - tant que
         - expression type booléen
         - obligatoirement évaluéeavant toute entrée dans la boucle
-    -si
+    - si
         - expression type booléen
   - Instruction itérative
   - ORDRE des opérateurs:
