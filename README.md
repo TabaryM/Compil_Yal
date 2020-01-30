@@ -21,6 +21,10 @@
     - non EXP -> requiert booléen
     - ( )
     - EXP OPER EXP
+      - CSTE OPER CSTE
+      - CSTE OPER EXP
+      - EXP OPER CSTE
+      - EXP OPER EXP
   - Opérations
     - Opérateurs entier X entier retourne entier
         - '+'
