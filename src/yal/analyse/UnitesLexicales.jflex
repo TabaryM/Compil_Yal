@@ -54,6 +54,23 @@ commentaire = "//".*{finDeLigne}
 ";"                    { return symbol(CodesLexicaux.POINTVIRGULE); }
 "="                    { return symbol(CodesLexicaux.EGAL); }
 
+"+"                    { return symbol(CodesLexicaux.ADDITION); }
+"-"                    { return symbol(CodesLexicaux.SOUSTRACTION); }
+"*"                    { return symbol(CodesLexicaux.MULTIPLICATION); }
+">"                    { return symbol(CodesLexicaux.SUPERIEURA); }
+"<"                    { return symbol(CodesLexicaux.INFERIEURA); }
+"/"                    { return symbol(CodesLexicaux.DIVISION); }
+"=="                    { return symbol(CodesLexicaux.EGALITE); }
+"!="                    { return symbol(CodesLexicaux.DIFFERENT); }
+"et"                    { return symbol(CodesLexicaux.ETLOGIQUE); }
+"ou"                    { return symbol(CodesLexicaux.OULOGIQUE); }
+"non"                    { return symbol(CodesLexicaux.INVERSE); }
+
+"si"                    { return symbol(CodesLexicaux.CONDITION); }
+"tantque"                    { return symbol(CodesLexicaux.BOUCLE); }
+
+
+
 {csteE}      	       { return symbol(CodesLexicaux.CSTENTIERE, yytext()); }
 
 {idf}      	           { return symbol(CodesLexicaux.IDF, yytext()); }
