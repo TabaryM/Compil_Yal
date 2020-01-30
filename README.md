@@ -21,15 +21,15 @@
     - ( )
     - EXP OPER EXP
   - Opérations
-    - +
-    - -
-    - *
-    - >
-    - <
-    - /
-    - ==
-    - !=
-    - et
-    - ou
+    - '+'
+    - '-'
+    - '*'
+    - '>'
+    - '<'
+    - '/'
+    - '=='
+    - '!='
+    - 'et'
+    - 'ou'
   - Instruction Conditionnelle
   - Instruction itérative
