@@ -13,4 +13,23 @@
     - ~~Variable~~
     - ~~Vérifier que la variable est déclarée~~
   - ~~Lecture~~
-    -  ~~Vérifier que la variable est déclarée~~
+    -  ~~Vérifier que la variable est déclarée~~  
+    
+  - Expression quelconques
+    - '-' (moins) EXP
+    - non EXP
+    - ( )
+    - EXP OPER EXP
+  - Opérations
+    - '+'
+    - '-'
+    - '*'
+    - '>'
+    - '<'
+    - '/'
+    - '=='
+    - '!='
+    - 'et'
+    - 'ou'
+  - Instruction Conditionnelle
+  - Instruction itérative
