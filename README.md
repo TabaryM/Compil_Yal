@@ -16,7 +16,7 @@
     -  ~~Vérifier que la variable est déclarée~~  
     
   - Expression quelconques
-    - - (moins) EXP
+    - '-' (moins) EXP
     - non EXP
     - ( )
     - EXP OPER EXP
