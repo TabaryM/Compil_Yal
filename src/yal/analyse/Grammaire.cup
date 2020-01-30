@@ -3,6 +3,7 @@ package yal.analyse ;
 import java.util.*;
 import yal.arbre.* ;
 import yal.arbre.expressions.* ;
+import yal.arbre.expressions.operateurs.* ;
 import yal.arbre.instructions.* ;
 import yal.arbre.declaration.* ;
 import yal.exceptions.AnalyseSyntaxiqueException;
@@ -57,7 +58,7 @@ parser code {:
    
 /* Terminals (tokens returned by the scanner).  */
 
-terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, LIRE, ENTIER, EGAL ;
+terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, LIRE, ENTIER, EGAL, OPER, ADDITION ;
 terminal String    IDF, CSTENTIERE ;
    
 /* Non terminals used in the grammar section.  */
@@ -101,6 +102,9 @@ EXP    ::=     CSTENTIERE:c
         |
                 IDF:i
                 {: RESULT = new Entier(i, ileft + 1); :}
+        |
+                EXP:g OPER:o EXP:d
+                {:RESULT = Binaire(g, o, d, dleft + 1); :}
                 ;
 
 LDECL   ::=    LDECL:ld  DECL:d
@@ -116,4 +120,8 @@ LDECL   ::=    LDECL:ld  DECL:d
 DECL    ::=     ENTIER IDF:e POINTVIRGULE
                 {: Entier entier = new Entier(e, eleft + 1);
                    entier.ajouterTDS();:}
+                ;
+
+OPER    ::=     ADDITION
+                {: RESULT = new Addition(); :}
                 ;

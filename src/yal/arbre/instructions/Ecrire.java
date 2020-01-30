@@ -18,7 +18,7 @@ public class Ecrire extends Instruction {
 
     @Override
     public String toMIPS() {
-        return "\t# Ecrire la valeur : "+exp.toString()+"\n"+
+        return "\t# Ecrire "+exp.toString()+"\n"+
                 // On charge dans $v0 la valeur que l'on veut afficher
                 exp.toMIPS()+
                 // On met cette valeur dans $a0 parceque c'est comme ça que MIPS affiche
