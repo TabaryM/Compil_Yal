@@ -6,10 +6,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b9335fe-b57b-4762-b494-42646bacb547" name="Default Changelist" comment="Verification de la double déclaration valide">
-      <change afterPath="$PROJECT_DIR$/src/yal/arbre/instructions/Affectation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="8b9335fe-b57b-4762-b494-42646bacb547" name="Default Changelist" comment="Implémentation de l'addition">
+      <change afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/operateurs/Division.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/operateurs/Multiplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/operateurs/Soustraction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/build.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/yal/analyse/Grammaire.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/analyse/Grammaire.cup" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,12 +44,6 @@
   <component name="MavenRunner">
     <option name="jreName" value="#JAVA_INTERNAL" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="67" />
-    <option name="y" value="25" />
-    <option name="width" value="845" />
-    <option name="height" value="875" />
-  </component>
   <component name="ProjectId" id="1WQu0HWckQKiUI4KoF6xS9kXwsf" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -64,7 +60,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/jflex-1.6.1.jar!/" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -79,22 +75,23 @@
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="yal.arbre.declaration" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/yal" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="yal.arbre.expressions.operateurs" />
       <recent name="yal.arbre.expressions" />
       <recent name="yal.arbre.declaration" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/yal" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="yal.arbre.declaration" />
     </key>
   </component>
   <component name="RunManager">
     <configuration name="Test" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="yal.Yal" />
       <module name="Compilateur_Yal" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;$PROJECT_DIR$/../test_files/declaration.yal&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;$PROJECT_DIR$/../test.yal&quot;" />
       <option name="VM_PARAMETERS" value="-ea" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -127,6 +124,8 @@
       <workItem from="1579532879629" duration="495000" />
       <workItem from="1579780680132" duration="53000" />
       <workItem from="1579780925475" duration="16047000" />
+      <workItem from="1579958271815" duration="6694000" />
+      <workItem from="1580554185791" duration="5996000" />
     </task>
     <task id="LOCAL-00001" summary="Mise en place initiale">
       <created>1579096618634</created>
@@ -184,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579795566968</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Implémentation de l'addition">
+      <created>1580560710650</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1580560710650</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,19 +218,22 @@
     <MESSAGE value="P-E m'a demandé de commit" />
     <MESSAGE value="Verification de la double déclaration valide" />
     <MESSAGE value="Debut de la création du toMIPS" />
-    <option name="LAST_COMMIT_MESSAGE" value="Debut de la création du toMIPS" />
+    <MESSAGE value="Implémentation de l'addition" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implémentation de l'addition" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="70" key="#Project_Structure" timestamp="1579532269650" />
     <state x="361" y="70" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1579532269650" />
-    <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579783431990">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="279" y="86" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580554736315">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1579783431990" />
-    <state x="574" y="129" key="#com.intellij.ide.util.MemberChooser" timestamp="1579795751053">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="279" y="86" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580554736315" />
+    <state x="718" y="163" key="#com.intellij.ide.util.MemberChooser" timestamp="1580556750737">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="574" y="129" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1579795751053" />
+    <state x="718" y="163" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580556750737" />
     <state x="566" y="298" width="403" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1579795657985">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -233,28 +242,40 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="493" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1579787475857" />
-    <state x="374" y="16" key="CommitChangelistDialog2" timestamp="1579795566108">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="468" y="20" key="CommitChangelistDialog2" timestamp="1580560709879">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="374" y="16" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1579795566108" />
-    <state x="473" y="153" key="FileChooserDialogImpl" timestamp="1579532269650" />
+    <state x="468" y="20" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580560709879" />
+    <state x="473" y="153" key="FileChooserDialogImpl" timestamp="1579958321474">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
     <state x="473" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579532269650" />
-    <state width="1493" height="181" key="GridCell.Tab.0.bottom" timestamp="1579797894858">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="473" y="153" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1579958321474" />
+    <state width="1877" height="178" key="GridCell.Tab.0.bottom" timestamp="1580561227528">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="181" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579797894858" />
-    <state width="1493" height="181" key="GridCell.Tab.0.center" timestamp="1579797894858">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="178" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580561227528" />
+    <state width="1877" height="178" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579967136751" />
+    <state width="1877" height="178" key="GridCell.Tab.0.center" timestamp="1580561227528">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="181" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1579797894858" />
-    <state width="1493" height="181" key="GridCell.Tab.0.left" timestamp="1579797894858">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="178" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580561227528" />
+    <state width="1877" height="178" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579967136751" />
+    <state width="1877" height="178" key="GridCell.Tab.0.left" timestamp="1580561227528">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="181" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1579797894858" />
-    <state width="1493" height="181" key="GridCell.Tab.0.right" timestamp="1579797894858">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="178" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580561227528" />
+    <state width="1877" height="178" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579967136751" />
+    <state width="1877" height="178" key="GridCell.Tab.0.right" timestamp="1580561227528">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="181" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1579797894858" />
+    <state width="1877" height="178" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580561227528" />
+    <state width="1877" height="178" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579967136751" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1579789414895">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -271,23 +292,42 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1579789414895" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1579784483392">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="672" y="235" key="MultipleFileMergeDialog" timestamp="1580554262848">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="672" y="235" key="MultipleFileMergeDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580554262848" />
+    <state x="2592" y="235" key="MultipleFileMergeDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579965377420" />
+    <state x="311" y="0" key="SettingsEditor" timestamp="1580554309758">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1579784483392" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1579793593376">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="311" y="0" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580554309758" />
+    <state x="2231" y="0" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579965726054" />
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2" timestamp="1580560717700">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1579793593376" />
+    <state x="451" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580560717700" />
     <state x="485" y="88" key="antBuildFilePropertiesDialogDimension" timestamp="1579532269650" />
     <state x="485" y="88" key="antBuildFilePropertiesDialogDimension/0.0.1536.824@0.0.1536.824" timestamp="1579532269650" />
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1579784737631">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1579784737631" />
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1579795526385">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="2576" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1580554205054">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1579958272815" />
+    <state x="2576" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1580554205054" />
+    <state x="723" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580554245976">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1579795526385" />
+    <state x="723" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580554245976" />
+    <state x="2643" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579965366074" />
+    <state x="656" y="257" width="607" height="526" key="find.popup" timestamp="1580556621541">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="257" width="607" height="526" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580556621541" />
   </component>
 </project>

@@ -68,7 +68,7 @@ non terminal Operateur OPER;
 non terminal Expression EXP ;
 
 /* Precedences */
-precedence left ADDITION;
+precedence left ADDITION, SOUSTRACTION, MULTIPLICATION, DIVISION;
 
 /* ----------------------------Grammar Section-------------------- */
  
@@ -128,4 +128,13 @@ DECL    ::=     ENTIER IDF:e POINTVIRGULE
 
 OPER    ::=     ADDITION
                 {: RESULT = new Addition(); :}
+       |
+                SOUSTRACTION
+                {: RESULT = new Soustraction(); :}
+       |
+                MULTIPLICATION
+                {: RESULT = new Multiplication(); :}
+       |
+                DIVISION
+                {: RESULT = new Division(); :}
                 ;
