@@ -68,7 +68,7 @@ non terminal Operateur OPER;
 non terminal Expression EXP ;
 
 /* Precedences */
-precedence left ADDITION, SOUSTRACTION, MULTIPLICATION, DIVISION;
+precedence left ADDITION, SOUSTRACTION, DIVISION, MULTIPLICATION, SUPERIEURA, INFERIEURA, OULOGIQUE, ETLOGIQUE, EGALITE, DIFFERENT;
 
 /* ----------------------------Grammar Section-------------------- */
  
@@ -137,4 +137,22 @@ OPER    ::=     ADDITION
        |
                 DIVISION
                 {: RESULT = new Division(); :}
+       |
+                SUPERIEURA
+                {: RESULT = new SuperieurA(); :}
+       |
+                INFERIEURA
+                {: RESULT = new InferieurA(); :}
+       |
+                EGALITE
+                {: RESULT = new Egalite(); :}
+       |
+                DIFFERENT
+                {: RESULT = new Different(); :}
+       |
+                OULOGIQUE
+                {: RESULT = new OuLogique(); :}
+       |
+                ETLOGIQUE
+                {: RESULT = new EtLogique(); :}
                 ;
