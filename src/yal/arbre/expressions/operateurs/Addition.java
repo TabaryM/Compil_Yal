@@ -7,4 +7,9 @@ public class Addition implements Operateur {
     public String toMips() {
         return "add";
     }
+
+    @Override
+    public String toString() {
+        return "+";
+    }
 }

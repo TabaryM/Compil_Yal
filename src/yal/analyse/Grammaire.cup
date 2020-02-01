@@ -58,13 +58,17 @@ parser code {:
    
 /* Terminals (tokens returned by the scanner).  */
 
-terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, LIRE, ENTIER, EGAL, OPER, ADDITION ;
+terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, LIRE, ENTIER, EGAL, ADDITION, SOUSTRACTION, DIVISION, MULTIPLICATION, SUPERIEURA, INFERIEURA, OULOGIQUE, ETLOGIQUE, EGALITE, DIFFERENT, CONDITION, INVERSE, BOUCLE ;
 terminal String    IDF, CSTENTIERE ;
    
 /* Non terminals used in the grammar section.  */
 
 non terminal ArbreAbstrait PROG, LINST, INST, LDECL, DECL ;
+non terminal Operateur OPER;
 non terminal Expression EXP ;
+
+/* Precedences */
+precedence left ADDITION;
 
 /* ----------------------------Grammar Section-------------------- */
  
@@ -104,7 +108,7 @@ EXP    ::=     CSTENTIERE:c
                 {: RESULT = new Entier(i, ileft + 1); :}
         |
                 EXP:g OPER:o EXP:d
-                {:RESULT = Binaire(g, o, d, dleft + 1); :}
+                {: RESULT = new Binaire(g, o, d, dleft + 1); :}
                 ;
 
 LDECL   ::=    LDECL:ld  DECL:d

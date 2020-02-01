@@ -2,13 +2,13 @@ package yal.arbre.expressions;
 
 import yal.arbre.expressions.operateurs.Operateur;
 
-public abstract class Binaire extends Expression {
+public class Binaire extends Expression {
 
     private Expression gauche;
     private Expression droite;
     private Operateur op;
 
-    protected Binaire(Expression g, Operateur o, Expression d, int n) {
+    public Binaire(Expression g, Operateur o, Expression d, int n) {
         super(n);
         gauche = g;
         droite = d;
@@ -24,9 +24,7 @@ public abstract class Binaire extends Expression {
     public String toMIPS() {
         StringBuilder stringBuilder = new StringBuilder();
         // Ecriture du beau commentaire MIPS
-        stringBuilder.append("\t# ");
-        stringBuilder.append(op.toString());
-        stringBuilder.append("des opérandes : ");
+        stringBuilder.append("\t# Operation de :");
         stringBuilder.append(gauche.toString());
         stringBuilder.append(" et ");
         stringBuilder.append(droite.toString());
@@ -47,8 +45,13 @@ public abstract class Binaire extends Expression {
         // On fait l'opération
         stringBuilder.append("\t");
         stringBuilder.append(op.toMips());
-        stringBuilder.append("$v0, $t8, $v0\n\n");
+        stringBuilder.append(" $v0, $t8, $v0\n\n");
 
         return stringBuilder.toString();
+    }
+
+    @Override
+    public String toString() {
+        return gauche.toString()+" "+op.toString()+" "+droite.toString();
     }
 }
