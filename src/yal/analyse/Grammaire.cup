@@ -109,6 +109,12 @@ EXP    ::=     CSTENTIERE:c
         |
                 EXP:g OPER:o EXP:d
                 {: RESULT = new Binaire(g, o, d, dleft + 1); :}
+        |
+                SOUSTRACTION EXP:e
+                {: RESULT = new Binaire(new ConstanteEntiere("0", eleft + 1), new Soustraction(), e, eleft + 1); :}
+        |
+                INVERSE EXP:e
+                {: RESULT = new Inverse(e, eleft + 1); :}
                 ;
 
 LDECL   ::=    LDECL:ld  DECL:d
