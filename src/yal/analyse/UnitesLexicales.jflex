@@ -65,6 +65,8 @@ commentaire = "//".*{finDeLigne}
 "et"                    { return symbol(CodesLexicaux.ETLOGIQUE); }
 "ou"                    { return symbol(CodesLexicaux.OULOGIQUE); }
 "non"                    { return symbol(CodesLexicaux.INVERSE); }
+"("                    { return symbol(CodesLexicaux.PAR_OUVRANTE); }
+")"                    { return symbol(CodesLexicaux.PAR_FERMANTE); }
 
 "si"                    { return symbol(CodesLexicaux.CONDITION); }
 "tantque"                    { return symbol(CodesLexicaux.BOUCLE); }

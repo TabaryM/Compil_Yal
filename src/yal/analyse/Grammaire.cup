@@ -58,8 +58,8 @@ parser code {:
    
 /* Terminals (tokens returned by the scanner).  */
 
-terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, LIRE, ENTIER, EGAL, ADDITION, SOUSTRACTION, DIVISION, MULTIPLICATION, SUPERIEURA, INFERIEURA, OULOGIQUE, ETLOGIQUE, EGALITE, DIFFERENT, CONDITION, INVERSE, BOUCLE ;
-terminal String    IDF, CSTENTIERE ;
+terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, LIRE, ENTIER, EGAL, ADDITION, SOUSTRACTION, DIVISION, MULTIPLICATION, SUPERIEURA, INFERIEURA, OULOGIQUE, ETLOGIQUE, EGALITE, DIFFERENT, CONDITION, INVERSE, BOUCLE;
+terminal String    IDF, CSTENTIERE, PAR_OUVRANTE, PAR_FERMANTE ;
    
 /* Non terminals used in the grammar section.  */
 
@@ -68,7 +68,13 @@ non terminal Operateur OPER;
 non terminal Expression EXP ;
 
 /* Precedences */
-precedence left ADDITION, SOUSTRACTION, DIVISION, MULTIPLICATION, SUPERIEURA, INFERIEURA, OULOGIQUE, ETLOGIQUE, EGALITE, DIFFERENT;
+precedence left OULOGIQUE;
+precedence left ETLOGIQUE;
+precedence left DIFFERENT, EGALITE;
+precedence left SUPERIEURA, INFERIEURA;
+precedence left ADDITION, SOUSTRACTION;
+precedence left DIVISION, MULTIPLICATION;
+precedence left PAR_OUVRANTE, PAR_FERMANTE;
 
 /* ----------------------------Grammar Section-------------------- */
  
@@ -106,6 +112,9 @@ EXP    ::=     CSTENTIERE:c
         |
                 IDF:i
                 {: RESULT = new Entier(i, ileft + 1); :}
+        |
+                PAR_OUVRANTE EXP:e PAR_FERMANTE
+                {: RESULT = e; :}
         |
                 EXP:g OPER:o EXP:d
                 {: RESULT = new Binaire(g, o, d, dleft + 1); :}

@@ -21,11 +21,10 @@ public class Binaire extends Expression {
     public void verifier() {
         if(!gauche.getType().equals(droite.getType())){
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
-                    "Types d'expression incompatibles : "+gauche.getType()+" "+op.toString()+" "+droite.getType());
+                    "Incompatibilité de types : "+gauche.getType()+" incompatible avec "+droite.getType());
             ErreurSemantique.getInstance().ajouter(exception);
         } else {
-            // On sait que le droit est du même type
-            if(gauche.getType().equals("entier")){
+            if(gauche.getType().equals("entier") && droite.getType().equals("entier")){
                 // Opérandes entiers et opération à retour bool
                 if(!op.getNatureRetour().equals(gauche.getType())){
                     // Si l'opérateur est un "et" logique ou un "ou" logique on lance une nouvelle erreur sémantique

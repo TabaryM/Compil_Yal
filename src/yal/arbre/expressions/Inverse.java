@@ -1,5 +1,8 @@
 package yal.arbre.expressions;
 
+import yal.arbre.declaration.ErreurSemantique;
+import yal.exceptions.AnalyseSemantiqueException;
+
 public class Inverse extends Expression {
     private Expression expression;
     public Inverse(Expression e, int n) {
@@ -9,7 +12,11 @@ public class Inverse extends Expression {
 
     @Override
     public void verifier() {
-        expression.verifier();
+        if(expression.getType().equals("entier")){
+            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
+                    "Incompatibilité de types : négation booléenne d'un entier impossible");
+            ErreurSemantique.getInstance().ajouter(exception);
+        }
     }
 
     @Override
