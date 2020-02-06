@@ -43,6 +43,8 @@ public class BlocDInstructions extends ArbreAbstrait {
     public String toMIPS() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(".data\nnewline:\t.asciiz\t\t  \"\\n\"\n");
+        stringBuilder.append("vrai : .asciiz \"vrai\"\n");
+        stringBuilder.append("faux : .asciiz \"faux\"\n");
         stringBuilder.append(".text\nmain:\n\n");
 
         stringBuilder.append("\t# Allocation mémoire des variables dans la pile\n");

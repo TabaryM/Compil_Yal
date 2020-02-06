@@ -32,7 +32,7 @@ public class Binaire extends Expression {
                     if(op.toString().equals(new EtLogique().toString())
                             || op.toString().equals(new OuLogique().toString())){
                         AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
-                                "Opérateur "+op.toString()+" non adapté pour des paramètres de types : \n"+gauche.getType());
+                                "Opérateur \""+op.toString()+"\" non adapté pour des paramètres de types : "+gauche.getType());
                         ErreurSemantique.getInstance().ajouter(exception);
                     }
                 }
@@ -40,8 +40,7 @@ public class Binaire extends Expression {
                 else {
                     // Si le programmeur veut faire une division par zéro
                     if(op.toString().equals("/") && droite.toString().equals("0")){
-                        AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
-                                "Division par zéro : "+gauche.getType()+" / "+droite.getType());
+                        AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Division par zéro");
                         ErreurSemantique.getInstance().ajouter(exception);
                     }
                 }

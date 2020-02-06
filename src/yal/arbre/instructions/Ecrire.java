@@ -18,23 +18,49 @@ public class Ecrire extends Instruction {
 
     @Override
     public String toMIPS() {
-        return "\t# Ecrire "+exp.toString()+"\n"+
-                // On charge dans $v0 la valeur que l'on veut afficher
-                exp.toMIPS()+
-                // On met cette valeur dans $a0 parceque c'est comme ça que MIPS affiche
-                "\tmove $a0, $v0\n"+
-                // On dit à MIPS que l'on veut appeller la commande "afficher"
-                "\tli $v0, 1\n" +
-                "\tsyscall\n"+
-                // On ajoute une nouvelle ligne pour la lisibilité
-                "\n\t# new line\n"+
-                "\tli $v0, 4\n" +
-                "\tla $a0, newline\n" +
-                "\tsyscall\n";
+        StringBuilder stringBuilder = new StringBuilder("\t# Ecrire ");
+        stringBuilder.append(exp.toString());
+        stringBuilder.append("\n");
+        // On charge dans $v0 la valeur évaluée de l'expression que l'on veut afficher
+        stringBuilder.append(exp.toMIPS());
+        if(exp.getType().equals("bool")){
+            // L'expression est booléen, donc il faut afficher l'interprétation de cette valeur booléenne
+            stringBuilder.append(ecrireBoolEnMIPS());
+        } else {
+            // On met la valeur évaluée de l'expression dans $a0
+            stringBuilder.append("\tmove $a0, $v0\n");
+            // On dit à MIPS que l'on veut appeller la commande "afficher"
+            stringBuilder.append("\tli $v0, 1\n\tsyscall\n");
+        }
+        // On ajoute une nouvelle ligne pour la lisibilité du code MIPS
+        stringBuilder.append("\n\t# new line\n\tli $v0, 4\n\tla $a0, newline\n\tsyscall\n");
+        return stringBuilder.toString();
     }
 
     @Override
     protected String getNomInstruction() {
         return "Ecrire";
+    }
+
+    private String ecrireBoolEnMIPS(){
+        return "\t# Si $v0 s'évalue à vrai alors \n" +
+                "\tbeqz $v0, faux" +
+                exp.getNoLigne() +
+                "\t# Ici l'expression s'évalue à vrai\n" +
+                "\tli $v0, 4\n" +
+                "\tla $a0, vrai\n" +
+                "\tj finSi" +
+                exp.getNoLigne()+
+                "\n# Sinon\n" +
+                "faux" +
+                exp.getNoLigne() +
+                ":\n" +
+                "# Ici l'expression s'évalue à faux\n" +
+                "\tli $v0, 4\n" +
+                "\tla $a0, faux\n" +
+                "\n" +
+                "finSi" +
+                exp.getNoLigne() +
+                ":\nsyscall\n";
     }
 }
