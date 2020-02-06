@@ -1,6 +1,9 @@
 package yal.arbre.expressions;
 
-import yal.arbre.expressions.operateurs.Operateur;
+import yal.arbre.declaration.ErreurSemantique;
+import yal.arbre.expressions.operateurs.*;
+import yal.exceptions.AnalyseSemantiqueException;
+import yal.exceptions.ListeExceptionSem;
 
 public class Binaire extends Expression {
     private Expression gauche;
@@ -16,27 +19,52 @@ public class Binaire extends Expression {
 
     @Override
     public void verifier() {
-        /*
-        switch (op.getClass().getSimpleName()){
-            case "Division" :
-                System.out.println("Je suis une division");
-            case "Soustraction" :
-            case "Multiplication" :
-            case "Addition" :
-                break;
-            case "Different":
-            case "Egalite":
-                // Prend en opérandes des entiers OU des booléens
-            case "OuLogique":
-            case "EtLogique":
-                // Prend en opérandes des booléens
-            case "InferieurA":
-            case "SuperieurA":
-                // Prend en opérandes des entiers
-
-                // Le retour est un booléen
-                break;
-        }*/
+        if(!gauche.getType().equals(droite.getType())){
+            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
+                    "Types d'expression incompatibles : "+gauche.getType()+" "+op.toString()+" "+droite.getType());
+            ErreurSemantique.getInstance().ajouter(exception);
+        } else {
+            // On sait que le droit est du même type
+            if(gauche.getType().equals("entier")){
+                // Opérandes entiers et opération à retour bool
+                if(!op.getNatureRetour().equals(gauche.getType())){
+                    // Si l'opérateur est un "et" logique ou un "ou" logique on lance une nouvelle erreur sémantique
+                    if(op.toString().equals(new EtLogique().toString())
+                            || op.toString().equals(new OuLogique().toString())){
+                        AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
+                                "Opérateur "+op.toString()+" non adapté pour des paramètres de types : \n"+gauche.getType());
+                        ErreurSemantique.getInstance().ajouter(exception);
+                    }
+                }
+                // Opérandes entiers et opération à retour entiers
+                else {
+                    // Si le programmeur veut faire une division par zéro
+                    if(op.toString().equals("/") && droite.toString().equals("0")){
+                        AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
+                                "Division par zéro : "+gauche.getType()+" / "+droite.getType());
+                        ErreurSemantique.getInstance().ajouter(exception);
+                    }
+                }
+            }
+            // Les opérandes sont booléens
+            else {
+                // Opérandes bool et opération à retour entiers
+                if (!op.getNatureRetour().equals("bool")){
+                    AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
+                            "Opération arithmétique impossible : "+gauche.getType()+" "+op.toString()+" "+droite.getType());
+                    ErreurSemantique.getInstance().ajouter(exception);
+                }
+                // Opérandes bool et opération à retour bool
+                else {
+                    if(op.toString().equals(new SuperieurA().toString())
+                            || op.toString().equals(new InferieurA().toString())){
+                        AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
+                                "Comparaison impossible : "+gauche.getType()+" "+op.toString()+" "+droite.getType());
+                        ErreurSemantique.getInstance().ajouter(exception);
+                    }
+                }
+            }
+        }
     }
 
     @Override
@@ -72,5 +100,10 @@ public class Binaire extends Expression {
     @Override
     public String toString() {
         return gauche.toString()+" "+op.toString()+" "+droite.toString();
+    }
+
+    @Override
+    public String getType() {
+        return op.getNatureRetour();
     }
 }

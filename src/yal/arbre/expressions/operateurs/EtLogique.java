@@ -12,4 +12,9 @@ public class EtLogique implements Operateur {
     public String toString() {
         return "et";
     }
+
+    @Override
+    public String getNatureRetour() {
+        return "bool";
+    }
 }

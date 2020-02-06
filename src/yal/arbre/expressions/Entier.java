@@ -40,4 +40,9 @@ public class Entier extends Idf {
     public String toString() {
         return super.getIdf();
     }
+
+    @Override
+    public String getType() {
+        return "entier";
+    }
 }

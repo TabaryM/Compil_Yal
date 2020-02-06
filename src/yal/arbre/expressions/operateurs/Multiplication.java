@@ -12,4 +12,9 @@ public class Multiplication implements Operateur {
     public String toString() {
         return "*";
     }
+
+    @Override
+    public String getNatureRetour() {
+        return "entier";
+    }
 }

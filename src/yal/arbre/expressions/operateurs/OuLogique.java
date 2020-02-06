@@ -12,4 +12,9 @@ public class OuLogique implements Operateur {
     public String toString() {
         return "ou";
     }
+
+    @Override
+    public String getNatureRetour() {
+        return "bool";
+    }
 }
