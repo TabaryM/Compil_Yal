@@ -5,7 +5,7 @@
     - ~~Constantes~~
     - ~~Variables~~
     - ~~Vérifier que la variable est déclarée~~
-    - Si booléen il faut écrire "vrai" ou "faux"
+    - ~~Si booléen il faut écrire "vrai" ou "faux"~~
   - ~~Déclaration~~
     - ~~Double déclaration~~
     - ~~Allouer la pile~~
@@ -15,32 +15,32 @@
     - ~~Vérifier que la variable est déclarée~~
   - ~~Lecture~~
     -  ~~Vérifier que la variable est déclarée~~  
-    
+
   - Expression quelconques
     - '-' (moins) EXP
     - non EXP -> requiert booléen
     - ( )
-    - EXP OPER EXP
-      - CSTE OPER CSTE
-      - CSTE OPER EXP
-      - EXP OPER CSTE
-      - EXP OPER EXP
-  - Opérations
-    - Opérateurs entier X entier retourne entier
-        - '+'
-        - '-'
-        - '*'
-        - '/' DIV/0 INTERDITE
-    - Comparateurs retourne booléens
-        - entier X entier
-            - '>'
-            - '<'
-        - booléen X booléen
-            - 'et'
-            - 'ou'
-        - entier X entier | booléen X booléen
-            - '=='
-            - '!='
+    - ~~EXP OPER EXP~~
+      - ~~CSTE OPER CSTE~~
+      - ~~CSTE OPER EXP~~
+      - ~~EXP OPER CSTE~~
+      - ~~EXP OPER EXP~~
+  - ~~Opérations~~
+    - ~~Opérateurs entier X entier retourne entier~~
+        - ~~'+'~~
+        - ~~'-'~~
+        - ~~'*'~~
+        - ~~'/'~~ ~~DIV/0 INTERDITE~~
+    - ~~Comparateurs retourne booléens~~
+    - ~~entier X entier~~
+            - ~~'>'~~
+            - ~~'<'~~
+        - ~~booléen X booléen~~
+            - ~~'et'~~
+            - ~~'ou'~~
+        - ~~entier X entier | booléen X booléen~~
+            - ~~'=='~~
+            - ~~'!='~~
   - Instruction Conditionnelle
     - tant que
         - expression type booléen
@@ -50,3 +50,4 @@
   - Instruction itérative
   - ORDRE des opérateurs:
     - '()', 'non', '*' et '/', '+' et '-', '<' et '>', '==' et '!=', 'et', 'ou'
+    - Evaluer toutes les expression de gauche à droite par défaut
