@@ -3,7 +3,6 @@ package yal.arbre.expressions;
 import yal.arbre.expressions.operateurs.Operateur;
 
 public class Binaire extends Expression {
-
     private Expression gauche;
     private Expression droite;
     private Operateur op;
@@ -17,7 +16,27 @@ public class Binaire extends Expression {
 
     @Override
     public void verifier() {
+        /*
+        switch (op.getClass().getSimpleName()){
+            case "Division" :
+                System.out.println("Je suis une division");
+            case "Soustraction" :
+            case "Multiplication" :
+            case "Addition" :
+                break;
+            case "Different":
+            case "Egalite":
+                // Prend en opérandes des entiers OU des booléens
+            case "OuLogique":
+            case "EtLogique":
+                // Prend en opérandes des booléens
+            case "InferieurA":
+            case "SuperieurA":
+                // Prend en opérandes des entiers
 
+                // Le retour est un booléen
+                break;
+        }*/
     }
 
     @Override

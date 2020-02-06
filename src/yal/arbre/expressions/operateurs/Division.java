@@ -1,6 +1,6 @@
 package yal.arbre.expressions.operateurs;
 
-public class Division implements Operateur {
+public class Division implements Operateur{
     public Division() {}
 
     @Override
