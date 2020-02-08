@@ -58,8 +58,8 @@ parser code {:
    
 /* Terminals (tokens returned by the scanner).  */
 
-terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, LIRE, ENTIER, EGAL, ADDITION, SOUSTRACTION, DIVISION, MULTIPLICATION, SUPERIEURA, INFERIEURA, OULOGIQUE, ETLOGIQUE, EGALITE, DIFFERENT, CONDITION, INVERSE, BOUCLE;
-terminal String    IDF, CSTENTIERE, PAR_OUVRANTE, PAR_FERMANTE ;
+terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, LIRE, ENTIER, EGAL, ADDITION, SOUSTRACTION, DIVISION, MULTIPLICATION, SUPERIEURA, INFERIEURA, OULOGIQUE, ETLOGIQUE, EGALITE, DIFFERENT, INVERSE, CONDITION, BOUCLE;
+terminal String    IDF, CSTENTIERE, PAR_OUVRANTE, PAR_FERMANTE, FINSI, FINTANTQUE, ALORS, SINON, REPETER ;
    
 /* Non terminals used in the grammar section.  */
 
@@ -105,6 +105,15 @@ INST    ::=     ECRIRE EXP:e POINTVIRGULE
         |
                 LIRE IDF:i POINTVIRGULE
                 {: RESULT = new Lecture(i, ileft + 1) ; :}
+        |
+                CONDITION EXP:e ALORS LINST:li FINSI
+                {: RESULT = new Condition(e, li, eleft + 1); :}
+        |
+                CONDITION EXP:e ALORS LINST:lisi SINON LINST:lisinon FINSI
+                {: RESULT = new Condition(e, lisi, lisinon, eleft + 1); :}
+        |
+                BOUCLE EXP:e REPETER LINST:li FINTANTQUE
+                {: RESULT = new Boucle(e, li, eleft + 1); :}
                 ;
 
 EXP    ::=     CSTENTIERE:c
