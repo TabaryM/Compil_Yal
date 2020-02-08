@@ -1,5 +1,7 @@
 package yal.arbre.instructions;
 
+import yal.arbre.expressions.Expression;
+
 public class Condition extends Instruction {
     protected Condition(int n) {
         super(n);
@@ -12,7 +14,7 @@ public class Condition extends Instruction {
 
     @Override
     public void verifier() {
-
+        // exp doit être booléen
     }
 
     @Override

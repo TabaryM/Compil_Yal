@@ -58,9 +58,9 @@ parser code {:
    
 /* Terminals (tokens returned by the scanner).  */
 
-terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, LIRE, ENTIER, EGAL, ADDITION, SOUSTRACTION, DIVISION, MULTIPLICATION, SUPERIEURA, INFERIEURA, OULOGIQUE, ETLOGIQUE, EGALITE, DIFFERENT, CONDITION, INVERSE, BOUCLE;
-terminal String    IDF, CSTENTIERE, PAR_OUVRANTE, PAR_FERMANTE ;
-   
+terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, LIRE, ENTIER, EGAL, ADDITION, SOUSTRACTION, DIVISION, MULTIPLICATION, SUPERIEURA, INFERIEURA, OULOGIQUE, ETLOGIQUE, EGALITE, DIFFERENT, INVERSE, CONDITION, BOUCLE;
+terminal String    IDF, CSTENTIERE, PAR_OUVRANTE, PAR_FERMANTE, FINSI, FINTANTQUE, ALORS, SINON, REPETER ;
+
 /* Non terminals used in the grammar section.  */
 
 non terminal ArbreAbstrait PROG, LINST, INST, LDECL, DECL ;
@@ -81,10 +81,10 @@ precedence left PAR_OUVRANTE, PAR_FERMANTE;
 start with PROG ;
 
 PROG    ::=     PROGRAMME  IDF  DEBUT  LDECL:ld  LINST:li  FIN
-                {: RESULT = li ; :}
+                {: RESULT = new Programme(li, lileft + 1) ; :}
         |
                 PROGRAMME  IDF  DEBUT LINST:li  FIN
-                {: RESULT = li ; :}
+                {: RESULT = new Programme(li, lileft + 1) ; :}
                 ;
 
 LINST   ::=     LINST:li  INST:i
