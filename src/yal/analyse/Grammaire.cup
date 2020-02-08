@@ -105,6 +105,15 @@ INST    ::=     ECRIRE EXP:e POINTVIRGULE
         |
                 LIRE IDF:i POINTVIRGULE
                 {: RESULT = new Lecture(i, ileft + 1) ; :}
+        |
+                CONDITION EXP:e ALORS LINST:li FINSI
+                {: RESULT = new Condition(e, li, eleft + 1); :}
+        |
+                CONDITION EXP:e ALORS LINST:lisi SINON LINST:lisinon FINSI
+                {: RESULT = new Condition(e, lisi, lisinon, eleft + 1); :}
+        |
+                BOUCLE EXP:e REPETER LINST:li FINTANTQUE
+                {: RESULT = new Boucle(e, li, eleft + 1); :}
                 ;
 
 EXP    ::=     CSTENTIERE:c
