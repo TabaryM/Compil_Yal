@@ -56,7 +56,9 @@ public class Condition extends Instruction {
         stringBuilder.append(expression.getNoLigne());
         stringBuilder.append("\n");
         //alors
-        stringBuilder.append(arbreAbstraitSi.toMIPS());
+        if(null != arbreAbstraitSi){
+            stringBuilder.append(arbreAbstraitSi.toMIPS());
+        }
 
         //jump a l'etiquette
         stringBuilder.append("\tj finSi");
