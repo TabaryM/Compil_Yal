@@ -141,7 +141,25 @@ DECL    ::=     ENTIER IDF:e POINTVIRGULE
                    entier.ajouterTDS();:}
                 ;
 
-OPER    ::=     ADDITION
+OPER    ::=     OULOGIQUE
+                {: RESULT = new OuLogique(); :}
+       |
+                ETLOGIQUE
+                {: RESULT = new EtLogique(); :}
+       |
+                DIFFERENT
+                {: RESULT = new Different(); :}
+       |
+                EGALITE
+                {: RESULT = new Egalite(); :}
+       |
+                SUPERIEURA
+                {: RESULT = new SuperieurA(); :}
+       |
+                INFERIEURA
+                {: RESULT = new InferieurA(); :}
+       |
+                ADDITION
                 {: RESULT = new Addition(); :}
        |
                 SOUSTRACTION
@@ -151,23 +169,4 @@ OPER    ::=     ADDITION
                 {: RESULT = new Multiplication(); :}
        |
                 DIVISION
-                {: RESULT = new Division(); :}
-       |
-                SUPERIEURA
-                {: RESULT = new SuperieurA(); :}
-       |
-                INFERIEURA
-                {: RESULT = new InferieurA(); :}
-       |
-                EGALITE
-                {: RESULT = new Egalite(); :}
-       |
-                DIFFERENT
-                {: RESULT = new Different(); :}
-       |
-                OULOGIQUE
-                {: RESULT = new OuLogique(); :}
-       |
-                ETLOGIQUE
-                {: RESULT = new EtLogique(); :}
-                ;
+                {: RESULT = new Division(); :};
