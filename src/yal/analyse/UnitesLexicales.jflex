@@ -51,6 +51,15 @@ commentaire = "//".*{finDeLigne}
 "lire"                 { return symbol(CodesLexicaux.LIRE); }
 "entier"               { return symbol(CodesLexicaux.ENTIER); }
 
+"si"                    { return symbol(CodesLexicaux.CONDITION); }
+"alors"                    { return symbol(CodesLexicaux.ALORS); }
+"sinon"                    { return symbol(CodesLexicaux.SINON); }
+"finsi"                    { return symbol(CodesLexicaux.FINSI); }
+
+"tantque"                    { return symbol(CodesLexicaux.BOUCLE); }
+"repeter"                    { return symbol(CodesLexicaux.REPETER); }
+"fintantque"                    { return symbol(CodesLexicaux.FINTANTQUE); }
+
 ";"                    { return symbol(CodesLexicaux.POINTVIRGULE); }
 "="                    { return symbol(CodesLexicaux.EGAL); }
 
@@ -67,11 +76,6 @@ commentaire = "//".*{finDeLigne}
 "non"                    { return symbol(CodesLexicaux.INVERSE); }
 "("                    { return symbol(CodesLexicaux.PAR_OUVRANTE); }
 ")"                    { return symbol(CodesLexicaux.PAR_FERMANTE); }
-
-"si"                    { return symbol(CodesLexicaux.CONDITION); }
-"tantque"                    { return symbol(CodesLexicaux.BOUCLE); }
-
-
 
 {csteE}      	       { return symbol(CodesLexicaux.CSTENTIERE, yytext()); }
 
