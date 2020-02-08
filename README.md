@@ -17,9 +17,9 @@
     -  ~~Vérifier que la variable est déclarée~~  
 
   - Expression quelconques
-    - '-' (moins) EXP
-    - non EXP -> requiert booléen
-    - ( )
+    - ~~'-' (moins) EXP~~
+    - ~~non EXP -> requiert booléen~~
+    - ~~( )~~
     - ~~EXP OPER EXP~~
       - ~~CSTE OPER CSTE~~
       - ~~CSTE OPER EXP~~
@@ -41,13 +41,13 @@
         - ~~entier X entier | booléen X booléen~~
             - ~~'=='~~
             - ~~'!='~~
-  - Instruction Conditionnelle
-    - tant que
-        - expression type booléen
-        - obligatoirement évaluéeavant toute entrée dans la boucle
-    - si
-        - expression type booléen
-  - Instruction itérative
+  - ~~Instruction Conditionnelle~~
+    - ~~tant que~~
+        - ~~expression type booléen~~
+        - ~~obligatoirement évaluée avant toute entrée dans la boucle~~
+    - ~~si~~
+        - ~~expression type booléen~~
+  - ~~Instruction itérative~~
   - ORDRE des opérateurs:
     - '()', 'non', '*' et '/', '+' et '-', '<' et '>', '==' et '!=', 'et', 'ou'
     - Evaluer toutes les expression de gauche à droite par défaut
