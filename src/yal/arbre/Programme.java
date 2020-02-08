@@ -33,6 +33,6 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append("\nend:\n");
         stringBuilder.append("\tli $v0, 10\n");
         stringBuilder.append("\tsyscall\n");
-        return null;
+        return stringBuilder.toString();
     }
 }

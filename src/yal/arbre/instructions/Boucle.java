@@ -1,22 +1,22 @@
 package yal.arbre.instructions;
 
-import yal.arbre.BlocDInstructions;
+import yal.arbre.ArbreAbstrait;
 import yal.arbre.declaration.ErreurSemantique;
 import yal.arbre.expressions.Expression;
 import yal.exceptions.AnalyseSemantiqueException;
 
 public class Boucle extends Instruction {
     private Expression expression;
-    private BlocDInstructions blocDInstructions;
-    protected Boucle(Expression e, BlocDInstructions b, int n) {
+    private ArbreAbstrait arbreAbstrait;
+    public Boucle(Expression e, ArbreAbstrait a, int n) {
         super(n);
         expression = e;
-        blocDInstructions = b;
+        arbreAbstrait = a;
     }
 
     @Override
     protected String getNomInstruction() {
-        return "boucle tant que";
+        return "boucle tant que ";
     }
 
     @Override
@@ -26,15 +26,40 @@ public class Boucle extends Instruction {
                     "Condition de boucle non booléenne : "+expression.toString());
             ErreurSemantique.getInstance().ajouter(exception);
         }
-        if(blocDInstructions.getNbInstructions() < 1){
-            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
-                    "Boucle sans instruction : requiert au minimum une instruction");
-            ErreurSemantique.getInstance().ajouter(exception);
-        }
     }
 
     @Override
     public String toMIPS() {
-        return null;
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("#");
+        stringBuilder.append(getNomInstruction());
+        stringBuilder.append(expression.toString());
+        stringBuilder.append("\n");
+        //etiquette
+        stringBuilder.append("tantQue");
+        stringBuilder.append(expression.getNoLigne());
+        stringBuilder.append(":\n");
+
+        //condition
+        stringBuilder.append(expression.toMIPS());
+
+        //si faux on sort
+        stringBuilder.append("\tbeq $v0,$zero,finTantQue");
+        stringBuilder.append(expression.getNoLigne());
+        stringBuilder.append("\n");
+        //contenu boucle
+        stringBuilder.append("#Alors\n");
+        stringBuilder.append(arbreAbstrait.toMIPS());
+        //jump a l'etiquette
+        stringBuilder.append("\tj tantQue");
+        stringBuilder.append(expression.getNoLigne());
+        stringBuilder.append("\n");
+
+        //fintantque
+        stringBuilder.append("finTantQue");
+        stringBuilder.append(expression.getNoLigne());
+        stringBuilder.append(":\n\n");
+
+        return stringBuilder.toString();
     }
 }
