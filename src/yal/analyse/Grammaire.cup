@@ -65,7 +65,7 @@ terminal BINAIRE;
 /* Non terminals used in the grammar section.  */
 
 non terminal ArbreAbstrait PROG, LINST, INST, LDECL, DECL ;
-non terminal Operateur OPER;
+non terminal Operateur OPER ;
 non terminal Expression EXP ;
 
 /* Precedences */
@@ -74,8 +74,8 @@ precedence left ETLOGIQUE;
 precedence left DIFFERENT, EGALITE;
 precedence left SUPERIEURA, INFERIEURA;
 precedence left ADDITION, SOUSTRACTION;
-precedence left BINAIRE;
 precedence left DIVISION, MULTIPLICATION;
+precedence left BINAIRE;
 precedence left PAR_OUVRANTE, PAR_FERMANTE;
 
 /* ----------------------------Grammar Section-------------------- */
@@ -132,6 +132,7 @@ EXP    ::=     CSTENTIERE:c
         |
                 PAR_OUVRANTE EXP:e PAR_FERMANTE
                 {: RESULT = e; :}
+                %prec BINAIRE
         |
                 EXP:g OPER:o EXP:d
                 {: RESULT = new Binaire(g, o, d, dleft + 1); :}
@@ -187,4 +188,5 @@ OPER    ::=     OULOGIQUE
                 {: RESULT = new Multiplication(); :}
        |
                 DIVISION
-                {: RESULT = new Division(); :};
+                {: RESULT = new Division(); :}
+                ;
