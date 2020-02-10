@@ -76,12 +76,12 @@ public class Binaire extends Expression {
         stringBuilder.append("\n");
 
         // On stocke l'opérande gauche dans la pile
-        stringBuilder.append(gauche.toMIPS());
+        stringBuilder.append(droite.toMIPS());
         stringBuilder.append("\tsw $v0, 0($sp)\n");
         stringBuilder.append("\tadd $sp, $sp, -4\n");
 
         // On évalue l'opérande droite
-        stringBuilder.append(droite.toMIPS());
+        stringBuilder.append(gauche.toMIPS());
 
         // On récupère l'opérande gauche
         stringBuilder.append("\tadd $sp, $sp, 4\n");
