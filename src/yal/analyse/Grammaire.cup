@@ -61,6 +61,7 @@ parser code {:
 terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, LIRE, ENTIER, EGAL, ADDITION, SOUSTRACTION, DIVISION, MULTIPLICATION, SUPERIEURA, INFERIEURA, OULOGIQUE, ETLOGIQUE, EGALITE, DIFFERENT, INVERSE, CONDITION, BOUCLE;
 terminal String    IDF, CSTENTIERE, PAR_OUVRANTE, PAR_FERMANTE, FINSI, FINTANTQUE, ALORS, SINON, REPETER ;
 
+terminal BINAIRE;
 /* Non terminals used in the grammar section.  */
 
 non terminal ArbreAbstrait PROG, LINST, INST, LDECL, DECL ;
@@ -73,6 +74,7 @@ precedence left ETLOGIQUE;
 precedence left DIFFERENT, EGALITE;
 precedence left SUPERIEURA, INFERIEURA;
 precedence left ADDITION, SOUSTRACTION;
+precedence left BINAIRE;
 precedence left DIVISION, MULTIPLICATION;
 precedence left PAR_OUVRANTE, PAR_FERMANTE;
 
@@ -133,6 +135,7 @@ EXP    ::=     CSTENTIERE:c
         |
                 EXP:g OPER:o EXP:d
                 {: RESULT = new Binaire(g, o, d, dleft + 1); :}
+                %prec BINAIRE
         |
                 SOUSTRACTION EXP:e
                 {: RESULT = new Binaire(new ConstanteEntiere("0", eleft + 1), new Soustraction(), e, eleft + 1); :}

@@ -69,23 +69,25 @@ public class Binaire extends Expression {
     public String toMIPS() {
         StringBuilder stringBuilder = new StringBuilder();
         // Ecriture du beau commentaire MIPS
-        stringBuilder.append("\t# Operation de :");
+        stringBuilder.append("\t# Calcule de  :");
         stringBuilder.append(gauche.toString());
-        stringBuilder.append(" et ");
+        stringBuilder.append(" ");
+        stringBuilder.append(op.toString());
+        stringBuilder.append(" ");
         stringBuilder.append(droite.toString());
         stringBuilder.append("\n");
 
         // On stocke l'opérande gauche dans la pile
-        stringBuilder.append(droite.toMIPS());
+        stringBuilder.append(gauche.toMIPS());
         stringBuilder.append("\tsw $v0, 0($sp)\n");
         stringBuilder.append("\tadd $sp, $sp, -4\n");
 
         // On évalue l'opérande droite
-        stringBuilder.append(gauche.toMIPS());
+        stringBuilder.append(droite.toMIPS());
 
         // On récupère l'opérande gauche
         stringBuilder.append("\tadd $sp, $sp, 4\n");
-        stringBuilder.append("\tlw $t8, 0($sp)\n");
+        stringBuilder.append("\tlw $t8, ($sp)\n");
 
         // On fait l'opération
         stringBuilder.append("\t");
