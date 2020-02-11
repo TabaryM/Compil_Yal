@@ -5,7 +5,11 @@ public class Division implements Operateur{
 
     @Override
     public String toMips() {
-        return "\tdiv $v0, $t8, $v0";
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("\tbeqz $v0, ErrDiv\t#Si l'opérande droite vaut 0 : On affiche un message d'erreur et on ferme le programme\n");
+        stringBuilder.append("\t#L'operande droite n'est pas nul\n");
+        stringBuilder.append("\tdiv $v0, $t8, $v0");
+        return stringBuilder.toString();
     }
 
     @Override

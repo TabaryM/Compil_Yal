@@ -20,6 +20,7 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append(".data\nnewline:\t.asciiz\t\t  \"\\n\"\n");
         stringBuilder.append("vrai : .asciiz \"vrai\"\n");
         stringBuilder.append("faux : .asciiz \"faux\"\n");
+        stringBuilder.append("msgDivisionParZero : .asciiz \"Erreur d'execution : Division par zero\"\n");
         stringBuilder.append(".text\nmain:\n\n");
 
         stringBuilder.append("\t# Allocation mémoire des variables dans la pile\n");
@@ -28,11 +29,21 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append(TDS.getInstance().getCpt());
         stringBuilder.append("\n\n");
 
+        // Création de l'arbre abrstrait
         stringBuilder.append(arbreAbstrait.toMIPS());
 
+        // Fin du programme MIPS
         stringBuilder.append("\nend:\n");
         stringBuilder.append("\tli $v0, 10\n");
         stringBuilder.append("\tsyscall\n");
+
+        // Affichage de l'erreur de division par Zero
+        stringBuilder.append("\nErrDiv:\n");
+        stringBuilder.append("\tli $v0, 4\n");
+        stringBuilder.append("\tla $a0, msgDivisionParZero\n");
+        stringBuilder.append("\tsyscall\n");
+        stringBuilder.append("\tj end\n");
+
         return stringBuilder.toString();
     }
 }
