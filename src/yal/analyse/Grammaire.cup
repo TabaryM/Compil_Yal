@@ -61,7 +61,6 @@ parser code {:
 terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, LIRE, ENTIER, EGAL, ADDITION, SOUSTRACTION, DIVISION, MULTIPLICATION, SUPERIEURA, INFERIEURA, OULOGIQUE, ETLOGIQUE, EGALITE, DIFFERENT, INVERSE, CONDITION, BOUCLE;
 terminal String    IDF, CSTENTIERE, PAR_OUVRANTE, PAR_FERMANTE, FINSI, FINTANTQUE, ALORS, SINON, REPETER ;
 
-terminal BINAIRE;
 /* Non terminals used in the grammar section.  */
 
 non terminal ArbreAbstrait PROG, LINST, INST, LDECL, DECL ;
@@ -75,7 +74,6 @@ precedence left DIFFERENT, EGALITE;
 precedence left SUPERIEURA, INFERIEURA;
 precedence left ADDITION, SOUSTRACTION;
 precedence left DIVISION, MULTIPLICATION;
-precedence left BINAIRE;
 precedence left PAR_OUVRANTE, PAR_FERMANTE;
 
 /* ----------------------------Grammar Section-------------------- */
