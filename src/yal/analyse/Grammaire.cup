@@ -134,8 +134,44 @@ EXP    ::=     CSTENTIERE:c
                 {: RESULT = e; :}
                 %prec BINAIRE
         |
-                EXP:g OPER:o EXP:d
-                {: RESULT = new Binaire(g, o, d, dleft + 1); :}
+                EXP:g OULOGIQUE:o EXP:d
+                {: RESULT = new Binaire(g, new OuLogique(), d, dleft + 1); :}
+                %prec BINAIRE
+        |
+                EXP:g ETLOGIQUE:o EXP:d
+                {: RESULT = new Binaire(g, new EtLogique(), d, dleft + 1); :}
+                %prec BINAIRE
+        |
+                EXP:g DIFFERENT:o EXP:d
+                {: RESULT = new Binaire(g, new Different(), d, dleft + 1); :}
+                %prec BINAIRE
+        |
+                EXP:g EGALITE:o EXP:d
+                {: RESULT = new Binaire(g, new Egalite(), d, dleft + 1); :}
+                %prec BINAIRE
+        |
+                EXP:g SUPERIEURA:o EXP:d
+                {: RESULT = new Binaire(g, new SuperieurA(), d, dleft + 1); :}
+                %prec BINAIRE
+        |
+                EXP:g INFERIEURA:o EXP:d
+                {: RESULT = new Binaire(g, new InferieurA(), d, dleft + 1); :}
+                %prec BINAIRE
+        |
+                EXP:g ADDITION:o EXP:d
+                {: RESULT = new Binaire(g, new Addition(), d, dleft + 1); :}
+                %prec BINAIRE
+        |
+                EXP:g SOUSTRACTION:o EXP:d
+                {: RESULT = new Binaire(g, new Soustraction(), d, dleft + 1); :}
+                %prec BINAIRE
+        |
+                EXP:g MULTIPLICATION:o EXP:d
+                {: RESULT = new Binaire(g, new Multiplication(), d, dleft + 1); :}
+                %prec BINAIRE
+        |
+                EXP:g DIVISION:o EXP:d
+                {: RESULT = new Binaire(g, new Division(), d, dleft + 1); :}
                 %prec BINAIRE
         |
                 SOUSTRACTION EXP:e
@@ -158,35 +194,4 @@ LDECL   ::=    LDECL:ld  DECL:d
 DECL    ::=     ENTIER IDF:e POINTVIRGULE
                 {: Entier entier = new Entier(e, eleft + 1);
                    entier.ajouterTDS();:}
-                ;
-
-OPER    ::=     OULOGIQUE
-                {: RESULT = new OuLogique(); :}
-       |
-                ETLOGIQUE
-                {: RESULT = new EtLogique(); :}
-       |
-                DIFFERENT
-                {: RESULT = new Different(); :}
-       |
-                EGALITE
-                {: RESULT = new Egalite(); :}
-       |
-                SUPERIEURA
-                {: RESULT = new SuperieurA(); :}
-       |
-                INFERIEURA
-                {: RESULT = new InferieurA(); :}
-       |
-                ADDITION
-                {: RESULT = new Addition(); :}
-       |
-                SOUSTRACTION
-                {: RESULT = new Soustraction(); :}
-       |
-                MULTIPLICATION
-                {: RESULT = new Multiplication(); :}
-       |
-                DIVISION
-                {: RESULT = new Division(); :}
                 ;
