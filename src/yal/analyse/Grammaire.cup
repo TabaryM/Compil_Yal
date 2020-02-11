@@ -132,47 +132,37 @@ EXP    ::=     CSTENTIERE:c
         |
                 PAR_OUVRANTE EXP:e PAR_FERMANTE
                 {: RESULT = e; :}
-                %prec BINAIRE
-        |
+|
                 EXP:g OULOGIQUE:o EXP:d
                 {: RESULT = new Binaire(g, new OuLogique(), d, dleft + 1); :}
-                %prec BINAIRE
-        |
+|
                 EXP:g ETLOGIQUE:o EXP:d
                 {: RESULT = new Binaire(g, new EtLogique(), d, dleft + 1); :}
-                %prec BINAIRE
-        |
+|
                 EXP:g DIFFERENT:o EXP:d
                 {: RESULT = new Binaire(g, new Different(), d, dleft + 1); :}
-                %prec BINAIRE
-        |
+|
                 EXP:g EGALITE:o EXP:d
                 {: RESULT = new Binaire(g, new Egalite(), d, dleft + 1); :}
-                %prec BINAIRE
-        |
+|
                 EXP:g SUPERIEURA:o EXP:d
                 {: RESULT = new Binaire(g, new SuperieurA(), d, dleft + 1); :}
-                %prec BINAIRE
-        |
+|
                 EXP:g INFERIEURA:o EXP:d
                 {: RESULT = new Binaire(g, new InferieurA(), d, dleft + 1); :}
-                %prec BINAIRE
-        |
+|
                 EXP:g ADDITION:o EXP:d
                 {: RESULT = new Binaire(g, new Addition(), d, dleft + 1); :}
-                %prec BINAIRE
-        |
+|
                 EXP:g SOUSTRACTION:o EXP:d
                 {: RESULT = new Binaire(g, new Soustraction(), d, dleft + 1); :}
-                %prec BINAIRE
-        |
+|
                 EXP:g MULTIPLICATION:o EXP:d
                 {: RESULT = new Binaire(g, new Multiplication(), d, dleft + 1); :}
-                %prec BINAIRE
-        |
+|
                 EXP:g DIVISION:o EXP:d
                 {: RESULT = new Binaire(g, new Division(), d, dleft + 1); :}
-                %prec BINAIRE
+
         |
                 SOUSTRACTION EXP:e
                 {: RESULT = new Binaire(new ConstanteEntiere("0", eleft + 1), new Soustraction(), e, eleft + 1); :}
