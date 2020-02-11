@@ -5,7 +5,7 @@ public class Multiplication implements Operateur {
 
     @Override
     public String toMips() {
-        return "mul";
+        return "\tmul $v0, $t8, $v0";
     }
 
     @Override

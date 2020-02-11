@@ -5,7 +5,7 @@ public class Soustraction implements Operateur {
 
     @Override
     public String toMips() {
-        return "sub";
+        return "\tsub $v0, $t8, $v0";
     }
 
     @Override

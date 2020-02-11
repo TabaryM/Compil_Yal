@@ -5,7 +5,7 @@ public class Egalite implements Operateur {
 
     @Override
     public String toMips() {
-        return "seq";
+        return "\tseq $v0, $t8, $v0";
     }
 
     @Override

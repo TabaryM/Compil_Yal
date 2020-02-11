@@ -5,7 +5,7 @@ public class SuperieurA implements Operateur {
 
     @Override
     public String toMips() {
-        return "sgt";
+        return "\tsgt $v0, $t8, $v0";
     }
 
     @Override

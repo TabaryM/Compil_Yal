@@ -5,7 +5,7 @@ public class Different implements Operateur {
 
     @Override
     public String toMips() {
-        return "sne";
+        return "\tsne $v0, $t8, $v0";
     }
 
     @Override

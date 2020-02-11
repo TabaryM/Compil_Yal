@@ -89,10 +89,8 @@ public class Binaire extends Expression {
         stringBuilder.append("\tadd $sp, $sp, 4\n");
         stringBuilder.append("\tlw $t8, ($sp)\n");
 
-        // On fait l'opération
-        stringBuilder.append("\t");
         stringBuilder.append(op.toMips());
-        stringBuilder.append(" $v0, $t8, $v0\n\n");
+        stringBuilder.append("\n\n");
 
         return stringBuilder.toString();
     }

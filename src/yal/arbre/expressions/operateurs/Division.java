@@ -5,7 +5,7 @@ public class Division implements Operateur{
 
     @Override
     public String toMips() {
-        return "div";
+        return "\tdiv $v0, $t8, $v0";
     }
 
     @Override

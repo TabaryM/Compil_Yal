@@ -5,7 +5,7 @@ public class Addition implements Operateur {
 
     @Override
     public String toMips() {
-        return "add";
+        return "\tadd $v0, $t8, $v0";
     }
 
     @Override

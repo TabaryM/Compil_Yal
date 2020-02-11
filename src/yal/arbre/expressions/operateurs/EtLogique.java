@@ -5,7 +5,7 @@ public class EtLogique implements Operateur {
 
     @Override
     public String toMips() {
-        return "and";
+        return "\tand $v0, $t8, $v0";
     }
 
     @Override

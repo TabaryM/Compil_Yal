@@ -5,7 +5,7 @@ public class OuLogique implements Operateur {
 
     @Override
     public String toMips() {
-        return "or";
+        return "\tor $v0, $t8, $v0";
     }
 
     @Override
