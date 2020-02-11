@@ -75,7 +75,6 @@ precedence left DIFFERENT, EGALITE;
 precedence left SUPERIEURA, INFERIEURA;
 precedence left ADDITION, SOUSTRACTION;
 precedence left DIVISION, MULTIPLICATION;
-precedence left BINAIRE;
 precedence left PAR_OUVRANTE, PAR_FERMANTE;
 
 /* ----------------------------Grammar Section-------------------- */
