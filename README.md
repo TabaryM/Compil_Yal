@@ -52,9 +52,9 @@
     - ~~'()', 'non', '*' et '/', '+' et '-', '<' et '>', '==' et '!=', 'et', 'ou'~~
     - ~~Evaluer toutes les expression de gauche à droite par défaut~~
 
-
 - TO FIX:
+    - faire du code to mips qui fait un test de division / 0
     - priorités sans parentheses
     - test ambigus complexe 1+2 == 2+1 ; 1 < 0 + 2
-    - corriger les et et ou logique dans les fichier test
+    - ~~corriger les et et ou logique dans les fichier test~~
     - forcer des trucs nuls genre non non ou --
