@@ -3,11 +3,9 @@ package yal;
 public final class FabriqueDeNumero {
     private static FabriqueDeNumero instance;
     private int numeroLabelCondition;
-    private int numeroLabelBoucle;
 
     private FabriqueDeNumero(){
         numeroLabelCondition = 0;
-        numeroLabelBoucle = 0;
     }
 
     public static FabriqueDeNumero getInstance(){
@@ -21,7 +19,4 @@ public final class FabriqueDeNumero {
         return numeroLabelCondition++;
     }
 
-    public int getNumeroLabelBoucle() {
-        return numeroLabelBoucle++;
-    }
 }

@@ -1,5 +1,6 @@
 package yal.arbre.instructions;
 
+import yal.FabriqueDeNumero;
 import yal.arbre.ArbreAbstrait;
 import yal.arbre.declaration.ErreurSemantique;
 import yal.arbre.expressions.Expression;
@@ -30,6 +31,7 @@ public class Boucle extends Instruction {
 
     @Override
     public String toMIPS() {
+        int numLabel = FabriqueDeNumero.getInstance().getNumeroLabelCondition();
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("#");
         stringBuilder.append(getNomInstruction());
@@ -37,7 +39,7 @@ public class Boucle extends Instruction {
         stringBuilder.append("\n");
         //etiquette
         stringBuilder.append("tantQue");
-        stringBuilder.append(expression.getNoLigne());
+        stringBuilder.append(numLabel);
         stringBuilder.append(":\n");
 
         //condition
@@ -45,19 +47,19 @@ public class Boucle extends Instruction {
 
         //si faux on sort
         stringBuilder.append("\tbeq $v0,$zero,finTantQue");
-        stringBuilder.append(expression.getNoLigne());
+        stringBuilder.append(numLabel);
         stringBuilder.append("\n");
         //contenu boucle
         stringBuilder.append("#Alors\n");
         stringBuilder.append(arbreAbstrait.toMIPS());
         //jump a l'etiquette
         stringBuilder.append("\tj tantQue");
-        stringBuilder.append(expression.getNoLigne());
+        stringBuilder.append(numLabel);
         stringBuilder.append("\n");
 
         //fintantque
         stringBuilder.append("finTantQue");
-        stringBuilder.append(expression.getNoLigne());
+        stringBuilder.append(numLabel);
         stringBuilder.append(":\n\n");
 
         return stringBuilder.toString();

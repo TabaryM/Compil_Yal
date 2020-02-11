@@ -1,5 +1,6 @@
 package yal.arbre.instructions;
 
+import yal.FabriqueDeNumero;
 import yal.arbre.ArbreAbstrait;
 import yal.arbre.declaration.ErreurSemantique;
 import yal.arbre.expressions.Expression;
@@ -45,6 +46,7 @@ public class Condition extends Instruction {
 
     @Override
     public String toMIPS() {
+        int numLabel = FabriqueDeNumero.getInstance().getNumeroLabelCondition();
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("#");
         stringBuilder.append(getNomInstruction());
@@ -53,7 +55,7 @@ public class Condition extends Instruction {
         //condition
         stringBuilder.append(expression.toMIPS());
         stringBuilder.append("beqz $v0, siFaux");
-        stringBuilder.append(expression.getNoLigne());
+        stringBuilder.append(numLabel);
         stringBuilder.append("\n");
         //alors
         if(null != arbreAbstraitSi){
@@ -62,13 +64,13 @@ public class Condition extends Instruction {
 
         //jump a l'etiquette
         stringBuilder.append("\tj finSi");
-        stringBuilder.append(expression.getNoLigne());
+        stringBuilder.append(numLabel);
         stringBuilder.append("\n");
 
         //sinon
         //etiquette sinon
         stringBuilder.append("siFaux");
-        stringBuilder.append(expression.getNoLigne());
+        stringBuilder.append(numLabel);
         stringBuilder.append(":\n");
         if(sinon){
             stringBuilder.append(arbreAbstraitSinon.toMIPS());
@@ -76,7 +78,7 @@ public class Condition extends Instruction {
 
         //finsi
         stringBuilder.append("finSi");
-        stringBuilder.append(expression.getNoLigne());
+        stringBuilder.append(numLabel);
         stringBuilder.append(":\n\n");
         return stringBuilder.toString();
     }

@@ -1,5 +1,6 @@
 package yal.arbre.instructions;
 
+import yal.FabriqueDeNumero;
 import yal.arbre.expressions.Expression;
 
 public class Ecrire extends Instruction {
@@ -43,24 +44,25 @@ public class Ecrire extends Instruction {
     }
 
     private String ecrireBoolEnMIPS(){
+        int numLabel = FabriqueDeNumero.getInstance().getNumeroLabelCondition();
         return "\t# Si $v0 s'évalue à vrai alors \n" +
                 "\tbeqz $v0, faux" +
-                exp.getNoLigne() +
+                numLabel +
                 "\t# Ici l'expression s'évalue à vrai\n" +
                 "\tli $v0, 4\n" +
                 "\tla $a0, vrai\n" +
                 "\tj finSi" +
-                exp.getNoLigne()+
+                numLabel+
                 "\n# Sinon\n" +
                 "faux" +
-                exp.getNoLigne() +
+                numLabel +
                 ":\n" +
                 "# Ici l'expression s'évalue à faux\n" +
                 "\tli $v0, 4\n" +
                 "\tla $a0, faux\n" +
                 "\n" +
                 "finSi" +
-                exp.getNoLigne() +
+                numLabel +
                 ":\nsyscall\n";
     }
 }
