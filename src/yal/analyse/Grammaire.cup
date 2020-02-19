@@ -58,7 +58,7 @@ parser code {:
    
 /* Terminals (tokens returned by the scanner).  */
 
-terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, LIRE, ENTIER, EGAL, ADDITION, SOUSTRACTION, DIVISION, MULTIPLICATION, SUPERIEURA, INFERIEURA, OULOGIQUE, ETLOGIQUE, EGALITE, DIFFERENT, INVERSE, CONDITION, BOUCLE;
+terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, LIRE, ENTIER, EGAL, ADDITION, SOUSTRACTION, DIVISION, MULTIPLICATION, SUPERIEURA, INFERIEURA, OULOGIQUE, ETLOGIQUE, EGALITE, DIFFERENT, INVERSE, CONDITION, BOUCLE, FONCTION, RETOURNE;
 terminal String    IDF, CSTENTIERE, PAR_OUVRANTE, PAR_FERMANTE, FINSI, FINTANTQUE, ALORS, SINON, REPETER ;
 
 /* Non terminals used in the grammar section.  */
@@ -120,6 +120,9 @@ INST    ::=     ECRIRE EXP:e POINTVIRGULE
         |
                 BOUCLE EXP:e REPETER LINST:li FINTANTQUE
                 {: RESULT = new Boucle(e, li, eleft + 1); :}
+        |
+                RETOURNE EXP:e POINTVIRGULE
+                {:  :}
                 ;
 
 EXP    ::=     CSTENTIERE:c
@@ -128,39 +131,41 @@ EXP    ::=     CSTENTIERE:c
                 IDF:i
                 {: RESULT = new Entier(i, ileft + 1); :}
         |
+                IDF:i PAR_OUVRANTE PAR_FERMANTE
+                {::}
+        |
                 PAR_OUVRANTE EXP:e PAR_FERMANTE
                 {: RESULT = e; :}
-|
+        |
                 EXP:g OULOGIQUE:o EXP:d
                 {: RESULT = new Binaire(g, new OuLogique(), d, dleft + 1); :}
-|
+        |
                 EXP:g ETLOGIQUE:o EXP:d
                 {: RESULT = new Binaire(g, new EtLogique(), d, dleft + 1); :}
-|
+        |
                 EXP:g DIFFERENT:o EXP:d
                 {: RESULT = new Binaire(g, new Different(), d, dleft + 1); :}
-|
+        |
                 EXP:g EGALITE:o EXP:d
                 {: RESULT = new Binaire(g, new Egalite(), d, dleft + 1); :}
-|
+        |
                 EXP:g SUPERIEURA:o EXP:d
                 {: RESULT = new Binaire(g, new SuperieurA(), d, dleft + 1); :}
-|
+        |
                 EXP:g INFERIEURA:o EXP:d
                 {: RESULT = new Binaire(g, new InferieurA(), d, dleft + 1); :}
-|
+        |
                 EXP:g ADDITION:o EXP:d
                 {: RESULT = new Binaire(g, new Addition(), d, dleft + 1); :}
-|
+        |
                 EXP:g SOUSTRACTION:o EXP:d
                 {: RESULT = new Binaire(g, new Soustraction(), d, dleft + 1); :}
-|
+        |
                 EXP:g MULTIPLICATION:o EXP:d
                 {: RESULT = new Binaire(g, new Multiplication(), d, dleft + 1); :}
-|
+        |
                 EXP:g DIVISION:o EXP:d
                 {: RESULT = new Binaire(g, new Division(), d, dleft + 1); :}
-
         |
                 SOUSTRACTION EXP:e
                 {: RESULT = new Binaire(new ConstanteEntiere("0", eleft + 1), new Soustraction(), e, eleft + 1); :}
@@ -182,4 +187,7 @@ LDECL   ::=    LDECL:ld  DECL:d
 DECL    ::=     ENTIER IDF:e POINTVIRGULE
                 {: Entier entier = new Entier(e, eleft + 1);
                    entier.ajouterTDS();:}
+        |
+                FONCTION IDF:i PAR_OUVRANTE PAR_FERMANTE DEBUT LINST:li FIN
+                {:  :}
                 ;

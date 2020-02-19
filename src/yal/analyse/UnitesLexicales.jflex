@@ -44,8 +44,10 @@ commentaire = "//".*{finDeLigne}
 %%
 
 "programme"            { return symbol(CodesLexicaux.PROGRAMME); }
+"fonction"             { return symbol(CodesLexicaux.FONCTION); }
 "debut"                { return symbol(CodesLexicaux.DEBUT); }
 "fin"              	   { return symbol(CodesLexicaux.FIN); }
+"retourne"             { return symbol(CodesLexicaux.RETOURNE); }
 
 "ecrire"               { return symbol(CodesLexicaux.ECRIRE); }
 "lire"                 { return symbol(CodesLexicaux.LIRE); }
@@ -59,6 +61,7 @@ commentaire = "//".*{finDeLigne}
 "tantque"                    { return symbol(CodesLexicaux.BOUCLE); }
 "repeter"                    { return symbol(CodesLexicaux.REPETER); }
 "fintantque"                    { return symbol(CodesLexicaux.FINTANTQUE); }
+
 
 ";"                    { return symbol(CodesLexicaux.POINTVIRGULE); }
 "="                    { return symbol(CodesLexicaux.EGAL); }

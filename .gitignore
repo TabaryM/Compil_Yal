@@ -1,2 +1,7 @@
 /src/build.xml
 /.idea/
+/out/
+src/build.xml
+src/yal/analyse/CodesLexicaux.java
+src/yal/analyse/AnalyseurSyntaxique.java
+src/yal/analyse/AnalyseurLexical.java

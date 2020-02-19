@@ -51,10 +51,17 @@
   - ~~ORDRE des opérateurs:~~
     - ~~'()', 'non', '*' et '/', '+' et '-', '<' et '>', '==' et '!=', 'et', 'ou'~~
     - ~~Evaluer toutes les expression de gauche à droite par défaut~~
-
-- TO FIX:
-    - faire du code to mips qui fait un test de division / 0
-    - priorités sans parentheses
-    - test ambigus complexe 1+2 == 2+1 ; 1 < 0 + 2
-    - ~~corriger les et et ou logique dans les fichier test~~
-    - forcer des trucs nuls genre non non ou --
+   - FONCTION
+     - idf unique
+     - au moins 1 instruction
+     - params doivent etres vides
+     - doit contenir un retourne
+     - appel fonction
+  - Retourne
+     - resultat doit etre entier
+     - retourne comme resultat la valeur de l'expression
+     - provoque l'arret de la fonction
+     - ne peut pas se trouver hors d'une fonction
+   - Autre
+        - une région ( bloc ) est délimité par les mots "debut" et "fin"
+        
