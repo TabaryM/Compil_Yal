@@ -1,12 +1,11 @@
 package yal.arbre.declaration;
 
-import yal.exceptions.AnalyseSemantiqueException;
-
 import java.util.HashMap;
 
 public class TDS {
     private static TDS instance;
     private HashMap<Entree, Symbole> table;
+    // TODO : la suite
     private int cpt;
 
     /**
@@ -60,3 +59,4 @@ public class TDS {
         return cpt;
     }
 }
+//TODO : Déclaration de fonction

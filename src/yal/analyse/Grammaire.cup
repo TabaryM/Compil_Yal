@@ -122,7 +122,8 @@ INST    ::=     ECRIRE EXP:e POINTVIRGULE
                 {: RESULT = new Boucle(e, li, eleft + 1); :}
         |
                 RETOURNE EXP:e POINTVIRGULE
-                {:  :}
+                {: // TODO : retour OBLIGATOIRE d'une fonction
+                   // TODO : vérifier le registre de retour:}
                 ;
 
 EXP    ::=     CSTENTIERE:c
@@ -132,7 +133,8 @@ EXP    ::=     CSTENTIERE:c
                 {: RESULT = new Entier(i, ileft + 1); :}
         |
                 IDF:i PAR_OUVRANTE PAR_FERMANTE
-                {::}
+                {: // TODO : appel de la fonction
+                   RESULT = new Fonction(i, ileft + 1); :}
         |
                 PAR_OUVRANTE EXP:e PAR_FERMANTE
                 {: RESULT = e; :}
@@ -186,8 +188,10 @@ LDECL   ::=    LDECL:ld  DECL:d
 
 DECL    ::=     ENTIER IDF:e POINTVIRGULE
                 {: Entier entier = new Entier(e, eleft + 1);
-                   entier.ajouterTDS();:}
+                   entier.ajouterTDS(); :}
         |
                 FONCTION IDF:i PAR_OUVRANTE PAR_FERMANTE DEBUT LINST:li FIN
-                {:  :}
+                {: //TODO : déclaration de la fonction
+                   Fonction fonction = new Fonction(i, li, lileft+1);
+                   fonction.ajouterTDS(); :}
                 ;

@@ -1,10 +1,8 @@
 package yal.arbre;
 
 import yal.arbre.declaration.ErreurSemantique;
-import yal.arbre.declaration.TDS;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * 21 novembre 2018

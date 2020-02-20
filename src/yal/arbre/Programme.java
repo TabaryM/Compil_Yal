@@ -29,13 +29,15 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append(TDS.getInstance().getCpt());
         stringBuilder.append("\n\n");
 
-        // Création de l'arbre abrstrait
+        // Création de l'arbre abstrait
         stringBuilder.append(arbreAbstrait.toMIPS());
 
         // Fin du programme MIPS
         stringBuilder.append("\nend:\n");
         stringBuilder.append("\tli $v0, 10\n");
         stringBuilder.append("\tsyscall\n");
+
+        // TODO : écrire les instructions MIPS des fonctions ici (dans la TDS)
 
         // Affichage de l'erreur de division par Zero
         stringBuilder.append("\nErrDiv:\n");
