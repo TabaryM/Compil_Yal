@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class TDS {
     private static TDS instance;
     private HashMap<Entree, Symbole> table;
-    // TODO : la suite
+    // TODO : on ajoute les fonctions dans la tds, avec un fonction qui verifie si c'est une fonction
     private int cpt;
 
     /**
