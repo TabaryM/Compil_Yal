@@ -1,11 +1,13 @@
 package yal.arbre.declaration;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class TDS {
     private static TDS instance;
     private HashMap<Entree, Symbole> table;
     // TODO : on ajoute les fonctions dans la tds, avec un fonction qui verifie si c'est une fonction
+    private HashMap<String,String> fonctions;
     private int cpt;
 
     /**
@@ -14,6 +16,7 @@ public class TDS {
     private TDS(){
         table = new HashMap<>();
         cpt = 0;
+        fonctions = new HashMap<>();
     }
 
     /**
@@ -58,5 +61,19 @@ public class TDS {
     public int getCpt() {
         return cpt;
     }
+
+    //TODO : Déclaration de fonction
+    public void ajoutFonction(String function,String content) {
+        if (!fonctions.containsKey(function)){
+            fonctions.put(function,content);
+        }
+    }
+
+    public String getFonctions(){
+        StringBuilder stringBuilder = new StringBuilder();
+        for(Map.Entry<String, String> fonction : fonctions.entrySet()) {
+            stringBuilder.append(fonction.getValue());
+        }
+        return stringBuilder.toString();
+    }
 }
-//TODO : Déclaration de fonction

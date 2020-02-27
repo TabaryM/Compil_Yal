@@ -38,6 +38,7 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append("\tsyscall\n");
 
         // TODO : écrire les instructions MIPS des fonctions ici (dans la TDS)
+        stringBuilder.append(TDS.getInstance().getFonctions());
 
         // Affichage de l'erreur de division par Zero
         stringBuilder.append("\nErrDiv:\n");

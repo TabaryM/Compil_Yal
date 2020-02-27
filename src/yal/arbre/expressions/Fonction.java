@@ -23,6 +23,15 @@ public class Fonction extends Expression {
         super(numLig);
         instructions = (BlocDInstructions) a;
         this.idf = idf;
+        //ajoute le corps de la fonction pour le mettre a la fin du programme
+        StringBuilder stringBuilder = new StringBuilder();
+        if(instructions != null){
+            //dans ce cas c'est une déclaration
+            stringBuilder.append("\nfonction_"+idf+":\n");
+
+            stringBuilder.append(instructions.toMIPS());
+            TDS.getInstance().ajoutFonction(idf,stringBuilder.toString());
+        }
     }
 
     /**
@@ -66,8 +75,7 @@ public class Fonction extends Expression {
      */
     @Override
     public String toMIPS() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("\n #Je suis une fonction moche\n");
-        return stringBuilder.toString();
+
+        return "\tjump fonction_"+ idf + "\n"; //TODO : a faire
     }
 }

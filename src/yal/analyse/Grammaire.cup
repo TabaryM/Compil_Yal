@@ -123,7 +123,8 @@ INST    ::=     ECRIRE EXP:e POINTVIRGULE
         |
                 RETOURNE EXP:e POINTVIRGULE
                 {: // TODO : retour OBLIGATOIRE d'une fonction
-                   // TODO : vérifier le registre de retour:}
+                   // TODO : vérifier le registre de retour
+                   RESULT = new Retourne(e, eleft + 1); :}
                 ;
 
 EXP    ::=     CSTENTIERE:c
