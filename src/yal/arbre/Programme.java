@@ -1,6 +1,6 @@
 package yal.arbre;
 
-import yal.arbre.declaration.TDS;
+import yal.arbre.gestionnaireTDS.TDS;
 
 public class Programme extends ArbreAbstrait {
     private ArbreAbstrait arbreAbstrait;

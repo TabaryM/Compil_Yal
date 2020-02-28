@@ -6,11 +6,24 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b9335fe-b57b-4762-b494-42646bacb547" name="Default Changelist" comment="Modification de l'ordre d'évaluation des opérations&#10;Ajout des classes Boucle et Condition">
+    <list default="true" id="8b9335fe-b57b-4762-b494-42646bacb547" name="Default Changelist" comment="Création du singleton">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/build.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/yal/analyse/Grammaire.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/analyse/Grammaire.cup" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/BlocDInstructions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/BlocDInstructions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/Programme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/Programme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/declaration/Entree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/gestionnaireTDS/Entree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/declaration/ErreurSemantique.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/gestionnaireTDS/ErreurSemantique.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/declaration/Symbole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/gestionnaireTDS/Symbole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/declaration/TDS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/gestionnaireTDS/TDS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/Binaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/Binaire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/Entier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/Entier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/Fonction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/Fonction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/Inverse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/Inverse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/instructions/Affectation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/instructions/Affectation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/instructions/Boucle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/instructions/Boucle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/instructions/Condition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/instructions/Condition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/instructions/Lecture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/instructions/Lecture.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +85,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
@@ -239,7 +252,16 @@
       <workItem from="1580996458632" duration="49000" />
       <workItem from="1580996658707" duration="12370000" />
       <workItem from="1581150984184" duration="6251000" />
-      <workItem from="1581338445307" duration="3276000" />
+      <workItem from="1581338445307" duration="5108000" />
+      <workItem from="1581346399761" duration="615000" />
+      <workItem from="1581412450357" duration="6436000" />
+      <workItem from="1581418974218" duration="630000" />
+      <workItem from="1581423553529" duration="1790000" />
+      <workItem from="1581443406045" duration="28000" />
+      <workItem from="1582201562826" duration="3521000" />
+      <workItem from="1582278553538" duration="14000" />
+      <workItem from="1582822758942" duration="64000" />
+      <workItem from="1582893112832" duration="1191000" />
     </task>
     <task id="LOCAL-00001" summary="Mise en place initiale">
       <created>1579096618634</created>
@@ -409,7 +431,84 @@
       <option name="project" value="LOCAL" />
       <updated>1581341519165</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Modification de l'ordre d'évaluation des opérandes (pour de vrai)">
+      <created>1581343525047</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1581343525047</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Majors de promo en compilation / 20">
+      <created>1581345282160</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1581345282160</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Correction de l'évaluation de l'ordre des opérations selon les corrections de Mme Brigitte">
+      <created>1581413390587</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1581413390587</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Maj README.md">
+      <created>1581413499133</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1581413499133</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Correction parcequ'il y avait des trucs qui ne faisaient aucun sens en trop">
+      <created>1581413989232</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1581413989232</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Création du singleton">
+      <created>1581415262480</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1581415262480</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Utilisation du singleton pour la création des labels de conditions, de boucles, d'écriture MIPS">
+      <created>1581415607996</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1581415607996</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Affiche un message cohérent d'erreur de division par zéro&#10;Supporte les programmes en une lignes">
+      <created>1581417559629</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1581417559629</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Ajout de javadoc">
+      <created>1581418875580</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1581418875580</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Ajout de javadoc">
+      <created>1581425078353</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1581425078353</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Ajout des classes pour la gestion de fonctions">
+      <created>1582206945321</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1582206945321</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,13 +528,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Mise en place initiale" />
-    <MESSAGE value="Production d'un fichier .mips à partir d'un fichier .yal simple" />
-    <MESSAGE value="Prise en charge du retour a la ligne avec la fonction écrire" />
-    <MESSAGE value="Prise en charge des commentaires (//)" />
-    <MESSAGE value="Ajout du squelette de la TDS" />
-    <MESSAGE value="P-E m'a demandé de commit" />
-    <MESSAGE value="Verification de la double déclaration valide" />
     <MESSAGE value="Debut de la création du toMIPS" />
     <MESSAGE value="Affectation d'une constante à une variable;" />
     <MESSAGE value="Quasi tout de Yal1, sauf Lecture et les vérifications" />
@@ -451,7 +543,17 @@
     <MESSAGE value="Modification de l'ordre d'évaluation des opérations&#10;Ajout des classes Boucle et Condition" />
     <MESSAGE value="null&#10;comme nous" />
     <MESSAGE value="Modification de l'ordre d'évaluation des opérandes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modification de l'ordre d'évaluation des opérandes" />
+    <MESSAGE value="Modification de l'ordre d'évaluation des opérandes (pour de vrai)" />
+    <MESSAGE value="Majors de promo en compilation / 20" />
+    <MESSAGE value="Correction de l'évaluation de l'ordre des opérations selon les corrections de Mme Brigitte" />
+    <MESSAGE value="Maj README.md" />
+    <MESSAGE value="Correction parcequ'il y avait des trucs qui ne faisaient aucun sens en trop" />
+    <MESSAGE value="Création du singleton" />
+    <MESSAGE value="Utilisation du singleton pour la création des labels de conditions, de boucles, d'écriture MIPS" />
+    <MESSAGE value="Affiche un message cohérent d'erreur de division par zéro&#10;Supporte les programmes en une lignes" />
+    <MESSAGE value="Ajout de javadoc" />
+    <MESSAGE value="Ajout des classes pour la gestion de fonctions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout des classes pour la gestion de fonctions" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="70" key="#Project_Structure" timestamp="1579532269650" />
@@ -461,12 +563,12 @@
     </state>
     <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1580997429696" />
     <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1579968464263" />
-    <state x="574" y="129" key="#com.intellij.ide.util.MemberChooser" timestamp="1581157915940">
+    <state x="574" y="129" key="#com.intellij.ide.util.MemberChooser" timestamp="1582203997954">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="129" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1581157915940" />
+    <state x="574" y="129" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1581415230734" />
     <state x="574" y="135" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1580906758565" />
-    <state x="574" y="129" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1579967145279" />
+    <state x="574" y="129" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1582203997954" />
     <state x="499" y="197" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1579965605819">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -479,61 +581,70 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="493" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1579787475857" />
-    <state x="321" y="6" width="1043" height="809" key="CommitChangelistDialog2" timestamp="1581341517793">
+    <state x="374" y="15" width="1043" height="809" key="CommitChangelistDialog2" timestamp="1582206943645">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="321" y="6" width="1043" height="809" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1581341517793" />
+    <state x="321" y="6" width="1043" height="809" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1581425077243" />
     <state x="374" y="17" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1580398460506" />
-    <state x="374" y="16" key="CommitChangelistDialog2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1579968810012" />
+    <state x="374" y="15" key="CommitChangelistDialog2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1582206943645" />
+    <state x="147" y="70" width="1228" height="686" key="DiffContextDialog" timestamp="1582203505033">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="147" y="70" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1581417402121" />
+    <state x="147" y="70" width="1228" height="686" key="DiffContextDialog/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1582203505033" />
     <state x="473" y="153" key="FileChooserDialogImpl" timestamp="1579965668001">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="473" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579532269650" />
     <state x="473" y="153" key="FileChooserDialogImpl/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1579965668001" />
-    <state width="1493" height="195" key="GridCell.Tab.0.bottom" timestamp="1581343463428">
+    <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1582206957700">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581343463428" />
+    <state width="1493" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581418897374" />
     <state width="1493" height="192" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580214759845" />
-    <state width="1493" height="181" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1579968925658" />
+    <state width="1493" height="261" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1582206957700" />
     <state width="1506" height="192" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1536.864@0.0.1536.864" timestamp="1580234182472" />
-    <state width="1493" height="195" key="GridCell.Tab.0.center" timestamp="1581343463428">
+    <state width="1493" height="261" key="GridCell.Tab.0.center" timestamp="1582206957699">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581343463428" />
+    <state width="1493" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581418897374" />
     <state width="1493" height="192" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1580214759845" />
-    <state width="1493" height="181" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1579968925658" />
+    <state width="1493" height="261" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1582206957699" />
     <state width="1506" height="192" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1536.864@0.0.1536.864" timestamp="1580234182472" />
-    <state width="1493" height="195" key="GridCell.Tab.0.left" timestamp="1581343463428">
+    <state width="1493" height="261" key="GridCell.Tab.0.left" timestamp="1582206957699">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581343463428" />
+    <state width="1493" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581418897374" />
     <state width="1493" height="192" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1580214759845" />
-    <state width="1493" height="181" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1579968925658" />
+    <state width="1493" height="261" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1582206957699" />
     <state width="1506" height="192" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1536.864@0.0.1536.864" timestamp="1580234182472" />
-    <state width="1493" height="195" key="GridCell.Tab.0.right" timestamp="1581343463428">
+    <state width="1493" height="261" key="GridCell.Tab.0.right" timestamp="1582206957699">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581343463428" />
+    <state width="1493" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581418897374" />
     <state width="1493" height="192" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1580214759845" />
-    <state width="1493" height="181" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1579968925658" />
+    <state width="1493" height="261" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1582206957699" />
     <state width="1506" height="192" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1536.864@0.0.1536.864" timestamp="1580234182472" />
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1579798111284">
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1582206957700">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579798111284" />
-    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1579798111284">
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1582206957700" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1582206957700">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1579798111284" />
-    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1579798111284">
+    <state width="1493" height="261" key="GridCell.Tab.1.center/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1582206957700" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1582206957700">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1579798111284" />
-    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1579798111284">
+    <state width="1493" height="261" key="GridCell.Tab.1.left/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1582206957700" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1582206957700">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1579798111284" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1582206957700" />
     <state x="22" y="10" width="1493" height="834" key="MergeDialog" timestamp="1581158377856">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -544,42 +655,44 @@
     </state>
     <state x="481" y="142" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1581158377878" />
     <state x="481" y="149" key="MultipleFileMergeDialog/0.0.1536.864@0.0.1536.864" timestamp="1580740832729" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1580398296868">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1579784483392" />
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1580398296868" />
-    <state x="249" y="0" key="SettingsEditor/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1579965707708" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1581158387694">
+    <state x="249" y="0" key="SettingsEditor" timestamp="1581417953658">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1581158387694" />
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1581417953658" />
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1580398296868" />
+    <state x="249" y="0" key="SettingsEditor/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1579965707708" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1582206948863">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1581425082309" />
     <state x="361" y="152" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1580398464572" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1579968815432" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1582206948863" />
     <state x="485" y="88" key="antBuildFilePropertiesDialogDimension" timestamp="1579532269650" />
     <state x="485" y="88" key="antBuildFilePropertiesDialogDimension/0.0.1536.824@0.0.1536.824" timestamp="1579532269650" />
-    <state x="32" y="89" width="1350" height="669" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1580398208875">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state x="32" y="85" width="1350" height="639" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1582201654854">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1579784737631" />
     <state x="32" y="89" width="1350" height="669" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.864@0.0.1536.864" timestamp="1580398208875" />
+    <state x="32" y="85" width="1350" height="639" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1582201654854" />
     <state x="498" y="326" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1580214693388">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="498" y="326" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1536.864@0.0.1536.864" timestamp="1580214693388" />
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581338463383">
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1582893142756">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1581338463383" />
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1582893142756" />
     <state x="578" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864@0.0.1536.864" timestamp="1580740738393" />
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1579964752934" />
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1582822772619" />
     <state x="499" y="179" key="extract.method.dialog" timestamp="1581157349440">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="179" key="extract.method.dialog/0.0.1536.824@0.0.1536.824" timestamp="1581157349440" />
-    <state x="462" y="164" width="611" height="536" key="find.popup" timestamp="1580389210014">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state x="462" y="156" width="738" height="606" key="find.popup" timestamp="1581423601912">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="462" y="156" width="738" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1581423601912" />
     <state x="462" y="164" width="611" height="536" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1580389210014" />
   </component>
 </project>

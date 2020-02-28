@@ -1,9 +1,8 @@
 package yal.arbre.expressions;
 
-import yal.arbre.declaration.ErreurSemantique;
+import yal.arbre.gestionnaireTDS.ErreurSemantique;
 import yal.arbre.expressions.operateurs.*;
 import yal.exceptions.AnalyseSemantiqueException;
-import yal.exceptions.ListeExceptionSem;
 
 public class Binaire extends Expression {
     private Expression gauche;

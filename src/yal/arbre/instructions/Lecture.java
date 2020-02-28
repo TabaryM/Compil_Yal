@@ -1,9 +1,8 @@
 package yal.arbre.instructions;
 
-import yal.arbre.declaration.Entree;
-import yal.arbre.declaration.ErreurSemantique;
-import yal.arbre.declaration.TDS;
-import yal.arbre.expressions.Entier;
+import yal.arbre.gestionnaireTDS.Entree;
+import yal.arbre.gestionnaireTDS.ErreurSemantique;
+import yal.arbre.gestionnaireTDS.TDS;
 import yal.exceptions.AnalyseSemantiqueException;
 
 public class Lecture extends Instruction {

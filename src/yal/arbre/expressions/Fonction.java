@@ -2,16 +2,15 @@ package yal.arbre.expressions;
 
 import yal.arbre.ArbreAbstrait;
 import yal.arbre.BlocDInstructions;
-import yal.arbre.declaration.Entree;
-import yal.arbre.declaration.ErreurSemantique;
-import yal.arbre.declaration.Symbole;
-import yal.arbre.declaration.TDS;
-import yal.arbre.instructions.Instruction;
+import yal.arbre.gestionnaireTDS.Entree;
+import yal.arbre.gestionnaireTDS.ErreurSemantique;
+import yal.arbre.gestionnaireTDS.Symbole;
+import yal.arbre.gestionnaireTDS.TDS;
 import yal.exceptions.AnalyseSemantiqueException;
 
 public class Fonction extends Expression {
     private BlocDInstructions instructions;
-    private String idf;
+    private Entree idf;
 
     /**
      * Déclaration d'une fonction dans l'arbre abstrait
@@ -19,7 +18,7 @@ public class Fonction extends Expression {
      * @param a
      * @param numLig
      */
-    public Fonction(String idf, ArbreAbstrait a, int numLig){
+    public Fonction(Entree idf, ArbreAbstrait a, int numLig){
         super(numLig);
         instructions = (BlocDInstructions) a;
         this.idf = idf;
@@ -39,14 +38,14 @@ public class Fonction extends Expression {
      * @param idf
      * @param numLig
      */
-    public Fonction(String idf, int numLig) {
+    public Fonction(Entree idf, int numLig) {
         super(numLig);
         this.idf = idf;
     }
 
     public void ajouterTDS(){
         try {
-            TDS.getInstance().ajouter(new Entree(idf), new Symbole("fonction", TDS.getInstance().getCpt()));
+            TDS.getInstance().ajouter(idf, new Symbole("fonction", TDS.getInstance().getCpt()));
         } catch (Exception e) {
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration de la fonction "+idf);
             ErreurSemantique.getInstance().ajouter(exception);

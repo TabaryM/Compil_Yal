@@ -1,4 +1,4 @@
-package yal.arbre.declaration;
+package yal.arbre.gestionnaireTDS;
 
 public class Symbole {
     private String type;

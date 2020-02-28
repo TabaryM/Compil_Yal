@@ -2,7 +2,7 @@ package yal.arbre.instructions;
 
 import yal.FabriqueDeNumero;
 import yal.arbre.ArbreAbstrait;
-import yal.arbre.declaration.ErreurSemantique;
+import yal.arbre.gestionnaireTDS.ErreurSemantique;
 import yal.arbre.expressions.Expression;
 import yal.exceptions.AnalyseSemantiqueException;
 

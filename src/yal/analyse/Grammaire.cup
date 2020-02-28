@@ -5,7 +5,7 @@ import yal.arbre.* ;
 import yal.arbre.expressions.* ;
 import yal.arbre.expressions.operateurs.* ;
 import yal.arbre.instructions.* ;
-import yal.arbre.declaration.* ;
+import yal.arbre.gestionnaireTDS.* ;
 import yal.exceptions.AnalyseSyntaxiqueException;
 
 import java_cup.runtime.*;
@@ -135,7 +135,7 @@ EXP    ::=     CSTENTIERE:c
         |
                 IDF:i PAR_OUVRANTE PAR_FERMANTE
                 {: // TODO : appel de la fonction
-                   RESULT = new Fonction(i, ileft + 1); :}
+                   RESULT = new Fonction(new Entree(i), ileft + 1); :}
         |
                 PAR_OUVRANTE EXP:e PAR_FERMANTE
                 {: RESULT = e; :}

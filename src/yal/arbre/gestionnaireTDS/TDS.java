@@ -1,4 +1,4 @@
-package yal.arbre.declaration;
+package yal.arbre.gestionnaireTDS;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +7,7 @@ public class TDS {
     private static TDS instance;
     private HashMap<Entree, Symbole> table;
     // TODO : on ajoute les fonctions dans la tds, avec un fonction qui verifie si c'est une fonction
-    private HashMap<String,String> fonctions;
+    private HashMap<Entree,String> fonctions;
     private int cpt;
 
     /**
@@ -38,8 +38,13 @@ public class TDS {
      */
     public void ajouter(Entree e, Symbole s) throws Exception{
         if(table.containsKey(e)){
-            throw new Exception("Double déclaration de la variable "+e.getIdf());
+            throw new Exception("Double déclaration de la "+s.getType()+e.getIdf());
         } else {
+            /*
+            if(s.getType().equals("fonction")){
+                fonctions.put(e, )
+            }
+            */
             table.put(e, s);
             cpt -= 4;       // Pour le moment on fait que ça,  car il n'y a que des entiers
         }
@@ -63,15 +68,15 @@ public class TDS {
     }
 
     //TODO : Déclaration de fonction
-    public void ajoutFonction(String function,String content) {
-        if (!fonctions.containsKey(function)){
-            fonctions.put(function,content);
+    public void ajoutFonction(Entree idf,String content) {
+        if (!fonctions.containsKey(idf)){
+            fonctions.put(idf,content);
         }
     }
 
     public String getFonctions(){
         StringBuilder stringBuilder = new StringBuilder();
-        for(Map.Entry<String, String> fonction : fonctions.entrySet()) {
+        for(Map.Entry<Entree, String> fonction : fonctions.entrySet()) {
             stringBuilder.append(fonction.getValue());
         }
         return stringBuilder.toString();

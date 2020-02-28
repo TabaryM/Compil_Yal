@@ -1,6 +1,6 @@
 package yal.arbre;
 
-import yal.arbre.declaration.ErreurSemantique;
+import yal.arbre.gestionnaireTDS.ErreurSemantique;
 
 import java.util.ArrayList;
 

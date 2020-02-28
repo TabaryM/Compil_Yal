@@ -1,4 +1,4 @@
-package yal.arbre.declaration;
+package yal.arbre.gestionnaireTDS;
 
 import yal.exceptions.AnalyseSemantiqueException;
 import yal.exceptions.ListeExceptionSem;

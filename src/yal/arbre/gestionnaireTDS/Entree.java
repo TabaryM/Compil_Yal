@@ -1,4 +1,4 @@
-package yal.arbre.declaration;
+package yal.arbre.gestionnaireTDS;
 
 public class Entree {
     private String idf;
