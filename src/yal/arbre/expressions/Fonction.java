@@ -31,9 +31,9 @@ public class Fonction extends Expression {
     }
 
     /**
-     *
-     * @param idf
-     * @param numLig
+     * Appel de la fonction dans le code
+     * @param idf identifiant de la fonction appelé
+     * @param numLig numéro de la ligne à laquelle la fonction est appelée
      */
     public Fonction(Entree idf, int numLig) {
         super(numLig);
@@ -50,8 +50,8 @@ public class Fonction extends Expression {
     }
 
     /**
-     *
-     * @return
+     * TODO : trouver une utilité à cette fonction
+     * @return un string qui pue
      */
     @Override
     public String getType() {
@@ -59,15 +59,29 @@ public class Fonction extends Expression {
     }
 
     /**
-     *
+     * TODO : trouver une liste de vérification correcte de la fonction
      */
     @Override
     public void verifier() {
+        if(instructions != null){
+            // Verification de l'existence de l'instructino retourne
+            boolean contientRetourne = false;
+            for(ArbreAbstrait arbreAbstrait : instructions){
+                if(arbreAbstrait.getClass().getSimpleName().equals("Retourne")){
+                    contientRetourne = true;
+                }
+            }
+            if(!contientRetourne){
+                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "La fonction "+idf+" ne contient aucune instruction Retourne");
+                ErreurSemantique.getInstance().ajouter(exception);
+            }
+            instructions.verifier();
+        }
     }
 
     /**
-     *
-     * @return
+     * TODO : trouver si on doit retourner le code avec la liste d'instruction ou le code d'appel de fonction
+     * @return un code MIPS
      */
     @Override
     public String toMIPS() {

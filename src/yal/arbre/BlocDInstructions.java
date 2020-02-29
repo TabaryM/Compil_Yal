@@ -3,6 +3,7 @@ package yal.arbre;
 import yal.arbre.gestionnaireTDS.ErreurSemantique;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * 21 novembre 2018
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  * @author brigitte wrobel-dautcourt
  */
 
-public class BlocDInstructions extends ArbreAbstrait {
+public class BlocDInstructions extends ArbreAbstrait implements Iterable<ArbreAbstrait>{
     
     protected ArrayList<ArbreAbstrait> programme ;
 
@@ -49,5 +50,10 @@ public class BlocDInstructions extends ArbreAbstrait {
 
     public int getNbInstructions(){
         return programme.size();
+    }
+
+    @Override
+    public Iterator<ArbreAbstrait> iterator() {
+        return programme.iterator();
     }
 }
