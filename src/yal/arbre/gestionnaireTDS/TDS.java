@@ -1,9 +1,10 @@
 package yal.arbre.gestionnaireTDS;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
-public class TDS {
+public class TDS implements Iterable<Symbole> {
     private static TDS instance;
     private HashMap<Entree, Symbole> table;
     // TODO : on ajoute les fonctions dans la tds, avec un fonction qui verifie si c'est une fonction
@@ -80,5 +81,10 @@ public class TDS {
             stringBuilder.append(fonction.getValue());
         }
         return stringBuilder.toString();
+    }
+
+    @Override
+    public Iterator<Symbole> iterator() {
+        return table.values().iterator();
     }
 }

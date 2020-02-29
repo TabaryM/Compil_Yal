@@ -1,9 +1,6 @@
 package yal.arbre.expressions;
 
-import yal.arbre.gestionnaireTDS.Entree;
-import yal.arbre.gestionnaireTDS.ErreurSemantique;
-import yal.arbre.gestionnaireTDS.Symbole;
-import yal.arbre.gestionnaireTDS.TDS;
+import yal.arbre.gestionnaireTDS.*;
 import yal.exceptions.AnalyseSemantiqueException;
 
 public class Entier extends Idf {
@@ -13,7 +10,7 @@ public class Entier extends Idf {
 
     public void ajouterTDS(){
         try {
-            TDS.getInstance().ajouter(new Entree(super.getIdf()), new Symbole("entier", TDS.getInstance().getCpt()));
+            TDS.getInstance().ajouter(new Entree(super.getIdf()), new SymboleDeVariable(TDS.getInstance().getCpt()));
         } catch (Exception e) {
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration de la variable "+super.getIdf());
             ErreurSemantique.getInstance().ajouter(exception);
@@ -31,7 +28,12 @@ public class Entier extends Idf {
     @Override
     public String toMIPS() {
         StringBuilder stringBuilder = new StringBuilder("\tlw $v0, ");
-        stringBuilder.append(TDS.getInstance().identifier(new Entree((getIdf()))).getDepl());
+
+        // On récupère le déplacement dans la mémoire
+        SymboleDeVariable symbole = ((SymboleDeVariable) TDS.getInstance().identifier(new Entree(getIdf())));
+        int deplacement = symbole.getDepl();
+
+        stringBuilder.append(deplacement);
         stringBuilder.append("($s7)\n");
         return stringBuilder.toString();
     }

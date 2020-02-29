@@ -1,9 +1,6 @@
 package yal.arbre.instructions;
 
-import yal.arbre.gestionnaireTDS.Entree;
-import yal.arbre.gestionnaireTDS.ErreurSemantique;
-import yal.arbre.gestionnaireTDS.Symbole;
-import yal.arbre.gestionnaireTDS.TDS;
+import yal.arbre.gestionnaireTDS.*;
 import yal.arbre.expressions.Expression;
 import yal.exceptions.AnalyseSemantiqueException;
 
@@ -45,7 +42,7 @@ public class Affectation extends Instruction {
         stringBuilder.append(e.toMIPS());
 
         // Récupération du déplacement en mémoire de la variable
-        Symbole tmp = TDS.getInstance().identifier(new Entree((idf)));
+        SymboleDeVariable tmp = (SymboleDeVariable) TDS.getInstance().identifier(new Entree((idf)));
         // Stockage en mémoire de la variable
         stringBuilder.append("\tsw $v0, ");
         stringBuilder.append(tmp.getDepl());

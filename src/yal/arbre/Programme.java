@@ -1,5 +1,6 @@
 package yal.arbre;
 
+import yal.arbre.gestionnaireTDS.Symbole;
 import yal.arbre.gestionnaireTDS.TDS;
 
 public class Programme extends ArbreAbstrait {
@@ -39,6 +40,11 @@ public class Programme extends ArbreAbstrait {
 
         // TODO : écrire les instructions MIPS des fonctions ici (dans la TDS)
         stringBuilder.append(TDS.getInstance().getFonctions());
+        for(Symbole symbole : TDS.getInstance()){
+            if(symbole.getType().equals("fonction")){
+                // TODO : on ajoute le corps de fonction au fichier
+            }
+        }
 
         // Affichage de l'erreur de division par Zero
         stringBuilder.append("\nErrDiv:\n");

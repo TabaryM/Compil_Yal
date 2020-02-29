@@ -193,6 +193,6 @@ DECL    ::=     ENTIER IDF:e POINTVIRGULE
         |
                 FONCTION IDF:i PAR_OUVRANTE PAR_FERMANTE DEBUT LINST:li FIN
                 {: //TODO : déclaration de la fonction
-                   Fonction fonction = new Fonction(i, li, lileft+1);
+                   Fonction fonction = new Fonction(new Entree(i), li, lileft+1);
                    fonction.ajouterTDS(); :}
                 ;

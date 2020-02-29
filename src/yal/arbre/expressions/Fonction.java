@@ -2,10 +2,7 @@ package yal.arbre.expressions;
 
 import yal.arbre.ArbreAbstrait;
 import yal.arbre.BlocDInstructions;
-import yal.arbre.gestionnaireTDS.Entree;
-import yal.arbre.gestionnaireTDS.ErreurSemantique;
-import yal.arbre.gestionnaireTDS.Symbole;
-import yal.arbre.gestionnaireTDS.TDS;
+import yal.arbre.gestionnaireTDS.*;
 import yal.exceptions.AnalyseSemantiqueException;
 
 public class Fonction extends Expression {
@@ -14,9 +11,9 @@ public class Fonction extends Expression {
 
     /**
      * Déclaration d'une fonction dans l'arbre abstrait
-     * @param idf
-     * @param a
-     * @param numLig
+     * @param idf identifiant de la fonction
+     * @param a la liste d'instruciton de la fonction
+     * @param numLig numéro de la ligne de la déclaration de la fonction
      */
     public Fonction(Entree idf, ArbreAbstrait a, int numLig){
         super(numLig);
@@ -45,7 +42,7 @@ public class Fonction extends Expression {
 
     public void ajouterTDS(){
         try {
-            TDS.getInstance().ajouter(idf, new Symbole("fonction", TDS.getInstance().getCpt()));
+            TDS.getInstance().ajouter(idf, new SymboleDeFonction(TDS.getInstance().getCpt()));
         } catch (Exception e) {
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration de la fonction "+idf);
             ErreurSemantique.getInstance().ajouter(exception);
