@@ -42,6 +42,7 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append(TDS.getInstance().getFonctions());
         for(Symbole symbole : TDS.getInstance()){
             if(symbole.getType().equals("fonction")){
+
                 // TODO : on ajoute le corps de fonction au fichier
             }
         }
