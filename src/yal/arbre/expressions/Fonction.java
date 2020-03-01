@@ -32,6 +32,7 @@ public class Fonction extends Expression {
     }
 
     public void ajouterTDS(){
+        verifier();
         try {
             TDS.getInstance().ajouter(idf, new SymboleDeFonction(TDS.getInstance().getCpt(), instructions));
         } catch (Exception e) {
@@ -77,7 +78,7 @@ public class Fonction extends Expression {
     @Override
     public String toMIPS() {
         // TODO : empiler les parametres
-        return "\tjal fonction_"+ idf.getIdf() + "\n";
+        return "\tjal fonction_"+ idf + "\n";
         // l'adresse de retour est donnée par l'insrtuction jal dans le registre $ra
         // On empile immédiatement après l'appel de la fonction le registre $ra
     }

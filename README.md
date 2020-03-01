@@ -52,16 +52,16 @@
     - ~~'()', 'non', '*' et '/', '+' et '-', '<' et '>', '==' et '!=', 'et', 'ou'~~
     - ~~Evaluer toutes les expression de gauche à droite par défaut~~
    - FONCTION
-     - idf unique
-     - au moins 1 instruction
-     - params doivent etres vides
-     - doit contenir un retourne
-     - appel fonction
+     - ~~idf unique~~
+     - ~~au moins 1 instruction~~
+     - params doivent etres vides // TODO : déclancher une exception
+     - ~~doit contenir un retourne~~
+     - ~~appel fonction~~
   - Retourne
      - resultat doit etre entier
-     - retourne comme resultat la valeur de l'expression
-     - provoque l'arret de la fonction
+     - ~~retourne comme resultat la valeur de l'expression~~
+     - ~~provoque l'arret de la fonction~~
      - ne peut pas se trouver hors d'une fonction
    - Autre
-        - une région ( bloc ) est délimité par les mots "debut" et "fin"
+        - ~~une région ( bloc ) est délimité par les mots "debut" et "fin"~~
         

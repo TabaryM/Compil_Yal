@@ -33,4 +33,9 @@ public class Entree {
     public int hashCode() {
         return getIdf().hashCode();
     }
+
+    @Override
+    public String toString() {
+        return idf;
+    }
 }
