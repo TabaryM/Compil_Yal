@@ -23,7 +23,7 @@ public class Fonction extends Expression {
         StringBuilder stringBuilder = new StringBuilder();
         if(instructions != null){
             //dans ce cas c'est une déclaration
-            stringBuilder.append("\nfonction_"+idf+":\n");
+            stringBuilder.append("\nfonction_"+idf.getIdf()+":\n");
 
             stringBuilder.append(instructions.toMIPS());
             TDS.getInstance().ajoutFonction(idf,stringBuilder.toString());
@@ -86,6 +86,11 @@ public class Fonction extends Expression {
     @Override
     public String toMIPS() {
 
-        return "\tjump fonction_"+ idf + "\n"; //TODO : a faire
+        return "\tjump fonction_"+ idf.getIdf() + "\n"; //TODO : a faire
+    }
+
+    @Override
+    public String toString() {
+        return idf.getIdf();
     }
 }
