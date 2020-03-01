@@ -4,11 +4,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class TDS implements Iterable<Symbole> {
+public class TDS implements Iterable<Entree> {
     private static TDS instance;
     private HashMap<Entree, Symbole> table;
     // TODO : on ajoute les fonctions dans la tds, avec un fonction qui verifie si c'est une fonction
-    private HashMap<Entree,String> fonctions;
     private int cpt;
 
     /**
@@ -17,7 +16,6 @@ public class TDS implements Iterable<Symbole> {
     private TDS(){
         table = new HashMap<>();
         cpt = 0;
-        fonctions = new HashMap<>();
     }
 
     /**
@@ -68,23 +66,8 @@ public class TDS implements Iterable<Symbole> {
         return cpt;
     }
 
-    //TODO : Déclaration de fonction
-    public void ajoutFonction(Entree idf,String content) {
-        if (!fonctions.containsKey(idf)){
-            fonctions.put(idf,content);
-        }
-    }
-
-    public String getFonctions(){
-        StringBuilder stringBuilder = new StringBuilder();
-        for(Map.Entry<Entree, String> fonction : fonctions.entrySet()) {
-            stringBuilder.append(fonction.getValue());
-        }
-        return stringBuilder.toString();
-    }
-
     @Override
-    public Iterator<Symbole> iterator() {
-        return table.values().iterator();
+    public Iterator<Entree> iterator() {
+        return table.keySet().iterator();
     }
 }

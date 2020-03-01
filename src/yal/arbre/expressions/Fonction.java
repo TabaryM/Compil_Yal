@@ -19,15 +19,6 @@ public class Fonction extends Expression {
         super(numLig);
         instructions = (BlocDInstructions) a;
         this.idf = idf;
-        //ajoute le corps de la fonction pour le mettre a la fin du programme
-        StringBuilder stringBuilder = new StringBuilder();
-        if(instructions != null){
-            //dans ce cas c'est une déclaration
-            stringBuilder.append("\nfonction_"+idf.getIdf()+":\n");
-
-            stringBuilder.append(instructions.toMIPS());
-            TDS.getInstance().ajoutFonction(idf,stringBuilder.toString());
-        }
     }
 
     /**
@@ -42,7 +33,7 @@ public class Fonction extends Expression {
 
     public void ajouterTDS(){
         try {
-            TDS.getInstance().ajouter(idf, new SymboleDeFonction(TDS.getInstance().getCpt()));
+            TDS.getInstance().ajouter(idf, new SymboleDeFonction(TDS.getInstance().getCpt(), instructions));
         } catch (Exception e) {
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration de la fonction "+idf);
             ErreurSemantique.getInstance().ajouter(exception);
@@ -85,12 +76,24 @@ public class Fonction extends Expression {
      */
     @Override
     public String toMIPS() {
-
-        return "\tjump fonction_"+ idf.getIdf() + "\n"; //TODO : a faire
+        // TODO : empiler les parametres
+        return "\tjal fonction_"+ idf.getIdf() + "\n";
+        // l'adresse de retour est donnée par l'insrtuction jal dans le registre $ra
+        // On empile immédiatement après l'appel de la fonction le registre $ra
     }
 
     @Override
     public String toString() {
         return idf.getIdf();
+    }
+
+    public static String initBlocFonction(){
+        StringBuilder stringBuilder = new StringBuilder();
+        // On stocke l'adresse à laquelle retourner une fois la fonction finie
+        stringBuilder.append("\tsw $ra, 0($sp)\n\tadd $sp, $sp, -4\n");
+        // Chainage dynamique
+        stringBuilder.append("\tmove $s2, $sp\n");
+        return stringBuilder.toString();
+
     }
 }

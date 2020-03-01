@@ -1,6 +1,9 @@
 package yal.arbre;
 
+import yal.arbre.expressions.Fonction;
+import yal.arbre.gestionnaireTDS.Entree;
 import yal.arbre.gestionnaireTDS.Symbole;
+import yal.arbre.gestionnaireTDS.SymboleDeFonction;
 import yal.arbre.gestionnaireTDS.TDS;
 
 public class Programme extends ArbreAbstrait {
@@ -25,7 +28,7 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append(".text\nmain:\n\n");
 
         stringBuilder.append("\t# Allocation mémoire des variables dans la pile\n");
-        stringBuilder.append("\tmove, $s7, $sp\n");
+        stringBuilder.append("\tmove $s7, $sp\n");
         stringBuilder.append("\tadd $sp, $sp, ");
         stringBuilder.append(TDS.getInstance().getCpt());
         stringBuilder.append("\n\n");
@@ -38,12 +41,21 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append("\tli $v0, 10\n");
         stringBuilder.append("\tsyscall\n");
 
-        // TODO : écrire les instructions MIPS des fonctions ici (dans la TDS)
-        stringBuilder.append(TDS.getInstance().getFonctions());
-        for(Symbole symbole : TDS.getInstance()){
+        for(Entree entree : TDS.getInstance()){
+            Symbole symbole = TDS.getInstance().identifier(entree);
+            // Si l'entree regardé correspond à une fonction
             if(symbole.getType().equals("fonction")){
+                // Declaration de l'etiquette de la fonction
+                stringBuilder.append("\nfonction_");
+                stringBuilder.append(entree.getIdf());
+                stringBuilder.append(":\n");
 
-                // TODO : on ajoute le corps de fonction au fichier
+                // Debut du bloc
+                stringBuilder.append(Fonction.initBlocFonction());
+
+                // on ajoute le corps de fonction au fichier
+                stringBuilder.append(((SymboleDeFonction) symbole).toMIPS());
+                // Retour au programme principal Normlement dans le RETOURNE
             }
         }
 
@@ -56,4 +68,5 @@ public class Programme extends ArbreAbstrait {
 
         return stringBuilder.toString();
     }
+
 }
