@@ -93,7 +93,8 @@ public class Fonction extends Expression {
         // On stocke l'adresse à laquelle retourner une fois la fonction finie
         stringBuilder.append("\tsw $ra, 0($sp)\n\tadd $sp, $sp, -4\n");
         // Chainage dynamique
-        stringBuilder.append("\tmove $s2, $sp\n");
+        stringBuilder.append("\tsw $sp, 0($sp)\n\tadd $sp, $sp, -4\n");
+
         return stringBuilder.toString();
 
     }
