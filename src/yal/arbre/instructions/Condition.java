@@ -84,7 +84,11 @@ public class Condition extends Instruction {
     }
 
     @Override
-    public boolean contientRetourne() {
-        return arbreAbstraitSi.contientRetourne() || arbreAbstraitSinon.contientRetourne();
+    public boolean contientRetourne(boolean dansUneFonction) {
+        if(arbreAbstraitSinon != null){
+            return arbreAbstraitSi.contientRetourne(dansUneFonction) || arbreAbstraitSinon.contientRetourne(dansUneFonction);
+        } else {
+            return arbreAbstraitSi.contientRetourne(dansUneFonction);
+        }
     }
 }

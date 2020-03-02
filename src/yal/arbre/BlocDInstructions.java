@@ -1,6 +1,8 @@
 package yal.arbre;
 
+import yal.arbre.expressions.Fonction;
 import yal.arbre.gestionnaireTDS.ErreurSemantique;
+import yal.exceptions.AnalyseSemantiqueException;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -33,9 +35,19 @@ public class BlocDInstructions extends ArbreAbstrait implements Iterable<ArbreAb
     public void verifier() {
         for(ArbreAbstrait ligne : programme){
             ligne.verifier();
-        }
-        if(!ErreurSemantique.getInstance().isEmpty()){
-            ErreurSemantique.getInstance().afficherErreurs();
+            if(ligne.getClass().getSimpleName().equals("Fonction")){
+                if(!ligne.contientRetourne(true)){
+                    AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
+                            "Instruction Retourne manquante dans la fonction : "+ligne.toString());
+                    ErreurSemantique.getInstance().ajouter(exception);
+                }
+            } else {
+                if(ligne.contientRetourne(false)){
+                    AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
+                            "Instruction Retourne hors d'une fonction : ");
+                    ErreurSemantique.getInstance().ajouter(exception);
+                }
+            }
         }
     }
 
@@ -49,15 +61,15 @@ public class BlocDInstructions extends ArbreAbstrait implements Iterable<ArbreAb
     }
 
     @Override
-    public boolean contientRetourne() {
+    public boolean contientRetourne(boolean dansUneFonction) {
         boolean res = false;
 
         Iterator<ArbreAbstrait> iterator = programme.iterator();
         ArbreAbstrait courrant;
 
-        while(iterator.hasNext() && !res){
+        while(iterator.hasNext()){
             courrant = iterator.next();
-            res = courrant.contientRetourne();
+            res = courrant.contientRetourne(dansUneFonction);
         }
         return res;
     }

@@ -68,8 +68,8 @@ public class Boucle extends Instruction {
     }
 
     @Override
-    public boolean contientRetourne() {
-        return arbreAbstrait.contientRetourne();
+    public boolean contientRetourne(boolean dansUneFonction) {
+        return arbreAbstrait.contientRetourne(dansUneFonction);
     }
 
 }

@@ -1,10 +1,8 @@
 package yal.arbre;
 
 import yal.arbre.expressions.Fonction;
-import yal.arbre.gestionnaireTDS.Entree;
-import yal.arbre.gestionnaireTDS.Symbole;
-import yal.arbre.gestionnaireTDS.SymboleDeFonction;
-import yal.arbre.gestionnaireTDS.TDS;
+import yal.arbre.gestionnaireTDS.*;
+import yal.exceptions.AnalyseSemantiqueException;
 
 public class Programme extends ArbreAbstrait {
     private ArbreAbstrait arbreAbstrait;
@@ -16,6 +14,18 @@ public class Programme extends ArbreAbstrait {
     @Override
     public void verifier() {
         arbreAbstrait.verifier();
+        if(!ErreurSemantique.getInstance().isEmpty()){
+            ErreurSemantique.getInstance().afficherErreurs();
+        }
+
+        /*
+        // Il faut vérifier qu'il n'y a pas d'occurence de l'instruction retourne hors d'une fonction
+        if(arbreAbstrait.contientRetourne()){
+            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
+                    "Instruction Retourne hors d'une fonction : ");
+            ErreurSemantique.getInstance().ajouter(exception);
+        }
+        */
     }
 
     @Override
@@ -70,8 +80,8 @@ public class Programme extends ArbreAbstrait {
     }
 
     @Override
-    public boolean contientRetourne() {
-        return arbreAbstrait.contientRetourne();
+    public boolean contientRetourne(boolean dansUneFonction) {
+        return arbreAbstrait.contientRetourne(false);
     }
 
 }

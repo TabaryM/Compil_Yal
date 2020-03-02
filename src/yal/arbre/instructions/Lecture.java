@@ -40,7 +40,7 @@ public class Lecture extends Instruction {
     }
 
     @Override
-    public boolean contientRetourne() {
+    public boolean contientRetourne(boolean dansUneFonction) {
         return false;
     }
 }

@@ -95,7 +95,7 @@ public class Binaire extends Expression {
     }
 
     @Override
-    public boolean contientRetourne() {
+    public boolean contientRetourne(boolean dansUneFonction) {
         return false;
     }
 

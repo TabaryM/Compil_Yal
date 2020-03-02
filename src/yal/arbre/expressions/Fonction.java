@@ -57,7 +57,7 @@ public class Fonction extends Expression {
     public void verifier() {
         if(instructions != null){
             // Verification de l'existence de l'instructino retourne
-            if(!contientRetourne()){
+            if(!contientRetourne(true)){
                 AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "La fonction "+idf+" ne contient aucune instruction Retourne");
                 ErreurSemantique.getInstance().ajouter(exception);
             }
@@ -78,8 +78,8 @@ public class Fonction extends Expression {
     }
 
     @Override
-    public boolean contientRetourne() {
-        return instructions.contientRetourne();
+    public boolean contientRetourne(boolean dansUneFonction) {
+        return instructions.contientRetourne(true);
     }
 
     @Override
