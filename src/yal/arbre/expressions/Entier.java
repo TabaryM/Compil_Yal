@@ -10,16 +10,16 @@ public class Entier extends Idf {
 
     public void ajouterTDS(){
         try {
-            TDS.getInstance().ajouter(new Entree(super.getIdf()), new SymboleDeVariable(TDS.getInstance().getCpt()));
+            TDS.getInstance().ajouter(new Entree("entier_"+getIdf()), new SymboleDeVariable(TDS.getInstance().getCpt()));
         } catch (Exception e) {
-            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration de la variable "+super.getIdf());
+            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Double déclaration de la variable "+getIdf());
             ErreurSemantique.getInstance().ajouter(exception);
         }
     }
 
     @Override
     public void verifier(){
-        if(TDS.getInstance().identifier(new Entree(getIdf())) == null){
+        if(TDS.getInstance().identifier(new Entree("entier_"+getIdf())) == null){
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Variable "+getIdf()+" non déclarée");
             ErreurSemantique.getInstance().ajouter(exception);
         }
@@ -30,7 +30,7 @@ public class Entier extends Idf {
         StringBuilder stringBuilder = new StringBuilder("\tlw $v0, ");
 
         // On récupère le déplacement dans la mémoire
-        SymboleDeVariable symbole = ((SymboleDeVariable) TDS.getInstance().identifier(new Entree(getIdf())));
+        SymboleDeVariable symbole = ((SymboleDeVariable) TDS.getInstance().identifier(new Entree("entier_"+getIdf())));
         int deplacement = symbole.getDepl();
 
         stringBuilder.append(deplacement);
@@ -45,7 +45,7 @@ public class Entier extends Idf {
 
     @Override
     public String toString() {
-        return super.getIdf();
+        return getIdf();
     }
 
     @Override

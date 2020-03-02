@@ -7,7 +7,7 @@ import yal.exceptions.AnalyseSemantiqueException;
 
 public class Fonction extends Expression {
     private BlocDInstructions instructions;
-    private Entree idf;
+    private String idf;
 
     /**
      * Déclaration d'une fonction dans l'arbre abstrait
@@ -15,7 +15,7 @@ public class Fonction extends Expression {
      * @param a la liste d'instruciton de la fonction
      * @param numLig numéro de la ligne de la déclaration de la fonction
      */
-    public Fonction(Entree idf, ArbreAbstrait a, int numLig){
+    public Fonction(String idf, ArbreAbstrait a, int numLig){
         super(numLig);
         instructions = (BlocDInstructions) a;
         this.idf = idf;
@@ -26,7 +26,7 @@ public class Fonction extends Expression {
      * @param idf identifiant de la fonction appelé
      * @param numLig numéro de la ligne à laquelle la fonction est appelée
      */
-    public Fonction(Entree idf, int numLig) {
+    public Fonction(String idf, int numLig) {
         super(numLig);
         this.idf = idf;
     }
@@ -34,7 +34,7 @@ public class Fonction extends Expression {
     public void ajouterTDS(){
         verifier();
         try {
-            TDS.getInstance().ajouter(idf, new SymboleDeFonction(TDS.getInstance().getCpt(), instructions));
+            TDS.getInstance().ajouter(new Entree("fonction_"+idf), new SymboleDeFonction(TDS.getInstance().getCpt(), instructions));
         } catch (Exception e) {
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration de la fonction "+idf);
             ErreurSemantique.getInstance().ajouter(exception);
@@ -84,7 +84,7 @@ public class Fonction extends Expression {
 
     @Override
     public String toString() {
-        return idf.getIdf();
+        return idf;
     }
 
     public static String initBlocFonction(){

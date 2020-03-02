@@ -135,7 +135,7 @@ EXP    ::=     CSTENTIERE:c
         |
                 IDF:i PAR_OUVRANTE PAR_FERMANTE
                 {: // TODO : appel de la fonction
-                   RESULT = new Fonction(new Entree(i), ileft + 1); :}
+                   RESULT = new Fonction(i, ileft + 1); :}
         |
                 PAR_OUVRANTE EXP:e PAR_FERMANTE
                 {: RESULT = e; :}
@@ -192,6 +192,6 @@ DECL    ::=     ENTIER IDF:e POINTVIRGULE
                    entier.ajouterTDS(); :}
         |
                 FONCTION IDF:i PAR_OUVRANTE PAR_FERMANTE DEBUT LINST:li FIN
-                {: Fonction fonction = new Fonction(new Entree(i), li, lileft+1);
+                {: Fonction fonction = new Fonction(i, li, lileft+1);
                    fonction.ajouterTDS(); :}
                 ;
