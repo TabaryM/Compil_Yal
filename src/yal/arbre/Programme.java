@@ -52,7 +52,7 @@ public class Programme extends ArbreAbstrait {
             // Si l'entree regardé correspond à une fonction
             if(symbole.getType().equals("fonction")){
                 // Declaration de l'etiquette de la fonction
-                stringBuilder.append("\nfonction_");
+                stringBuilder.append("\n");
                 stringBuilder.append(entree.getIdf());
                 stringBuilder.append(":\n");
 

@@ -23,7 +23,7 @@ public class Affectation extends Instruction {
     @Override
     public void verifier() {
         e.verifier();
-        if(TDS.getInstance().identifier(new Entree(idf)) == null){
+        if(TDS.getInstance().identifier(new Entree("entier_"+idf)) == null){
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Variable "+idf+" non déclarée");
             ErreurSemantique.getInstance().ajouter(exception);
         }
@@ -42,7 +42,7 @@ public class Affectation extends Instruction {
         stringBuilder.append(e.toMIPS());
 
         // Récupération du déplacement en mémoire de la variable
-        SymboleDeVariable tmp = (SymboleDeVariable) TDS.getInstance().identifier(new Entree((idf)));
+        SymboleDeVariable tmp = (SymboleDeVariable) TDS.getInstance().identifier(new Entree("entier_"+idf));
         // Stockage en mémoire de la variable
         stringBuilder.append("\tsw $v0, ");
         stringBuilder.append(tmp.getDepl());

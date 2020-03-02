@@ -125,16 +125,7 @@ INST    ::=     ECRIRE EXP:e POINTVIRGULE
                 {: RESULT = new Retourne(e, eleft + 1); :}
                 ;
 
-EXP    ::=     CSTENTIERE:c
-                {: RESULT = new ConstanteEntiere(c, cleft + 1) ; :}
-        |
-                IDF:i PAR_OUVRANTE PAR_FERMANTE
-                {: RESULT = new Fonction(new Entree(i), ileft + 1); :}
-        |
-                IDF:i
-                {: RESULT = new Entier(i, ileft + 1); :}
-        |
-                PAR_OUVRANTE EXP:e PAR_FERMANTE
+EXP    ::=     PAR_OUVRANTE EXP:e PAR_FERMANTE
                 {: RESULT = e; :}
         |
                 EXP:g OULOGIQUE:o EXP:d
@@ -172,7 +163,16 @@ EXP    ::=     CSTENTIERE:c
         |
                 INVERSE EXP:e
                 {: RESULT = new Inverse(e, eleft + 1); :}
-                ;
+        |
+                CSTENTIERE:c
+                {: RESULT = new ConstanteEntiere(c, cleft + 1) ; :}
+        |
+                IDF:i
+                {: RESULT = new Entier(i, ileft + 1); :}
+        |
+                IDF:i PAR_OUVRANTE PAR_FERMANTE
+                {: RESULT = new Fonction(i, ileft + 1); :}
+        ;
 
 LDECL   ::=    LDECL:ld  DECL:d
                 {: ((BlocDInstructions)ld).ajouter(d);

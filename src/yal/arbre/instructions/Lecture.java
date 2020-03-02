@@ -20,7 +20,7 @@ public class Lecture extends Instruction {
 
     @Override
     public void verifier() {
-        if(TDS.getInstance().identifier(new Entree(idf)) == null){
+        if(TDS.getInstance().identifier(new Entree("entier_"+idf)) == null){
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Variable "+idf+" non déclarée");
             ErreurSemantique.getInstance().ajouter(exception);
         }
@@ -33,7 +33,7 @@ public class Lecture extends Instruction {
         stringBuilder.append("\n\tli, $v0, 5\n\tsyscall\n");
         // On bourre ce que l'on viens de lire à l'emplacement mémoire de l'entier
         stringBuilder.append("\tsw $v0, ");
-        SymboleDeVariable tmp = (SymboleDeVariable) TDS.getInstance().identifier(new Entree(idf));
+        SymboleDeVariable tmp = (SymboleDeVariable) TDS.getInstance().identifier(new Entree("entier_"+idf));
         stringBuilder.append(tmp.getDepl());
         stringBuilder.append("($s7)\n\n");
         return stringBuilder.toString();
