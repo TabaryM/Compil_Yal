@@ -36,7 +36,7 @@ public class Retourne extends Instruction{
     }
 
     @Override
-    public boolean contientRetourne(boolean dansUneFonction) {
-        return dansUneFonction;
+    public boolean contientRetourne() {
+        return true;
     }
 }

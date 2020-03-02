@@ -15,7 +15,7 @@ public class ConstanteEntiere extends Constante {
     }
 
     @Override
-    public boolean contientRetourne(boolean dansUneFonction) {
+    public boolean contientRetourne() {
         return false;
     }
 

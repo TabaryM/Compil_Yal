@@ -39,7 +39,7 @@ public class Ecrire extends Instruction {
     }
 
     @Override
-    public boolean contientRetourne(boolean dansUneFonction) {
+    public boolean contientRetourne() {
         return false;
     }
 

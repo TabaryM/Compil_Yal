@@ -39,7 +39,7 @@ public class Entier extends Idf {
     }
 
     @Override
-    public boolean contientRetourne(boolean dansUneFonction) {
+    public boolean contientRetourne() {
         return false;
     }
 

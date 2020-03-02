@@ -1,6 +1,5 @@
 package yal.arbre;
 
-import yal.arbre.expressions.Fonction;
 import yal.arbre.gestionnaireTDS.ErreurSemantique;
 import yal.exceptions.AnalyseSemantiqueException;
 
@@ -15,71 +14,67 @@ import java.util.Iterator;
 
 public class BlocDInstructions extends ArbreAbstrait implements Iterable<ArbreAbstrait>{
     
-    protected ArrayList<ArbreAbstrait> programme ;
+    protected ArrayList<ArbreAbstrait> listeInstructions;
 
     public BlocDInstructions(int n) {
         super(n) ;
-        programme = new ArrayList<>() ;
+        listeInstructions = new ArrayList<>() ;
     }
     
     public void ajouter(ArbreAbstrait a) {
-        programme.add(a) ;
+        listeInstructions.add(a) ;
     }
     
     @Override
     public String toString() {
-        return programme.toString() ;
+        return listeInstructions.toString() ;
     }
 
     @Override
     public void verifier() {
-        for(ArbreAbstrait ligne : programme){
-            ligne.verifier();
+        for(ArbreAbstrait ligne : listeInstructions){
+            /*
             if(ligne.getClass().getSimpleName().equals("Fonction")){
-                if(!ligne.contientRetourne(true)){
-                    AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
-                            "Instruction Retourne manquante dans la fonction : "+ligne.toString());
-                    ErreurSemantique.getInstance().ajouter(exception);
-                }
-            } else {
-                if(ligne.contientRetourne(false)){
+                if(ligne.contientRetourne()){
                     AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
                             "Instruction Retourne hors d'une fonction : ");
                     ErreurSemantique.getInstance().ajouter(exception);
                 }
             }
+             */
+            ligne.verifier();
         }
     }
 
     @Override
     public String toMIPS() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (ArbreAbstrait ligne : programme) {
+        for (ArbreAbstrait ligne : listeInstructions) {
             stringBuilder.append(ligne.toMIPS());
         }
         return stringBuilder.toString();
     }
 
     @Override
-    public boolean contientRetourne(boolean dansUneFonction) {
+    public boolean contientRetourne() {
         boolean res = false;
 
-        Iterator<ArbreAbstrait> iterator = programme.iterator();
+        Iterator<ArbreAbstrait> iterator = listeInstructions.iterator();
         ArbreAbstrait courrant;
 
         while(iterator.hasNext()){
             courrant = iterator.next();
-            res = courrant.contientRetourne(dansUneFonction);
+            res |= courrant.contientRetourne(); // Passe à vrai si on rencontre un vrai
         }
         return res;
     }
 
     public int getNbInstructions(){
-        return programme.size();
+        return listeInstructions.size();
     }
 
     @Override
     public Iterator<ArbreAbstrait> iterator() {
-        return programme.iterator();
+        return listeInstructions.iterator();
     }
 }

@@ -15,6 +15,5 @@ public abstract class ArbreAbstrait {
 
     public abstract void verifier();
     public abstract String toMIPS();
-
-    public abstract boolean contientRetourne(boolean dansUneFonction);
+    public abstract boolean contientRetourne();
 }

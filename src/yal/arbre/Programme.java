@@ -4,28 +4,24 @@ import yal.arbre.expressions.Fonction;
 import yal.arbre.gestionnaireTDS.*;
 import yal.exceptions.AnalyseSemantiqueException;
 
+import java.util.Iterator;
+
 public class Programme extends ArbreAbstrait {
-    private ArbreAbstrait arbreAbstrait;
+    private BlocDInstructions instructions;
     public Programme(ArbreAbstrait a, int n) {
         super(n);
-        arbreAbstrait = a;
+        instructions = (BlocDInstructions) a;
     }
 
     @Override
     public void verifier() {
-        arbreAbstrait.verifier();
+        instructions.verifier();
+
+        this.contientRetourne();
+        // Doit être à la fin de la méthode
         if(!ErreurSemantique.getInstance().isEmpty()){
             ErreurSemantique.getInstance().afficherErreurs();
         }
-
-        /*
-        // Il faut vérifier qu'il n'y a pas d'occurence de l'instruction retourne hors d'une fonction
-        if(arbreAbstrait.contientRetourne()){
-            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
-                    "Instruction Retourne hors d'une fonction : ");
-            ErreurSemantique.getInstance().ajouter(exception);
-        }
-        */
     }
 
     @Override
@@ -44,7 +40,7 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append("\n\n");
 
         // Création de l'arbre abstrait
-        stringBuilder.append(arbreAbstrait.toMIPS());
+        stringBuilder.append(instructions.toMIPS());
 
         // Fin du programme MIPS
         stringBuilder.append("\nend:\n");
@@ -80,8 +76,26 @@ public class Programme extends ArbreAbstrait {
     }
 
     @Override
-    public boolean contientRetourne(boolean dansUneFonction) {
-        return arbreAbstrait.contientRetourne(false);
-    }
+    public boolean contientRetourne() {
+        Iterator<ArbreAbstrait> iterator = instructions.iterator();
+        ArbreAbstrait instruction;
+        boolean res = false;
 
+        // Permet de by-pass la non déclaration de instruction pour le second if
+        if(iterator.hasNext()){
+            instruction = iterator.next();
+            res |= instruction.contientRetourne();
+            while (iterator.hasNext()){
+                instruction = iterator.next();
+                res |= instruction.contientRetourne();
+            }
+            // Il faut vérifier qu'il n'y a pas d'occurence de l'instruction retourne hors d'une fonction
+            if(res){
+                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(instruction.getNoLigne(),
+                        "Instruction Retourne hors d'une fonction ");
+                ErreurSemantique.getInstance().ajouter(exception);
+            }
+        }
+        return res;
+    }
 }
