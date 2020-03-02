@@ -39,6 +39,11 @@ public class Entier extends Idf {
     }
 
     @Override
+    public boolean contientRetourne() {
+        return false;
+    }
+
+    @Override
     public String toString() {
         return super.getIdf();
     }

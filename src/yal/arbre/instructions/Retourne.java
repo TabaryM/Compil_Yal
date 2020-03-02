@@ -34,4 +34,9 @@ public class Retourne extends Instruction{
         stringBuilder.append("\tjr $a0\n");
         return stringBuilder.toString();
     }
+
+    @Override
+    public boolean contientRetourne() {
+        return true;
+    }
 }

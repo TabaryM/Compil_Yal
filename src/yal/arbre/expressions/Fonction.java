@@ -57,13 +57,7 @@ public class Fonction extends Expression {
     public void verifier() {
         if(instructions != null){
             // Verification de l'existence de l'instructino retourne
-            boolean contientRetourne = false;
-            for(ArbreAbstrait arbreAbstrait : instructions){
-                if(arbreAbstrait.getClass().getSimpleName().equals("Retourne")){
-                    contientRetourne = true;
-                }
-            }
-            if(!contientRetourne){
+            if(!contientRetourne()){
                 AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "La fonction "+idf+" ne contient aucune instruction Retourne");
                 ErreurSemantique.getInstance().ajouter(exception);
             }
@@ -81,6 +75,11 @@ public class Fonction extends Expression {
         return "\tjal fonction_"+ idf + "\n";
         // l'adresse de retour est donnée par l'insrtuction jal dans le registre $ra
         // On empile immédiatement après l'appel de la fonction le registre $ra
+    }
+
+    @Override
+    public boolean contientRetourne() {
+        return instructions.contientRetourne();
     }
 
     @Override

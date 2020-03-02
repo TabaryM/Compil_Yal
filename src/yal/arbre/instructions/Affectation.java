@@ -49,4 +49,9 @@ public class Affectation extends Instruction {
         stringBuilder.append("($s7)\n\n");
         return stringBuilder.toString();
     }
+
+    @Override
+    public boolean contientRetourne() {
+        return false;
+    }
 }

@@ -95,6 +95,11 @@ public class Binaire extends Expression {
     }
 
     @Override
+    public boolean contientRetourne() {
+        return false;
+    }
+
+    @Override
     public String toString() {
         return gauche.toString()+" "+op.toString()+" "+droite.toString();
     }

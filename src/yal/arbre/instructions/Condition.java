@@ -82,4 +82,9 @@ public class Condition extends Instruction {
         stringBuilder.append(":\n\n");
         return stringBuilder.toString();
     }
+
+    @Override
+    public boolean contientRetourne() {
+        return arbreAbstraitSi.contientRetourne() || arbreAbstraitSinon.contientRetourne();
+    }
 }

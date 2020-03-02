@@ -39,6 +39,11 @@ public class Ecrire extends Instruction {
     }
 
     @Override
+    public boolean contientRetourne() {
+        return false;
+    }
+
+    @Override
     protected String getNomInstruction() {
         return "Ecrire";
     }

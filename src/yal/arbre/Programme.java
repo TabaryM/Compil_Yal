@@ -69,4 +69,9 @@ public class Programme extends ArbreAbstrait {
         return stringBuilder.toString();
     }
 
+    @Override
+    public boolean contientRetourne() {
+        return arbreAbstrait.contientRetourne();
+    }
+
 }

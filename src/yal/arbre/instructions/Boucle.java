@@ -6,6 +6,8 @@ import yal.arbre.gestionnaireTDS.ErreurSemantique;
 import yal.arbre.expressions.Expression;
 import yal.exceptions.AnalyseSemantiqueException;
 
+import java.util.Iterator;
+
 public class Boucle extends Instruction {
     private Expression expression;
     private ArbreAbstrait arbreAbstrait;
@@ -64,4 +66,10 @@ public class Boucle extends Instruction {
 
         return stringBuilder.toString();
     }
+
+    @Override
+    public boolean contientRetourne() {
+        return arbreAbstrait.contientRetourne();
+    }
+
 }

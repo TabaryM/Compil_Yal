@@ -48,6 +48,20 @@ public class BlocDInstructions extends ArbreAbstrait implements Iterable<ArbreAb
         return stringBuilder.toString();
     }
 
+    @Override
+    public boolean contientRetourne() {
+        boolean res = false;
+
+        Iterator<ArbreAbstrait> iterator = programme.iterator();
+        ArbreAbstrait courrant;
+
+        while(iterator.hasNext() && !res){
+            courrant = iterator.next();
+            res = courrant.contientRetourne();
+        }
+        return res;
+    }
+
     public int getNbInstructions(){
         return programme.size();
     }

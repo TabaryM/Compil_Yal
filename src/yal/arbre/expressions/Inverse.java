@@ -37,6 +37,11 @@ public class Inverse extends Expression {
     }
 
     @Override
+    public boolean contientRetourne() {
+        return false;
+    }
+
+    @Override
     public String toString() {
         return "non "+expression.toString();
     }

@@ -15,6 +15,11 @@ public class ConstanteEntiere extends Constante {
     }
 
     @Override
+    public boolean contientRetourne() {
+        return false;
+    }
+
+    @Override
     public String toString() {
         return super.toString();
     }
