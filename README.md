@@ -61,7 +61,7 @@
      - ~~resultat doit etre entier~~
      - ~~retourne comme resultat la valeur de l'expression~~
      - ~~provoque l'arret de la fonction~~
-     - ~~ne peut pas se trouver hors d'une fonction~~
+     - ~~ne peut pas se trouver hors d'une fonction~~ 
    - Autre
         - ~~une région ( bloc ) est délimité par les mots "debut" et "fin"~~
         

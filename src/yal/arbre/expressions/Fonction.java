@@ -42,12 +42,12 @@ public class Fonction extends Expression {
     }
 
     /**
-     * TODO : trouver une utilité à cette fonction
+     * Renvoie le type de retour de la fonction
      * @return un string qui pue
      */
     @Override
     public String getType() {
-        return "fonction";
+        return "entier";
     }
 
     /**
