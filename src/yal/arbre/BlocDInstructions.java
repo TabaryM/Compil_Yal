@@ -33,15 +33,6 @@ public class BlocDInstructions extends ArbreAbstrait implements Iterable<ArbreAb
     @Override
     public void verifier() {
         for(ArbreAbstrait ligne : listeInstructions){
-            /*
-            if(ligne.getClass().getSimpleName().equals("Fonction")){
-                if(ligne.contientRetourne()){
-                    AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
-                            "Instruction Retourne hors d'une fonction : ");
-                    ErreurSemantique.getInstance().ajouter(exception);
-                }
-            }
-             */
             ligne.verifier();
         }
     }

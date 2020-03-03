@@ -7,7 +7,6 @@ import java.util.Map;
 public class TDS implements Iterable<Entree> {
     private static TDS instance;
     private HashMap<Entree, Symbole> table;
-    // TODO : on ajoute les fonctions dans la tds, avec un fonction qui verifie si c'est une fonction
     private int cpt;
 
     /**
@@ -39,11 +38,6 @@ public class TDS implements Iterable<Entree> {
         if(table.containsKey(e)){
             throw new Exception("Double déclaration de la "+s.getType()+e.getIdf());
         } else {
-            /*
-            if(s.getType().equals("fonction")){
-                fonctions.put(e, )
-            }
-            */
             table.put(e, s);
             cpt -= 4;       // Pour le moment on fait que ça,  car il n'y a que des entiers
         }

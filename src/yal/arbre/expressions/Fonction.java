@@ -51,12 +51,12 @@ public class Fonction extends Expression {
     }
 
     /**
-     * TODO : trouver une liste de vérification correcte de la fonction
+     * Cherche si dans une fonction il y a un retourne
      */
     @Override
     public void verifier() {
         if(instructions != null){
-            // Verification de l'existence de l'instructino retourne
+            // Verification de l'existence de l'instruction retourne
             if(!contientRetourne()){
                 AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "La fonction "+idf+" ne contient aucune instruction Retourne");
                 ErreurSemantique.getInstance().ajouter(exception);
@@ -66,15 +66,12 @@ public class Fonction extends Expression {
     }
 
     /**
-     * TODO : trouver si on doit retourner le code avec la liste d'instruction ou le code d'appel de fonction
+     * Genere en MIPS l'appel d'une fonction
      * @return un code MIPS
      */
     @Override
     public String toMIPS() {
-        // TODO : empiler les parametres
         return "\tjal fonction_"+ idf + "\n";
-        // l'adresse de retour est donnée par l'insrtuction jal dans le registre $ra
-        // On empile immédiatement après l'appel de la fonction le registre $ra
     }
 
     @Override
