@@ -27,11 +27,7 @@ public class Programme extends ArbreAbstrait {
     @Override
     public String toMIPS() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(".data\nnewline:\t.asciiz\t\t  \"\\n\"\n");
-        stringBuilder.append("vrai : .asciiz \"vrai\"\n");
-        stringBuilder.append("faux : .asciiz \"faux\"\n");
-        stringBuilder.append("msgDivisionParZero : .asciiz \"Erreur d'execution : Division par zero\"\n");
-        stringBuilder.append(".text\nmain:\n\n");
+        ajouterTextes(stringBuilder);
 
         stringBuilder.append("\t# Allocation mémoire des variables dans la pile\n");
         stringBuilder.append("\tmove $s7, $sp\n");
@@ -61,16 +57,13 @@ public class Programme extends ArbreAbstrait {
 
                 // on ajoute le corps de fonction au fichier
                 stringBuilder.append(((SymboleDeFonction) symbole).toMIPS());
-                // Retour au programme principal Normlement dans le RETOURNE
+                // Retour au programme principal Normlement après l'instruction retourne
+                // Si aucune instruction retourne, une erreur d'execution est déclanchée
+                finFonction(stringBuilder);
             }
         }
 
-        // Affichage de l'erreur de division par Zero
-        stringBuilder.append("\nErrDiv:\n");
-        stringBuilder.append("\tli $v0, 4\n");
-        stringBuilder.append("\tla $a0, msgDivisionParZero\n");
-        stringBuilder.append("\tsyscall\n");
-        stringBuilder.append("\tj end\n");
+        ajouterErreurs(stringBuilder);
 
         return stringBuilder.toString();
     }
@@ -97,5 +90,35 @@ public class Programme extends ArbreAbstrait {
             }
         }
         return res;
+    }
+
+    private void ajouterTextes(StringBuilder stringBuilder){
+        stringBuilder.append(".data\nnewline:\t.asciiz\t\t  \"\\n\"\n");
+        stringBuilder.append("vrai : .asciiz \"vrai\"\n");
+        stringBuilder.append("faux : .asciiz \"faux\"\n");
+        stringBuilder.append("msgDivisionParZero : .asciiz \"Erreur d'execution : Division par zero\"\n");
+        stringBuilder.append("msgFonctionSansRetour : .asciiz \"Erreur d'execution : Fonction terminée sans rencontrer de retour\"\n");
+        stringBuilder.append(".text\nmain:\n\n");
+    }
+
+    private void ajouterErreurs(StringBuilder stringBuilder){
+        // Affichage de l'erreur de fonction finie sans recontrer d'instruction Retourne
+        stringBuilder.append("\nErrRetour:\n");
+        stringBuilder.append("\tli $v0, 4\n");
+        stringBuilder.append("\tla $a0, msgFonctionSansRetour\n");
+        stringBuilder.append("\tsyscall\n");
+        stringBuilder.append("\tj end\n");
+
+        // Affichage de l'erreur de division par Zero
+        stringBuilder.append("\nErrDiv:\n");
+        stringBuilder.append("\tli $v0, 4\n");
+        stringBuilder.append("\tla $a0, msgDivisionParZero\n");
+        stringBuilder.append("\tsyscall\n");
+        stringBuilder.append("\tj end\n");
+
+    }
+
+    private void finFonction(StringBuilder stringBuilder){
+        stringBuilder.append("\nj ErrRetour\n");
     }
 }
