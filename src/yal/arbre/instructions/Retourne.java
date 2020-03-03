@@ -1,6 +1,8 @@
 package yal.arbre.instructions;
 
 import yal.arbre.expressions.Expression;
+import yal.arbre.gestionnaireTDS.ErreurSemantique;
+import yal.exceptions.AnalyseSemantiqueException;
 
 public class Retourne extends Instruction{
     protected Expression exp ;
@@ -10,7 +12,6 @@ public class Retourne extends Instruction{
         exp = e;
     }
 
-
     @Override
     protected String getNomInstruction() {
         return "Retourne";
@@ -18,6 +19,12 @@ public class Retourne extends Instruction{
 
     @Override
     public void verifier() {
+        if(!exp.getType().equals("entier")){
+            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
+                    "Type de retour incorrect. Attendu : entier Trouvé : "+exp.getType());
+            ErreurSemantique.getInstance().ajouter(exception);
+
+        }
 
     }
 
