@@ -79,6 +79,7 @@ commentaire = "//".*{finDeLigne}
 "non"                    { return symbol(CodesLexicaux.INVERSE); }
 "("                    { return symbol(CodesLexicaux.PAR_OUVRANTE); }
 ")"                    { return symbol(CodesLexicaux.PAR_FERMANTE); }
+","                     { return symbol(CodesLexicaux.VIRGULE); }
 
 {csteE}      	       { return symbol(CodesLexicaux.CSTENTIERE, yytext()); }
 

@@ -58,14 +58,14 @@ parser code {:
    
 /* Terminals (tokens returned by the scanner).  */
 
-terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, LIRE, ENTIER, EGAL, ADDITION, SOUSTRACTION, DIVISION, MULTIPLICATION, SUPERIEURA, INFERIEURA, OULOGIQUE, ETLOGIQUE, EGALITE, DIFFERENT, INVERSE, CONDITION, BOUCLE, FONCTION, RETOURNE;
+terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, LIRE, ENTIER, EGAL, ADDITION, SOUSTRACTION, DIVISION, MULTIPLICATION, SUPERIEURA, INFERIEURA, OULOGIQUE, ETLOGIQUE, EGALITE, DIFFERENT, INVERSE, CONDITION, BOUCLE, FONCTION, RETOURNE, VIRGULE;
 terminal String    IDF, CSTENTIERE, PAR_OUVRANTE, PAR_FERMANTE, FINSI, FINTANTQUE, ALORS, SINON, REPETER ;
 
 /* Non terminals used in the grammar section.  */
 
-non terminal ArbreAbstrait PROG, LINST, INST, LDECL, DECL ;
+non terminal ArbreAbstrait PROG, LINST, INST, LDECL, DECL, LPARAM, PARAM ;
 non terminal Operateur OPER ;
-non terminal Expression EXP ;
+non terminal Expression EXP, PAR_EFF ;
 
 /* Precedences */
 precedence left OULOGIQUE;
@@ -172,7 +172,20 @@ EXP    ::=     PAR_OUVRANTE EXP:e PAR_FERMANTE
         |
                 IDF:i PAR_OUVRANTE PAR_FERMANTE
                 {: RESULT = new Fonction(i, ileft + 1); :}
+        |
+                IDF:i PAR_OUVRANTE PAR_EFF:pe PAR_FERMANTE
+                {: //TODO à implementer : appel fonction avec parametre
+                 :}
         ;
+
+PAR_EFF ::=    PAR_EFF:pe VIRGULE EXP:e
+               {://TODO : implementer parametre appel fonction
+               :}
+        |
+               EXP:e
+               {: //TODO  : implementer parametre appel fonction
+               :}
+               ;
 
 LDECL   ::=    LDECL:ld  DECL:d
                 {: ((BlocDInstructions)ld).ajouter(d);
@@ -191,4 +204,22 @@ DECL    ::=     ENTIER IDF:e POINTVIRGULE
                 FONCTION IDF:i PAR_OUVRANTE PAR_FERMANTE DEBUT LINST:li FIN
                 {: Fonction fonction = new Fonction(i, li, lileft+1);
                    fonction.ajouterTDS(); :}
+        |
+                FONCTION IDF:i PAR_OUVRANTE  LPARAM:lp PAR_FERMANTE DEBUT LINST:li FIN
+                {: //TODO: implementer declaration fonction avec parametres
+                   Fonction fonction = new Fonction(i, li, lileft+1);
+                   fonction.ajouterTDS(); :}
+                ;
+
+LPARAM  ::=     LPARAM:lp POINTVIRGULE PARAM:p
+                {://TODO: implementer
+                :}
+        |
+                PARAM:p
+                {://TODO: implementer
+                :}
+                ;
+PARAM   ::=     ENTIER IDF:e
+                {: //TODO: JE SAIS PAS SI C'EST UNE BONNE IDEE
+                :}
                 ;
