@@ -63,9 +63,12 @@ terminal String    IDF, CSTENTIERE, PAR_OUVRANTE, PAR_FERMANTE, FINSI, FINTANTQU
 
 /* Non terminals used in the grammar section.  */
 
-non terminal ArbreAbstrait PROG, LINST, INST, LDECL, DECL, LPARAM, PARAM ;
+non terminal ArbreAbstrait PROG, LINST, INST, LDECL, DECL;
 non terminal Operateur OPER ;
-non terminal Expression EXP, PAR_EFF ;
+non terminal Expression EXP ;
+non terminal Entier PARAM;
+non terminal ArrayList<Entier> LPARAM;
+non terminal ArrayList<Expression> PAR_EFF;
 
 /* Precedences */
 precedence left OULOGIQUE;
@@ -85,7 +88,7 @@ PROG    ::=     PROGRAMME  IDF  DEBUT  LDECL:ld  LINST:li  FIN
         |
                 PROGRAMME  IDF  DEBUT LINST:li  FIN
                 {: RESULT = new Programme(li, lileft + 1) ; :}
-                ;
+        ;
 
 LINST   ::=     LINST:li  INST:i
                 {: ((BlocDInstructions)li).ajouter(i) ;
@@ -95,7 +98,7 @@ LINST   ::=     LINST:li  INST:i
                 {: BlocDInstructions b = new BlocDInstructions(ileft + 1) ;
                    b.ajouter(i) ;
                    RESULT = b ; :}
-                ;
+        ;
 
 INST    ::=     ECRIRE EXP:e POINTVIRGULE
                 {: RESULT = new Ecrire(e, eleft + 1) ; :}
@@ -123,7 +126,7 @@ INST    ::=     ECRIRE EXP:e POINTVIRGULE
         |
                 RETOURNE EXP:e POINTVIRGULE
                 {: RESULT = new Retourne(e, eleft + 1); :}
-                ;
+        ;
 
 EXP    ::=     PAR_OUVRANTE EXP:e PAR_FERMANTE
                 {: RESULT = e; :}
@@ -179,13 +182,14 @@ EXP    ::=     PAR_OUVRANTE EXP:e PAR_FERMANTE
         ;
 
 PAR_EFF ::=    PAR_EFF:pe VIRGULE EXP:e
-               {://TODO : implementer parametre appel fonction
-               :}
+               {: RESULT = pe.add(e); :}
         |
                EXP:e
-               {: //TODO  : implementer parametre appel fonction
+               {: ArrayList<Entier> a = new ArrayList<>();
+                 a.add(e);
+                 RESULT = a;
                :}
-               ;
+        ;
 
 LDECL   ::=    LDECL:ld  DECL:d
                 {: ((BlocDInstructions)ld).ajouter(d);
@@ -195,7 +199,7 @@ LDECL   ::=    LDECL:ld  DECL:d
                 {: BlocDInstructions b = new BlocDInstructions(dleft + 1) ;
                    b.ajouter(d) ;
                    RESULT = b ; :}
-                ;
+        ;
 
 DECL    ::=     ENTIER IDF:e POINTVIRGULE
                 {: Entier entier = new Entier(e, eleft + 1);
@@ -205,21 +209,23 @@ DECL    ::=     ENTIER IDF:e POINTVIRGULE
                 {: Fonction fonction = new Fonction(i, li, lileft+1);
                    fonction.ajouterTDS(); :}
         |
-                FONCTION IDF:i PAR_OUVRANTE  LPARAM:lp PAR_FERMANTE DEBUT LINST:li FIN
-                {: //TODO: implementer declaration fonction avec parametres
-                   Fonction fonction = new Fonction(i, li, lileft+1);
+                FONCTION IDF:i PAR_OUVRANTE LPARAM:lp PAR_FERMANTE DEBUT LINST:li FIN
+                {: Fonction fonction = new Fonction(i, li, lp, lileft+1);
                    fonction.ajouterTDS(); :}
-                ;
+        ;
 
 LPARAM  ::=     LPARAM:lp POINTVIRGULE PARAM:p
-                {://TODO: implementer
+                {: lp.add(p);
+                   RESULT = lp;
                 :}
         |
                 PARAM:p
-                {://TODO: implementer
+                {: ArrayList<Entier> a = new ArrayList<>();
+                  a.add(p);
+                  RESULT = a;
                 :}
-                ;
+        ;
 PARAM   ::=     ENTIER IDF:e
-                {: //TODO: JE SAIS PAS SI C'EST UNE BONNE IDEE
+                {: RESULT = new Entier(e, eleft + 1);
                 :}
-                ;
+        ;

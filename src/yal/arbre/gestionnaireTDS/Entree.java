@@ -2,6 +2,7 @@ package yal.arbre.gestionnaireTDS;
 
 public class Entree {
     private String idf;
+    private int nbParam;
 
     /**
      * Instancie une nouvelle entrée pour la TDS
@@ -9,6 +10,15 @@ public class Entree {
      */
     public Entree(String idf){
         this.idf = idf;
+    }
+
+    /**
+     * Instancie une nouvelle entrée pour la TDS
+     * @param idf identifiant de l'entrée dans la TDS
+     */
+    public Entree(String idf, int nbParam){
+        this.idf = idf;
+        this.nbParam = nbParam;
     }
 
     /**
@@ -26,12 +36,15 @@ public class Entree {
 
         Entree entree = (Entree) o;
 
-        return getIdf().equals(entree.getIdf());
+        if (nbParam != entree.nbParam) return false;
+        return getIdf() != null ? getIdf().equals(entree.getIdf()) : entree.getIdf() == null;
     }
 
     @Override
     public int hashCode() {
-        return getIdf().hashCode();
+        int result = getIdf() != null ? getIdf().hashCode() : 0;
+        result = 31 * result + nbParam;
+        return result;
     }
 
     @Override
