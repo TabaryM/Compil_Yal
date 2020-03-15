@@ -20,4 +20,11 @@ public class SymboleDeVariable extends Symbole {
     public int getDepl() {
         return depl;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("SymboleDeVariable{");
+        sb.append('}');
+        return sb.toString();
+    }
 }

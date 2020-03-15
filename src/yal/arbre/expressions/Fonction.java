@@ -77,7 +77,6 @@ public class Fonction extends Expression {
         for (Entier e : parametres) {
             try {
                 symboleDeFonction.ajouterVariableLocale(new Entree(e.getIdf()), new SymboleDeVariable(4));
-                TDS.getInstance().ajouter(new Entree(idf + e.getIdf()), new SymboleDeVariable(TDS.getInstance().getCpt()));
             }
             catch(Exception exce){
                 AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration du parametre " +e.getIdf()+" dans la fonction "+idf);

@@ -37,4 +37,13 @@ public class SymboleDeFonction extends Symbole {
             tdsLocale.put(entree, symbole);
         }
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("SymboleDeFonction{");
+        sb.append("tdsLocale=").append(tdsLocale);
+        sb.append(", nbParametres=").append(nbParametres);
+        sb.append('}');
+        return sb.toString();
+    }
 }
