@@ -27,15 +27,19 @@ public class Entier extends Idf {
 
     @Override
     public String toMIPS() {
-        StringBuilder stringBuilder = new StringBuilder("\tlw $v0, ");
-
-        // On récupère le déplacement dans la mémoire
         SymboleDeVariable symbole = ((SymboleDeVariable) TDS.getInstance().identifier(new Entree("entier_"+getIdf())));
-        int deplacement = symbole.getDepl();
+        if(symbole != null) {
+            StringBuilder stringBuilder = new StringBuilder("\tlw $v0, ");
 
-        stringBuilder.append(deplacement);
-        stringBuilder.append("($s7)\n");
-        return stringBuilder.toString();
+            // On récupère le déplacement dans la mémoire
+            int deplacement = symbole.getDepl();
+
+            stringBuilder.append(deplacement);
+            stringBuilder.append("($s7)\n");
+            return stringBuilder.toString();
+        } else {
+            return "";
+        }
     }
 
     @Override
