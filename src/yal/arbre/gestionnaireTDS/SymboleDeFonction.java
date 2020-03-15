@@ -3,10 +3,11 @@ package yal.arbre.gestionnaireTDS;
 import yal.arbre.BlocDInstructions;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
-public class SymboleDeFonction extends Symbole {
+public class SymboleDeFonction extends Symbole implements Iterable<SymboleDeVariable>{
 
-    private HashMap<Entree, Symbole> tdsLocale;
+    private HashMap<Entree, SymboleDeVariable> tdsLocale;
 
     private int nbParametres;
     private BlocDInstructions instructions;
@@ -30,7 +31,7 @@ public class SymboleDeFonction extends Symbole {
         return instructions.toMIPS();
     }
 
-    public void ajouterVariableLocale(Entree entree, Symbole symbole) throws Exception {
+    public void ajouterVariableLocale(Entree entree, SymboleDeVariable symbole) throws Exception {
         if(tdsLocale.containsKey(entree)){
             throw new Exception("Double déclaration de la variable locale : "+entree.getIdf());
         } else {
@@ -45,5 +46,10 @@ public class SymboleDeFonction extends Symbole {
         sb.append(", nbParametres=").append(nbParametres);
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public Iterator<SymboleDeVariable> iterator() {
+        return tdsLocale.values().iterator();
     }
 }

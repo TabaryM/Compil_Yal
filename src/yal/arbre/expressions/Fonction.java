@@ -49,6 +49,7 @@ public class Fonction extends Expression {
     public Fonction(String idf, int numLig) {
         super(numLig);
         this.idf = idf;
+        this.parametresEffectifs = new ArrayList<>();
     }
 
     /**
@@ -74,9 +75,11 @@ public class Fonction extends Expression {
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration de la fonction " + idf);
             ErreurSemantique.getInstance().ajouter(exception);
         }
+        int cptDepl = 0;
         for (Entier e : parametres) {
             try {
-                symboleDeFonction.ajouterVariableLocale(new Entree(e.getIdf()), new SymboleDeVariable(4));
+                symboleDeFonction.ajouterVariableLocale(new Entree(e.getIdf()), new SymboleDeVariable(cptDepl));
+                cptDepl -= 4;
             }
             catch(Exception exce){
                 AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration du parametre " +e.getIdf()+" dans la fonction "+idf);
@@ -109,7 +112,8 @@ public class Fonction extends Expression {
         }
 
         // On vérifie que la fonction n'a pas déjà été déclarée avec le même nombre de paramètres
-        Entree entreeTmp = new Entree("fonction_"+idf+"_params"+parametresEffectifs.size());
+        int nbParam = parametresEffectifs.size();
+        Entree entreeTmp = new Entree("fonction_"+idf+"_params"+nbParam);
         Symbole symboleDeFonction = TDS.getInstance().identifier(entreeTmp);
         if(symboleDeFonction == null){
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Aucune fonction "+idf+" n'attend "+parametresEffectifs.size()+" parametres.");
@@ -124,13 +128,40 @@ public class Fonction extends Expression {
     @Override
     public String toMIPS() {
         StringBuilder stringBuilder = new StringBuilder();
-        for(int i = 0; i < parametresEffectifs.size(); i++){
-            TDS tds = TDS.getInstance();
-            Symbole tmp = tds.identifier(new Entree(idf));
+        // ON a les paremtres effectifs
+        // on cherche à associer les parametres effectifs aux paramétres de la fonction
+        TDS tds = TDS.getInstance();
+        Entree entreeTmp = new Entree("fonction_"+idf+"_params"+parametresEffectifs.size());
+        Symbole symboleDeFonction = tds.identifier(entreeTmp);
 
-            Affectation a = new Affectation(parametresEffectifs.get(i), parametres.get(i).getIdf(), getNoLigne());
+        int i = 0;
+        Expression e;
+        for(SymboleDeVariable symbole : ((SymboleDeFonction) symboleDeFonction)){
+            e = parametresEffectifs.get(i);
+            // Commentaire du code mips
+            stringBuilder.append("\t#Assigner à ");
+            stringBuilder.append(idf).append(" la valeur ");
+            stringBuilder.append(e.toString());
+            stringBuilder.append("\n");
+
+            // On charge la valeur de l'expression dans $v0
+            stringBuilder.append(e.toMIPS());
+
+            // Récupération du déplacement en mémoire de la variable
+            // Stockage en mémoire de la variable
+            stringBuilder.append("\tsw $v0, ");
+            stringBuilder.append(symbole.getDepl());
+            stringBuilder.append("($sp)\n\n");
+
+            i++;
         }
-        return "\tjal "+ idf + "\n";
+        stringBuilder.append("\tjal ");
+        stringBuilder.append("fonction_");
+        stringBuilder.append(idf);
+        stringBuilder.append("_params");
+        stringBuilder.append(parametresEffectifs.size());
+        stringBuilder.append("\n");
+        return stringBuilder.toString();
     }
 
     @Override

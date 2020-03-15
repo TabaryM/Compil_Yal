@@ -186,9 +186,9 @@ PAR_EFF ::=    PAR_EFF:pe VIRGULE EXP:e
                :}
         |
                EXP:e
-               {: ArrayList<Expression> a = new ArrayList<>();
-                 a.add(e);
-                 RESULT = a;
+               {: ArrayList<Expression> arrayList = new ArrayList<>();
+                 arrayList.add(e);
+                 RESULT = arrayList;
                :}
         ;
 

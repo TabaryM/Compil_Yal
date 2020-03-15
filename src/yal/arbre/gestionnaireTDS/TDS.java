@@ -46,7 +46,6 @@ public class TDS implements Iterable<Entree> {
                 throw new Exception("Double déclaration de la "+s.getType()+e.getIdf());
             }
         } else {
-            System.out.println("On ajoute l'entrée "+e.getIdf()+" associée au symbole "+s);
             table.put(e, s);
             if(s.getType().equals("entier")){
                 cpt -= 4;       // Pour le moment on fait que ça,  car il n'y a que des entiers
