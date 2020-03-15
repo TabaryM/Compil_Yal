@@ -35,11 +35,21 @@ public class TDS implements Iterable<Entree> {
      * @throws Exception Si le symbole est déjà déclaré
      */
     public void ajouter(Entree e, Symbole s) throws Exception{
+        // Si la table contient déjà l'entrée actuelle
         if(table.containsKey(e)){
-            throw new Exception("Double déclaration de la "+s.getType()+e.getIdf());
+            if(s.getType().equals("fonction")){
+                Symbole symboleDeFonction = table.get(e);
+                if(((SymboleDeFonction)symboleDeFonction).getNbParametres() == ((SymboleDeFonction) s).getNbParametres()){
+                    throw new Exception("Double déclaration de la fonction"+e.getIdf()+" avec "+((SymboleDeFonction) s).getNbParametres()+" parametres");
+                }
+            } else {
+                throw new Exception("Double déclaration de la "+s.getType()+e.getIdf());
+            }
         } else {
             table.put(e, s);
-            cpt -= 4;       // Pour le moment on fait que ça,  car il n'y a que des entiers
+            if(s.getType().equals("entier")){
+                cpt -= 4;       // Pour le moment on fait que ça,  car il n'y a que des entiers
+            }
         }
     }
 

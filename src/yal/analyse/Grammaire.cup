@@ -177,15 +177,16 @@ EXP    ::=     PAR_OUVRANTE EXP:e PAR_FERMANTE
                 {: RESULT = new Fonction(i, ileft + 1); :}
         |
                 IDF:i PAR_OUVRANTE PAR_EFF:pe PAR_FERMANTE
-                {: //TODO à implementer : appel fonction avec parametre
-                 :}
+                {: RESULT = new Fonction(i, pe, ileft + 1); :}
         ;
 
 PAR_EFF ::=    PAR_EFF:pe VIRGULE EXP:e
-               {: RESULT = pe.add(e); :}
+               {: pe.add(e);
+                  RESULT = pe;
+               :}
         |
                EXP:e
-               {: ArrayList<Entier> a = new ArrayList<>();
+               {: ArrayList<Expression> a = new ArrayList<>();
                  a.add(e);
                  RESULT = a;
                :}

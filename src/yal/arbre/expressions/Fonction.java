@@ -37,7 +37,7 @@ public class Fonction extends Expression {
     public Fonction(String idf, ArbreAbstrait a, ArrayList<Entier> parametres, int numLig){
         super(numLig);
         instructions = (BlocDInstructions) a;
-        this.idf = "fonction_" + idf + parametres.size();
+        this.idf = idf;
         this.parametres = parametres;
     }
 
@@ -66,15 +66,17 @@ public class Fonction extends Expression {
      * Ajoute la fonction et ses parametres (si parametres il y a) à la TDS
      */
     public void ajouterTDS() {
-        verifier();
+        SymboleDeFonction symboleDeFonction = new SymboleDeFonction(parametres.size(), instructions);
+        Entree entreeFonc = new Entree("fonction_" +idf+"_params"+parametres.size());
         try {
-            TDS.getInstance().ajouter(new Entree(idf), new SymboleDeFonction(parametres.size(), instructions));
+            TDS.getInstance().ajouter(entreeFonc, symboleDeFonction);
         } catch (Exception e) {
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration de la fonction " + idf);
             ErreurSemantique.getInstance().ajouter(exception);
         }
         for (Entier e : parametres) {
             try {
+                symboleDeFonction.ajouterVariableLocale(new Entree(e.getIdf()), new SymboleDeVariable(4));
                 TDS.getInstance().ajouter(new Entree(idf + e.getIdf()), new SymboleDeVariable(TDS.getInstance().getCpt()));
             }
             catch(Exception exce){
@@ -105,6 +107,14 @@ public class Fonction extends Expression {
                 ErreurSemantique.getInstance().ajouter(exception);
             }
             instructions.verifier();
+        }
+
+        // On vérifie que la fonction n'a pas déjà été déclarée avec le même nombre de paramètres
+        Entree entreeTmp = new Entree("fonction_"+idf+"_params"+parametresEffectifs.size());
+        Symbole symboleDeFonction = TDS.getInstance().identifier(entreeTmp);
+        if(symboleDeFonction == null){
+            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Aucune fonction "+idf+" n'attend "+parametresEffectifs.size()+" parametres.");
+            ErreurSemantique.getInstance().ajouter(exception);
         }
     }
 
