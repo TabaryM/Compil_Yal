@@ -1,20 +1,30 @@
 package yal.arbre.gestionnaireTDS;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class TDS implements Iterable<Entree> {
+public class TDS implements Iterable<TableLocale> {
+    // collection de TDS
+    private TableLocale racine;
+    private TableLocale tableCourante;
+    private ArrayList<TableLocale> tables;
+
     private static TDS instance;
-    private HashMap<Entree, Symbole> table;
     private int cpt;
+    private int cptNumBloc;
 
     /**
      * Instancie la table des symboles
      */
     private TDS(){
-        table = new HashMap<>();
+        cptNumBloc = 0;
         cpt = 0;
+        tables = new ArrayList<>();
+        racine = new TableLocale(null, 0);
+        cptNumBloc++;
+        tableCourante = racine;
     }
 
     /**
@@ -29,12 +39,29 @@ public class TDS implements Iterable<Entree> {
     }
 
     /**
+     * Créer une nouvelle table dans un nouveau bloc
+     */
+    public void entreeBloc(){
+        tableCourante = new TableLocale(racine, cptNumBloc++);
+        tables.add(tableCourante);
+    }
+
+    /**
+     * On sort d'un bloc et on met à jour la table courante
+     */
+    public void sortieBloc(){
+        tableCourante = tableCourante.getTableEnglobante();
+    }
+
+    /**
      * Ajoute un symbole lié à une entrée dans la table des symboles
      * @param e l'entrée du symbole dans la table
      * @param s le symbole
      * @throws Exception Si le symbole est déjà déclaré
      */
     public void ajouter(Entree e, Symbole s) throws Exception{
+        tableCourante.ajouter(e, s);
+        /*
         // Si la table contient déjà l'entrée actuelle
         if(table.containsKey(e)){
             if(s.getType().equals("fonction")){
@@ -51,6 +78,7 @@ public class TDS implements Iterable<Entree> {
                 cpt -= 4;       // Pour le moment on fait que ça,  car il n'y a que des entiers
             }
         }
+        */
     }
 
     /**
@@ -59,7 +87,7 @@ public class TDS implements Iterable<Entree> {
      * @return table.get(e)
      */
     public Symbole identifier(Entree e){
-        return table.get(e);
+        return tableCourante.identifier(e);
     }
 
     /**
@@ -71,7 +99,7 @@ public class TDS implements Iterable<Entree> {
     }
 
     @Override
-    public Iterator<Entree> iterator() {
-        return table.keySet().iterator();
+    public Iterator<TableLocale> iterator() {
+        return tables.iterator();
     }
 }

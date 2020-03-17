@@ -9,7 +9,7 @@ public class Entree {
      * @param idf identifiant de l'entrée dans la TDS
      */
     public Entree(String idf){
-        this.idf = idf;
+        new Entree(idf, 0);
     }
 
     /**

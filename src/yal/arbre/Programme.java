@@ -43,23 +43,25 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append("\tli $v0, 10\n");
         stringBuilder.append("\tsyscall\n");
 
-        for(Entree entree : TDS.getInstance()){
-            Symbole symbole = TDS.getInstance().identifier(entree);
-            // Si l'entree regardé correspond à une fonction
-            if(symbole.getType().equals("fonction")){
-                // Declaration de l'etiquette de la fonction
-                stringBuilder.append("\n");
-                stringBuilder.append(entree.getIdf());
-                stringBuilder.append(":\n");
+        for(TableLocale tableLocale : TDS.getInstance()){
+            for(Entree entree : tableLocale){
+                Symbole symbole = tableLocale.identifier(entree);
+                // Si l'entree regardé correspond à une fonction
+                if(symbole.getType().equals("fonction")){
+                    // Declaration de l'etiquette de la fonction
+                    stringBuilder.append("\n");
+                    stringBuilder.append(entree.getIdf());
+                    stringBuilder.append(":\n");
 
-                // Debut du bloc
-                stringBuilder.append(Fonction.initBlocFonction());
+                    // Debut du bloc
+                    stringBuilder.append(Fonction.initBlocFonction());
 
-                // on ajoute le corps de fonction au fichier
-                stringBuilder.append(((SymboleDeFonction) symbole).toMIPS());
-                // Retour au programme principal Normlement après l'instruction retourne
-                // Si aucune instruction retourne, une erreur d'execution est déclanchée
-                finFonction(stringBuilder);
+                    // on ajoute le corps de fonction au fichier
+                    stringBuilder.append(((SymboleDeFonction) symbole).toMIPS());
+                    // Retour au programme principal Normlement après l'instruction retourne
+                    // Si aucune instruction retourne, une erreur d'execution est déclanchée
+                    finFonction(stringBuilder);
+                }
             }
         }
 
