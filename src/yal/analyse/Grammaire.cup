@@ -207,11 +207,11 @@ DECL    ::=     ENTIER IDF:e POINTVIRGULE
                    entier.ajouterTDS(); :}
         |
                 FONCTION IDF:i PAR_OUVRANTE PAR_FERMANTE DEBUT LINST:li FIN
-                {: DeclarationFonction fonction = new Fonction(i, li, lileft+1);
+                {: DeclarationFonction fonction = new DeclarationFonction(i, li, lileft+1);
                    fonction.ajouterTDS(); :}
         |
                 FONCTION IDF:i PAR_OUVRANTE LPARAM:lp PAR_FERMANTE DEBUT LINST:li FIN
-                {: DeclarationFonction fonction = new Fonction(i, li, lp, lileft+1);
+                {: DeclarationFonction fonction = new DeclarationFonction(i, li, lp, lileft+1);
                    fonction.ajouterTDS(); :}
         ;
 

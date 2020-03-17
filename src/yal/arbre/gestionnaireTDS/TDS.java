@@ -1,5 +1,7 @@
 package yal.arbre.gestionnaireTDS;
 
+import yal.exceptions.AjoutTDSException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -59,7 +61,7 @@ public class TDS implements Iterable<TableLocale> {
      * @param s le symbole
      * @throws Exception Si le symbole est déjà déclaré
      */
-    public void ajouter(Entree e, Symbole s) throws Exception{
+    public void ajouter(Entree e, Symbole s) throws AjoutTDSException {
         tableCourante.ajouter(e, s);
         /*
         // Si la table contient déjà l'entrée actuelle

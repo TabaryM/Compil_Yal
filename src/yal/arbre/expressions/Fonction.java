@@ -64,31 +64,6 @@ public class Fonction extends Expression {
     }
 
     /**
-     * Ajoute la fonction et ses parametres (si parametres il y a) à la TDS
-     */
-    public void ajouterTDS() {
-        SymboleDeFonction symboleDeFonction = new SymboleDeFonction(parametres.size(), instructions);
-        Entree entreeFonc = new Entree("fonction_" +idf+"_params"+parametres.size());
-        try {
-            TDS.getInstance().ajouter(entreeFonc, symboleDeFonction);
-        } catch (Exception e) {
-            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration de la fonction " + idf);
-            ErreurSemantique.getInstance().ajouter(exception);
-        }
-        int cptDepl = 0;
-        for (Entier e : parametres) {
-            try {
-                symboleDeFonction.ajouterVariableLocale(new Entree(e.getIdf()), new SymboleDeVariable(cptDepl));
-                cptDepl -= 4;
-            }
-            catch(Exception exce){
-                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration du parametre " +e.getIdf()+" dans la fonction "+idf);
-                ErreurSemantique.getInstance().ajouter(exception);
-            }
-        }
-    }
-
-    /**
      * Renvoie le type de retour de la fonction
      * @return un string qui pue
      */
@@ -128,33 +103,7 @@ public class Fonction extends Expression {
     @Override
     public String toMIPS() {
         StringBuilder stringBuilder = new StringBuilder();
-        // ON a les paremtres effectifs
-        // on cherche à associer les parametres effectifs aux paramétres de la fonction
-        TDS tds = TDS.getInstance();
-        Entree entreeTmp = new Entree("fonction_"+idf+"_params"+parametresEffectifs.size());
-        Symbole symboleDeFonction = tds.identifier(entreeTmp);
-
-        int i = 0;
-        Expression e;
-        for(SymboleDeVariable symbole : ((SymboleDeFonction) symboleDeFonction)){
-            e = parametresEffectifs.get(i);
-            // Commentaire du code mips
-            stringBuilder.append("\t#Assigner à ");
-            stringBuilder.append(idf).append(" la valeur ");
-            stringBuilder.append(e.toString());
-            stringBuilder.append("\n");
-
-            // On charge la valeur de l'expression dans $v0
-            stringBuilder.append(e.toMIPS());
-
-            // Récupération du déplacement en mémoire de la variable
-            // Stockage en mémoire de la variable
-            stringBuilder.append("\tsw $v0, ");
-            stringBuilder.append(symbole.getDepl());
-            stringBuilder.append("($sp)\n\n");
-
-            i++;
-        }
+        // TODO : assigner les valeurs des parametres effectifs aux parametre réel de la fonction
         stringBuilder.append("\tjal ");
         stringBuilder.append("fonction_");
         stringBuilder.append(idf);

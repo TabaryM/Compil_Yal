@@ -1,5 +1,7 @@
 package yal.arbre.gestionnaireTDS;
 
+import yal.exceptions.AjoutTDSException;
+
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -22,9 +24,9 @@ public class TableLocale implements Iterable<Entree> {
         return tableEnglobante;
     }
 
-    public void ajouter(Entree e, Symbole s) throws Exception{
+    public void ajouter(Entree e, Symbole s) throws AjoutTDSException{
         if(table.containsKey(e)){
-            throw new Exception("Double déclaration de la"+s.getType()+e.getIdf());
+            throw new AjoutTDSException("Double déclaration de la"+s.getType()+e.getIdf());
         }
         if(s.getType().equals("entier")){
             cptDepl -=4;
