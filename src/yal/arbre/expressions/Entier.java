@@ -33,11 +33,12 @@ public class Entier extends Idf {
         System.out.println("\nidf : "+getIdf());
         System.out.println("entree : "+entree);
         System.out.println("symbole : "+symbole);
-        stringBuilder.append(symbole.getDepl());
 
         if(symbole.getNumBloc() == TDS.getInstance().getRacine().getNumBloc()){
+            stringBuilder.append(symbole.getDepl());
             stringBuilder.append("($s7)\n");
         } else {
+            stringBuilder.append(symbole.getDepl()+4);
             stringBuilder.append("($s2)\n");
         }
 
