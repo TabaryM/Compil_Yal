@@ -1,12 +1,22 @@
 package yal.arbre;
 
+import yal.arbre.declaration.Declaration;
 import yal.arbre.gestionnaireTDS.*;
 import yal.exceptions.AnalyseSemantiqueException;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Programme extends ArbreAbstrait {
     private BlocDInstructions instructions;
+    public Programme(ArrayList<Declaration> declarations, ArbreAbstrait a, int n) {
+        super(n);
+        instructions = (BlocDInstructions) a;
+        for (Declaration declaration : declarations){
+            declaration.ajouterTDS();
+        }
+    }
+
     public Programme(ArbreAbstrait a, int n) {
         super(n);
         instructions = (BlocDInstructions) a;
@@ -53,7 +63,7 @@ public class Programme extends ArbreAbstrait {
                 stringBuilder.append(entree.getNbParam());
                 stringBuilder.append(":\n");
 
-                // Debut du bloc + corps de fonction au fichier
+                // Debut du bloc + corps de fonction
                 stringBuilder.append(((SymboleDeFonction) symbole).toMIPS());
                 // Retour au programme principal Normlement après l'instruction retourne
                 // Si aucune instruction retourne, une erreur d'execution est déclanchée

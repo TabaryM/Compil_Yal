@@ -1,6 +1,7 @@
 package yal.arbre.gestionnaireTDS;
 
 import yal.arbre.BlocDInstructions;
+import yal.arbre.declaration.DeclarationEntier;
 import yal.arbre.expressions.Entier;
 
 import java.util.ArrayList;
@@ -10,15 +11,11 @@ import java.util.Iterator;
 public class SymboleDeFonction extends Symbole{
     private int nbParametres;
     private BlocDInstructions instructions;
-    private BlocDInstructions variablesLocales;
-    private ArrayList<Entier> parametres;
 
-    public SymboleDeFonction(int nbParametres, BlocDInstructions instructions, ArrayList<Entier> parametres, BlocDInstructions variablesLocales) {
+    public SymboleDeFonction(int nbParametres, BlocDInstructions instructions) {
         super("fonction", TDS.getInstance().getNumBloc());
         this.nbParametres = nbParametres;
         this.instructions = instructions;
-        this.variablesLocales = variablesLocales;
-        this.parametres = parametres;
     }
 
     public int getNbParametres(){
@@ -26,6 +23,7 @@ public class SymboleDeFonction extends Symbole{
     }
 
     public String toMIPS(){
+        TDS.getInstance().entreeBloc(getNumBloc());
         StringBuilder stringBuilder = new StringBuilder();
         // On stocke l'adresse à laquelle retourner une fois la fonction finie
         stringBuilder.append("\t# On stocke l'adresse de retour de la fonction\n");
@@ -33,9 +31,13 @@ public class SymboleDeFonction extends Symbole{
         // Chainage dynamique
         stringBuilder.append("\tsw $s2, 0($sp)\n\tadd $sp, $sp, -4\n");
         // empilage des variables locales
-
+        int place = TDS.getInstance().getTableCourrante().getCptDepl();
+        stringBuilder.append("\tadd $sp, $sp, ");
+        stringBuilder.append(place);
+        stringBuilder.append("\t# Emplacement mémoire pour les varaibles locales\n");
         // Liste d'instructions
         stringBuilder.append(instructions.toMIPS());
+        TDS.getInstance().sortieBloc();
         return stringBuilder.toString();
     }
 

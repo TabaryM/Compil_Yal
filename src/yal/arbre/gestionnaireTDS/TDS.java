@@ -24,6 +24,7 @@ public class TDS implements Iterable<TableLocale> {
         tables = new ArrayList<>();
         racine = new TableLocale(null, 0);
         tableCourante = racine;
+        tables.add(tableCourante);
     }
 
     /**
@@ -41,7 +42,7 @@ public class TDS implements Iterable<TableLocale> {
      * Créer une nouvelle table dans un nouveau bloc
      */
     public void entreeBloc(){
-        tableCourante = new TableLocale(racine, cptNumBloc);
+        tableCourante = new TableLocale(tableCourante, cptNumBloc);
         cptNumBloc++;
         tables.add(tableCourante);
     }
@@ -60,7 +61,6 @@ public class TDS implements Iterable<TableLocale> {
      * @throws AjoutTDSException Si le symbole est déjà déclaré
      */
     public void ajouter(Entree e, Symbole s) throws AjoutTDSException {
-        System.out.println("Ajout de : "+e+", "+s);
         tableCourante.ajouter(e, s);
         /*
         // Si la table contient déjà l'entrée actuelle
@@ -107,6 +107,10 @@ public class TDS implements Iterable<TableLocale> {
         return cptNumBloc;
     }
 
+    public void entreeBloc(int numBloc){
+        tableCourante = tables.get(numBloc);
+    }
+
     @Override
     public Iterator<TableLocale> iterator() {
         return tables.iterator();
@@ -114,5 +118,13 @@ public class TDS implements Iterable<TableLocale> {
 
     public TableLocale getTableCourrante() {
         return tableCourante;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("TDS{");
+        sb.append("tables=").append(tables);
+        sb.append('}');
+        return sb.toString();
     }
 }

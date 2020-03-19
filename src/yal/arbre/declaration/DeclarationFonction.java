@@ -1,4 +1,4 @@
-package yal.arbre.instructions;
+package yal.arbre.declaration;
 
 import yal.arbre.ArbreAbstrait;
 import yal.arbre.BlocDInstructions;
@@ -6,14 +6,14 @@ import yal.arbre.expressions.Entier;
 import yal.arbre.gestionnaireTDS.*;
 import yal.exceptions.AjoutTDSException;
 import yal.exceptions.AnalyseSemantiqueException;
+import yal.exceptions.AnalyseSyntaxiqueException;
 
 import java.util.ArrayList;
 
-public class DeclarationFonction extends ArbreAbstrait {
-    private String idf;
+public class DeclarationFonction extends Declaration {
     private BlocDInstructions instructions;
-    private BlocDInstructions variablesLocales;
-    private ArrayList<Entier> parametres;
+    private ArrayList<Declaration> variablesLocales;
+    private ArrayList<DeclarationEntier> parametres;
 
     /**
      * Declaration de fontion avec parametres et variables locales.
@@ -23,10 +23,9 @@ public class DeclarationFonction extends ArbreAbstrait {
      * @param instructions ArbreAbstrait : Arbre des instructions
      * @param numLig int : numéro de la ligne où la fonction a été déclarée
      */
-    public DeclarationFonction(String idf, ArbreAbstrait variablesLocales, ArrayList<Entier> parametres, ArbreAbstrait instructions, int numLig){
-        super(numLig);
-        this.idf = idf;
-        this.variablesLocales = (BlocDInstructions) variablesLocales;
+    public DeclarationFonction(String idf, ArrayList<Declaration> variablesLocales, ArrayList<DeclarationEntier> parametres, ArbreAbstrait instructions, int numLig){
+        super(idf, numLig);
+        this.variablesLocales = variablesLocales;
         this.parametres = parametres;
         this.instructions = (BlocDInstructions) instructions;
     }
@@ -38,8 +37,8 @@ public class DeclarationFonction extends ArbreAbstrait {
      * @param instructions ArbreAbstrait : Arbre des instructions
      * @param numLig int : numéro de la ligne où la fonction a été déclarée
      */
-    public DeclarationFonction(String idf, ArrayList<Entier> parametres, ArbreAbstrait instructions, int numLig){
-        this(idf, new BlocDInstructions(numLig), parametres, instructions, numLig);
+    public DeclarationFonction(String idf, ArrayList<DeclarationEntier> parametres, ArbreAbstrait instructions, int numLig){
+        this(idf, new ArrayList<>(), parametres, instructions, numLig);
     }
 
     /**
@@ -49,8 +48,8 @@ public class DeclarationFonction extends ArbreAbstrait {
      * @param variablesLocales BlocDInstructions : liste des variables locales
      * @param numLig int : numéro de la ligne où la fonction a été déclarée
      */
-    public DeclarationFonction(String idf, ArbreAbstrait instructions, ArbreAbstrait variablesLocales, int numLig){
-        this(idf, (BlocDInstructions) variablesLocales, new ArrayList<>(), instructions, numLig);
+    public DeclarationFonction(String idf, ArbreAbstrait instructions, ArrayList<Declaration> variablesLocales, int numLig){
+        this(idf, variablesLocales, new ArrayList<>(), instructions, numLig);
     }
 
     /**
@@ -60,14 +59,14 @@ public class DeclarationFonction extends ArbreAbstrait {
      * @param numLig int : numéro de la ligne où la fonction a été déclarée
      */
     public DeclarationFonction(String idf, ArbreAbstrait instructions, int numLig){
-        this(idf, new BlocDInstructions(numLig), new ArrayList<>(), instructions, numLig);
+        this(idf, new ArrayList<>(), new ArrayList<>(), instructions, numLig);
     }
 
     @Override
     public void verifier() {
         // Verification de l'existence de l'instruction retourne
         if(!contientRetourne()){
-            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "La fonction "+idf+" ne contient aucune instruction Retourne");
+            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "La fonction "+getIdf()+" ne contient aucune instruction Retourne");
             ErreurSemantique.getInstance().ajouter(exception);
         }
         instructions.verifier();
@@ -79,28 +78,37 @@ public class DeclarationFonction extends ArbreAbstrait {
     }
 
     public void ajouterTDS(){
+        SymboleDeFonction symboleDeFonction = new SymboleDeFonction(parametres.size(), instructions);
         try {
-            TDS.getInstance().ajouter(new Entree("fonction_"+idf, parametres.size()), new SymboleDeFonction(parametres.size(), instructions, parametres, variablesLocales));
+            TDS.getInstance().ajouter(new Entree("fonction_"+getIdf(), parametres.size()), symboleDeFonction);
         } catch (AjoutTDSException e) {
-            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration de la fonction " + idf);
+            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration de la fonction " + getIdf());
             ErreurSemantique.getInstance().ajouter(exception);
         }
         TDS.getInstance().entreeBloc();
-        for(Entier entier : parametres){
+        symboleDeFonction.setNumBloc(TDS.getInstance().getNumBloc());
+        for(DeclarationEntier entier : parametres){
             try {
                 entier.ajouterTDS();
             } catch (Exception e) {
-                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration du parametre " +entier.getIdf()+" dans la fonction "+idf);
+                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration du parametre " +entier.getIdf()+" dans la fonction "+getIdf());
+                ErreurSemantique.getInstance().ajouter(exception);
+            }
+        }
+        for(Declaration entier : variablesLocales){
+            try {
+                if(!entier.getClass().getSimpleName().equals("DeclarationEntier")){
+                    AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Dans la fonction "+getIdf()+" un parametre ne peut pas être une fonction");
+                    ErreurSemantique.getInstance().ajouter(exception);
+                }
+                entier.ajouterTDS();
+            } catch (Exception e) {
+                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Double déclaration du parametre " +entier.getIdf()+" dans la fonction "+getIdf());
                 ErreurSemantique.getInstance().ajouter(exception);
             }
         }
         // Ajouter à la TDS les variables locales
         TDS.getInstance().sortieBloc();
-    }
-
-    @Override
-    public String toString() {
-        return idf;
     }
 
     @Override

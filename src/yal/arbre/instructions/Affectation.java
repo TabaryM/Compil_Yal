@@ -5,7 +5,6 @@ import yal.arbre.expressions.Expression;
 import yal.exceptions.AnalyseSemantiqueException;
 
 public class Affectation extends Instruction {
-
     private String idf;
     private Expression e;
 
@@ -42,11 +41,19 @@ public class Affectation extends Instruction {
         stringBuilder.append(e.toMIPS());
 
         // Récupération du déplacement en mémoire de la variable
-        SymboleDeVariable tmp = (SymboleDeVariable) TDS.getInstance().identifier(new Entree("entier_"+idf));
+        Entree entree = new Entree("entier_"+idf);
+        SymboleDeVariable tmp = (SymboleDeVariable) TDS.getInstance().identifier(entree);
         // Stockage en mémoire de la variable
         stringBuilder.append("\tsw $v0, ");
-        stringBuilder.append(tmp.getDepl());
-        stringBuilder.append("($s7)\n\n");
+        if(TDS.getInstance().getTableCourrante() == TDS.getInstance().getRacine()){
+            stringBuilder.append(tmp.getDepl());
+            stringBuilder.append("($s7)");
+        } else {
+            stringBuilder.append(tmp.getDepl()-8);
+            stringBuilder.append("($s2)");
+        }
+
+        stringBuilder.append("\n\n");
         return stringBuilder.toString();
     }
 

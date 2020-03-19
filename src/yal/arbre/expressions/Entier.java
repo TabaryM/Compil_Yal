@@ -8,15 +8,6 @@ public class Entier extends Idf {
         super(idf, numLig);
     }
 
-    public void ajouterTDS(){
-        try {
-            TDS.getInstance().ajouter(new Entree("entier_"+getIdf()), new SymboleDeVariable(TDS.getInstance().getDepl()));
-        } catch (Exception e) {
-            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Double déclaration de la variable "+getIdf());
-            ErreurSemantique.getInstance().ajouter(exception);
-        }
-    }
-
     @Override
     public void verifier(){
         if(TDS.getInstance().identifier(new Entree("entier_"+getIdf())) == null){
@@ -30,15 +21,11 @@ public class Entier extends Idf {
         Entree entree = new Entree("entier_"+getIdf());
         SymboleDeVariable symbole = ((SymboleDeVariable) TDS.getInstance().identifier(entree));
         StringBuilder stringBuilder = new StringBuilder("\tlw $v0, ");
-        System.out.println("\nidf : "+getIdf());
-        System.out.println("entree : "+entree);
-        System.out.println("symbole : "+symbole);
-
         if(symbole.getNumBloc() == TDS.getInstance().getRacine().getNumBloc()){
             stringBuilder.append(symbole.getDepl());
             stringBuilder.append("($s7)\n");
         } else {
-            stringBuilder.append(symbole.getDepl()+4);
+            stringBuilder.append(symbole.getDepl()-8);
             stringBuilder.append("($s2)\n");
         }
 

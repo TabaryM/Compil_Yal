@@ -27,10 +27,8 @@ public class TableLocale implements Iterable<Entree> {
         if(table.containsKey(e)){
             throw new AjoutTDSException("Double déclaration de la"+s.getType()+e.getIdf());
         }
-        if(s.getType().equals("entier") && numBloc != TDS.getInstance().getRacine().numBloc){
+        if(s.getType().equals("entier")){
             cptDepl -= 4;
-        } else if(numBloc != TDS.getInstance().getRacine().numBloc){
-            cptDepl += 4;
         }
         table.put(e,s);
     }
@@ -41,9 +39,8 @@ public class TableLocale implements Iterable<Entree> {
 
     public Symbole identifier(Entree e){
         Symbole res;
-        try{
-            res = table.get(e);
-        } catch (NullPointerException exception){
+        res = table.get(e);
+        if(res == null){
             res = tableEnglobante.identifier(e);
         }
         return res;
@@ -60,5 +57,15 @@ public class TableLocale implements Iterable<Entree> {
     @Override
     public Iterator<Entree> iterator() {
         return table.keySet().iterator();
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("TableLocale{");
+        sb.append("table=").append(table);
+        sb.append(", numBloc=").append(numBloc);
+        sb.append(", cptDepl=").append(cptDepl);
+        sb.append('}');
+        return sb.toString();
     }
 }

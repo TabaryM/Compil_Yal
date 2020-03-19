@@ -3,6 +3,7 @@ package yal.analyse ;
 import java.util.*;
 import yal.arbre.* ;
 import yal.arbre.expressions.* ;
+import yal.arbre.declaration.* ;
 import yal.arbre.expressions.operateurs.* ;
 import yal.arbre.instructions.* ;
 import yal.arbre.gestionnaireTDS.* ;
@@ -63,12 +64,13 @@ terminal String    IDF, CSTENTIERE, PAR_OUVRANTE, PAR_FERMANTE, FINSI, FINTANTQU
 
 /* Non terminals used in the grammar section.  */
 
-non terminal ArbreAbstrait PROG, LINST, INST, LDECL;
-non terminal BlocDInstructions DECL;
+non terminal ArbreAbstrait PROG, LINST, INST;
+non terminal ArrayList<Declaration> LDECL;
+non terminal Declaration DECL;
 non terminal Operateur OPER ;
 non terminal Expression EXP ;
-non terminal Entier PARAM;
-non terminal ArrayList<Entier> LPARAM;
+non terminal DeclarationEntier PARAM;
+non terminal ArrayList<DeclarationEntier> LPARAM;
 non terminal ArrayList<Expression> PAR_EFF;
 
 /* Precedences */
@@ -85,7 +87,7 @@ precedence left PAR_OUVRANTE, PAR_FERMANTE;
 start with PROG ;
 
 PROG    ::=     PROGRAMME  IDF  DEBUT  LDECL:ld  LINST:li  FIN
-                {: RESULT = new Programme(li, lileft + 1) ; :}
+                {: RESULT = new Programme(ld, li, lileft + 1) ; :}
         |
                 PROGRAMME  IDF  DEBUT LINST:li  FIN
                 {: RESULT = new Programme(li, lileft + 1) ; :}
@@ -194,34 +196,36 @@ PAR_EFF ::=    PAR_EFF:pe VIRGULE EXP:e
         ;
 
 LDECL   ::=    LDECL:ld  DECL:d
-                {: ((BlocDInstructions)ld).ajouter(d);
-                   RESULT = ld; :}
+                {: ld.add(d);
+                   RESULT = ld;
+                :}
         |
                 DECL:d
-                {: BlocDInstructions declarations = new BlocDInstructions(dleft + 1) ;
-                   declarations.ajouter(d) ;
-                   RESULT = declarations ; :}
+                {: ArrayList<Declaration> declarations = new ArrayList<>();
+                  declarations.add(d);
+                  RESULT = declarations;
+                :}
         ;
 
 DECL    ::=     FONCTION IDF:i PAR_OUVRANTE PAR_FERMANTE DEBUT LINST:li FIN
-                {: DeclarationFonction fonction = new DeclarationFonction(i, li, lileft+1);
-                   fonction.ajouterTDS(); :}
+                {: RESULT = new DeclarationFonction(i, li, lileft+1);
+                :}
         |
                 FONCTION IDF:i PAR_OUVRANTE PAR_FERMANTE DEBUT LDECL:ld LINST:li FIN
-                {: DeclarationFonction fonction = new DeclarationFonction(i, li, ld, lileft+1);
-                   fonction.ajouterTDS(); :}
+                {: RESULT = new DeclarationFonction(i, li, ld, lileft+1);
+                :}
         |
                 FONCTION IDF:i PAR_OUVRANTE LPARAM:lp PAR_FERMANTE DEBUT LINST:li FIN
-                {: DeclarationFonction fonction = new DeclarationFonction(i, lp, li, lileft+1);
-                   fonction.ajouterTDS(); :}
+                {: RESULT = new DeclarationFonction(i, lp, li, lileft+1);
+                :}
         |
                 FONCTION IDF:i PAR_OUVRANTE LPARAM:lp PAR_FERMANTE DEBUT LDECL:ld LINST:li FIN
-                {: DeclarationFonction fonction = new DeclarationFonction(i, ld, lp, li, lileft+1);
-                   fonction.ajouterTDS(); :}
+                {: RESULT = new DeclarationFonction(i, ld, lp, li, lileft+1);
+                :}
         |
                 ENTIER IDF:e POINTVIRGULE
-                {: Entier entier = new Entier(e, eleft + 1);
-                entier.ajouterTDS(); :}
+                {: RESULT = new DeclarationEntier(e, eleft + 1);
+                :}
         ;
 
 LPARAM  ::=     LPARAM:lp POINTVIRGULE PARAM:p
@@ -230,13 +234,13 @@ LPARAM  ::=     LPARAM:lp POINTVIRGULE PARAM:p
                 :}
         |
                 PARAM:p
-                {: ArrayList<Entier> a = new ArrayList<>();
+                {: ArrayList<DeclarationEntier> a = new ArrayList<>();
                   a.add(p);
                   RESULT = a;
                 :}
         ;
 
 PARAM   ::=     ENTIER IDF:e
-                {: RESULT = new Entier(e, eleft + 1);
+                {: RESULT = new DeclarationEntier(e, eleft + 1);
                 :}
         ;
