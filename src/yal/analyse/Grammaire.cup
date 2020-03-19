@@ -237,8 +237,6 @@ LPARAM  ::=     LPARAM:lp POINTVIRGULE PARAM:p
         ;
 
 PARAM   ::=     ENTIER IDF:e
-                {: Entier entier = new Entier(e, eleft + 1);
-                   entier.ajouterTDS();
-                   RESULT = entier;
+                {: RESULT = new Entier(e, eleft + 1);
                 :}
         ;

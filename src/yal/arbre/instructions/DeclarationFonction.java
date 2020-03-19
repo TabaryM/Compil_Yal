@@ -85,17 +85,16 @@ public class DeclarationFonction extends ArbreAbstrait {
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration de la fonction " + idf);
             ErreurSemantique.getInstance().ajouter(exception);
         }
-        int cptDepl = 0;
         TDS.getInstance().entreeBloc();
         for(Entier entier : parametres){
             try {
-                TDS.getInstance().ajouter(new Entree("entier_"+entier.getIdf()), new SymboleDeVariable(cptDepl));
+                entier.ajouterTDS();
             } catch (Exception e) {
                 AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration du parametre " +entier.getIdf()+" dans la fonction "+idf);
                 ErreurSemantique.getInstance().ajouter(exception);
             }
-            cptDepl -= 4;
         }
+        // Ajouter à la TDS les variables locales
         TDS.getInstance().sortieBloc();
     }
 

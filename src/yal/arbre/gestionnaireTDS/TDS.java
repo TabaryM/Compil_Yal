@@ -23,7 +23,6 @@ public class TDS implements Iterable<TableLocale> {
         cptNumBloc = 0;
         tables = new ArrayList<>();
         racine = new TableLocale(null, 0);
-        cptNumBloc++;
         tableCourante = racine;
     }
 
