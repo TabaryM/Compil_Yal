@@ -14,7 +14,6 @@ public class TDS implements Iterable<TableLocale> {
     private ArrayList<TableLocale> tables;
 
     private static TDS instance;
-    private int cpt;
     private int cptNumBloc;
 
     /**
@@ -22,7 +21,6 @@ public class TDS implements Iterable<TableLocale> {
      */
     private TDS(){
         cptNumBloc = 0;
-        cpt = 0;
         tables = new ArrayList<>();
         racine = new TableLocale(null, 0);
         cptNumBloc++;
@@ -44,7 +42,8 @@ public class TDS implements Iterable<TableLocale> {
      * Créer une nouvelle table dans un nouveau bloc
      */
     public void entreeBloc(){
-        tableCourante = new TableLocale(racine, cptNumBloc++);
+        tableCourante = new TableLocale(racine, cptNumBloc);
+        cptNumBloc++;
         tables.add(tableCourante);
     }
 
@@ -59,9 +58,10 @@ public class TDS implements Iterable<TableLocale> {
      * Ajoute un symbole lié à une entrée dans la table des symboles
      * @param e l'entrée du symbole dans la table
      * @param s le symbole
-     * @throws Exception Si le symbole est déjà déclaré
+     * @throws AjoutTDSException Si le symbole est déjà déclaré
      */
     public void ajouter(Entree e, Symbole s) throws AjoutTDSException {
+        System.out.println("Ajout de : "+e+", "+s);
         tableCourante.ajouter(e, s);
         /*
         // Si la table contient déjà l'entrée actuelle
@@ -93,15 +93,27 @@ public class TDS implements Iterable<TableLocale> {
     }
 
     /**
-     * Retourne le compteur de variable déclarées dans le programme compilé
-     * @return this.cpt
+     * Retourne la valeur du compteur de déplacement de la table courrante
+     * @return int tableCourante.getCptDepl()
      */
-    public int getCpt() {
-        return cpt;
+    public int getDepl() {
+        return tableCourante.getCptDepl();
+    }
+
+    public TableLocale getRacine() {
+        return racine;
+    }
+
+    public int getNumBloc() {
+        return cptNumBloc;
     }
 
     @Override
     public Iterator<TableLocale> iterator() {
         return tables.iterator();
+    }
+
+    public TableLocale getTableCourrante() {
+        return tableCourante;
     }
 }

@@ -1,8 +1,5 @@
 package yal.arbre;
 
-import yal.arbre.gestionnaireTDS.ErreurSemantique;
-import yal.exceptions.AnalyseSemantiqueException;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -16,8 +13,8 @@ public class BlocDInstructions extends ArbreAbstrait implements Iterable<ArbreAb
     
     protected ArrayList<ArbreAbstrait> listeInstructions;
 
-    public BlocDInstructions(int n) {
-        super(n) ;
+    public BlocDInstructions(int noLigne) {
+        super(noLigne) ;
         listeInstructions = new ArrayList<>() ;
     }
     

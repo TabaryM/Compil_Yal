@@ -9,7 +9,7 @@ public class Entree {
      * @param idf identifiant de l'entrée dans la TDS
      */
     public Entree(String idf){
-        new Entree(idf, 0);
+        this(idf, 0);
     }
 
     /**
@@ -42,9 +42,13 @@ public class Entree {
 
     @Override
     public int hashCode() {
-        int result = getIdf() != null ? getIdf().hashCode() : 0;
+        int result = getIdf().hashCode();
         result = 31 * result + nbParam;
         return result;
+    }
+
+    public int getNbParam() {
+        return nbParam;
     }
 
     @Override

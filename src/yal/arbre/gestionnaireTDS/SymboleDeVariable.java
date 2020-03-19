@@ -9,7 +9,7 @@ public class SymboleDeVariable extends Symbole {
      * @param depl déplacement par rapport au sommet de la pile initial
      */
     public SymboleDeVariable(int depl) {
-        super("entier");
+        super("entier", TDS.getInstance().getNumBloc());
         this.depl = depl;
     }
 
@@ -24,6 +24,9 @@ public class SymboleDeVariable extends Symbole {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("SymboleDeVariable{");
+        sb.append("depl=").append(depl);
+        sb.append(",type=entier");
+        sb.append(",numBloc=").append(getNumBloc());
         sb.append('}');
         return sb.toString();
     }

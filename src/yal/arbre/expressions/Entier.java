@@ -10,7 +10,7 @@ public class Entier extends Idf {
 
     public void ajouterTDS(){
         try {
-            TDS.getInstance().ajouter(new Entree("entier_"+getIdf()), new SymboleDeVariable(TDS.getInstance().getCpt()));
+            TDS.getInstance().ajouter(new Entree("entier_"+getIdf()), new SymboleDeVariable(TDS.getInstance().getDepl()));
         } catch (Exception e) {
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Double déclaration de la variable "+getIdf());
             ErreurSemantique.getInstance().ajouter(exception);
@@ -27,19 +27,21 @@ public class Entier extends Idf {
 
     @Override
     public String toMIPS() {
-        SymboleDeVariable symbole = ((SymboleDeVariable) TDS.getInstance().identifier(new Entree("entier_"+getIdf())));
-        if(symbole != null) {
-            StringBuilder stringBuilder = new StringBuilder("\tlw $v0, ");
+        Entree entree = new Entree("entier_"+getIdf());
+        SymboleDeVariable symbole = ((SymboleDeVariable) TDS.getInstance().identifier(entree));
+        StringBuilder stringBuilder = new StringBuilder("\tlw $v0, ");
+        System.out.println("\nidf : "+getIdf());
+        System.out.println("entree : "+entree);
+        System.out.println("symbole : "+symbole);
+        stringBuilder.append(symbole.getDepl());
 
-            // On récupère le déplacement dans la mémoire
-            int deplacement = symbole.getDepl();
-
-            stringBuilder.append(deplacement);
+        if(symbole.getNumBloc() == TDS.getInstance().getRacine().getNumBloc()){
             stringBuilder.append("($s7)\n");
-            return stringBuilder.toString();
         } else {
-            return "";
+            stringBuilder.append("($s2)\n");
         }
+
+        return stringBuilder.toString();
     }
 
     @Override

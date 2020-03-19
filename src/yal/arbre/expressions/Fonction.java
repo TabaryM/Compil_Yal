@@ -1,45 +1,13 @@
 package yal.arbre.expressions;
 
-import yal.arbre.ArbreAbstrait;
-import yal.arbre.BlocDInstructions;
 import yal.arbre.gestionnaireTDS.*;
-import yal.arbre.instructions.Affectation;
 import yal.exceptions.AnalyseSemantiqueException;
 
 import java.util.ArrayList;
 
 public class Fonction extends Expression {
-    private BlocDInstructions instructions;
     private String idf;
-    private ArrayList<Entier> parametres;
     private ArrayList<Expression> parametresEffectifs;
-
-    /**
-     * Déclaration d'une fonction dans l'arbre abstrait
-     * @param idf identifiant de la fonction
-     * @param a la liste d'instruciton de la fonction
-     * @param numLig numéro de la ligne de la déclaration de la fonction
-     */
-    public Fonction(String idf, ArbreAbstrait a, int numLig){
-        super(numLig);
-        instructions = (BlocDInstructions) a;
-        this.idf = idf;
-        parametres = new ArrayList<>();
-    }
-
-    /**
-     * Déclaration d'une fonction dans l'arbre abstrait
-     * @param idf identifiant de la fonction
-     * @param a la liste d'instruciton de la fonction
-     * @param parametres la liste de parametres de la fonction
-     * @param numLig numéro de la ligne de la déclaration de la fonction
-     */
-    public Fonction(String idf, ArbreAbstrait a, ArrayList<Entier> parametres, int numLig){
-        super(numLig);
-        instructions = (BlocDInstructions) a;
-        this.idf = idf;
-        this.parametres = parametres;
-    }
 
     /**
      * Appel de la fonction dans le code
@@ -47,9 +15,7 @@ public class Fonction extends Expression {
      * @param numLig numéro de la ligne à laquelle la fonction est appelée
      */
     public Fonction(String idf, int numLig) {
-        super(numLig);
-        this.idf = idf;
-        this.parametresEffectifs = new ArrayList<>();
+        this(idf, new ArrayList<>(), numLig);
     }
 
     /**
@@ -77,18 +43,8 @@ public class Fonction extends Expression {
      */
     @Override
     public void verifier() {
-        if(instructions != null){
-            // Verification de l'existence de l'instruction retourne
-            if(!contientRetourne()){
-                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "La fonction "+idf+" ne contient aucune instruction Retourne");
-                ErreurSemantique.getInstance().ajouter(exception);
-            }
-            instructions.verifier();
-        }
-
         // On vérifie que la fonction n'a pas déjà été déclarée avec le même nombre de paramètres
-        int nbParam = parametresEffectifs.size();
-        Entree entreeTmp = new Entree("fonction_"+idf+"_params"+nbParam);
+        Entree entreeTmp = new Entree("fonction_"+idf, parametresEffectifs.size());
         Symbole symboleDeFonction = TDS.getInstance().identifier(entreeTmp);
         if(symboleDeFonction == null){
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Aucune fonction "+idf+" n'attend "+parametresEffectifs.size()+" parametres.");
@@ -104,33 +60,39 @@ public class Fonction extends Expression {
     public String toMIPS() {
         StringBuilder stringBuilder = new StringBuilder();
         // TODO : assigner les valeurs des parametres effectifs aux parametre réel de la fonction
+        for(Expression expression : parametresEffectifs){
+            stringBuilder.append("\t# Empilage du parametre effectif : ");
+            stringBuilder.append(expression.toString());
+            stringBuilder.append("\n");
+            stringBuilder.append(expression.toMIPS());
+            stringBuilder.append("\tsw $v0, 0($sp)\n\tadd $sp, $sp, -4\n");
+        }
+        stringBuilder.append("\t# On stocke l'adresse du sommet de pile pour accéder aux variables\n");
+        stringBuilder.append("\tmove $s2, $sp\n");
+
         stringBuilder.append("\tjal ");
         stringBuilder.append("fonction_");
         stringBuilder.append(idf);
-        stringBuilder.append("_params");
+        stringBuilder.append("_params_");
         stringBuilder.append(parametresEffectifs.size());
         stringBuilder.append("\n");
+
+        // Retour au bloc principal, on nettoie la pile des variables locales
+        stringBuilder.append("\t#On dépile tout ce que l'on a empilé durant l'appel de la fonction\n");
+        stringBuilder.append("\taddi $sp, $sp, ");
+        stringBuilder.append(4*parametresEffectifs.size());
+        stringBuilder.append("\n");
+
         return stringBuilder.toString();
     }
 
     @Override
     public boolean contientRetourne() {
-        return instructions.contientRetourne();
+        return false;
     }
 
     @Override
     public String toString() {
         return idf;
-    }
-
-    public static String initBlocFonction(){
-        StringBuilder stringBuilder = new StringBuilder();
-        // On stocke l'adresse à laquelle retourner une fois la fonction finie
-        stringBuilder.append("\tsw $ra, 0($sp)\n\tadd $sp, $sp, -4\n");
-        // Chainage dynamique
-        stringBuilder.append("\tsw $sp, 0($sp)\n\tadd $sp, $sp, -4\n");
-
-        return stringBuilder.toString();
-
     }
 }

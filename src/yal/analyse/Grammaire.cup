@@ -63,7 +63,8 @@ terminal String    IDF, CSTENTIERE, PAR_OUVRANTE, PAR_FERMANTE, FINSI, FINTANTQU
 
 /* Non terminals used in the grammar section.  */
 
-non terminal ArbreAbstrait PROG, LINST, INST, LDECL, DECL;
+non terminal ArbreAbstrait PROG, LINST, INST, LDECL;
+non terminal BlocDInstructions DECL;
 non terminal Operateur OPER ;
 non terminal Expression EXP ;
 non terminal Entier PARAM;
@@ -197,22 +198,30 @@ LDECL   ::=    LDECL:ld  DECL:d
                    RESULT = ld; :}
         |
                 DECL:d
-                {: BlocDInstructions b = new BlocDInstructions(dleft + 1) ;
-                   b.ajouter(d) ;
-                   RESULT = b ; :}
+                {: BlocDInstructions declarations = new BlocDInstructions(dleft + 1) ;
+                   declarations.ajouter(d) ;
+                   RESULT = declarations ; :}
         ;
 
-DECL    ::=     ENTIER IDF:e POINTVIRGULE
-                {: Entier entier = new Entier(e, eleft + 1);
-                   entier.ajouterTDS(); :}
-        |
-                FONCTION IDF:i PAR_OUVRANTE PAR_FERMANTE DEBUT LINST:li FIN
+DECL    ::=     FONCTION IDF:i PAR_OUVRANTE PAR_FERMANTE DEBUT LINST:li FIN
                 {: DeclarationFonction fonction = new DeclarationFonction(i, li, lileft+1);
                    fonction.ajouterTDS(); :}
         |
-                FONCTION IDF:i PAR_OUVRANTE LPARAM:lp PAR_FERMANTE DEBUT LINST:li FIN
-                {: DeclarationFonction fonction = new DeclarationFonction(i, li, lp, lileft+1);
+                FONCTION IDF:i PAR_OUVRANTE PAR_FERMANTE DEBUT LDECL:ld LINST:li FIN
+                {: DeclarationFonction fonction = new DeclarationFonction(i, li, ld, lileft+1);
                    fonction.ajouterTDS(); :}
+        |
+                FONCTION IDF:i PAR_OUVRANTE LPARAM:lp PAR_FERMANTE DEBUT LINST:li FIN
+                {: DeclarationFonction fonction = new DeclarationFonction(i, lp, li, lileft+1);
+                   fonction.ajouterTDS(); :}
+        |
+                FONCTION IDF:i PAR_OUVRANTE LPARAM:lp PAR_FERMANTE DEBUT LDECL:ld LINST:li FIN
+                {: DeclarationFonction fonction = new DeclarationFonction(i, ld, lp, li, lileft+1);
+                   fonction.ajouterTDS(); :}
+        |
+                ENTIER IDF:e POINTVIRGULE
+                {: Entier entier = new Entier(e, eleft + 1);
+                entier.ajouterTDS(); :}
         ;
 
 LPARAM  ::=     LPARAM:lp POINTVIRGULE PARAM:p
@@ -226,7 +235,10 @@ LPARAM  ::=     LPARAM:lp POINTVIRGULE PARAM:p
                   RESULT = a;
                 :}
         ;
+
 PARAM   ::=     ENTIER IDF:e
-                {: RESULT = new Entier(e, eleft + 1);
+                {: Entier entier = new Entier(e, eleft + 1);
+                   entier.ajouterTDS();
+                   RESULT = entier;
                 :}
         ;

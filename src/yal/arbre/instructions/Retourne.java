@@ -33,12 +33,8 @@ public class Retourne extends Instruction{
         StringBuilder stringBuilder = new StringBuilder();
         // On évalue l'expression à retourner
         stringBuilder.append(exp.toMIPS());
-        // On réinitialise la pile à sa position avant l'appel de la fonction
-        stringBuilder.append("\t#On dépile tout ce que l'on a empilé durant l'appel de la fonction\n");
-        stringBuilder.append("\taddi $sp, $sp, 8\n");
-        stringBuilder.append("\tlw $a0, ($sp)\n");
-        stringBuilder.append("\t#On retourne la où la fonction à été appelée\n");
-        stringBuilder.append("\tjr $a0\n");
+        stringBuilder.append("\tlw $a0, 0($s2)\n");
+        stringBuilder.append("\tjr $a0\t#On retourne la où la fonction à été appelée\n");
         return stringBuilder.toString();
     }
 
