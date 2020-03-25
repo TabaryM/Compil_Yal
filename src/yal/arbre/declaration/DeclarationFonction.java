@@ -85,8 +85,9 @@ public class DeclarationFonction extends Declaration {
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration de la fonction " + getIdf());
             ErreurSemantique.getInstance().ajouter(exception);
         }
-        TDS.getInstance().entreeBloc();
-        symboleDeFonction.setNumBloc(TDS.getInstance().getNumBloc());
+        TDS.getInstance().getTableCourrante().setNbVariableLocales(variablesLocales.size());
+        int numeroBloc = TDS.getInstance().entreeBloc();
+        symboleDeFonction.setNumBloc(numeroBloc);
         for(DeclarationEntier entier : parametres){
             try {
                 entier.ajouterTDS();
@@ -100,14 +101,14 @@ public class DeclarationFonction extends Declaration {
                 if(!entier.getClass().getSimpleName().equals("DeclarationEntier")){
                     AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Dans la fonction "+getIdf()+" un parametre ne peut pas être une fonction");
                     ErreurSemantique.getInstance().ajouter(exception);
+                } else {
+                    entier.ajouterTDS();
                 }
-                entier.ajouterTDS();
             } catch (Exception e) {
                 AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Double déclaration du parametre " +entier.getIdf()+" dans la fonction "+getIdf());
                 ErreurSemantique.getInstance().ajouter(exception);
             }
         }
-        // Ajouter à la TDS les variables locales
         TDS.getInstance().sortieBloc();
     }
 

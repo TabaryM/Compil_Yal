@@ -11,6 +11,7 @@ public class TableLocale implements Iterable<Entree> {
     private HashMap<Entree, Symbole> table;
     private int numBloc;
     private int cptDepl;
+    private int nbVariableLocales;
 
     public TableLocale(TableLocale tableEnglobante, int numBloc){
         this.tableEnglobante = tableEnglobante;
@@ -52,6 +53,14 @@ public class TableLocale implements Iterable<Entree> {
 
     public int getCptDepl() {
         return cptDepl;
+    }
+
+    public int getNbVariableLocales() {
+        return nbVariableLocales;
+    }
+
+    public void setNbVariableLocales(int nbVariableLocales) {
+        this.nbVariableLocales = nbVariableLocales;
     }
 
     @Override

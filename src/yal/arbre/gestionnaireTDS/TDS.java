@@ -41,10 +41,11 @@ public class TDS implements Iterable<TableLocale> {
     /**
      * Créer une nouvelle table dans un nouveau bloc
      */
-    public void entreeBloc(){
+    public int entreeBloc(){
         tableCourante = new TableLocale(tableCourante, cptNumBloc);
         cptNumBloc++;
         tables.add(tableCourante);
+        return cptNumBloc;
     }
 
     /**

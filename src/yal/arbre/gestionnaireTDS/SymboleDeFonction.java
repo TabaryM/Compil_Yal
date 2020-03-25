@@ -1,5 +1,6 @@
 package yal.arbre.gestionnaireTDS;
 
+import yal.arbre.ArbreAbstrait;
 import yal.arbre.BlocDInstructions;
 import yal.arbre.declaration.DeclarationEntier;
 import yal.arbre.expressions.Entier;
@@ -26,18 +27,19 @@ public class SymboleDeFonction extends Symbole{
         TDS.getInstance().entreeBloc(getNumBloc());
         StringBuilder stringBuilder = new StringBuilder();
         // On stocke l'adresse à laquelle retourner une fois la fonction finie
-        stringBuilder.append("\t# On stocke l'adresse de retour de la fonction\n");
-        stringBuilder.append("\tsw $ra, 0($sp)\n\tadd $sp, $sp, -4\n");
+        stringBuilder.append("\tsw $ra, 0($sp)\t# On stocke l'adresse de retour de la fonction\n\tadd $sp, $sp, -4\n");
         // Chainage dynamique
-        stringBuilder.append("\tsw $s2, 0($sp)\n\tadd $sp, $sp, -4\n");
+        stringBuilder.append("\tsw $s2, 0($sp)\t# On stocke l'adresse de la base des variables locales\n\tadd $sp, $sp, -4\n");
         // empilage des variables locales
         int place = TDS.getInstance().getTableCourrante().getCptDepl();
         stringBuilder.append("\tadd $sp, $sp, ");
         stringBuilder.append(place);
         stringBuilder.append("\t# Emplacement mémoire pour les varaibles locales\n");
+
         // Liste d'instructions
         stringBuilder.append(instructions.toMIPS());
         TDS.getInstance().sortieBloc();
+
         return stringBuilder.toString();
     }
 

@@ -45,7 +45,7 @@ public class Affectation extends Instruction {
         SymboleDeVariable tmp = (SymboleDeVariable) TDS.getInstance().identifier(entree);
         // Stockage en mémoire de la variable
         stringBuilder.append("\tsw $v0, ");
-        if(TDS.getInstance().getTableCourrante() == TDS.getInstance().getRacine()){
+        if(tmp.getNumBloc() == TDS.getInstance().getRacine().getNumBloc()){
             stringBuilder.append(tmp.getDepl());
             stringBuilder.append("($s7)");
         } else {

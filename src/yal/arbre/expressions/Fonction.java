@@ -59,6 +59,11 @@ public class Fonction extends Expression {
     @Override
     public String toMIPS() {
         StringBuilder stringBuilder = new StringBuilder();
+        // Empiler l'@dresse de retour
+        // Empiler le chainage dynamique
+        // Aller au code source de la fonction
+        // Associer les valeur des paramètres effectifs aux paramètres (dans la pile)
+        // Alouer la place pour les variables locales (dans la pile)
         // TODO : assigner les valeurs des parametres effectifs aux parametre réel de la fonction
         for(Expression expression : parametresEffectifs){
             stringBuilder.append("\t# Empilage du parametre effectif : ");
@@ -75,12 +80,6 @@ public class Fonction extends Expression {
         stringBuilder.append(idf);
         stringBuilder.append("_params_");
         stringBuilder.append(parametresEffectifs.size());
-        stringBuilder.append("\n");
-
-        // Retour au bloc principal, on nettoie la pile des variables locales
-        stringBuilder.append("\t#On dépile tout ce que l'on a empilé durant l'appel de la fonction\n");
-        stringBuilder.append("\taddi $sp, $sp, ");
-        stringBuilder.append(4*parametresEffectifs.size());
         stringBuilder.append("\n");
 
         return stringBuilder.toString();

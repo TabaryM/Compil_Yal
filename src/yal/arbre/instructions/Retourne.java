@@ -2,6 +2,8 @@ package yal.arbre.instructions;
 
 import yal.arbre.expressions.Expression;
 import yal.arbre.gestionnaireTDS.ErreurSemantique;
+import yal.arbre.gestionnaireTDS.SymboleDeFonction;
+import yal.arbre.gestionnaireTDS.TDS;
 import yal.exceptions.AnalyseSemantiqueException;
 
 public class Retourne extends Instruction{
@@ -21,7 +23,7 @@ public class Retourne extends Instruction{
     public void verifier() {
         if(!exp.getType().equals("entier")){
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
-                    "Type de retour incorrect. Attendu : entier Trouvé : "+exp.getType());
+                    "Type de retour incorrect. Attendu : entier. Trouvé : "+exp.getType());
             ErreurSemantique.getInstance().ajouter(exception);
 
         }
@@ -31,10 +33,20 @@ public class Retourne extends Instruction{
     @Override
     public String toMIPS() {
         StringBuilder stringBuilder = new StringBuilder();
+        int nbVarLoc = TDS.getInstance().getTableCourrante().getNbVariableLocales();
+
         // On évalue l'expression à retourner
         stringBuilder.append(exp.toMIPS());
-        stringBuilder.append("\tlw $a0, 0($s2)\n");
-        stringBuilder.append("\tjr $a0\t#On retourne la où la fonction à été appelée\n");
+
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAH !");
+        // Retour au bloc principal, on nettoie la pile des variables locales
+        stringBuilder.append("\t#On dépile tout ce que l'on a empilé durant l'appel de la fonction\n");
+        stringBuilder.append("\taddi $sp, $sp, ");
+        stringBuilder.append(4*nbVarLoc+8);
+        stringBuilder.append("\n");
+
+        stringBuilder.append("\tlw $a0, 4($s2)\n");
+        stringBuilder.append("\tjr $a0\t#On retourne à l'appel du bloc "+TDS.getInstance().getTableCourrante().getNumBloc()+"\n");
         return stringBuilder.toString();
     }
 
