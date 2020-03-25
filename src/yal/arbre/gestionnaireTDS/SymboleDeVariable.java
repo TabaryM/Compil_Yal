@@ -21,6 +21,10 @@ public class SymboleDeVariable extends Symbole {
         return depl;
     }
 
+    public void setDepl(int depl) {
+        this.depl = depl;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("SymboleDeVariable{");

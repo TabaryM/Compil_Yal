@@ -38,15 +38,16 @@ public class Retourne extends Instruction{
         // On évalue l'expression à retourner
         stringBuilder.append(exp.toMIPS());
 
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAH !");
         // Retour au bloc principal, on nettoie la pile des variables locales
         stringBuilder.append("\t#On dépile tout ce que l'on a empilé durant l'appel de la fonction\n");
         stringBuilder.append("\taddi $sp, $sp, ");
         stringBuilder.append(4*nbVarLoc+8);
         stringBuilder.append("\n");
 
-        stringBuilder.append("\tlw $a0, 4($s2)\n");
-        stringBuilder.append("\tjr $a0\t#On retourne à l'appel du bloc "+TDS.getInstance().getTableCourrante().getNumBloc()+"\n");
+        // On chainge dynamique en arrière
+        stringBuilder.append("\tlw $a0, 0($sp)\n");
+
+        stringBuilder.append("\tjr $a0\t#On retourne à l'appel de la fonction\n");
         return stringBuilder.toString();
     }
 

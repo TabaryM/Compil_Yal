@@ -1,9 +1,6 @@
 package yal.arbre.declaration;
 
-import yal.arbre.gestionnaireTDS.Entree;
-import yal.arbre.gestionnaireTDS.ErreurSemantique;
-import yal.arbre.gestionnaireTDS.SymboleDeVariable;
-import yal.arbre.gestionnaireTDS.TDS;
+import yal.arbre.gestionnaireTDS.*;
 import yal.exceptions.AnalyseSemantiqueException;
 
 public class DeclarationEntier extends Declaration {
@@ -28,7 +25,19 @@ public class DeclarationEntier extends Declaration {
 
     @Override
     public String toMIPS() {
-        return "";
+        SymboleDeVariable symboleDeVariable = ((SymboleDeVariable) TDS.getInstance().identifier(new Entree("entier_"+getIdf())));
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("\tli, $v0, 0\n");
+        stringBuilder.append("\tsw, $v0, ");
+        if(symboleDeVariable.getNumBloc() == TDS.getInstance().getRacine().getNumBloc()){
+            stringBuilder.append(symboleDeVariable.getDepl());
+            stringBuilder.append("($s7)");
+        } else {
+            stringBuilder.append(symboleDeVariable.getDepl()-8);
+            stringBuilder.append("($s2)");
+        }
+        stringBuilder.append("\n");
+        return stringBuilder.toString();
     }
 
     @Override

@@ -9,17 +9,22 @@ import java.util.Iterator;
 
 public class Programme extends ArbreAbstrait {
     private BlocDInstructions instructions;
+    private ArrayList<Declaration> declarations;
     public Programme(ArrayList<Declaration> declarations, ArbreAbstrait a, int n) {
         super(n);
         instructions = (BlocDInstructions) a;
+        if(declarations == null){
+            this.declarations = new ArrayList<>();
+        } else {
+            this.declarations = declarations;
+        }
         for (Declaration declaration : declarations){
             declaration.ajouterTDS();
         }
     }
 
     public Programme(ArbreAbstrait a, int n) {
-        super(n);
-        instructions = (BlocDInstructions) a;
+        this(new ArrayList<>(), a, n);
     }
 
     @Override
@@ -43,6 +48,11 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append("\tadd $sp, $sp, ");
         stringBuilder.append(TDS.getInstance().getDepl());
         stringBuilder.append("\n\n");
+
+        // Initialisation des variables à 0
+        for(Declaration declaration : declarations){
+            stringBuilder.append(declaration.toMIPS());
+        }
 
         // Création de l'arbre abstrait
         stringBuilder.append(instructions.toMIPS());

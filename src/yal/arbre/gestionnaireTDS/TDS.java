@@ -105,7 +105,7 @@ public class TDS implements Iterable<TableLocale> {
     }
 
     public int getNumBloc() {
-        return cptNumBloc;
+        return tableCourante.getNumBloc();
     }
 
     public void entreeBloc(int numBloc){

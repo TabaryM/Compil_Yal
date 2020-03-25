@@ -34,7 +34,28 @@ public class SymboleDeFonction extends Symbole{
         int place = TDS.getInstance().getTableCourrante().getCptDepl();
         stringBuilder.append("\tadd $sp, $sp, ");
         stringBuilder.append(place);
-        stringBuilder.append("\t# Emplacement mémoire pour les varaibles locales\n");
+        stringBuilder.append("\t# Emplacement mémoire pour les variables locales\n");
+
+        stringBuilder.append("\t# Initialisation des variables localas à 0\n");
+        DeclarationEntier declarationEntier;
+        for(Entree entree : TDS.getInstance().getTableCourrante()){
+            SymboleDeVariable symboleDeVariable = ((SymboleDeVariable) TDS.getInstance().identifier(entree));
+            stringBuilder.append("\tli, $v0, 0\n");
+            stringBuilder.append("\tsw, $v0, ");
+            stringBuilder.append(symboleDeVariable.getDepl()-8);
+            stringBuilder.append("($s2)\n");
+        }
+
+        // Assigner les paramètres à leur position
+        for(int i = 0; i < nbParametres; i++){
+            stringBuilder.append("\tlw $v0, ");
+            stringBuilder.append(i*4+4);
+            stringBuilder.append("($s2)\t#On récupère la valeur du paramètre effectif\n");
+
+            stringBuilder.append("\tsw $v0, ");
+            stringBuilder.append(-((nbParametres-i)*4)-4);
+            stringBuilder.append("($s2)\t#On récupère la valeur du paramètre effectif\n");
+        }
 
         // Liste d'instructions
         stringBuilder.append(instructions.toMIPS());

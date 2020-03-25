@@ -82,6 +82,12 @@ public class Fonction extends Expression {
         stringBuilder.append(parametresEffectifs.size());
         stringBuilder.append("\n");
 
+        // On dépiltou
+        stringBuilder.append("\taddi, $sp, $sp, ");
+        stringBuilder.append(parametresEffectifs.size()*4);
+        stringBuilder.append("\n");
+        // TODO : dépiler les parametres effectifs
+
         return stringBuilder.toString();
     }
 

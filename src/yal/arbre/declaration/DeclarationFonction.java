@@ -2,11 +2,9 @@ package yal.arbre.declaration;
 
 import yal.arbre.ArbreAbstrait;
 import yal.arbre.BlocDInstructions;
-import yal.arbre.expressions.Entier;
 import yal.arbre.gestionnaireTDS.*;
 import yal.exceptions.AjoutTDSException;
 import yal.exceptions.AnalyseSemantiqueException;
-import yal.exceptions.AnalyseSyntaxiqueException;
 
 import java.util.ArrayList;
 
@@ -85,8 +83,8 @@ public class DeclarationFonction extends Declaration {
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration de la fonction " + getIdf());
             ErreurSemantique.getInstance().ajouter(exception);
         }
-        TDS.getInstance().getTableCourrante().setNbVariableLocales(variablesLocales.size());
         int numeroBloc = TDS.getInstance().entreeBloc();
+        TDS.getInstance().getTableCourrante().setNumBloc(numeroBloc);
         symboleDeFonction.setNumBloc(numeroBloc);
         for(DeclarationEntier entier : parametres){
             try {
