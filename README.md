@@ -65,3 +65,28 @@
    - Autre
         - ~~une région ( bloc ) est délimité par les mots "debut" et "fin"~~
         
+   - fonction
+        - recursion
+        - retourne
+        - sans parametre
+        - avec parametre
+            - le passage des parametres se fait par valeur
+        - avec variable locale
+        - affectation de fonction dans une fonction
+        - remettre a 0 les valeurs des variables declarées
+        
+   - Tableau
+        - initialisé à 0
+        - indice commence à 0
+        - valeur de [ EXP ] strictement positive
+        - [ EXP ] doit etre de type entier
+        - [ EXP ] doit etre dans les bornes du tableau
+        - declarer: entier [ EXP ] idf;
+            - si le tableau est declaré dans le programme principal EXP doit etre une constante
+        - affecter: idf [ EXP ] = EXP;
+        - recuperer la longueur : idf.longueur ( retourne un entier )
+        - appel : idf [ EXP ] EXP
+        - deux types tableaux concordent SI ils ont la meme longueur ( affectation )
+        - deux types tableaux sont égaux si ils ont la meme taille et les memes elements
+        
+        
