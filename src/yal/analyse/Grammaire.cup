@@ -136,11 +136,11 @@ EXP    ::=     PAR_OUVRANTE EXP:e PAR_FERMANTE
                 {: RESULT = e; :}
         |
                 IDF:i CRO_OUVRANT EXP:e CRO_FERMANT
-                {: RESULT = null; //TODO à implémenter : affectation dans un tableau / lecture de valeur (à index EXP)
+                {: RESULT = new TableauEntier(i, e, ileft +1); //TODO à implémenter : affectation dans un tableau / lecture de valeur (à index EXP)
                 :}
         |
                 IDF:i POINT LONGUEUR
-                {: RESULT = null; //TODO à implémenter : donne la longueur d'un tableau ( ne doit pas fonctionner que pour type tableau )
+                {: RESULT = new TailleTableau(i, ileft + 1); //TODO à implémenter : donne la longueur d'un tableau ( ne doit pas fonctionner que pour type tableau )
                 :}
         |
                 EXP:g OULOGIQUE:o EXP:d
@@ -237,7 +237,7 @@ DECL    ::=     FONCTION IDF:i PAR_OUVRANTE PAR_FERMANTE DEBUT LINST:li FIN
                 :}
         |
                 ENTIER CRO_OUVRANT EXP:e CRO_FERMANT IDF:i POINTVIRGULE
-                {: RESULT = null; //TODO à implementer : déclaration de tableau
+                {: RESULT = new DeclarationTableauEntier(i, e, ileft + 1);
                 :}
         ;
 
