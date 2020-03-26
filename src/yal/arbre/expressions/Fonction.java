@@ -50,6 +50,14 @@ public class Fonction extends Expression {
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Aucune fonction "+idf+" n'attend "+parametresEffectifs.size()+" parametres.");
             ErreurSemantique.getInstance().ajouter(exception);
         }
+        Expression parametre;
+        for(int i = 0; i < parametresEffectifs.size(); i++){
+            parametre = parametresEffectifs.get(i);
+            if(!parametre.getType().equals("entier")){
+                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Fonction "+idf+" : type du paramètre "+i+" incorrecte. Attendu : entier\tReçu : "+parametre.getType());
+                ErreurSemantique.getInstance().ajouter(exception);
+            }
+        }
     }
 
     /**
