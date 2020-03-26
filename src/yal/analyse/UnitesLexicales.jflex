@@ -52,6 +52,7 @@ commentaire = "//".*{finDeLigne}
 "ecrire"               { return symbol(CodesLexicaux.ECRIRE); }
 "lire"                 { return symbol(CodesLexicaux.LIRE); }
 "entier"               { return symbol(CodesLexicaux.ENTIER); }
+"longueur"               { return symbol(CodesLexicaux.LONGUEUR); }
 
 "si"                    { return symbol(CodesLexicaux.CONDITION); }
 "alors"                    { return symbol(CodesLexicaux.ALORS); }
@@ -79,7 +80,10 @@ commentaire = "//".*{finDeLigne}
 "non"                    { return symbol(CodesLexicaux.INVERSE); }
 "("                    { return symbol(CodesLexicaux.PAR_OUVRANTE); }
 ")"                    { return symbol(CodesLexicaux.PAR_FERMANTE); }
+"["                    { return symbol(CodesLexicaux.CRO_OUVRANT); }
+"]"                    { return symbol(CodesLexicaux.CRO_FERMANT); }
 ","                     { return symbol(CodesLexicaux.VIRGULE); }
+"."                     { return symbol(CodesLexicaux.POINT); }
 
 {csteE}      	       { return symbol(CodesLexicaux.CSTENTIERE, yytext()); }
 

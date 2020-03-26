@@ -66,16 +66,16 @@
         - ~~une région ( bloc ) est délimité par les mots "debut" et "fin"~~
         
    - fonction
-        - recursion
+        - ~~recursion~~
             - ~~sans parametre~~
-            - avec parametre
-        - retourne
-        - sans parametre
-        - avec parametre
-            - le passage des parametres se fait par valeur
-        - avec variable locale
-        - affectation de fonction dans une fonction
-        - remettre a 0 les valeurs des variables declarées
+            - ~~avec parametre~~
+            - ~~avec var locale~~
+        - ~~le passage des parametres se fait par valeur~~
+        - ~~avec variable locale~~
+        - ~~affectation de fonction dans une fonction~~
+        - ~~remettre a 0 les valeurs des variables declarées~~
+        
+   - faire les verification de fonction
         
    - Tableau
         - initialisé à 0

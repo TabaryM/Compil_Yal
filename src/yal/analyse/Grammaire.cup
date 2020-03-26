@@ -59,8 +59,8 @@ parser code {:
    
 /* Terminals (tokens returned by the scanner).  */
 
-terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, LIRE, ENTIER, EGAL, ADDITION, SOUSTRACTION, DIVISION, MULTIPLICATION, SUPERIEURA, INFERIEURA, OULOGIQUE, ETLOGIQUE, EGALITE, DIFFERENT, INVERSE, CONDITION, BOUCLE, FONCTION, RETOURNE, VIRGULE;
-terminal String    IDF, CSTENTIERE, PAR_OUVRANTE, PAR_FERMANTE, FINSI, FINTANTQUE, ALORS, SINON, REPETER ;
+terminal Symbol    PROGRAMME, DEBUT, FIN, POINTVIRGULE, ECRIRE, LIRE, ENTIER, EGAL, ADDITION, SOUSTRACTION, DIVISION, MULTIPLICATION, SUPERIEURA, INFERIEURA, OULOGIQUE, ETLOGIQUE, EGALITE, DIFFERENT, INVERSE, CONDITION, BOUCLE, FONCTION, RETOURNE, VIRGULE, POINT, LONGUEUR;
+terminal String    IDF, CSTENTIERE, PAR_OUVRANTE, PAR_FERMANTE, FINSI, FINTANTQUE, ALORS, SINON, REPETER, CRO_OUVRANT, CRO_FERMANT ;
 
 /* Non terminals used in the grammar section.  */
 
@@ -133,6 +133,14 @@ INST    ::=     ECRIRE EXP:e POINTVIRGULE
 
 EXP    ::=     PAR_OUVRANTE EXP:e PAR_FERMANTE
                 {: RESULT = e; :}
+        |
+                IDF:i CRO_OUVRANT EXP:e CRO_FERMANT
+                {: RESULT = null; //TODO à implémenter : affectation dans un tableau / lecture de valeur (à index EXP)
+                :}
+        |
+                IDF:i POINT LONGUEUR
+                {: RESULT = null; //TODO à implémenter : donne la longueur d'un tableau ( ne doit pas fonctionner que pour type tableau )
+                :}
         |
                 EXP:g OULOGIQUE:o EXP:d
                 {: RESULT = new Binaire(g, new OuLogique(), d, dleft + 1); :}
@@ -225,6 +233,10 @@ DECL    ::=     FONCTION IDF:i PAR_OUVRANTE PAR_FERMANTE DEBUT LINST:li FIN
         |
                 ENTIER IDF:e POINTVIRGULE
                 {: RESULT = new DeclarationEntier(e, eleft + 1);
+                :}
+        |
+                ENTIER CRO_OUVRANT EXP:e CRO_FERMANT IDF:i POINTVIRGULE
+                {: RESULT = null; //TODO à implementer : déclaration de tableau
                 :}
         ;
 
