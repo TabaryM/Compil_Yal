@@ -40,7 +40,7 @@ public class TableLocale implements Iterable<Entree> {
     public Symbole identifier(Entree e){
         Symbole res;
         res = table.get(e);
-        if(res == null){
+        if(res == null && tableEnglobante != null){
             res = tableEnglobante.identifier(e);
         }
         return res;
