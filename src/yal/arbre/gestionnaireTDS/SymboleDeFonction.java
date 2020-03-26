@@ -1,13 +1,7 @@
 package yal.arbre.gestionnaireTDS;
 
-import yal.arbre.ArbreAbstrait;
 import yal.arbre.BlocDInstructions;
-import yal.arbre.declaration.DeclarationEntier;
-import yal.arbre.expressions.Entier;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import yal.arbre.expressions.variable.declaration.DeclarationEntier;
 
 public class SymboleDeFonction extends Symbole{
     private int nbParametres;

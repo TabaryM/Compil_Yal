@@ -1,4 +1,4 @@
-package yal.arbre.declaration;
+package yal.arbre.expressions.variable.declaration;
 
 import yal.arbre.ArbreAbstrait;
 

@@ -1,5 +1,6 @@
-package yal.arbre.expressions;
+package yal.arbre.expressions.variable;
 
+import yal.arbre.expressions.Idf;
 import yal.arbre.gestionnaireTDS.*;
 import yal.exceptions.AnalyseSemantiqueException;
 

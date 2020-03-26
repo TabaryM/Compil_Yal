@@ -1,6 +1,6 @@
 package yal.arbre;
 
-import yal.arbre.declaration.Declaration;
+import yal.arbre.expressions.variable.declaration.Declaration;
 import yal.arbre.gestionnaireTDS.*;
 import yal.exceptions.AnalyseSemantiqueException;
 
@@ -29,6 +29,9 @@ public class Programme extends ArbreAbstrait {
 
     @Override
     public void verifier() {
+        for(Declaration declaration : declarations){
+            declaration.verifier();
+        }
         instructions.verifier();
 
         this.contientRetourne();

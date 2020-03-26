@@ -1,12 +1,13 @@
-package yal.arbre.expressions;
+package yal.arbre.expressions.variable;
 
+import yal.arbre.expressions.Expression;
+import yal.arbre.expressions.Idf;
 import yal.arbre.gestionnaireTDS.*;
 import yal.exceptions.AnalyseSemantiqueException;
 
 import java.util.ArrayList;
 
-public class Fonction extends Expression {
-    private String idf;
+public class Fonction extends Idf {
     private ArrayList<Expression> parametresEffectifs;
 
     /**
@@ -24,8 +25,7 @@ public class Fonction extends Expression {
      * @param numLig numéro de la ligne à laquelle la fonction est appelée
      */
     public Fonction(String idf, ArrayList<Expression> parametresEffectifs, int numLig) {
-        super(numLig);
-        this.idf = idf;
+        super(idf, numLig);
         this.parametresEffectifs = parametresEffectifs;
     }
 
@@ -44,17 +44,17 @@ public class Fonction extends Expression {
     @Override
     public void verifier() {
         // On vérifie que la fonction n'a pas déjà été déclarée avec le même nombre de paramètres
-        Entree entreeTmp = new Entree("fonction_"+idf, parametresEffectifs.size());
+        Entree entreeTmp = new Entree("fonction_"+getIdf(), parametresEffectifs.size());
         Symbole symboleDeFonction = TDS.getInstance().identifier(entreeTmp);
         if(symboleDeFonction == null){
-            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Aucune fonction "+idf+" n'attend "+parametresEffectifs.size()+" parametres.");
+            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Aucune fonction "+getIdf()+" n'attend "+parametresEffectifs.size()+" parametres.");
             ErreurSemantique.getInstance().ajouter(exception);
         }
         Expression parametre;
         for(int i = 0; i < parametresEffectifs.size(); i++){
             parametre = parametresEffectifs.get(i);
             if(!parametre.getType().equals("entier")){
-                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Fonction "+idf+" : type du paramètre "+i+" incorrecte. Attendu : entier\tReçu : "+parametre.getType());
+                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Fonction "+getIdf()+" : type du paramètre "+i+" incorrecte. Attendu : entier\tReçu : "+parametre.getType());
                 ErreurSemantique.getInstance().ajouter(exception);
             }
         }
@@ -85,7 +85,7 @@ public class Fonction extends Expression {
 
         stringBuilder.append("\tjal ");
         stringBuilder.append("fonction_");
-        stringBuilder.append(idf);
+        stringBuilder.append(getIdf());
         stringBuilder.append("_params_");
         stringBuilder.append(parametresEffectifs.size());
         stringBuilder.append("\n");
@@ -106,6 +106,6 @@ public class Fonction extends Expression {
 
     @Override
     public String toString() {
-        return idf;
+        return getIdf();
     }
 }
