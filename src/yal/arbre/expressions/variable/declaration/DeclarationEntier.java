@@ -27,8 +27,11 @@ public class DeclarationEntier extends Declaration {
     public String toMIPS() {
         SymboleDeVariable symboleDeVariable = ((SymboleDeVariable) TDS.getInstance().identifier(new Entree("entier_"+getIdf())));
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("\tli, $v0, 0\n");
-        stringBuilder.append("\tsw, $v0, ");
+        stringBuilder.append("\t# Déclaration de la variable ");
+        stringBuilder.append(getIdf());
+        stringBuilder.append("\n");
+        stringBuilder.append("\tli $v0, 0\n");
+        stringBuilder.append("\tsw $v0, ");
         if(symboleDeVariable.getNumBloc() == TDS.getInstance().getRacine().getNumBloc()){
             stringBuilder.append(symboleDeVariable.getDepl());
             stringBuilder.append("($s7)");

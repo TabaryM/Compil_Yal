@@ -130,6 +130,10 @@ INST    ::=     ECRIRE EXP:e POINTVIRGULE
         |
                 RETOURNE EXP:e POINTVIRGULE
                 {: RESULT = new Retourne(e, eleft + 1); :}
+        |
+                IDF:i CRO_OUVRANT EXP:indice CRO_FERMANT EGAL EXP:e POINTVIRGULE
+                {: RESULT = new AffectationTableau(e, indice, i, ileft +1); //TODO à implémenter : affectation dans un tableau / lecture de valeur (à index EXP)
+                :}
         ;
 
 EXP    ::=     PAR_OUVRANTE EXP:e PAR_FERMANTE

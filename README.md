@@ -78,13 +78,13 @@
    - faire les verification de fonction
         
    - Tableau
-        - initialisé à 0
-        - indice commence à 0
+        - ~~initialisé à 0~~
+        - ~~indice commence à 0~~
         - valeur de [ EXP ] strictement positive
         - [ EXP ] doit etre de type entier
         - [ EXP ] doit etre dans les bornes du tableau
-        - declarer: entier [ EXP ] idf;
-            - si le tableau est declaré dans le programme principal EXP doit etre une constante
+        - ~~declarer: entier [ EXP ] idf~~;
+            - ~~si le tableau est declaré dans le programme principal EXP doit etre une constante~~
         - affecter: idf [ EXP ] = EXP;
         - recuperer la longueur : idf.longueur ( retourne un entier )
         - appel : idf [ EXP ] EXP

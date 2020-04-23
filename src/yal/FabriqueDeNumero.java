@@ -18,5 +18,4 @@ public final class FabriqueDeNumero {
     public int getNumeroLabelCondition() {
         return numeroLabelCondition++;
     }
-
 }

@@ -16,7 +16,7 @@ public class TableauEntier extends Idf {
 
     @Override
     public String getType() {
-        return null;
+        return "tableau";
     }
 
     @Override

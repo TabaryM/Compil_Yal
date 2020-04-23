@@ -1,9 +1,11 @@
 package yal.arbre;
 
 import yal.arbre.expressions.variable.declaration.Declaration;
+import yal.arbre.expressions.variable.declaration.DeclarationTableauEntier;
 import yal.arbre.gestionnaireTDS.*;
 import yal.exceptions.AnalyseSemantiqueException;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Objects;
@@ -49,12 +51,16 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append(TDS.getInstance().getDepl());
         stringBuilder.append("\n");
 
-        stringBuilder.append("\t# Récupération de l'adresse de début du tas\n");
-        stringBuilder.append("\tmove $s6, $gp\n");
-
         // Initialisation des variables à 0
         for(Declaration declaration : declarations){
             stringBuilder.append(declaration.toMIPS());
+        }
+
+        // On fait la place pour les corps des tableaux
+        for(Declaration declaration : declarations){
+            if(declaration.getClass().getSimpleName().equals("DeclarationTableauEntier")){
+                stringBuilder.append(((DeclarationTableauEntier)declaration).affecterPointeur());
+            }
         }
 
         // Création de l'arbre abstrait

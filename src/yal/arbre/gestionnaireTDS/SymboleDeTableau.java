@@ -10,4 +10,9 @@ public class SymboleDeTableau extends SymboleDeVariable {
     public SymboleDeTableau(int depl) {
         super(depl, "tableau");
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

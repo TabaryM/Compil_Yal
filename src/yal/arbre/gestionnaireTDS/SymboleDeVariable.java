@@ -1,6 +1,6 @@
 package yal.arbre.gestionnaireTDS;
 
-public class SymboleDeVariable extends Symbole {
+public abstract class SymboleDeVariable extends Symbole {
     private int depl;
 
     /**
@@ -23,15 +23,5 @@ public class SymboleDeVariable extends Symbole {
 
     public void setDepl(int depl) {
         this.depl = depl;
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("SymboleDeVariable{");
-        sb.append("depl=").append(depl);
-        sb.append(",type=entier");
-        sb.append(",numBloc=").append(getNumBloc());
-        sb.append('}');
-        return sb.toString();
     }
 }
