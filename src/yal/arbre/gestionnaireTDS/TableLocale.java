@@ -27,7 +27,7 @@ public class TableLocale implements Iterable<Entree> {
         if(table.containsKey(e)){
             throw new AjoutTDSException("Double déclaration de la"+s.getType()+e.getIdf());
         }
-        if(s.getType().equals("entier")){
+        if(s.getType().equals("entier") || s.getType().equals("tableau")){
             cptDepl -= 4;
         }
         table.put(e,s);

@@ -6,6 +6,7 @@ import yal.exceptions.AnalyseSemantiqueException;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Objects;
 
 public class Programme extends ArbreAbstrait {
     private BlocDInstructions instructions;
@@ -13,11 +14,7 @@ public class Programme extends ArbreAbstrait {
     public Programme(ArrayList<Declaration> declarations, ArbreAbstrait a, int n) {
         super(n);
         instructions = (BlocDInstructions) a;
-        if(declarations == null){
-            this.declarations = new ArrayList<>();
-        } else {
-            this.declarations = declarations;
-        }
+        this.declarations = declarations;
         for (Declaration declaration : declarations){
             declaration.ajouterTDS();
         }
@@ -50,7 +47,10 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append("\tmove $s7, $sp\n");
         stringBuilder.append("\tadd $sp, $sp, ");
         stringBuilder.append(TDS.getInstance().getDepl());
-        stringBuilder.append("\n\n");
+        stringBuilder.append("\n");
+
+        stringBuilder.append("\t# Récupération de l'adresse de début du tas\n");
+        stringBuilder.append("\tmove $s6, $gp\n");
 
         // Initialisation des variables à 0
         for(Declaration declaration : declarations){
