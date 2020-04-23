@@ -67,7 +67,13 @@ public class DeclarationFonction extends Declaration {
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "La fonction "+getIdf()+" ne contient aucune instruction Retourne");
             ErreurSemantique.getInstance().ajouter(exception);
         }
+        Entree entree = new Entree("fonction_"+getIdf(), parametres.size());
+        SymboleDeFonction symboleDeFonction = (SymboleDeFonction)TDS.getInstance().identifier(entree);
+        // Entrer dans le bloc
+        TDS.getInstance().entreeBloc(symboleDeFonction.getNumBloc());
         instructions.verifier();
+        // Sortir du bloc
+        TDS.getInstance().sortieBloc();
     }
 
     @Override
@@ -86,11 +92,11 @@ public class DeclarationFonction extends Declaration {
         int numeroBloc = TDS.getInstance().entreeBloc();
         TDS.getInstance().getTableCourrante().setNumBloc(numeroBloc);
         symboleDeFonction.setNumBloc(numeroBloc);
-        for(DeclarationEntier entier : parametres){
+        for(DeclarationEntier declarationEntier : parametres){
             try {
-                entier.ajouterTDS();
+                declarationEntier.ajouterTDS();
             } catch (Exception e) {
-                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration du parametre " +entier.getIdf()+" dans la fonction "+getIdf());
+                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration du parametre " +declarationEntier.getIdf()+" dans la fonction "+getIdf());
                 ErreurSemantique.getInstance().ajouter(exception);
             }
         }

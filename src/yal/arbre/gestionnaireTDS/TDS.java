@@ -63,24 +63,6 @@ public class TDS implements Iterable<TableLocale> {
      */
     public void ajouter(Entree e, Symbole s) throws AjoutTDSException {
         tableCourante.ajouter(e, s);
-        /*
-        // Si la table contient déjà l'entrée actuelle
-        if(table.containsKey(e)){
-            if(s.getType().equals("fonction")){
-                Symbole symboleDeFonction = table.get(e);
-                if(((SymboleDeFonction)symboleDeFonction).getNbParametres() == ((SymboleDeFonction) s).getNbParametres()){
-                    throw new Exception("Double déclaration de la fonction"+e.getIdf()+" avec "+((SymboleDeFonction) s).getNbParametres()+" parametres");
-                }
-            } else {
-                throw new Exception("Double déclaration de la "+s.getType()+e.getIdf());
-            }
-        } else {
-            table.put(e, s);
-            if(s.getType().equals("entier")){
-                cpt -= 4;       // Pour le moment on fait que ça,  car il n'y a que des entiers
-            }
-        }
-        */
     }
 
     /**
