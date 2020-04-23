@@ -8,8 +8,8 @@ public class SymboleDeVariable extends Symbole {
      *
      * @param depl déplacement par rapport au sommet de la pile initial
      */
-    public SymboleDeVariable(int depl) {
-        super("entier", TDS.getInstance().getNumBloc());
+    public SymboleDeVariable(int depl, String type) {
+        super(type, TDS.getInstance().getNumBloc());
         this.depl = depl;
     }
 

@@ -102,7 +102,7 @@ public class DeclarationFonction extends Declaration {
         }
         for(Declaration entier : variablesLocales){
             try {
-                if(!entier.getClass().getSimpleName().equals("DeclarationEntier")){
+                if(entier.getClass().getSimpleName().equals("DeclarationFonction")){
                     AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Dans la fonction "+getIdf()+" un parametre ne peut pas être une fonction");
                     ErreurSemantique.getInstance().ajouter(exception);
                 } else {

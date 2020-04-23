@@ -11,7 +11,7 @@ public class DeclarationEntier extends Declaration {
     @Override
     public void ajouterTDS() {
         try {
-            TDS.getInstance().ajouter(new Entree("entier_"+getIdf()), new SymboleDeVariable(TDS.getInstance().getDepl()));
+            TDS.getInstance().ajouter(new Entree("entier_"+getIdf()), new SymboleDEntier(TDS.getInstance().getDepl()));
         } catch (Exception e) {
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Double déclaration de la variable "+getIdf());
             ErreurSemantique.getInstance().ajouter(exception);
