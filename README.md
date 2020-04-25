@@ -85,10 +85,10 @@
         - [ EXP ] doit etre dans les bornes du tableau
         - ~~declarer: entier [ EXP ] idf~~;
             - ~~si le tableau est declaré dans le programme principal EXP doit etre une constante~~
+            - si le tableau est declaré dans le programme principal EXP doit etre une expression a valeur constante
         - affecter: idf [ EXP ] = EXP;
         - recuperer la longueur : idf.longueur ( retourne un entier )
         - appel : idf [ EXP ] EXP
         - deux types tableaux concordent SI ils ont la meme longueur ( affectation )
         - deux types tableaux sont égaux si ils ont la meme taille et les memes elements
-        
         

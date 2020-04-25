@@ -96,7 +96,7 @@ public class DeclarationTableauEntier extends Declaration {
         // On initialise toutes les cases du tableau
         int numLabel = FabriqueDeNumero.getInstance().getNumeroLabelCondition();
         stringBuilder.append("\tmove $t7, $v0\n");
-        stringBuilder.append("tantQue");
+        stringBuilder.append("\ntantQue");
         stringBuilder.append(numLabel);
         stringBuilder.append(":\n");
         // On se permet d'utiliser le registre $t7
@@ -109,8 +109,9 @@ public class DeclarationTableauEntier extends Declaration {
         stringBuilder.append("\tsw $v0, ($sp)\n");
         stringBuilder.append("\taddi $sp, $sp, -4\n");
         // On recommence
-        stringBuilder.append("j tantQue");
+        stringBuilder.append("\tj tantQue");
         stringBuilder.append(numLabel);
+        stringBuilder.append("\n");
         // label de fin
         stringBuilder.append("\nfinTantQue");
         stringBuilder.append(numLabel);
