@@ -89,6 +89,7 @@
         - affecter: idf [ EXP ] = EXP;
         - recuperer la longueur : idf.longueur ( retourne un entier )
         - appel : idf [ EXP ] EXP
+            - appel d'un tab déclaré dans le PP depuis une fonction
         - deux types tableaux concordent SI ils ont la meme longueur ( affectation )
         - deux types tableaux sont égaux si ils ont la meme taille et les memes elements
         

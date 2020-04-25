@@ -17,21 +17,20 @@ public class SymboleDeFonction extends Symbole{
         return nbParametres;
     }
 
-    public String toMIPS(){
-        TDS.getInstance().entreeBloc(getNumBloc());
-        StringBuilder stringBuilder = new StringBuilder();
+    public void enteteToMIPS(StringBuilder stringBuilder){
         // On stocke l'adresse à laquelle retourner une fois la fonction finie
         stringBuilder.append("\tsw $ra, 0($sp)\t# On stocke l'adresse de retour de la fonction\n\tadd $sp, $sp, -4\n");
         // Chainage dynamique
         stringBuilder.append("\tsw $s2, 0($sp)\t# On stocke l'adresse de la base des variables locales\n\tadd $sp, $sp, -4\n");
+    }
+
+    public void allocationMemoireVarLocalFonctionToMIPS(StringBuilder stringBuilder){
         // empilage des variables locales
         int place = TDS.getInstance().getTableCourrante().getCptDepl();
         stringBuilder.append("\tadd $sp, $sp, ");
         stringBuilder.append(place);
         stringBuilder.append("\t# Emplacement mémoire pour les variables locales\n");
-
-        stringBuilder.append("\t# Initialisation des variables localas à 0\n");
-        DeclarationEntier declarationEntier;
+        stringBuilder.append("\t# Initialisation des variables locales à 0\n");
         for(Entree entree : TDS.getInstance().getTableCourrante()){
             SymboleDeVariable symboleDeVariable = ((SymboleDeVariable) TDS.getInstance().identifier(entree));
             stringBuilder.append("\tli, $v0, 0\n");
@@ -50,12 +49,11 @@ public class SymboleDeFonction extends Symbole{
             stringBuilder.append(-((nbParametres-i)*4)-4);
             stringBuilder.append("($s2)\t#On récupère la valeur du paramètre effectif\n");
         }
+    }
 
+    public void instructionFonctionToMIPS(StringBuilder stringBuilder){
         // Liste d'instructions
         stringBuilder.append(instructions.toMIPS());
-        TDS.getInstance().sortieBloc();
-
-        return stringBuilder.toString();
     }
 
     @Override

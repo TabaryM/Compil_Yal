@@ -24,4 +24,8 @@ public abstract class SymboleDeVariable extends Symbole {
     public void setDepl(int depl) {
         this.depl = depl;
     }
+
+    // TODO : getdeplacement en string par rapport à la où on est
+
+    public abstract void depilageToMIPS(StringBuilder stringBuilder);
 }

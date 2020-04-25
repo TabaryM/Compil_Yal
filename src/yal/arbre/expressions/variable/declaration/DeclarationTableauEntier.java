@@ -10,13 +10,13 @@ public class DeclarationTableauEntier extends Declaration {
     private Expression tailleMaxDuTableau;
 
     public DeclarationTableauEntier(String idf, Expression tailleMaxDuTableau, int noLigne) {
-        super(idf, noLigne);
+        super("tableau_"+idf, noLigne);
         this.tailleMaxDuTableau = tailleMaxDuTableau;
     }
 
     @Override
     public void ajouterTDS() {
-        Entree entree = new Entree("tableau_"+getIdf());
+        Entree entree = new Entree(getIdf());
         SymboleDeTableau symboleDeTableau;
         symboleDeTableau = new SymboleDeTableau(TDS.getInstance().getDepl());
         try {
@@ -25,6 +25,16 @@ public class DeclarationTableauEntier extends Declaration {
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Double déclaration du tableau : "+getIdf());
             ErreurSemantique.getInstance().ajouter(exception);
         }
+    }
+
+    @Override
+    public void initialisationDuCorpsDeLaVariable(StringBuilder stringBuilder) {
+        stringBuilder.append(affecterPointeur());
+    }
+
+    @Override
+    public void depilageToMIPS(StringBuilder stringBuilder) {
+        System.out.println("AAAAAAAAAAAAAAAA");
     }
 
     @Override
@@ -44,7 +54,7 @@ public class DeclarationTableauEntier extends Declaration {
 
     @Override
     public String toMIPS() {
-        SymboleDeVariable symboleDeVariable = ((SymboleDeVariable) TDS.getInstance().identifier(new Entree("tableau_"+getIdf())));
+        SymboleDeVariable symboleDeVariable = ((SymboleDeVariable) TDS.getInstance().identifier(new Entree(getIdf())));
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("\t# Déclaration du tableau ");
         stringBuilder.append(getIdf());
@@ -66,7 +76,7 @@ public class DeclarationTableauEntier extends Declaration {
     public String affecterPointeur(){
         StringBuilder stringBuilder = new StringBuilder();
         // On stock dans la case mémoire l'adresse du début du tableau. (le sommet de pile actuel)
-        SymboleDeVariable symboleDeVariable = ((SymboleDeVariable) TDS.getInstance().identifier(new Entree("tableau_"+getIdf())));
+        SymboleDeVariable symboleDeVariable = ((SymboleDeVariable) TDS.getInstance().identifier(new Entree(getIdf())));
         stringBuilder.append("\tmove $v0, $sp\n\tsw $v0, ");
         if(symboleDeVariable.getNumBloc() == TDS.getInstance().getRacine().getNumBloc()){
             stringBuilder.append(symboleDeVariable.getDepl());
@@ -105,7 +115,7 @@ public class DeclarationTableauEntier extends Declaration {
         stringBuilder.append(numLabel);
         stringBuilder.append("\t#Si on atteint la fin de la boucle on sort\n");
         stringBuilder.append("\t#Sinon on ajoute une place de plus dans la pile\n");
-        stringBuilder.append("\tli $v0, 0\n");
+        stringBuilder.append("\tli $v0, 1\n");
         stringBuilder.append("\tsw $v0, ($sp)\n");
         stringBuilder.append("\taddi $sp, $sp, -4\n");
         // On recommence

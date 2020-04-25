@@ -1,18 +1,16 @@
 package yal.arbre;
 
 import yal.arbre.expressions.variable.declaration.Declaration;
-import yal.arbre.expressions.variable.declaration.DeclarationTableauEntier;
 import yal.arbre.gestionnaireTDS.*;
 import yal.exceptions.AnalyseSemantiqueException;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Objects;
 
 public class Programme extends ArbreAbstrait {
     private BlocDInstructions instructions;
     private ArrayList<Declaration> declarations;
+
     public Programme(ArrayList<Declaration> declarations, ArbreAbstrait a, int n) {
         super(n);
         instructions = (BlocDInstructions) a;
@@ -56,13 +54,6 @@ public class Programme extends ArbreAbstrait {
             stringBuilder.append(declaration.toMIPS());
         }
 
-        // On fait la place pour les corps des tableaux
-        for(Declaration declaration : declarations){
-            if(declaration.getClass().getSimpleName().equals("DeclarationTableauEntier")){
-                stringBuilder.append(((DeclarationTableauEntier)declaration).affecterPointeur());
-            }
-        }
-
         // Création de l'arbre abstrait
         stringBuilder.append(instructions.toMIPS());
 
@@ -72,21 +63,39 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append("\tsyscall\n");
 
         for(Entree entree : TDS.getInstance().getRacine()){
-            Symbole symbole = TDS.getInstance().getRacine().identifier(entree);
-            // Si l'entree regardé correspond à une fonction
-            if(symbole.getType().equals("fonction")){
-                // Declaration de l'etiquette de la fonction
-                stringBuilder.append("\n");
-                stringBuilder.append(entree.getIdf());
-                stringBuilder.append("_params_");
-                stringBuilder.append(entree.getNbParam());
-                stringBuilder.append(":\n");
+            // On ajoute l'initialisation de la mémoire des variables
+            for(Declaration declaration : declarations){
+                if(declaration.getIdf().equals(entree.getIdf())){
+                    Symbole symbole = TDS.getInstance().getRacine().identifier(entree);
+                    // Si l'entree regardé correspond à une fonction
+                    if(symbole.getType().equals("fonction")){
+                        // On utilise la table des symboles de la fonction
+                        TDS.getInstance().entreeBloc(symbole.getNumBloc());
+                        // Declaration de l'etiquette de la fonction
+                        stringBuilder.append("\n");
+                        stringBuilder.append(entree.getIdf());
+                        stringBuilder.append("_params_");
+                        stringBuilder.append(entree.getNbParam());
+                        stringBuilder.append(":\n");
 
-                // Debut du bloc + corps de fonction
-                stringBuilder.append(((SymboleDeFonction) symbole).toMIPS());
-                // Retour au programme principal Normlement après l'instruction retourne
-                // Si aucune instruction retourne, une erreur d'execution est déclanchée
-                finFonction(stringBuilder);
+                        // Création de l'entete de la fonction (adresse de retour et merdier en tout genre)
+                        ((SymboleDeFonction) symbole).enteteToMIPS(stringBuilder);
+
+                        // Debut du bloc + corps de fonction
+                        ((SymboleDeFonction) symbole).allocationMemoireVarLocalFonctionToMIPS(stringBuilder);
+
+                        // On déclare la mémoire pour les variables de la fonction
+                        declaration.initialisationDuCorpsDeLaVariable(stringBuilder);
+
+                        // Ajout des instructions de la fonction
+                        ((SymboleDeFonction) symbole).instructionFonctionToMIPS(stringBuilder);
+
+                        // Retour au programme principal Normlement après l'instruction retourne
+                        // Si aucune instruction retourne, une erreur d'execution est déclanchée
+                        finFonction(stringBuilder);
+                        TDS.getInstance().sortieBloc();
+                    }
+                }
             }
         }
 

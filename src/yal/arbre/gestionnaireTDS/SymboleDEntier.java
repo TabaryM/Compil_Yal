@@ -9,4 +9,9 @@ public class SymboleDEntier extends SymboleDeVariable{
     public SymboleDEntier(int depl) {
         super(depl, "entier");
     }
+
+    @Override
+    public void depilageToMIPS(StringBuilder stringBuilder) {
+        stringBuilder.append("\taddi $sp, $sp, 4\n");
+    }
 }

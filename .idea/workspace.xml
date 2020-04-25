@@ -7,11 +7,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b9335fe-b57b-4762-b494-42646bacb547" name="Default Changelist" comment="Renommage d'un package">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/build.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/Fonction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/Fonction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/gestionnaireTDS/Entree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/gestionnaireTDS/Entree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/Programme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/Programme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/Declaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/Declaration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/DeclarationEntier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/DeclarationEntier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/DeclarationFonction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/DeclarationFonction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/DeclarationTableauEntier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/DeclarationTableauEntier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/gestionnaireTDS/SymboleDEntier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/gestionnaireTDS/SymboleDEntier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/gestionnaireTDS/SymboleDeFonction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/gestionnaireTDS/SymboleDeFonction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/gestionnaireTDS/SymboleDeTableau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/gestionnaireTDS/SymboleDeTableau.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/gestionnaireTDS/SymboleDeVariable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/gestionnaireTDS/SymboleDeVariable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/instructions/Retourne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/instructions/Retourne.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,13 +46,6 @@
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IgnoredFileRootStore">
-    <option name="generatedRoots">
-      <set>
-        <option value="D:\Fac\S6\Compilation\Compilateur_Yal\.idea" />
-      </set>
-    </option>
-  </component>
   <component name="MavenRunner">
     <option name="jreName" value="#JAVA_INTERNAL" />
   </component>
@@ -51,7 +53,6 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -67,6 +68,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -82,23 +84,23 @@
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/yal" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="yal.arbre.expressions" />
+      <recent name="yal.arbre.declaration" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="yal.arbre.expressions" />
       <recent name="yal.arbre.declaration" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="yal.arbre.expressions" />
-      <recent name="yal.arbre.declaration" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/yal" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Test">
     <configuration name="Test" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="yal.Yal" />
       <module name="Compilateur_Yal" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;$PROJECT_DIR$/../test_files/test.yal&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;D:\Fac\S6\Compilation\test_files\compile\yal5\test\[yal5]test.yal&quot;" />
       <option name="VM_PARAMETERS" value="-ea" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -207,18 +209,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -256,147 +246,28 @@
       <workItem from="1582993220910" duration="3555000" />
       <workItem from="1583061835153" duration="820000" />
       <workItem from="1583084589336" duration="96000" />
-      <workItem from="1583084750318" duration="7142000" />
-    </task>
-    <task id="LOCAL-00001" summary="Mise en place initiale">
-      <created>1579096618634</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1579096618634</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Production d'un fichier .mips à partir d'un fichier .yal simple">
-      <created>1579097723206</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1579097723206</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Prise en charge du retour a la ligne avec la fonction écrire">
-      <created>1579185294179</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1579185294179</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Prise en charge des commentaires (//)">
-      <created>1579188819257</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1579188819257</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Ajout du squelette de la TDS">
-      <created>1579782539111</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1579782539111</updated>
-    </task>
-    <task id="LOCAL-00006" summary="P-E m'a demandé de commit">
-      <created>1579784415909</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1579784415909</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Verification de la double déclaration valide">
-      <created>1579793588705</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1579793588705</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Debut de la création du toMIPS">
-      <created>1579795566968</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1579795566968</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Affectation d'une constante à une variable;">
-      <created>1579798026501</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1579798026501</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Quasi tout de Yal1, sauf Lecture et les vérifications">
-      <created>1579964689916</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1579964689916</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Quasi tout de Yal1, sauf Lecture et les vérifications">
-      <created>1579965770352</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1579965770352</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Vérification de l'existence des variables">
-      <created>1579967034908</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1579967034908</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Update de README.md">
-      <created>1579967099135</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1579967099135</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Lecture d'entier depuis l'entrée standard">
-      <created>1579968811626</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1579968811626</updated>
-    </task>
-    <task id="LOCAL-00015" summary="retrait d'import JUnit">
-      <created>1580214813184</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1580214813184</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Ajout de l'avaluation d'expression binaires">
-      <created>1580398461746</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1580398461746</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Ajout de l'avaluation d'expression binaires">
-      <created>1580996873502</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1580996873502</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Vérification des opérandes et opérateurs d'expressions">
-      <created>1581003535793</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1581003535793</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Affiche l'évaluation du booléen plutôt que sa valeur enregistrée">
-      <created>1581006780649</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1581006780650</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Mise à jour du README">
-      <created>1581007092720</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1581007092720</updated>
+      <workItem from="1583084750318" duration="7908000" />
+      <workItem from="1583140678343" duration="8942000" />
+      <workItem from="1583183390466" duration="2697000" />
+      <workItem from="1583220086929" duration="13000" />
+      <workItem from="1583238378495" duration="1751000" />
+      <workItem from="1583259502877" duration="989000" />
+      <workItem from="1583746016602" duration="628000" />
+      <workItem from="1583747097375" duration="601000" />
+      <workItem from="1583757307009" duration="35000" />
+      <workItem from="1584197095047" duration="11233000" />
+      <workItem from="1584276589274" duration="8559000" />
+      <workItem from="1584368340047" duration="367000" />
+      <workItem from="1584459424341" duration="8463000" />
+      <workItem from="1584549062089" duration="2978000" />
+      <workItem from="1584553494125" duration="2668000" />
+      <workItem from="1584611356484" duration="32936000" />
+      <workItem from="1585142826153" duration="21319000" />
+      <workItem from="1585239374507" duration="9471000" />
+      <workItem from="1587486792421" duration="1006000" />
+      <workItem from="1587654878207" duration="10519000" />
+      <workItem from="1587732265596" duration="612000" />
+      <workItem from="1587814525421" duration="8078000" />
     </task>
     <task id="LOCAL-00021" summary="Ajoute des parenthèses, mais il y a encore un problème de priorité si on demande un truc du genre : &#10;ecrire 1 + 2 == 2 + 1;">
       <created>1581009017403</created>
@@ -538,11 +409,214 @@
       <option name="project" value="LOCAL" />
       <updated>1583097022522</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Verification du contenu d'une fonction&#10;Et un beau toString pour les Entrees de la TDS">
+      <created>1583097957254</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1583097957254</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Ajout de la verification recursive de l'existence d'une instruction retourne dans une fonction">
+      <created>1583144980890</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1583144980890</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Verification des retourne aux bons endroits correctement">
+      <created>1583180194469</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1583180194469</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Unification de la déclaration des entreées des entier est fonctions dans la TDS">
+      <created>1583184312226</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1583184312226</updated>
+    </task>
+    <task id="LOCAL-00045" summary="touvabien">
+      <created>1583186070231</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1583186070231</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Merci le dépot de tests (vérification de retour booléen)">
+      <created>1583238745166</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1583238745166</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Reorganisation + Erreur execution si fonction sans retour atteint">
+      <created>1583240103035</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1583240103035</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Compilation de fonction avec parametres ok (no verif)">
+      <created>1584211265593</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1584211265593</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Method vs Apes where made">
+      <created>1584280461407</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1584280461407</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Correction des vérifications mal faites à l'ajout des tds locales des fonctions">
+      <created>1584281720934</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1584281720934</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Appel de fonction avec surcharge dans le nb de params valide. On peut peut toujours pas utiliser les parametres ou les variables locales">
+      <created>1584283812564</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1584283812564</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Ch'ais pas">
+      <created>1584285148337</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1584285148337</updated>
+    </task>
+    <task id="LOCAL-00053" summary="NE COMPILE PAS">
+      <created>1584464602051</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1584464602051</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Compile mieux mais fonction pas bien">
+      <created>1584469192906</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1584469192906</updated>
+    </task>
+    <task id="LOCAL-00055" summary="NullPointerSesMorts">
+      <created>1584629736377</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1584629736377</updated>
+    </task>
+    <task id="LOCAL-00056" summary="fix un truc trouvé par pe">
+      <created>1584630488678</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1584630488678</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Renommage d'un package">
+      <created>1584632941874</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1584632941874</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Rien ne va">
+      <created>1584643402349</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1584643402349</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Argh">
+      <created>1585152846226</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1585152846227</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Yal 4 fini !">
+      <created>1585165692308</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1585165692308</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Fix d'un NullPointerException">
+      <created>1585239763682</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1585239763683</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Ajout d'une erreur sémantique">
+      <created>1585240875673</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1585240875673</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Meilleur organisation du code&#10;Debut Yal5&#10;Ajout de vérification des déclarations">
+      <created>1585242049433</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1585242049433</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Ajout des classes yal pour les tableaux">
+      <created>1585242973322</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1585242973322</updated>
+    </task>
+    <task id="LOCAL-00065" summary="ch'ais pas">
+      <created>1587654950073</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1587654950074</updated>
+    </task>
+    <task id="LOCAL-00066" summary="On corrige un truc qui était pas sensé être faux">
+      <created>1587657086512</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1587657086512</updated>
+    </task>
+    <task id="LOCAL-00067" summary="On fait de la POO sa mère">
+      <created>1587657983191</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1587657983191</updated>
+    </task>
+    <task id="LOCAL-00068" summary="pwalala">
+      <created>1587665401547</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1587665401547</updated>
+    </task>
+    <task id="LOCAL-00069" summary="pimp my MIIIIIIPPPSSSS">
+      <created>1587815555365</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1587815555365</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.cup" />
@@ -558,47 +632,49 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update de README.md" />
-    <MESSAGE value="Lecture d'entier depuis l'entrée standard" />
-    <MESSAGE value="retrait d'import JUnit" />
-    <MESSAGE value="Ajout de l'avaluation d'expression binaires" />
-    <MESSAGE value="Vérification des opérandes et opérateurs d'expressions" />
-    <MESSAGE value="Affiche l'évaluation du booléen plutôt que sa valeur enregistrée" />
-    <MESSAGE value="Mise à jour du README" />
-    <MESSAGE value="Ajoute des parenthèses, mais il y a encore un problème de priorité si on demande un truc du genre : &#10;ecrire 1 + 2 == 2 + 1;" />
-    <MESSAGE value="Modification de l'ordre d'évaluation des opérations&#10;Ajout des classes Boucle et Condition" />
-    <MESSAGE value="null&#10;comme nous" />
-    <MESSAGE value="Modification de l'ordre d'évaluation des opérandes" />
-    <MESSAGE value="Modification de l'ordre d'évaluation des opérandes (pour de vrai)" />
-    <MESSAGE value="Majors de promo en compilation / 20" />
-    <MESSAGE value="Correction de l'évaluation de l'ordre des opérations selon les corrections de Mme Brigitte" />
-    <MESSAGE value="Maj README.md" />
-    <MESSAGE value="Correction parcequ'il y avait des trucs qui ne faisaient aucun sens en trop" />
-    <MESSAGE value="Création du singleton" />
-    <MESSAGE value="Utilisation du singleton pour la création des labels de conditions, de boucles, d'écriture MIPS" />
-    <MESSAGE value="Affiche un message cohérent d'erreur de division par zéro&#10;Supporte les programmes en une lignes" />
-    <MESSAGE value="Ajout de javadoc" />
-    <MESSAGE value="Ajout des classes pour la gestion de fonctions" />
-    <MESSAGE value="Creation de deux sous classes de Symbole pour distinguer les Variables des fonctions" />
-    <MESSAGE value="Debut de l'écriture de la Fonction.verifier" />
+    <MESSAGE value="touvabien" />
+    <MESSAGE value="Merci le dépot de tests (vérification de retour booléen)" />
+    <MESSAGE value="Reorganisation + Erreur execution si fonction sans retour atteint" />
+    <MESSAGE value="Compilation de fonction avec parametres ok (no verif)" />
+    <MESSAGE value="Method vs Apes where made" />
+    <MESSAGE value="Correction des vérifications mal faites à l'ajout des tds locales des fonctions" />
+    <MESSAGE value="Appel de fonction avec surcharge dans le nb de params valide. On peut peut toujours pas utiliser les parametres ou les variables locales" />
+    <MESSAGE value="Ch'ais pas" />
+    <MESSAGE value="NE COMPILE PAS" />
+    <MESSAGE value="Compile mieux mais fonction pas bien" />
+    <MESSAGE value="NullPointerSesMorts" />
+    <MESSAGE value="fix un truc trouvé par pe" />
     <MESSAGE value="Renommage d'un package" />
-    <MESSAGE value="Les fonctions fonctionnent :kappa:" />
-    <option name="LAST_COMMIT_MESSAGE" value="Les fonctions fonctionnent :kappa:" />
+    <MESSAGE value="Rien ne va" />
+    <MESSAGE value="Argh" />
+    <MESSAGE value="Yal 4 fini !" />
+    <MESSAGE value="Fix d'un NullPointerException" />
+    <MESSAGE value="Ajout d'une erreur sémantique" />
+    <MESSAGE value="Meilleur organisation du code&#10;Debut Yal5&#10;Ajout de vérification des déclarations" />
+    <MESSAGE value="Ajout des classes yal pour les tableaux" />
+    <MESSAGE value="ch'ais pas" />
+    <MESSAGE value="On corrige un truc qui était pas sensé être faux" />
+    <MESSAGE value="On fait de la POO sa mère" />
+    <MESSAGE value="pwalala" />
+    <MESSAGE value="pimp my MIIIIIIPPPSSSS" />
+    <option name="LAST_COMMIT_MESSAGE" value="pimp my MIIIIIIPPPSSSS" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="70" key="#Project_Structure" timestamp="1579532269650" />
     <state x="361" y="70" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1579532269650" />
-    <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580997429696">
+    <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587815120818">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1580997429696" />
-    <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1579968464263" />
-    <state x="574" y="129" key="#com.intellij.ide.util.MemberChooser" timestamp="1583097623392">
+    <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587815120818" />
+    <state x="2199" y="85" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584636753484" />
+    <state x="574" y="129" key="#com.intellij.ide.util.MemberChooser" timestamp="1587820981337">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="129" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1582995764560" />
+    <state x="574" y="129" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1583144406708" />
     <state x="574" y="135" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1580906758565" />
-    <state x="574" y="129" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583097623392" />
+    <state x="574" y="129" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587820981337" />
+    <state x="2638" y="161" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584637457780" />
     <state x="499" y="197" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1579965605819">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -611,119 +687,152 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="493" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1579787475857" />
-    <state x="374" y="15" width="1043" height="809" key="CommitChangelistDialog2" timestamp="1583097020093">
+    <state x="552" y="213" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585242641174">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="321" y="6" width="1043" height="809" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1583062638033" />
+    <state x="552" y="213" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1585242641174" />
+    <state x="2610" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584634406949" />
+    <state x="374" y="0" width="1043" height="809" key="CommitChangelistDialog2" timestamp="1587815551480">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="321" y="6" width="1043" height="809" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1583240102162" />
     <state x="374" y="17" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1580398460506" />
-    <state x="374" y="15" key="CommitChangelistDialog2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583097020093" />
+    <state x="374" y="0" key="CommitChangelistDialog2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587815551480" />
+    <state x="2388" y="16" key="CommitChangelistDialog2/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584643400385" />
     <state x="147" y="70" width="1228" height="686" key="DiffContextDialog" timestamp="1583062088618">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="147" y="70" width="1228" height="686" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1583062088618" />
     <state x="147" y="70" width="1228" height="686" key="DiffContextDialog/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1582203505033" />
-    <state x="473" y="153" key="FileChooserDialogImpl" timestamp="1579965668001">
+    <state x="473" y="153" key="FileChooserDialogImpl" timestamp="1585165337897">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="473" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579532269650" />
-    <state x="473" y="153" key="FileChooserDialogImpl/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1579965668001" />
-    <state width="1493" height="195" key="GridCell.Tab.0.bottom" timestamp="1583097753693">
+    <state x="473" y="153" key="FileChooserDialogImpl/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1585165337897" />
+    <state width="1493" height="151" key="GridCell.Tab.0.bottom" timestamp="1587822452364">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581418897374" />
+    <state width="1493" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1583144918113" />
     <state width="1493" height="192" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580214759845" />
-    <state width="1493" height="195" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583097753693" />
+    <state width="1493" height="151" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587822452364" />
+    <state width="1877" height="286" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584644952061" />
     <state width="1506" height="192" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1536.864@0.0.1536.864" timestamp="1580234182472" />
-    <state width="1493" height="195" key="GridCell.Tab.0.center" timestamp="1583097753693">
+    <state width="1493" height="151" key="GridCell.Tab.0.center" timestamp="1587822452364">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581418897374" />
+    <state width="1493" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1583144918113" />
     <state width="1493" height="192" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1580214759845" />
-    <state width="1493" height="195" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583097753693" />
+    <state width="1493" height="151" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587822452364" />
+    <state width="1877" height="286" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584644952058" />
     <state width="1506" height="192" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1536.864@0.0.1536.864" timestamp="1580234182472" />
-    <state width="1493" height="195" key="GridCell.Tab.0.left" timestamp="1583097753692">
+    <state width="1493" height="151" key="GridCell.Tab.0.left" timestamp="1587822452363">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581418897374" />
+    <state width="1493" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1583144918112" />
     <state width="1493" height="192" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1580214759845" />
-    <state width="1493" height="195" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583097753692" />
+    <state width="1493" height="151" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587822452363" />
+    <state width="1877" height="286" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584644952057" />
     <state width="1506" height="192" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1536.864@0.0.1536.864" timestamp="1580234182472" />
-    <state width="1493" height="195" key="GridCell.Tab.0.right" timestamp="1583097753693">
+    <state width="1493" height="151" key="GridCell.Tab.0.right" timestamp="1587822452364">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581418897374" />
+    <state width="1493" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1583144918113" />
     <state width="1493" height="192" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1580214759845" />
-    <state width="1493" height="195" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583097753693" />
+    <state width="1493" height="151" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587822452364" />
+    <state width="1877" height="286" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584644952059" />
     <state width="1506" height="192" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1536.864@0.0.1536.864" timestamp="1580234182472" />
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1583092430267">
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1583098784332">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579798111284" />
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583092430267" />
-    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1583092430267">
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583098784332" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1583098784332">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1579798111284" />
-    <state width="1493" height="261" key="GridCell.Tab.1.center/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583092430267" />
-    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1583092430266">
+    <state width="1493" height="261" key="GridCell.Tab.1.center/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583098784332" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1583098784332">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1579798111284" />
-    <state width="1493" height="261" key="GridCell.Tab.1.left/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583092430266" />
-    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1583092430267">
+    <state width="1493" height="261" key="GridCell.Tab.1.left/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583098784332" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1583098784332">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1579798111284" />
-    <state width="1493" height="261" key="GridCell.Tab.1.right/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583092430267" />
-    <state x="22" y="10" width="1493" height="834" key="MergeDialog" timestamp="1581158377856">
+    <state width="1493" height="261" key="GridCell.Tab.1.right/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583098784332" />
+    <state x="22" y="0" width="1493" height="824" key="MergeDialog" timestamp="1583184389516">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="22" y="10" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1581158377856" />
     <state x="22" y="10" width="1493" height="834" key="MergeDialog/0.0.1536.864@0.0.1536.864" timestamp="1580740829425" />
-    <state x="481" y="142" key="MultipleFileMergeDialog" timestamp="1583061992150">
+    <state x="22" y="0" width="1493" height="824" key="MergeDialog/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583184389516" />
+    <state x="481" y="142" key="MultipleFileMergeDialog" timestamp="1583184389533">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="481" y="142" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1583061992150" />
     <state x="481" y="149" key="MultipleFileMergeDialog/0.0.1536.864@0.0.1536.864" timestamp="1580740832729" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1581417953658">
+    <state x="481" y="142" key="MultipleFileMergeDialog/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583184389533" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1587655323924">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1581417953658" />
     <state x="249" y="0" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1580398296868" />
-    <state x="249" y="0" key="SettingsEditor/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1579965707708" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1583097024880">
+    <state x="249" y="0" key="SettingsEditor/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587655323924" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1587815559061">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1583062644999" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1583240164871" />
     <state x="361" y="152" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1580398464572" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583097024880" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587815559061" />
+    <state x="2371" y="181" key="Vcs.Push.Dialog.v2/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584644926662" />
     <state x="485" y="88" key="antBuildFilePropertiesDialogDimension" timestamp="1579532269650" />
     <state x="485" y="88" key="antBuildFilePropertiesDialogDimension/0.0.1536.824@0.0.1536.824" timestamp="1579532269650" />
-    <state x="32" y="85" width="1350" height="639" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1582201654854">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="1966" y="83" width="1688" height="799" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1584621860286">
+      <screen x="1920" y="0" width="1920" height="1030" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1579784737631" />
     <state x="32" y="89" width="1350" height="669" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.864@0.0.1536.864" timestamp="1580398208875" />
     <state x="32" y="85" width="1350" height="639" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1582201654854" />
+    <state x="1966" y="83" width="1688" height="799" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584621860286" />
     <state x="498" y="326" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1580214693388">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="498" y="326" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1536.864@0.0.1536.864" timestamp="1580214693388" />
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583091237493">
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587655948139">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1583061977385" />
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1583240166207" />
     <state x="578" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864@0.0.1536.864" timestamp="1580740738393" />
-    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583091237493" />
+    <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587655948139" />
+    <state x="540" y="130" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1585243011836">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="540" y="130" key="com.intellij.testIntegration.createTest.CreateTestDialog/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1585243011836" />
     <state x="499" y="179" key="extract.method.dialog" timestamp="1581157349440">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="179" key="extract.method.dialog/0.0.1536.824@0.0.1536.824" timestamp="1581157349440" />
-    <state x="462" y="156" width="738" height="606" key="find.popup" timestamp="1581423601912">
+    <state x="462" y="156" width="740" height="606" key="find.popup" timestamp="1587665266951">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="462" y="156" width="738" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1581423601912" />
     <state x="462" y="164" width="611" height="536" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1580389210014" />
+    <state x="462" y="156" width="740" height="606" key="find.popup/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587665266951" />
+    <state x="2498" y="195" width="925" height="758" key="find.popup/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584642377799" />
+    <state x="2559" y="50" key="refactoring.ChangeSignatureDialog" timestamp="1584638674587">
+      <screen x="1920" y="0" width="1920" height="1030" />
+    </state>
+    <state x="511" y="40" key="refactoring.ChangeSignatureDialog/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1584207756532" />
+    <state x="2559" y="50" key="refactoring.ChangeSignatureDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584638674587" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1585163236466">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1585163236466" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1587818782196">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587818782196" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Yal$Test.ic" NAME="Test Coverage Results" MODIFIED="1583084628905" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

@@ -15,6 +15,11 @@ public abstract class Declaration extends ArbreAbstrait {
         return idf;
     }
 
+    // TODO : rename
+    public abstract void initialisationDuCorpsDeLaVariable(StringBuilder stringBuilder);
+
+    public abstract void depilageToMIPS(StringBuilder stringBuilder);
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Declaration{");

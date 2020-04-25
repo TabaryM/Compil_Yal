@@ -5,17 +5,26 @@ import yal.exceptions.AnalyseSemantiqueException;
 
 public class DeclarationEntier extends Declaration {
     public DeclarationEntier(String idf, int noLigne) {
-        super(idf, noLigne);
+        super("entier_"+idf, noLigne);
     }
 
     @Override
     public void ajouterTDS() {
         try {
-            TDS.getInstance().ajouter(new Entree("entier_"+getIdf()), new SymboleDEntier(TDS.getInstance().getDepl()));
+            TDS.getInstance().ajouter(new Entree(getIdf()), new SymboleDEntier(TDS.getInstance().getDepl()));
         } catch (Exception e) {
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Double déclaration de la variable "+getIdf());
             ErreurSemantique.getInstance().ajouter(exception);
         }
+    }
+
+    @Override
+    public void initialisationDuCorpsDeLaVariable(StringBuilder stringBuilder) {
+    }
+
+    @Override
+    public void depilageToMIPS(StringBuilder stringBuilder) {
+        System.out.println("AAAAAAAAAAAAAAAA");
     }
 
     @Override
@@ -25,7 +34,7 @@ public class DeclarationEntier extends Declaration {
 
     @Override
     public String toMIPS() {
-        SymboleDeVariable symboleDeVariable = ((SymboleDeVariable) TDS.getInstance().identifier(new Entree("entier_"+getIdf())));
+        SymboleDeVariable symboleDeVariable = ((SymboleDeVariable) TDS.getInstance().identifier(new Entree(getIdf())));
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("\t# Déclaration de la variable ");
         stringBuilder.append(getIdf());

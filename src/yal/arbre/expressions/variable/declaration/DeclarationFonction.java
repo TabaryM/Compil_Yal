@@ -22,7 +22,7 @@ public class DeclarationFonction extends Declaration {
      * @param numLig int : numéro de la ligne où la fonction a été déclarée
      */
     public DeclarationFonction(String idf, ArrayList<Declaration> variablesLocales, ArrayList<DeclarationEntier> parametres, ArbreAbstrait instructions, int numLig){
-        super(idf, numLig);
+        super("fonction_"+idf, numLig);
         this.variablesLocales = variablesLocales;
         this.parametres = parametres;
         this.instructions = (BlocDInstructions) instructions;
@@ -67,7 +67,7 @@ public class DeclarationFonction extends Declaration {
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "La fonction "+getIdf()+" ne contient aucune instruction Retourne");
             ErreurSemantique.getInstance().ajouter(exception);
         }
-        Entree entree = new Entree("fonction_"+getIdf(), parametres.size());
+        Entree entree = new Entree(getIdf(), parametres.size());
         SymboleDeFonction symboleDeFonction = (SymboleDeFonction)TDS.getInstance().identifier(entree);
         // Entrer dans le bloc
         TDS.getInstance().entreeBloc(symboleDeFonction.getNumBloc());
@@ -84,7 +84,7 @@ public class DeclarationFonction extends Declaration {
     public void ajouterTDS(){
         SymboleDeFonction symboleDeFonction = new SymboleDeFonction(parametres.size(), instructions);
         try {
-            TDS.getInstance().ajouter(new Entree("fonction_"+getIdf(), parametres.size()), symboleDeFonction);
+            TDS.getInstance().ajouter(new Entree(getIdf(), parametres.size()), symboleDeFonction);
         } catch (AjoutTDSException e) {
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Double déclaration de la fonction " + getIdf());
             ErreurSemantique.getInstance().ajouter(exception);
@@ -114,6 +114,18 @@ public class DeclarationFonction extends Declaration {
             }
         }
         TDS.getInstance().sortieBloc();
+    }
+
+    @Override
+    public void initialisationDuCorpsDeLaVariable(StringBuilder stringBuilder) {
+        for(Declaration declaration : variablesLocales){
+            declaration.initialisationDuCorpsDeLaVariable(stringBuilder);
+        }
+    }
+
+    @Override
+    public void depilageToMIPS(StringBuilder stringBuilder) {
+        System.out.println("AAAAAAAAAAAAAAAA");
     }
 
     @Override
