@@ -17,10 +17,4 @@ public abstract class Constante extends Expression {
     public String toString() {
         return cste ;
     }
-
-    @Override
-    public String getType() {
-        return "entier";
-    }
-
 }

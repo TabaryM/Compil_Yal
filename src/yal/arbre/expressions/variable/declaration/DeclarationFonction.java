@@ -124,11 +124,6 @@ public class DeclarationFonction extends Declaration {
     }
 
     @Override
-    public void depilageToMIPS(StringBuilder stringBuilder) {
-        System.out.println("AAAAAAAAAAAAAAAA");
-    }
-
-    @Override
     public boolean contientRetourne() {
         return instructions.contientRetourne();
     }

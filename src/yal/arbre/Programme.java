@@ -1,5 +1,6 @@
 package yal.arbre;
 
+import yal.FabriqueDeNumero;
 import yal.arbre.expressions.variable.declaration.Declaration;
 import yal.arbre.gestionnaireTDS.*;
 import yal.exceptions.AnalyseSemantiqueException;
@@ -54,6 +55,13 @@ public class Programme extends ArbreAbstrait {
             stringBuilder.append(declaration.toMIPS());
         }
 
+        // Seconde partie de la déclaration des tableaux
+        for(Declaration declaration : declarations){
+            if(declaration.getClass().getSimpleName().equals("DeclarationTableauEntier")){
+                declaration.initialisationDuCorpsDeLaVariable(stringBuilder);
+            }
+        }
+
         // Création de l'arbre abstrait
         stringBuilder.append(instructions.toMIPS());
 
@@ -100,6 +108,7 @@ public class Programme extends ArbreAbstrait {
         }
 
         ajouterErreurs(stringBuilder);
+        fonctionInitialisationTableauToMIPS(stringBuilder);
 
         return stringBuilder.toString();
     }
@@ -134,6 +143,7 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append("faux : .asciiz \"faux\"\n");
         stringBuilder.append("msgDivisionParZero : .asciiz \"Erreur d'execution : Division par zero\"\n");
         stringBuilder.append("msgFonctionSansRetour : .asciiz \"Erreur d'execution : Fonction terminée sans rencontrer de retour\"\n");
+        stringBuilder.append("msgTableauDimensionIncorrect : .asciiz \"Erreur d'execution : Taille de tableau incorrecte (inférieur à 1)\"\n");
         stringBuilder.append(".text\nmain:\n\n");
     }
 
@@ -152,6 +162,48 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append("\tsyscall\n");
         stringBuilder.append("\tj end\n");
 
+        // Affichage de l'erreur de dimension de tableau
+        stringBuilder.append("\nErrDimTab:\n");
+        stringBuilder.append("\tli $v0, 4\n");
+        stringBuilder.append("\tla $a0, msgTableauDimensionIncorrect\n");
+        stringBuilder.append("\tsyscall\n");
+        stringBuilder.append("\tj end\n");
+    }
+
+    private void fonctionInitialisationTableauToMIPS(StringBuilder stringBuilder){
+        // TODO : appeler la fonction une fois que l'expression de dimension est évaluée et enregistrée dans $v0
+        stringBuilder.append("\nVerifDimTab:\n");
+        stringBuilder.append("\tblez $v0, ErrDimTab\t#Si la valeur de dimension du tableau est inférieure ou égale à 0, on déclenche une erreur d'execution\n");
+        stringBuilder.append("\t#Sinon, on initialise le tableau\n");
+
+        stringBuilder.append("\tsw $v0, ($sp)\n");
+        stringBuilder.append("\taddi $sp, $sp, -4\n");
+        // On initialise toutes les cases du tableau
+        int numLabel = FabriqueDeNumero.getInstance().getNumeroLabelCondition();
+        stringBuilder.append("\tmove $t7, $v0\n");
+        stringBuilder.append("\ntantQue");
+        stringBuilder.append(numLabel);
+        stringBuilder.append(":\n");
+        // On se permet d'utiliser le registre $t7
+        stringBuilder.append("\taddi $t7, $t7, -1\n");
+        stringBuilder.append("\tbltz $t7, finTantQue");
+        stringBuilder.append(numLabel);
+        stringBuilder.append("\t#Si on atteint la fin de la boucle on sort\n");
+        stringBuilder.append("\t#Sinon on ajoute une place de plus dans la pile\n");
+        stringBuilder.append("\tli $v0, 1\n"); // TODO mettre des 0
+        stringBuilder.append("\tsw $v0, ($sp)\n");
+        stringBuilder.append("\taddi $sp, $sp, -4\n");
+        // On recommence
+        stringBuilder.append("\tj tantQue");
+        stringBuilder.append(numLabel);
+        stringBuilder.append("\n");
+        // label de fin
+        stringBuilder.append("\nfinTantQue");
+        stringBuilder.append(numLabel);
+        stringBuilder.append(":\n");
+
+        // On retourne là où la fonction a été appelée
+        stringBuilder.append("\tjr $ra\n");
     }
 
     private void finFonction(StringBuilder stringBuilder){

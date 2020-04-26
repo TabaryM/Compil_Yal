@@ -23,4 +23,9 @@ public class ConstanteEntiere extends Constante {
     public String toString() {
         return super.toString();
     }
+
+    @Override
+    public String getType() {
+        return "entier";
+    }
 }

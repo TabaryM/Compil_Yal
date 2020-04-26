@@ -3,7 +3,6 @@ package yal.arbre.expressions.variable.declaration;
 import yal.FabriqueDeNumero;
 import yal.arbre.expressions.Expression;
 import yal.arbre.gestionnaireTDS.*;
-import yal.arbre.instructions.Boucle;
 import yal.exceptions.AnalyseSemantiqueException;
 
 public class DeclarationTableauEntier extends Declaration {
@@ -33,23 +32,18 @@ public class DeclarationTableauEntier extends Declaration {
     }
 
     @Override
-    public void depilageToMIPS(StringBuilder stringBuilder) {
-        System.out.println("AAAAAAAAAAAAAAAA");
-    }
-
-    @Override
     public void verifier() {
         if(!tailleMaxDuTableau.getType().equals("entier")){
-            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Format de la taille du tableau incorrecte. Attendue : entier\tReçu : "+ tailleMaxDuTableau.getType());
+            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Expression de la dimension du tableau "+getIdf()+" incorrecte. Attendue : entiere.\tReçu : "+ tailleMaxDuTableau.getType());
             ErreurSemantique.getInstance().ajouter(exception);
         }
+        // Si l'instruction se trouve dans le programme principal, l'expression indiquant la taille du tableau doit être une constante
         if(TDS.getInstance().getTableCourrante().equals(TDS.getInstance().getRacine())){
             if(!tailleMaxDuTableau.getClass().getSimpleName().equals("ConstanteEntiere")){
-                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Expression de la dimension du tableau "+getIdf()+" incorrecte. Attendue : constante entiere.\tReçu : "+ tailleMaxDuTableau.getClass().getSimpleName());
+                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Expression de la dimension du tableau "+getIdf()+" incorrecte. Attendue : ConstanteEntiere.\tReçu : "+ tailleMaxDuTableau.getClass().getSimpleName());
                 ErreurSemantique.getInstance().ajouter(exception);
             }
         }
-        //TODO : si on est pas dans le bloc principale...
     }
 
     @Override
@@ -77,7 +71,7 @@ public class DeclarationTableauEntier extends Declaration {
         StringBuilder stringBuilder = new StringBuilder();
         // On stock dans la case mémoire l'adresse du début du tableau. (le sommet de pile actuel)
         SymboleDeVariable symboleDeVariable = ((SymboleDeVariable) TDS.getInstance().identifier(new Entree(getIdf())));
-        stringBuilder.append("\tmove $v0, $sp\n\tsw $v0, ");
+        stringBuilder.append("\tmove $v0, $sp\t#On récupère l'adresse du début du tableau\n\tsw $v0, ");
         if(symboleDeVariable.getNumBloc() == TDS.getInstance().getRacine().getNumBloc()){
             stringBuilder.append(symboleDeVariable.getDepl());
             stringBuilder.append("($s7)");
@@ -100,36 +94,18 @@ public class DeclarationTableauEntier extends Declaration {
     private void initialiserValeurs(StringBuilder stringBuilder){
         stringBuilder.append("\t#Evaluation de la taille du tableau\n");
         stringBuilder.append(tailleMaxDuTableau.toMIPS());
-        stringBuilder.append("\tsw $v0, ($sp)\n");
-        stringBuilder.append("\taddi $sp, $sp, -4\n");
 
-        // On initialise toutes les cases du tableau
-        int numLabel = FabriqueDeNumero.getInstance().getNumeroLabelCondition();
-        stringBuilder.append("\tmove $t7, $v0\n");
-        stringBuilder.append("\ntantQue");
-        stringBuilder.append(numLabel);
-        stringBuilder.append(":\n");
-        // On se permet d'utiliser le registre $t7
-        stringBuilder.append("\taddi $t7, $t7, -1\n");
-        stringBuilder.append("\tbltz $t7, finTantQue");
-        stringBuilder.append(numLabel);
-        stringBuilder.append("\t#Si on atteint la fin de la boucle on sort\n");
-        stringBuilder.append("\t#Sinon on ajoute une place de plus dans la pile\n");
-        stringBuilder.append("\tli $v0, 1\n");
-        stringBuilder.append("\tsw $v0, ($sp)\n");
-        stringBuilder.append("\taddi $sp, $sp, -4\n");
-        // On recommence
-        stringBuilder.append("\tj tantQue");
-        stringBuilder.append(numLabel);
-        stringBuilder.append("\n");
-        // label de fin
-        stringBuilder.append("\nfinTantQue");
-        stringBuilder.append(numLabel);
-        stringBuilder.append(":\n");
+        // Vérification que la taille du tableau est correcte (>=1)
+        appelVerificationDimensionToMIPS(stringBuilder);
     }
 
     @Override
     public boolean contientRetourne() {
         return false;
+    }
+
+    public static void appelVerificationDimensionToMIPS(StringBuilder stringBuilder){
+        stringBuilder.append("\t#Vérification que la taille du tableau est correcte\n");
+        stringBuilder.append("\tjal VerifDimTab\n");
     }
 }

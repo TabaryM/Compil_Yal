@@ -87,7 +87,7 @@
             - ~~si le tableau est declaré dans le programme principal EXP doit etre une constante~~
             - si le tableau est declaré dans le programme principal EXP doit etre une expression a valeur constante
         - affecter: idf [ EXP ] = EXP;
-        - recuperer la longueur : idf.longueur ( retourne un entier )
+        - ~~recuperer la longueur : idf.longueur ( retourne un entier )~~
         - appel : idf [ EXP ] EXP
             - appel d'un tab déclaré dans le PP depuis une fonction
         - deux types tableaux concordent SI ils ont la meme longueur ( affectation )
