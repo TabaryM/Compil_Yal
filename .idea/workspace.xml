@@ -8,16 +8,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8b9335fe-b57b-4762-b494-42646bacb547" name="Default Changelist" comment="Renommage d'un package">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/build.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/Programme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/Programme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/Constante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/Constante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/ConstanteEntiere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/ConstanteEntiere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/TailleTableau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/TailleTableau.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/Declaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/Declaration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/DeclarationEntier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/DeclarationEntier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/DeclarationFonction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/DeclarationFonction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/DeclarationTableauEntier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/DeclarationTableauEntier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/Entier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/Entier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/Fonction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/Fonction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/gestionnaireTDS/SymboleDeFonction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/gestionnaireTDS/SymboleDeFonction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,14 +259,7 @@
       <workItem from="1587654878207" duration="10519000" />
       <workItem from="1587732265596" duration="612000" />
       <workItem from="1587814525421" duration="8839000" />
-      <workItem from="1587902025637" duration="7143000" />
-    </task>
-    <task id="LOCAL-00022" summary="Modification de l'ordre d'évaluation des opérations&#10;Ajout des classes Boucle et Condition">
-      <created>1581154314075</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1581154314076</updated>
+      <workItem from="1587902025637" duration="15402000" />
     </task>
     <task id="LOCAL-00023" summary="null&#10;comme nous">
       <created>1581158323099</created>
@@ -610,7 +597,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587822714967</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Des trucs, ça fait longtemps que j'ai pas commit.&#10;Je pense qu'on a fait des trucs bien.">
+      <created>1587911187377</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1587911187378</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -630,7 +624,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Merci le dépot de tests (vérification de retour booléen)" />
     <MESSAGE value="Reorganisation + Erreur execution si fonction sans retour atteint" />
     <MESSAGE value="Compilation de fonction avec parametres ok (no verif)" />
     <MESSAGE value="Method vs Apes where made" />
@@ -655,7 +648,8 @@
     <MESSAGE value="pwalala" />
     <MESSAGE value="pimp my MIIIIIIPPPSSSS" />
     <MESSAGE value="Gestion mémoire des tableaux dans le corps des fonctions. Plus magnifigue gestion de la mémoire pour toutes les variables dans une fonction." />
-    <option name="LAST_COMMIT_MESSAGE" value="Gestion mémoire des tableaux dans le corps des fonctions. Plus magnifigue gestion de la mémoire pour toutes les variables dans une fonction." />
+    <MESSAGE value="Des trucs, ça fait longtemps que j'ai pas commit.&#10;Je pense qu'on a fait des trucs bien." />
+    <option name="LAST_COMMIT_MESSAGE" value="Des trucs, ça fait longtemps que j'ai pas commit.&#10;Je pense qu'on a fait des trucs bien." />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="70" key="#Project_Structure" timestamp="1579532269650" />
@@ -694,12 +688,12 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="0" y="0" key="#org.jetbrains.kotlin.idea.refactoring.safeDelete.KotlinOverridingDialog/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587902363841" />
-    <state x="374" y="0" width="1043" height="809" key="CommitChangelistDialog2" timestamp="1587822711718">
+    <state x="145" y="0" width="978" height="822" key="CommitChangelistDialog2" timestamp="1587911476921">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="321" y="6" width="1043" height="809" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1583240102162" />
     <state x="374" y="17" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1580398460506" />
-    <state x="374" y="0" key="CommitChangelistDialog2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587822711718" />
+    <state x="145" y="0" width="978" height="822" key="CommitChangelistDialog2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587911476921" />
     <state x="2388" y="16" key="CommitChangelistDialog2/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584643400385" />
     <state x="147" y="70" width="1228" height="686" key="DiffContextDialog" timestamp="1583062088618">
       <screen x="0" y="0" width="1536" height="824" />
@@ -711,36 +705,36 @@
     </state>
     <state x="473" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579532269650" />
     <state x="473" y="153" key="FileChooserDialogImpl/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1585165337897" />
-    <state width="1493" height="94" key="GridCell.Tab.0.bottom" timestamp="1587910961585">
+    <state width="1493" height="94" key="GridCell.Tab.0.bottom" timestamp="1587919300022">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1583144918113" />
     <state width="1493" height="192" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580214759845" />
-    <state width="1493" height="94" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587910961585" />
+    <state width="1493" height="94" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587919300022" />
     <state width="1877" height="286" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584644952061" />
     <state width="1506" height="192" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1536.864@0.0.1536.864" timestamp="1580234182472" />
-    <state width="1493" height="94" key="GridCell.Tab.0.center" timestamp="1587910961584">
+    <state width="1493" height="94" key="GridCell.Tab.0.center" timestamp="1587919300022">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1583144918113" />
     <state width="1493" height="192" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1580214759845" />
-    <state width="1493" height="94" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587910961584" />
+    <state width="1493" height="94" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587919300022" />
     <state width="1877" height="286" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584644952058" />
     <state width="1506" height="192" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1536.864@0.0.1536.864" timestamp="1580234182472" />
-    <state width="1493" height="94" key="GridCell.Tab.0.left" timestamp="1587910961584">
+    <state width="1493" height="94" key="GridCell.Tab.0.left" timestamp="1587919300022">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1583144918112" />
     <state width="1493" height="192" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1580214759845" />
-    <state width="1493" height="94" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587910961584" />
+    <state width="1493" height="94" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587919300022" />
     <state width="1877" height="286" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584644952057" />
     <state width="1506" height="192" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1536.864@0.0.1536.864" timestamp="1580234182472" />
-    <state width="1493" height="94" key="GridCell.Tab.0.right" timestamp="1587910961584">
+    <state width="1493" height="94" key="GridCell.Tab.0.right" timestamp="1587919300022">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1583144918113" />
     <state width="1493" height="192" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1580214759845" />
-    <state width="1493" height="94" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587910961584" />
+    <state width="1493" height="94" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587919300022" />
     <state width="1877" height="286" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584644952059" />
     <state width="1506" height="192" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1536.864@0.0.1536.864" timestamp="1580234182472" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1583098784332">
@@ -775,18 +769,22 @@
     <state x="481" y="142" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1583061992150" />
     <state x="481" y="149" key="MultipleFileMergeDialog/0.0.1536.864@0.0.1536.864" timestamp="1580740832729" />
     <state x="481" y="142" key="MultipleFileMergeDialog/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583184389533" />
+    <state x="565" y="114" key="RollbackChangesDialog" timestamp="1587918353575">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="565" y="114" key="RollbackChangesDialog/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587918353575" />
     <state x="249" y="0" key="SettingsEditor" timestamp="1587655323924">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1581417953658" />
     <state x="249" y="0" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1580398296868" />
     <state x="249" y="0" key="SettingsEditor/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587655323924" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1587822721066">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1587911480149">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1583240164871" />
     <state x="361" y="152" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1580398464572" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587822721066" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587911480149" />
     <state x="2371" y="181" key="Vcs.Push.Dialog.v2/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584644926662" />
     <state x="485" y="88" key="antBuildFilePropertiesDialogDimension" timestamp="1579532269650" />
     <state x="485" y="88" key="antBuildFilePropertiesDialogDimension/0.0.1536.824@0.0.1536.824" timestamp="1579532269650" />
@@ -815,22 +813,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="179" key="extract.method.dialog/0.0.1536.824@0.0.1536.824" timestamp="1581157349440" />
-    <state x="462" y="156" width="740" height="606" key="find.popup" timestamp="1587910584966">
+    <state x="462" y="156" width="740" height="606" key="find.popup" timestamp="1587919363865">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="462" y="156" width="738" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1581423601912" />
     <state x="462" y="164" width="611" height="536" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1580389210014" />
-    <state x="462" y="156" width="740" height="606" key="find.popup/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587910584966" />
+    <state x="462" y="156" width="740" height="606" key="find.popup/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587919363865" />
     <state x="2498" y="195" width="925" height="758" key="find.popup/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584642377799" />
     <state x="2559" y="50" key="refactoring.ChangeSignatureDialog" timestamp="1584638674587">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
     <state x="511" y="40" key="refactoring.ChangeSignatureDialog/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1584207756532" />
     <state x="2559" y="50" key="refactoring.ChangeSignatureDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584638674587" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1585163236466">
+    <state x="425" y="187" key="run.anything.popup" timestamp="1587911973115">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1585163236466" />
+    <state x="425" y="187" key="run.anything.popup/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587911973115" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1587818782196">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

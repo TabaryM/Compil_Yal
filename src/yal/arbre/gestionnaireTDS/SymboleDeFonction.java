@@ -21,7 +21,9 @@ public class SymboleDeFonction extends Symbole{
         // On stocke l'adresse à laquelle retourner une fois la fonction finie
         stringBuilder.append("\tsw $ra, 0($sp)\t# On stocke l'adresse de retour de la fonction\n\tadd $sp, $sp, -4\n");
         // Chainage dynamique
-        stringBuilder.append("\tsw $s2, 0($sp)\t# On stocke l'adresse de la base des variables locales\n\tadd $sp, $sp, -4\n");
+        stringBuilder.append("\tsw $s2, 0($sp)\t# On stocke l'adresse de la base des variables locales\n");
+        stringBuilder.append("\t# On stocke l'adresse du sommet de pile pour accéder aux variables\n");
+        stringBuilder.append("\tmove $s2, $sp\n\tadd $sp, $sp, -4\n");
     }
 
     public void allocationMemoireVarLocalFonctionToMIPS(StringBuilder stringBuilder){

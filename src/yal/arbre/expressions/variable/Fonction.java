@@ -80,8 +80,6 @@ public class Fonction extends Idf {
             stringBuilder.append(expression.toMIPS());
             stringBuilder.append("\tsw $v0, 0($sp)\n\tadd $sp, $sp, -4\n");
         }
-        stringBuilder.append("\t# On stocke l'adresse du sommet de pile pour accéder aux variables\n");
-        stringBuilder.append("\tmove $s2, $sp\n");
 
         stringBuilder.append("\tjal ");
         stringBuilder.append("fonction_");
@@ -89,13 +87,14 @@ public class Fonction extends Idf {
         stringBuilder.append("_params_");
         stringBuilder.append(parametresEffectifs.size());
         stringBuilder.append("\n");
-
+        stringBuilder.append("\tlw $s2, ($s2)\n");
+/*
         // On dépiltou
         stringBuilder.append("\taddi, $sp, $sp, ");
         stringBuilder.append(parametresEffectifs.size()*4);
         stringBuilder.append("\n");
         // TODO : dépiler les parametres effectifs
-
+*/
         return stringBuilder.toString();
     }
 
