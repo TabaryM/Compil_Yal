@@ -6,12 +6,12 @@ import yal.exceptions.AnalyseSemantiqueException;
 
 public class Entier extends Idf {
     public Entier(String idf, int numLig) {
-        super(idf, numLig);
+        super("entier_"+idf, numLig);
     }
 
     @Override
     public void verifier(){
-        if(TDS.getInstance().identifier(new Entree("entier_"+getIdf())) == null){
+        if(TDS.getInstance().identifier(new Entree(getIdf())) == null){
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Variable "+getIdf()+" non déclarée");
             ErreurSemantique.getInstance().ajouter(exception);
         }
@@ -19,7 +19,7 @@ public class Entier extends Idf {
 
     @Override
     public String toMIPS() {
-        Entree entree = new Entree("entier_"+getIdf());
+        Entree entree = new Entree(getIdf());
         SymboleDeVariable symbole = ((SymboleDeVariable) TDS.getInstance().identifier(entree));
         StringBuilder stringBuilder = new StringBuilder("\tlw $v0, ");
         if(symbole.getNumBloc() == TDS.getInstance().getRacine().getNumBloc()){

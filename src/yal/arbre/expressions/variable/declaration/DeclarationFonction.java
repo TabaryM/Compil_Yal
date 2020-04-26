@@ -22,7 +22,7 @@ public class DeclarationFonction extends Declaration {
      * @param numLig int : numéro de la ligne où la fonction a été déclarée
      */
     public DeclarationFonction(String idf, ArrayList<Declaration> variablesLocales, ArrayList<DeclarationEntier> parametres, ArbreAbstrait instructions, int numLig){
-        super("fonction_"+idf, numLig);
+        super("fonction_"+idf+"_params_"+parametres.size(), numLig);
         this.variablesLocales = variablesLocales;
         this.parametres = parametres;
         this.instructions = (BlocDInstructions) instructions;

@@ -52,7 +52,9 @@ public class Programme extends ArbreAbstrait {
 
         // Initialisation des variables à 0
         for(Declaration declaration : declarations){
-            stringBuilder.append(declaration.toMIPS());
+            if(!declaration.getClass().getSimpleName().equals("DeclarationFonction")){
+                stringBuilder.append(declaration.toMIPS());
+            }
         }
 
         // Seconde partie de la déclaration des tableaux
@@ -82,8 +84,6 @@ public class Programme extends ArbreAbstrait {
                         // Declaration de l'etiquette de la fonction
                         stringBuilder.append("\n");
                         stringBuilder.append(entree.getIdf());
-                        stringBuilder.append("_params_");
-                        stringBuilder.append(entree.getNbParam());
                         stringBuilder.append(":\n");
 
                         // Création de l'entete de la fonction (adresse de retour et merdier en tout genre)

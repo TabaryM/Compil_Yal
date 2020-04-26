@@ -10,7 +10,7 @@ public class TableauEntier extends Idf {
     private Expression expression;
 
     public TableauEntier(String idf, Expression expression, int numLig) {
-        super(idf, numLig);
+        super("tableau_"+idf, numLig);
         this.expression = expression;
     }
 
@@ -22,6 +22,7 @@ public class TableauEntier extends Idf {
     @Override
     public void verifier() {
         // TODO : vérifier les bornes du tableau
+        // TODO : vérifier que le tableau existe
         if(!expression.getType().equals("entier")){
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Format de l'indexe du tableau incorrecte. Attendue : entier\tReçu : "+expression.getType());
             ErreurSemantique.getInstance().ajouter(exception);

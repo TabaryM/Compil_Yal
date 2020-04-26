@@ -25,7 +25,7 @@ public class Fonction extends Idf {
      * @param numLig numéro de la ligne à laquelle la fonction est appelée
      */
     public Fonction(String idf, ArrayList<Expression> parametresEffectifs, int numLig) {
-        super(idf, numLig);
+        super("fonction_"+idf+"_params_"+parametresEffectifs.size(), numLig);
         this.parametresEffectifs = parametresEffectifs;
     }
 
@@ -44,7 +44,7 @@ public class Fonction extends Idf {
     @Override
     public void verifier() {
         // On vérifie que la fonction n'a pas déjà été déclarée avec le même nombre de paramètres
-        Entree entreeTmp = new Entree("fonction_"+getIdf(), parametresEffectifs.size());
+        Entree entreeTmp = new Entree(getIdf(), parametresEffectifs.size());
         Symbole symboleDeFonction = TDS.getInstance().identifier(entreeTmp);
         if(symboleDeFonction == null){
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Aucune fonction "+getIdf()+" n'attend "+parametresEffectifs.size()+" parametres.");
@@ -82,19 +82,16 @@ public class Fonction extends Idf {
         }
 
         stringBuilder.append("\tjal ");
-        stringBuilder.append("fonction_");
         stringBuilder.append(getIdf());
-        stringBuilder.append("_params_");
-        stringBuilder.append(parametresEffectifs.size());
         stringBuilder.append("\n");
         stringBuilder.append("\tlw $s2, ($s2)\n");
-/*
+
         // On dépiltou
         stringBuilder.append("\taddi, $sp, $sp, ");
         stringBuilder.append(parametresEffectifs.size()*4);
         stringBuilder.append("\n");
         // TODO : dépiler les parametres effectifs
-*/
+
         return stringBuilder.toString();
     }
 
