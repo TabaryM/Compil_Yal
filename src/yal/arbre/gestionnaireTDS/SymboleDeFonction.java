@@ -44,11 +44,11 @@ public class SymboleDeFonction extends Symbole{
         // Assigner les paramètres à leur position
         for(int i = 0; i < nbParametres; i++){
             stringBuilder.append("\tlw $v0, ");
-            stringBuilder.append(i*4+4);
+            stringBuilder.append(i*4+8);
             stringBuilder.append("($s2)\t#On récupère la valeur du paramètre effectif\n");
 
             stringBuilder.append("\tsw $v0, ");
-            stringBuilder.append(-((nbParametres-i)*4)-4);
+            stringBuilder.append(-((nbParametres-i)*4));
             stringBuilder.append("($s2)\t#On récupère la valeur du paramètre effectif\n");
         }
     }
