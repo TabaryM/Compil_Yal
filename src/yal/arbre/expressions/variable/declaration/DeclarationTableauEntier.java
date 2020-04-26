@@ -34,7 +34,7 @@ public class DeclarationTableauEntier extends Declaration {
     @Override
     public void verifier() {
         if(!tailleMaxDuTableau.getType().equals("entier")){
-            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Expression de la dimension du tableau "+getIdf()+" incorrecte. Attendue : entiere.\tReçu : "+ tailleMaxDuTableau.getType());
+            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Expression de la dimension du tableau "+getIdf()+" incorrecte. Attendue : entier.\tReçu : "+ tailleMaxDuTableau.getType());
             ErreurSemantique.getInstance().ajouter(exception);
         }
         // Si l'instruction se trouve dans le programme principal, l'expression indiquant la taille du tableau doit être une constante

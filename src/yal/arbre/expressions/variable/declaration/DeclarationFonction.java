@@ -71,6 +71,11 @@ public class DeclarationFonction extends Declaration {
         SymboleDeFonction symboleDeFonction = (SymboleDeFonction)TDS.getInstance().identifier(entree);
         // Entrer dans le bloc
         TDS.getInstance().entreeBloc(symboleDeFonction.getNumBloc());
+        // Vérifications des variables locales
+        for(Declaration declaration : variablesLocales){
+            declaration.verifier();
+        }
+        // Vérification des instructions
         instructions.verifier();
         // Sortir du bloc
         TDS.getInstance().sortieBloc();

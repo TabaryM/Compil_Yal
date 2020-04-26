@@ -72,10 +72,11 @@ public class TableLocale implements Iterable<Entree> {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("TableLocale{");
-        sb.append("table=").append(table);
-        sb.append(", numBloc=").append(numBloc);
-        sb.append(", cptDepl=").append(cptDepl);
+        if(tableEnglobante == null){
+            return "TablePP";
+        }
+        StringBuilder sb = new StringBuilder("TableLocale{");
+        sb.append("numBloc=").append(numBloc);
         sb.append('}');
         return sb.toString();
     }
