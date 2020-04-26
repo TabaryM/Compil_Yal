@@ -25,7 +25,7 @@ public class SymboleDeTableau extends SymboleDeVariable {
             stringBuilder.append(getDepl());
             stringBuilder.append("($s7)");
         } else {
-            stringBuilder.append(getDepl()-8);
+            stringBuilder.append(getDepl()-4);
             stringBuilder.append("($s2)");
         }
         stringBuilder.append("\n");

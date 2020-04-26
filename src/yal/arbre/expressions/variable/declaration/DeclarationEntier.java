@@ -40,7 +40,7 @@ public class DeclarationEntier extends Declaration {
             stringBuilder.append(symboleDeVariable.getDepl());
             stringBuilder.append("($s7)");
         } else {
-            stringBuilder.append(symboleDeVariable.getDepl()-8);
+            stringBuilder.append(symboleDeVariable.getDepl()-4);
             stringBuilder.append("($s2)");
         }
         stringBuilder.append("\n");

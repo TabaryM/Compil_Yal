@@ -49,7 +49,7 @@ public class Affectation extends Instruction {
             stringBuilder.append(tmp.getDepl());
             stringBuilder.append("($s7)");
         } else {
-            stringBuilder.append(tmp.getDepl()-8);
+            stringBuilder.append(tmp.getDepl()-4);
             stringBuilder.append("($s2)");
         }
 

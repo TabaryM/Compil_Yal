@@ -37,7 +37,7 @@ public class SymboleDeFonction extends Symbole{
             SymboleDeVariable symboleDeVariable = ((SymboleDeVariable) TDS.getInstance().identifier(entree));
             stringBuilder.append("\tli, $v0, 0\n");
             stringBuilder.append("\tsw, $v0, ");
-            stringBuilder.append(symboleDeVariable.getDepl()-8);
+            stringBuilder.append(symboleDeVariable.getDepl()-4);
             stringBuilder.append("($s2)\n");
         }
 

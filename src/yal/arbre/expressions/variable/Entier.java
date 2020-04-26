@@ -26,7 +26,7 @@ public class Entier extends Idf {
             stringBuilder.append(symbole.getDepl());
             stringBuilder.append("($s7)\n");
         } else {
-            stringBuilder.append(symbole.getDepl()-8);
+            stringBuilder.append(symbole.getDepl()-4);
             stringBuilder.append("($s2)\n");
         }
 
