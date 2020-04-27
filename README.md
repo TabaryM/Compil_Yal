@@ -81,8 +81,9 @@
         - ~~initialisé à 0~~
         - ~~indice commence à 0~~
         - valeur de [ EXP ] strictement positive
-        - [ EXP ] doit etre de type entier
-        - [ EXP ] doit etre dans les bornes du tableau
+            - ~~verification pour la declaration~~
+            - verification à l'accès (est doit être dans les bornes du tableau)
+        - ~~.[ EXP ] doit etre de type entier~~
         - ~~declarer: entier [ EXP ] idf~~;
             - ~~si le tableau est declaré dans le programme principal EXP doit etre une constante~~
         - affecter: idf [ EXP ] = EXP;

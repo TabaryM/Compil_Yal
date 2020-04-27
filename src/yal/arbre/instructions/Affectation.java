@@ -61,4 +61,8 @@ public class Affectation extends Instruction {
     public boolean contientRetourne() {
         return false;
     }
+
+    public String getIdf(){
+        return idf;
+    }
 }

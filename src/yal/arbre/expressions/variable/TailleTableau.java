@@ -7,7 +7,7 @@ import yal.exceptions.AnalyseSemantiqueException;
 public class TailleTableau extends Idf {
 
     public TailleTableau(String idf, int n) {
-        super(idf, n);
+        super("tableau_"+idf, n);
     }
 
     @Override
@@ -17,7 +17,7 @@ public class TailleTableau extends Idf {
 
     @Override
     public void verifier() {
-        Symbole symbole = TDS.getInstance().identifier(new Entree("tableau_"+getIdf()));
+        Symbole symbole = TDS.getInstance().identifier(new Entree(getIdf()));
         if(symbole == null){
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Tableau "+getIdf()+" non déclaré.");
             ErreurSemantique.getInstance().ajouter(exception);
@@ -30,7 +30,7 @@ public class TailleTableau extends Idf {
     public String toMIPS() {
         StringBuilder stringBuilder = new StringBuilder();
         // Récupérer le déplacement dans la pile de p-tab (pointeur du tableau)
-        SymboleDeVariable symboleDeVariable = (SymboleDeVariable)(TDS.getInstance().identifier(new Entree("tableau_"+getIdf())));
+        SymboleDeVariable symboleDeVariable = (SymboleDeVariable)(TDS.getInstance().identifier(new Entree(getIdf())));
         stringBuilder.append("\tlw $v0, ");
         if(symboleDeVariable.getNumBloc() == TDS.getInstance().getRacine().getNumBloc()){
             stringBuilder.append(symboleDeVariable.getDepl());

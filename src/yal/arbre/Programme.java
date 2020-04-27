@@ -144,6 +144,8 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append("msgDivisionParZero : .asciiz \"Erreur d'execution : Division par zero\"\n");
         stringBuilder.append("msgFonctionSansRetour : .asciiz \"Erreur d'execution : Fonction terminée sans rencontrer de retour\"\n");
         stringBuilder.append("msgTableauDimensionIncorrect : .asciiz \"Erreur d'execution : Taille de tableau incorrecte (inférieur à 1)\"\n");
+        stringBuilder.append("msgTableauIndiceIncorrectInfZero : .asciiz \"Erreur d'execution : indice de tableau incorrecte (inférieur à 0)\"\n");
+        stringBuilder.append("msgTableauIndiceIncorrectHorsLimite : .asciiz \"Erreur d'execution : indice de tableau incorrecte (hors limite)\"\n");
         stringBuilder.append(".text\nmain:\n\n");
     }
 
@@ -168,6 +170,20 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append("\tla $a0, msgTableauDimensionIncorrect\n");
         stringBuilder.append("\tsyscall\n");
         stringBuilder.append("\tj end\n");
+
+        // Affichage de l'erreur d'indice d'acces au tableau
+        stringBuilder.append("\nErrIndiceTabInfZero:\n");
+        stringBuilder.append("\tli $v0, 4\n");
+        stringBuilder.append("\tla $a0, msgTableauIndiceIncorrectInfZero\n");
+        stringBuilder.append("\tsyscall\n");
+        stringBuilder.append("\tj end\n");
+
+        // Affichage de l'erreur d'indice d'acces au tableau
+        stringBuilder.append("\nErrIndiceTabHorsLimite:\n");
+        stringBuilder.append("\tli $v0, 4\n");
+        stringBuilder.append("\tla $a0, msgTableauIndiceIncorrectHorsLimite\n");
+        stringBuilder.append("\tsyscall\n");
+        stringBuilder.append("\tj end\n");
     }
 
     private void fonctionInitialisationTableauToMIPS(StringBuilder stringBuilder){
@@ -190,7 +206,7 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append(numLabel);
         stringBuilder.append("\t#Si on atteint la fin de la boucle on sort\n");
         stringBuilder.append("\t#Sinon on ajoute une place de plus dans la pile\n");
-        stringBuilder.append("\tli $v0, 1\n"); // TODO mettre des 0
+        stringBuilder.append("\tli $v0, 0\n");
         stringBuilder.append("\tsw $v0, ($sp)\n");
         stringBuilder.append("\taddi $sp, $sp, -4\n");
         // On recommence
@@ -203,6 +219,17 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append(":\n");
 
         // On retourne là où la fonction a été appelée
+        stringBuilder.append("\tjr $ra\n");
+    }
+
+    private void fonctionVerificationIndiceTableau(StringBuilder stringBuilder){
+        stringBuilder.append("\nVerifIndiceTab:\n");
+        stringBuilder.append("\tlw $v0, 8($sp)\t# Récupération de l'indice demandé\n");
+        stringBuilder.append("\t# Vérification que l'indice est supérieur à 0\n");
+        stringBuilder.append("\tbltz $v0, ErrIndiceTabInfZero\n");
+        stringBuilder.append("\tlw $t8, 4($sp)\n");
+        stringBuilder.append("\tlw $t8, ($t8)\t# Récupération de la taille du tableau\n");
+        stringBuilder.append("\tblt $t8, $v0 ErrIndiceTabHorsLimite\n");
         stringBuilder.append("\tjr $ra\n");
     }
 
