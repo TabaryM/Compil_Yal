@@ -8,17 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8b9335fe-b57b-4762-b494-42646bacb547" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/build.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/analyse/Grammaire.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/analyse/Grammaire.cup" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/Programme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/Programme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/ConstanteEntiere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/ConstanteEntiere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/Fonction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/Fonction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/TableauEntier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/TableauEntier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/TailleTableau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/TailleTableau.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/Declaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/Declaration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/gestionnaireTDS/SymboleDeVariable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/gestionnaireTDS/SymboleDeVariable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/instructions/AffectationTableau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/instructions/AffectationTableau.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/instructions/Affectation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/instructions/Affectation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,14 +258,7 @@
       <workItem from="1587732265596" duration="612000" />
       <workItem from="1587814525421" duration="8839000" />
       <workItem from="1587902025637" duration="19803000" />
-      <workItem from="1587998091467" duration="10184000" />
-    </task>
-    <task id="LOCAL-00029" summary="Correction parcequ'il y avait des trucs qui ne faisaient aucun sens en trop">
-      <created>1581413989232</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1581413989232</updated>
+      <workItem from="1587998091467" duration="10560000" />
     </task>
     <task id="LOCAL-00030" summary="Création du singleton">
       <created>1581415262480</created>
@@ -613,7 +596,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588002294692</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="Affectation de valeur dans un tableau ok.">
+      <created>1588008497458</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1588008497458</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

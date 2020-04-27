@@ -31,6 +31,12 @@ public class Affectation extends Instruction {
     @Override
     public String toMIPS() {
         StringBuilder stringBuilder = new StringBuilder();
+        // Récupération du symbole de la variable
+        Entree entree = new Entree("entier_"+idf);
+        SymboleDeVariable tmp = (SymboleDeVariable) TDS.getInstance().identifier(entree);
+
+        // TODO : kessispas si idf c'est un tableau
+
         // Commentaire du code mips
         stringBuilder.append("\t#Assigner à ");
         stringBuilder.append(idf).append(" la valeur ");
@@ -40,9 +46,6 @@ public class Affectation extends Instruction {
         // chargement en mémoire de l'expression
         stringBuilder.append(e.toMIPS());
 
-        // Récupération du déplacement en mémoire de la variable
-        Entree entree = new Entree("entier_"+idf);
-        SymboleDeVariable tmp = (SymboleDeVariable) TDS.getInstance().identifier(entree);
         // Stockage en mémoire de la variable
         stringBuilder.append("\tsw $v0, ");
         if(tmp.getNumBloc() == TDS.getInstance().getRacine().getNumBloc()){
