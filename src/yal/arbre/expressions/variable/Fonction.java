@@ -72,7 +72,6 @@ public class Fonction extends Idf {
         // Aller au code source de la fonction
         // Associer les valeur des paramètres effectifs aux paramètres (dans la pile)
         // Alouer la place pour les variables locales (dans la pile)
-        // TODO : assigner les valeurs des parametres effectifs aux parametre réel de la fonction
         for(Expression expression : parametresEffectifs){
             stringBuilder.append("\t# Empilage du parametre effectif : ");
             stringBuilder.append(expression.toString());
@@ -90,7 +89,6 @@ public class Fonction extends Idf {
         stringBuilder.append("\taddi, $sp, $sp, ");
         stringBuilder.append(parametresEffectifs.size()*4);
         stringBuilder.append("\n");
-        // TODO : dépiler les parametres effectifs
 
         return stringBuilder.toString();
     }

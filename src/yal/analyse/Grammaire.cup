@@ -132,7 +132,7 @@ INST    ::=     ECRIRE EXP:e POINTVIRGULE
                 {: RESULT = new Retourne(e, eleft + 1); :}
         |
                 IDF:i CRO_OUVRANT EXP:indice CRO_FERMANT EGAL EXP:e POINTVIRGULE
-                {: RESULT = new AffectationTableau(e, indice, i, ileft +1); //TODO à implémenter : affectation dans un tableau / lecture de valeur (à index EXP)
+                {: RESULT = new AffectationTableau(e, indice, i, ileft +1);
                 :}
         ;
 
@@ -140,11 +140,11 @@ EXP    ::=     PAR_OUVRANTE EXP:e PAR_FERMANTE
                 {: RESULT = e; :}
         |
                 IDF:i CRO_OUVRANT EXP:e CRO_FERMANT
-                {: RESULT = new TableauEntier(i, e, ileft +1); //TODO à implémenter : affectation dans un tableau / lecture de valeur (à index EXP)
+                {: RESULT = new TableauEntier(i, e, ileft +1);
                 :}
         |
                 IDF:i POINT LONGUEUR
-                {: RESULT = new TailleTableau(i, ileft + 1); //TODO à implémenter : donne la longueur d'un tableau ( ne doit pas fonctionner que pour type tableau )
+                {: RESULT = new TailleTableau(i, ileft + 1);
                 :}
         |
                 EXP:g OULOGIQUE:o EXP:d

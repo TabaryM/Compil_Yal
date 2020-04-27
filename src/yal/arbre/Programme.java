@@ -108,7 +108,7 @@ public class Programme extends ArbreAbstrait {
         }
 
         ajouterErreurs(stringBuilder);
-        fonctionInitialisationTableauToMIPS(stringBuilder);
+        fonctionsTableauToMIPS(stringBuilder);
 
         return stringBuilder.toString();
     }
@@ -186,8 +186,7 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append("\tj end\n");
     }
 
-    private void fonctionInitialisationTableauToMIPS(StringBuilder stringBuilder){
-        // TODO : appeler la fonction une fois que l'expression de dimension est évaluée et enregistrée dans $v0
+    private void fonctionsTableauToMIPS(StringBuilder stringBuilder){
         stringBuilder.append("\nVerifDimTab:\n");
         stringBuilder.append("\tblez $v0, ErrDimTab\t#Si la valeur de dimension du tableau est inférieure ou égale à 0, on déclenche une erreur d'execution\n");
         stringBuilder.append("\t#Sinon, on initialise le tableau\n");
@@ -217,19 +216,30 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append("\nfinTantQue");
         stringBuilder.append(numLabel);
         stringBuilder.append(":\n");
-
         // On retourne là où la fonction a été appelée
         stringBuilder.append("\tjr $ra\n");
-    }
 
-    private void fonctionVerificationIndiceTableau(StringBuilder stringBuilder){
+
+        // Fonction de vérification de la validité de l'indice du tableau
         stringBuilder.append("\nVerifIndiceTab:\n");
         stringBuilder.append("\tlw $v0, 8($sp)\t# Récupération de l'indice demandé\n");
         stringBuilder.append("\t# Vérification que l'indice est supérieur à 0\n");
         stringBuilder.append("\tbltz $v0, ErrIndiceTabInfZero\n");
         stringBuilder.append("\tlw $t8, 4($sp)\n");
         stringBuilder.append("\tlw $t8, ($t8)\t# Récupération de la taille du tableau\n");
-        stringBuilder.append("\tblt $t8, $v0 ErrIndiceTabHorsLimite\n");
+        stringBuilder.append("\tble $t8, $v0 ErrIndiceTabHorsLimite\n");
+        stringBuilder.append("\tjr $ra\n");
+
+        // Fonction d'affectation d'une valeur dans un tableau (à un indice valide)
+        stringBuilder.append("\nAffectationTab:\n");
+        stringBuilder.append("\tlw $v0, 8($sp)\t# Récupération de l'indice demandé\n");
+        stringBuilder.append("\tlw $t8, 4($sp)\t# Récupération de l'adresse du tableau\n");
+        stringBuilder.append("\taddi $v0, $v0, 1\t# Conversion de l'indice en décalage par rapport au début du corps du tableau\n");
+        stringBuilder.append("\tli $t7, 4\n"); // Excusez nous, on sait que utiliser $t7 c'est pas bien
+        stringBuilder.append("\tmul $v0, $v0, $t7\n");
+        stringBuilder.append("\tsub $t8, $t8, $v0\t# Calcul de l'adresse de la case du tableau modifiée\n");
+        stringBuilder.append("\tlw $v0, 12($sp)\t# Récupération de la valeur a affecter à la case du tableau\n");
+        stringBuilder.append("\tsw $v0, ($t8)\n");
         stringBuilder.append("\tjr $ra\n");
     }
 

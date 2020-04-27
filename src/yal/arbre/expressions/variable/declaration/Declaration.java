@@ -15,7 +15,6 @@ public abstract class Declaration extends ArbreAbstrait {
         return idf;
     }
 
-    // TODO : rename
     public abstract void initialisationDuCorpsDeLaVariable(StringBuilder stringBuilder);
 
     @Override

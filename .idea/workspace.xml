@@ -6,13 +6,18 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b9335fe-b57b-4762-b494-42646bacb547" name="Default Changelist" comment="Renommage d'un package">
+    <list default="true" id="8b9335fe-b57b-4762-b494-42646bacb547" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/build.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/analyse/Grammaire.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/analyse/Grammaire.cup" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/yal/arbre/Programme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/Programme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/ConstanteEntiere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/ConstanteEntiere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/Fonction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/Fonction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/TableauEntier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/TableauEntier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/TailleTableau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/TailleTableau.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/instructions/Affectation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/instructions/Affectation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/Declaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/Declaration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/gestionnaireTDS/SymboleDeVariable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/gestionnaireTDS/SymboleDeVariable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/yal/arbre/instructions/AffectationTableau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/instructions/AffectationTableau.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,6 +76,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -262,14 +268,7 @@
       <workItem from="1587732265596" duration="612000" />
       <workItem from="1587814525421" duration="8839000" />
       <workItem from="1587902025637" duration="19803000" />
-      <workItem from="1587998091467" duration="4019000" />
-    </task>
-    <task id="LOCAL-00028" summary="Maj README.md">
-      <created>1581413499133</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1581413499133</updated>
+      <workItem from="1587998091467" duration="10184000" />
     </task>
     <task id="LOCAL-00029" summary="Correction parcequ'il y avait des trucs qui ne faisaient aucun sens en trop">
       <created>1581413989232</created>
@@ -607,7 +606,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587924360236</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Ajout de la fonction mips de vérification de l'indice lors de l'accès à un tableau">
+      <created>1588002294692</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1588002294692</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -627,8 +633,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Ch'ais pas" />
-    <MESSAGE value="NE COMPILE PAS" />
     <MESSAGE value="Compile mieux mais fonction pas bien" />
     <MESSAGE value="NullPointerSesMorts" />
     <MESSAGE value="fix un truc trouvé par pe" />
@@ -652,7 +656,9 @@
     <MESSAGE value="Correction de la copie des parametres effectifs par rapport à $s2" />
     <MESSAGE value="yal1-&gt;4 correct" />
     <MESSAGE value="Verifications des déclarations des tableaux" />
-    <option name="LAST_COMMIT_MESSAGE" value="Verifications des déclarations des tableaux" />
+    <MESSAGE value="Ajout de la fonction mips de vérification de l'indice lors de l'accès à un tableau" />
+    <MESSAGE value="Affectation de valeur dans un tableau ok." />
+    <option name="LAST_COMMIT_MESSAGE" value="Affectation de valeur dans un tableau ok." />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="70" key="#Project_Structure" timestamp="1579532269650" />
@@ -691,12 +697,12 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="0" y="0" key="#org.jetbrains.kotlin.idea.refactoring.safeDelete.KotlinOverridingDialog/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587902363841" />
-    <state x="345" y="2" width="978" height="822" key="CommitChangelistDialog2" timestamp="1587924357237">
+    <state x="345" y="2" width="978" height="822" key="CommitChangelistDialog2" timestamp="1588008493949">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="321" y="6" width="1043" height="809" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1583240102162" />
     <state x="374" y="17" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1580398460506" />
-    <state x="345" y="2" width="978" height="822" key="CommitChangelistDialog2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587924357237" />
+    <state x="345" y="2" width="978" height="822" key="CommitChangelistDialog2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588008493949" />
     <state x="2388" y="16" key="CommitChangelistDialog2/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584643400385" />
     <state x="147" y="70" width="1228" height="686" key="DiffContextDialog" timestamp="1583062088618">
       <screen x="0" y="0" width="1536" height="824" />
@@ -708,36 +714,36 @@
     </state>
     <state x="473" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579532269650" />
     <state x="473" y="153" key="FileChooserDialogImpl/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1585165337897" />
-    <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1587924394090">
+    <state width="1493" height="153" key="GridCell.Tab.0.bottom" timestamp="1588007916140">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1583144918113" />
     <state width="1493" height="192" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580214759845" />
-    <state width="1493" height="261" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587924394090" />
+    <state width="1493" height="153" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588007916140" />
     <state width="1877" height="286" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584644952061" />
     <state width="1506" height="192" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1536.864@0.0.1536.864" timestamp="1580234182472" />
-    <state width="1493" height="261" key="GridCell.Tab.0.center" timestamp="1587924394090">
+    <state width="1493" height="153" key="GridCell.Tab.0.center" timestamp="1588007916140">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1583144918113" />
     <state width="1493" height="192" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1580214759845" />
-    <state width="1493" height="261" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587924394090" />
+    <state width="1493" height="153" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588007916140" />
     <state width="1877" height="286" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584644952058" />
     <state width="1506" height="192" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1536.864@0.0.1536.864" timestamp="1580234182472" />
-    <state width="1493" height="261" key="GridCell.Tab.0.left" timestamp="1587924394090">
+    <state width="1493" height="153" key="GridCell.Tab.0.left" timestamp="1588007916140">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1583144918112" />
     <state width="1493" height="192" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1580214759845" />
-    <state width="1493" height="261" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587924394090" />
+    <state width="1493" height="153" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588007916140" />
     <state width="1877" height="286" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584644952057" />
     <state width="1506" height="192" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1536.864@0.0.1536.864" timestamp="1580234182472" />
-    <state width="1493" height="261" key="GridCell.Tab.0.right" timestamp="1587924394090">
+    <state width="1493" height="153" key="GridCell.Tab.0.right" timestamp="1588007916140">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1583144918113" />
     <state width="1493" height="192" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1580214759845" />
-    <state width="1493" height="261" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587924394090" />
+    <state width="1493" height="153" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588007916140" />
     <state width="1877" height="286" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584644952059" />
     <state width="1506" height="192" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1536.864@0.0.1536.864" timestamp="1580234182472" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1583098784332">
@@ -816,22 +822,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="179" key="extract.method.dialog/0.0.1536.824@0.0.1536.824" timestamp="1581157349440" />
-    <state x="462" y="156" width="740" height="606" key="find.popup" timestamp="1587999877720">
+    <state x="462" y="156" width="740" height="606" key="find.popup" timestamp="1588006796651">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="462" y="156" width="738" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1581423601912" />
     <state x="462" y="164" width="611" height="536" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1580389210014" />
-    <state x="462" y="156" width="740" height="606" key="find.popup/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587999877720" />
+    <state x="462" y="156" width="740" height="606" key="find.popup/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588006796651" />
     <state x="2498" y="195" width="925" height="758" key="find.popup/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584642377799" />
     <state x="2559" y="50" key="refactoring.ChangeSignatureDialog" timestamp="1584638674587">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
     <state x="511" y="40" key="refactoring.ChangeSignatureDialog/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1584207756532" />
     <state x="2559" y="50" key="refactoring.ChangeSignatureDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584638674587" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1587911973115">
+    <state x="425" y="187" key="run.anything.popup" timestamp="1588004221439">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587911973115" />
+    <state x="425" y="187" key="run.anything.popup/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588004221439" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1587818782196">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

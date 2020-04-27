@@ -22,8 +22,6 @@ public class TailleTableau extends Idf {
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Tableau "+getIdf()+" non déclaré.");
             ErreurSemantique.getInstance().ajouter(exception);
         }
-
-        //TODO : vérifier que le tableau existe
     }
 
     @Override

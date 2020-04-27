@@ -8,7 +8,10 @@ public class ConstanteEntiere extends Constante {
 
     @Override
     public String toMIPS() {
-        StringBuilder stringBuilder = new StringBuilder("\tli $v0, ");
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("\tli $v0, ");
+        stringBuilder.append(super.toString());
+        stringBuilder.append("\t#Evaluation de la constante entiere : ");
         stringBuilder.append(super.toString());
         stringBuilder.append("\n");
         return stringBuilder.toString();

@@ -1,9 +1,8 @@
 package yal.arbre.instructions;
 
 import yal.arbre.expressions.Expression;
-import yal.arbre.gestionnaireTDS.Entree;
-import yal.arbre.gestionnaireTDS.SymboleDeTableau;
-import yal.arbre.gestionnaireTDS.TDS;
+import yal.arbre.gestionnaireTDS.*;
+import yal.exceptions.AnalyseSemantiqueException;
 
 public class AffectationTableau extends Affectation {
 
@@ -23,8 +22,21 @@ public class AffectationTableau extends Affectation {
 
     @Override
     public void verifier() {
-        // TODO verifier que les expressions sont entières
-        // TODO verifier que le tableau est déclaré
+        Symbole symbole = TDS.getInstance().identifier(new Entree(getIdf()));
+        if(symbole == null){
+            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Tableau "+getIdf()+" non déclaré.");
+            ErreurSemantique.getInstance().ajouter(exception);
+        }
+        if(!indice.getType().equals("entier")){
+            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
+                    "Incompatibilité de type : l'indice d'un tableau doit être un entier");
+            ErreurSemantique.getInstance().ajouter(exception);
+        }
+        if(!valeurAffectee.getType().equals("entier")){
+            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
+                    "Incompatibilité de type : la valeur affectée à une case d'un tableau doit être un entier");
+            ErreurSemantique.getInstance().ajouter(exception);
+        }
     }
 
     @Override
@@ -37,7 +49,7 @@ public class AffectationTableau extends Affectation {
         stringBuilder.append(valeurAffectee.toMIPS());
         stringBuilder.append("\tsw $v0, ($sp)\n\taddi $sp, $sp, -4\n");
 
-        // indice (*4)+4
+        // indice
         stringBuilder.append("\t# Evaluation de l'indice\n");
         stringBuilder.append(indice.toMIPS());
         stringBuilder.append("\tsw $v0, ($sp)\n\taddi $sp, $sp, -4\n");
@@ -54,14 +66,18 @@ public class AffectationTableau extends Affectation {
         stringBuilder.append("\n");
         stringBuilder.append("\tsw $v0, ($sp)\n\taddi $sp, $sp, -4\n");
 
-        stringBuilder.append("\tjal VerifIndiceTab\t# Verification que l'indice est valide\n"); // TODO ecrire la fonction de verification de validité d'indice de tableau
+        stringBuilder.append("\tjal VerifIndiceTab\t# Verification que l'indice est valide\n");
         // A partir d'ici, l'indice demandé est valide
 
-/*
         // Empiler la valeur de l'expression à affecter
-        stringBuilder.append("");
-        stringBuilder.append("jal affectationTab\n");
-*/
+        stringBuilder.append("jal AffectationTab\n");
+
+        // Dépilage des éléments ajouté pour l'instruction
+        // 4 pour l'adresse de la base du corps du tableau
+        // 4 pour l'indice demandé
+        // 4 pour la valeur affectée
+        stringBuilder.append("\taddi $sp, $sp, 12\n");
+
         return stringBuilder.toString();
     }
 }
