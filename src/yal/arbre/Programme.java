@@ -146,6 +146,7 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append("msgTableauDimensionIncorrect : .asciiz \"Erreur d'execution : Taille de tableau incorrecte (inférieur à 1)\"\n");
         stringBuilder.append("msgTableauIndiceIncorrectInfZero : .asciiz \"Erreur d'execution : indice de tableau incorrecte (inférieur à 0)\"\n");
         stringBuilder.append("msgTableauIndiceIncorrectHorsLimite : .asciiz \"Erreur d'execution : indice de tableau incorrecte (hors limite)\"\n");
+        stringBuilder.append("msgErrCopieTab : .asciiz \"Erreur d'execution : copie de tableau de dimensions incompatibles\"\n");
         stringBuilder.append(".text\nmain:\n\n");
     }
 
@@ -182,6 +183,13 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append("\nErrIndiceTabHorsLimite:\n");
         stringBuilder.append("\tli $v0, 4\n");
         stringBuilder.append("\tla $a0, msgTableauIndiceIncorrectHorsLimite\n");
+        stringBuilder.append("\tsyscall\n");
+        stringBuilder.append("\tj end\n");
+
+        // Affichage de l'erreur d'indice d'acces au tableau
+        stringBuilder.append("\nErrCopieTab:\n");
+        stringBuilder.append("\tli $v0, 4\n");
+        stringBuilder.append("\tla $a0, msgErrCopieTab\n");
         stringBuilder.append("\tsyscall\n");
         stringBuilder.append("\tj end\n");
     }
@@ -240,6 +248,127 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append("\tsub $t8, $t8, $v0\t# Calcul de l'adresse de la case du tableau modifiée\n");
         stringBuilder.append("\tlw $v0, 12($sp)\t# Récupération de la valeur a affecter à la case du tableau\n");
         stringBuilder.append("\tsw $v0, ($t8)\n");
+        stringBuilder.append("\tjr $ra\n");
+
+        // Fonction de vérification des dimensions de deux tableaux
+        stringBuilder.append("\nVerifDimTabs:\n");
+        stringBuilder.append("\tlw $v0, 8($sp)\t# Récupération du tableau a copier\n");
+        stringBuilder.append("\tlw $v0, ($v0)\t# Récupération de la taille du tableau a copier\n");
+        stringBuilder.append("\tlw $t8, 4($sp)\t# Récupération du tableau receveur\n");
+        stringBuilder.append("\tlw $t8, ($t8)\t# Récupération de la taille du tableau a copier\n");
+        stringBuilder.append("\tbne $v0, $t8, ErrCopieTab\n");
+        stringBuilder.append("\tjr $ra\n");
+
+        // Fonction de test d'égalité de dimensions de deux tableaux
+        stringBuilder.append("\nTestDimTabs:\n");
+        stringBuilder.append("\tlw $v0, 8($sp)\t# Récupération du premier tableau\n");
+        stringBuilder.append("\tlw $v0, ($v0)\t# Récupération de la taille du premier tableau\n");
+        stringBuilder.append("\tlw $t8, 4($sp)\t# Récupération du second tableau\n");
+        stringBuilder.append("\tlw $t8, ($t8)\t# Récupération de la taille du second tableau\n");
+        stringBuilder.append("\tseq $v0, $t8, $v0\n");
+        stringBuilder.append("\tjr $ra\n");
+
+
+        // Fonction de test d'égalité des valeurs de deux tableaux TODO : finir de corriger
+        stringBuilder.append("\nTestValsTabs:\n");
+        stringBuilder.append("\tlw $t8, 4($sp)\t# Récupération du second tableau\n");
+        stringBuilder.append("\tlw $t8, ($t8)\t# Récupération de la taille du second tableau\n");
+        // On empile la taille du tableau (qui servira de compteur)
+        stringBuilder.append("\tsw $t8, ($sp)\n\taddi $sp, $sp, -4\n");
+        stringBuilder.append("\tli $v0, 4\n\tmul $v0, $t8, $v0\n\taddi $v0, $v0, 4\n");
+        // On empile le décalage mémoire
+        stringBuilder.append("\tsw $v0, ($sp)\n\taddi $sp, $sp, -4\n");
+        // Boucle tant que
+        numLabel = FabriqueDeNumero.getInstance().getNumeroLabelCondition();
+        stringBuilder.append("\ntantQue");
+        stringBuilder.append(numLabel);
+        stringBuilder.append(":\n");
+        // Actualisation des valeurs
+        stringBuilder.append("\tlw $t8, 4($sp)\t# Récupération du décalage mémoire\n");
+        stringBuilder.append("\taddi $t8, $t8, -4\n");
+        stringBuilder.append("\tsw $t8, 4($sp)\t# On rempile le décalage mémoire\n");
+        stringBuilder.append("\tlw $t8, 8($sp)\t# Récupération du compteur\n");
+        stringBuilder.append("\taddi $t8, $t8, -1\n");
+        stringBuilder.append("\tsw $t8, 8($sp)\t# On rempile la valeur du compteur\n");
+        // Faire
+        stringBuilder.append("\tbltz $t8, finTantQue");
+        stringBuilder.append(numLabel);
+        stringBuilder.append("\t#Si on atteint la fin de la boucle on sort\n");
+        stringBuilder.append("\t#Sinon on recupere la valeur a copier et on la copie\n");
+        stringBuilder.append("\tlw $t8, 16($sp)\t#Récupération du pointeur du début du premier tableau\n"); // devrait pointer à 20
+        stringBuilder.append("\tlw $v0, 4($sp)\t# Récupération du décalage mémoire\n");
+        stringBuilder.append("\tsub $t8, $t8, $v0\n");
+        stringBuilder.append("\tlw $t8, ($t8)\n");
+        stringBuilder.append("\tsw $t8, ($sp)\n\taddi $sp, $sp, -4\t#On empile la valeur du premier tableau\n");
+        stringBuilder.append("\tlw $t8, 16($sp)\t#Récupération du pointeur du début du second tableau\n");
+        stringBuilder.append("\tsub $t8, $t8, $v0\n");
+        stringBuilder.append("\tlw $t8, ($t8)\n");
+        stringBuilder.append("\tlw $v0, 4($sp)\n\taddi $sp, $sp, 4\n");
+        // Comparaison
+        stringBuilder.append("\t#Comparaison des deux valeurs\n");
+        stringBuilder.append("\tseq $v0, $t8, $v0\t#Premier tableau dans $v0, second dans $t8\n");
+        stringBuilder.append("\tblez $v0,finTantQue").append(numLabel).append("\n");
+        // On recommence
+        stringBuilder.append("\tj tantQue");
+        stringBuilder.append(numLabel);
+        stringBuilder.append("\n");
+        // label de fin
+        stringBuilder.append("\nfinTantQue");
+        stringBuilder.append(numLabel);
+        stringBuilder.append(":\n");
+        // Dépilage du décalage mémoire et du compteur
+        stringBuilder.append("\taddi $sp, $sp, 8\n");
+        stringBuilder.append("\tjr $ra\n");
+
+
+        // Fonction de copie profonde de tableaux
+        stringBuilder.append("\nCopieTab:\n");
+        stringBuilder.append("\tlw $t8, 4($sp)\t# Récupération du tableau receveur\n");
+        stringBuilder.append("\tlw $t8, ($t8)\t# Récupération de la taille du tableau a copier\n");
+        // On empile la taille du tableau (qui servira de compteur)
+        stringBuilder.append("\tsw $t8, ($sp)\n\taddi $sp, $sp, -4\n");
+        stringBuilder.append("\tli $v0, 4\n\tmul $v0, $t8, $v0\n\taddi $v0, $v0, 4\n");
+        // On empile le décalage mémoire
+        stringBuilder.append("\tsw $v0, ($sp)\n\taddi $sp, $sp, -4\n");
+        // Boucle tant que
+        numLabel = FabriqueDeNumero.getInstance().getNumeroLabelCondition();
+        stringBuilder.append("\ntantQue");
+        stringBuilder.append(numLabel);
+        stringBuilder.append(":\n");
+        // Actualisation des valeurs
+        stringBuilder.append("\tlw $t8, 4($sp)\t# Récupération du décalage mémoire\n");
+        stringBuilder.append("\taddi $t8, $t8, -4\n");
+        stringBuilder.append("\tsw $t8, 4($sp)\t# On rempile le décalage mémoire\n");
+        stringBuilder.append("\tlw $t8, 8($sp)\t# Récupération du compteur\n");
+        stringBuilder.append("\taddi $t8, $t8, -1\n");
+        stringBuilder.append("\tsw $t8, 8($sp)\t# On rempile le du compteur\n");
+        // Faire
+        stringBuilder.append("\tbltz $t8, finTantQue");
+        stringBuilder.append(numLabel);
+        stringBuilder.append("\t#Si on atteint la fin de la boucle on sort\n");
+        stringBuilder.append("\t#Sinon on recupere la valeur a copier et on la copie\n");
+        stringBuilder.append("\tlw $t8, 16($sp)\t#Récupération du pointeur du début du tableau initial\n");
+        stringBuilder.append("\tlw $v0, 4($sp)\t# Récupération du décalage mémoire\n");
+        stringBuilder.append("\tsub $t8, $t8, $v0\n");
+        stringBuilder.append("\tlw $t8, ($t8)\n");
+        // Copie
+        stringBuilder.append("\tsw $t8, ($sp)\t#Empilage de la valeur a copier\n");
+        stringBuilder.append("\taddi $sp, $sp, -4\n");
+        stringBuilder.append("\tlw $t8, 16($sp)\t#Récupération du pointeur du début du tableau receveur\n");
+        stringBuilder.append("\tsub $t8, $t8, $v0\n");
+        stringBuilder.append("\tlw $v0, 4($sp)\t#Récupération de la valeur a copier\n");
+        stringBuilder.append("\taddi $sp, $sp, 4\n");
+        stringBuilder.append("\tsw $v0, ($t8)\t#Copie de la valeur dans le tableau receveur\n");
+        // On recommence
+        stringBuilder.append("\tj tantQue");
+        stringBuilder.append(numLabel);
+        stringBuilder.append("\n");
+        // label de fin
+        stringBuilder.append("\nfinTantQue");
+        stringBuilder.append(numLabel);
+        stringBuilder.append(":\n");
+        // Dépilage du décalage mémoire et du compteur
+        stringBuilder.append("\taddi $sp, $sp, 8\n");
         stringBuilder.append("\tjr $ra\n");
     }
 

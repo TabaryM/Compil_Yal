@@ -1,19 +1,20 @@
 package yal.arbre.expressions.variable.declaration;
 
 import yal.arbre.gestionnaireTDS.*;
+import yal.exceptions.AjoutTDSException;
 import yal.exceptions.AnalyseSemantiqueException;
 
 public class DeclarationEntier extends Declaration {
     public DeclarationEntier(String idf, int noLigne) {
-        super("entier_"+idf, noLigne);
+        super(idf, noLigne);
     }
 
     @Override
     public void ajouterTDS() {
         try {
             TDS.getInstance().ajouter(new Entree(getIdf()), new SymboleDEntier(TDS.getInstance().getDepl()));
-        } catch (Exception e) {
-            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Double déclaration de la variable "+getIdf());
+        } catch (AjoutTDSException e) {
+            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), e.getMessage());
             ErreurSemantique.getInstance().ajouter(exception);
         }
     }

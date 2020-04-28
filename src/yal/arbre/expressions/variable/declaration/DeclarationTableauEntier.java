@@ -3,13 +3,14 @@ package yal.arbre.expressions.variable.declaration;
 import yal.FabriqueDeNumero;
 import yal.arbre.expressions.Expression;
 import yal.arbre.gestionnaireTDS.*;
+import yal.exceptions.AjoutTDSException;
 import yal.exceptions.AnalyseSemantiqueException;
 
 public class DeclarationTableauEntier extends Declaration {
     private Expression tailleMaxDuTableau;
 
     public DeclarationTableauEntier(String idf, Expression tailleMaxDuTableau, int noLigne) {
-        super("tableau_"+idf, noLigne);
+        super(idf, noLigne);
         this.tailleMaxDuTableau = tailleMaxDuTableau;
     }
 
@@ -20,8 +21,8 @@ public class DeclarationTableauEntier extends Declaration {
         symboleDeTableau = new SymboleDeTableau(TDS.getInstance().getDepl());
         try {
             TDS.getInstance().ajouter(entree, symboleDeTableau);
-        } catch (Exception e) {
-            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Double déclaration du tableau : "+getIdf());
+        } catch (AjoutTDSException e) {
+            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), e.getMessage());
             ErreurSemantique.getInstance().ajouter(exception);
         }
     }

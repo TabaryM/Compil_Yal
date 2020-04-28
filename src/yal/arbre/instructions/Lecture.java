@@ -1,9 +1,6 @@
 package yal.arbre.instructions;
 
-import yal.arbre.gestionnaireTDS.Entree;
-import yal.arbre.gestionnaireTDS.ErreurSemantique;
-import yal.arbre.gestionnaireTDS.SymboleDeVariable;
-import yal.arbre.gestionnaireTDS.TDS;
+import yal.arbre.gestionnaireTDS.*;
 import yal.exceptions.AnalyseSemantiqueException;
 
 public class Lecture extends Instruction {
@@ -20,8 +17,12 @@ public class Lecture extends Instruction {
 
     @Override
     public void verifier() {
-        if(TDS.getInstance().identifier(new Entree("entier_"+idf)) == null){
+        Symbole symbole = TDS.getInstance().identifier(new Entree(idf));
+        if(symbole == null){
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Variable "+idf+" non déclarée");
+            ErreurSemantique.getInstance().ajouter(exception);
+        } else if(!symbole.getType().equals("entier")){
+            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Variable "+idf+" pas du type entier");
             ErreurSemantique.getInstance().ajouter(exception);
         }
     }
@@ -33,7 +34,7 @@ public class Lecture extends Instruction {
         stringBuilder.append("\n\tli, $v0, 5\n\tsyscall\n");
         // On bourre ce que l'on viens de lire à l'emplacement mémoire de l'entier
         stringBuilder.append("\tsw $v0, ");
-        SymboleDeVariable tmp = (SymboleDeVariable) TDS.getInstance().identifier(new Entree("entier_"+idf));
+        SymboleDeVariable tmp = (SymboleDeVariable) TDS.getInstance().identifier(new Entree(idf));
         stringBuilder.append(tmp.getDepl());
         stringBuilder.append("($s7)\n\n");
         return stringBuilder.toString();

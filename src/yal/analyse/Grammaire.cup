@@ -187,7 +187,7 @@ EXP    ::=     PAR_OUVRANTE EXP:e PAR_FERMANTE
                 {: RESULT = new ConstanteEntiere(c, cleft + 1) ; :}
         |
                 IDF:i
-                {: RESULT = new Entier(i, ileft + 1); :}
+                {: RESULT = new Variable(i, ileft + 1); :}
         |
                 IDF:i PAR_OUVRANTE PAR_FERMANTE
                 {: RESULT = new Fonction(i, ileft + 1); :}

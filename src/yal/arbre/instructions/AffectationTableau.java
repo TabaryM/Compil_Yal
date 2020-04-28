@@ -10,7 +10,7 @@ public class AffectationTableau extends Affectation {
     private Expression valeurAffectee;
 
     public AffectationTableau(Expression valeurAffectee, Expression indice, String idf, int n) {
-        super(valeurAffectee, "tableau_"+idf, n);
+        super(valeurAffectee, idf, n);
         this.indice = indice;
         this.valeurAffectee = valeurAffectee;
     }

@@ -6,7 +6,7 @@ import yal.exceptions.AnalyseSemantiqueException;
 
 public class Entier extends Idf {
     public Entier(String idf, int numLig) {
-        super("entier_"+idf, numLig);
+        super(idf, numLig);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class Entier extends Idf {
 
     @Override
     public String toString() {
-        return getIdf();
+        return getType()+"_"+getIdf();
     }
 
     @Override

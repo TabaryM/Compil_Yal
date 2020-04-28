@@ -7,7 +7,7 @@ import yal.exceptions.AnalyseSemantiqueException;
 public class TailleTableau extends Idf {
 
     public TailleTableau(String idf, int n) {
-        super("tableau_"+idf, n);
+        super(idf, n);
     }
 
     @Override

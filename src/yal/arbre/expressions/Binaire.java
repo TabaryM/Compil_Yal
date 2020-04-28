@@ -1,5 +1,6 @@
 package yal.arbre.expressions;
 
+import yal.FabriqueDeNumero;
 import yal.arbre.gestionnaireTDS.ErreurSemantique;
 import yal.arbre.expressions.operateurs.*;
 import yal.exceptions.AnalyseSemantiqueException;
@@ -18,6 +19,7 @@ public class Binaire extends Expression {
 
     @Override
     public void verifier() {
+        // TODO verifier qu'on compare deux tableaux et que l'operation est bien == ou !=
         if(!gauche.getType().equals(droite.getType())){
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
                     "Incompatibilité de types : "+gauche.getType()+" incompatible avec "+droite.getType());
@@ -67,29 +69,51 @@ public class Binaire extends Expression {
     @Override
     public String toMIPS() {
         StringBuilder stringBuilder = new StringBuilder();
-        // Ecriture du beau commentaire MIPS
-        stringBuilder.append("\t# Calcule de  :");
-        stringBuilder.append(gauche.toString());
-        stringBuilder.append(" ");
-        stringBuilder.append(op.toString());
-        stringBuilder.append(" ");
-        stringBuilder.append(droite.toString());
-        stringBuilder.append("\n");
+        if(gauche.getType().equals("tableau")){
+            int numLabel = FabriqueDeNumero.getInstance().getNumeroLabelCondition();
+            stringBuilder.append("\t#On charge l'adresse du premier tableau\n");
+            stringBuilder.append(gauche.toMIPS());
+            stringBuilder.append("\tsw $v0, ($sp)\n\taddi $sp, $sp, -4\n");
+            stringBuilder.append("\t#On charge l'adresse du second tableau\n");
+            stringBuilder.append(droite.toMIPS());
+            stringBuilder.append("\tsw $v0, ($sp)\n\taddi $sp, $sp, -4\n");
+            // On passe en MIPS
+            stringBuilder.append("\tjal TestDimTabs\n");
+            // Si le premier test échoue, on skip le second test
+            stringBuilder.append("\tblez $v0, finComparaisonTabs").append(numLabel);
 
-        // On stocke l'opérande gauche dans la pile
-        stringBuilder.append(gauche.toMIPS());
-        stringBuilder.append("\tsw $v0, 0($sp)\n");
-        stringBuilder.append("\tadd $sp, $sp, -4\n");
+            stringBuilder.append("\n\tjal TestValsTabs\n");
 
-        // On évalue l'opérande droite
-        stringBuilder.append(droite.toMIPS());
+            stringBuilder.append("finComparaisonTabs");
+            stringBuilder.append(numLabel);
+            stringBuilder.append(":\n");
 
-        // On récupère l'opérande gauche
-        stringBuilder.append("\tadd $sp, $sp, 4\n");
-        stringBuilder.append("\tlw $t8, ($sp)\n");
+            stringBuilder.append("\taddi $sp, $sp, 8\n");
+        } else {
+            // Ecriture du beau commentaire MIPS
+            stringBuilder.append("\t# Calcule de  :");
+            stringBuilder.append(gauche.toString());
+            stringBuilder.append(" ");
+            stringBuilder.append(op.toString());
+            stringBuilder.append(" ");
+            stringBuilder.append(droite.toString());
+            stringBuilder.append("\n");
 
-        stringBuilder.append(op.toMips());
-        stringBuilder.append("\n\n");
+            // On stocke l'opérande gauche dans la pile
+            stringBuilder.append(gauche.toMIPS());
+            stringBuilder.append("\tsw $v0, 0($sp)\n");
+            stringBuilder.append("\tadd $sp, $sp, -4\n");
+
+            // On évalue l'opérande droite
+            stringBuilder.append(droite.toMIPS());
+
+            // On récupère l'opérande gauche
+            stringBuilder.append("\tadd $sp, $sp, 4\n");
+            stringBuilder.append("\tlw $t8, ($sp)\n");
+
+            stringBuilder.append(op.toMips());
+            stringBuilder.append("\n\n");
+        }
 
         return stringBuilder.toString();
     }
