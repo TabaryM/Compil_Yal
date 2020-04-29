@@ -19,12 +19,12 @@ public class Binaire extends Expression {
 
     @Override
     public void verifier() {
-        // TODO verifier qu'on compare deux tableaux et que l'operation est bien == ou !=
         if(!gauche.getType().equals(droite.getType())){
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
                     "Incompatibilité de types : "+gauche.getType()+" incompatible avec "+droite.getType());
             ErreurSemantique.getInstance().ajouter(exception);
         } else {
+            // Si les deux opérandes sont de même types
             if(gauche.getType().equals("entier") && droite.getType().equals("entier")){
                 // Opérandes entiers et opération à retour bool
                 if(!op.getNatureRetour().equals(gauche.getType())){
@@ -46,7 +46,7 @@ public class Binaire extends Expression {
                 }
             }
             // Les opérandes sont booléens
-            else {
+            else if (gauche.getType().equals("bool")){
                 // Opérandes bool et opération à retour entiers
                 if (!op.getNatureRetour().equals("bool")){
                     AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
@@ -63,6 +63,14 @@ public class Binaire extends Expression {
                     }
                 }
             }
+            // Les opérandes sont des tableaux
+            else if(gauche.getType().equals("tableau")){
+                if(!(op.getClass().getSimpleName().equals("Egalite") || op.getClass().getSimpleName().equals("Different"))){
+                    AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(),
+                            "Opération arithmétique impossible : "+gauche.getType()+" "+op.toString()+" "+droite.getType());
+                    ErreurSemantique.getInstance().ajouter(exception);
+                }
+            }
         }
     }
 
@@ -70,24 +78,22 @@ public class Binaire extends Expression {
     public String toMIPS() {
         StringBuilder stringBuilder = new StringBuilder();
         if(gauche.getType().equals("tableau")){
-            int numLabel = FabriqueDeNumero.getInstance().getNumeroLabelCondition();
+            // Toutes les opérations binaires sur des tableaux necessitent d'avoir les pointeurs de tableaux dans la pile
             stringBuilder.append("\t#On charge l'adresse du premier tableau\n");
             stringBuilder.append(gauche.toMIPS());
             stringBuilder.append("\tsw $v0, ($sp)\n\taddi $sp, $sp, -4\n");
             stringBuilder.append("\t#On charge l'adresse du second tableau\n");
             stringBuilder.append(droite.toMIPS());
             stringBuilder.append("\tsw $v0, ($sp)\n\taddi $sp, $sp, -4\n");
-            // On passe en MIPS
-            stringBuilder.append("\tjal TestDimTabs\n");
-            // Si le premier test échoue, on skip le second test
-            stringBuilder.append("\tblez $v0, finComparaisonTabs").append(numLabel);
 
-            stringBuilder.append("\n\tjal TestValsTabs\n");
+            // On utilise l'operateur spécifique pour les tableaux
+            Operateur operateur;
+            if(op.getClass().getSimpleName().equals("Egalite") || op.getClass().getSimpleName().equals("Different")){
+                operateur = new EgaliteTableaux(op.getClass().getSimpleName().equals("Egalite"));
+                stringBuilder.append(operateur.toMips());
+            }
 
-            stringBuilder.append("finComparaisonTabs");
-            stringBuilder.append(numLabel);
-            stringBuilder.append(":\n");
-
+            // On dépile les adresses des tableaux
             stringBuilder.append("\taddi $sp, $sp, 8\n");
         } else {
             // Ecriture du beau commentaire MIPS

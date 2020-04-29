@@ -36,6 +36,12 @@ public class TableauEntier extends Idf {
         if(symbole == null){
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Tableau "+getIdf()+" non déclaré.");
             ErreurSemantique.getInstance().ajouter(exception);
+        } else {
+            if(!symbole.getType().equals("tableau")){
+                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne()
+                        , "La notation idf[EXPRESSION] est réservée aux tableaux.\tReçu : "+symbole.getType());
+                ErreurSemantique.getInstance().ajouter(exception);
+            }
         }
         if(!expression.getType().equals("entier")){
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Format de l'indexe du tableau incorrecte. Attendue : entier\tReçu : "+expression.getType());

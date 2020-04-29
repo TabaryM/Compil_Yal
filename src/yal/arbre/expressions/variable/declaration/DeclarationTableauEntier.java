@@ -38,10 +38,19 @@ public class DeclarationTableauEntier extends Declaration {
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Expression de la dimension du tableau "+getIdf()+" incorrecte. Attendue : entier.\tReçu : "+ tailleMaxDuTableau.getType());
             ErreurSemantique.getInstance().ajouter(exception);
         }
+
+        // Si l'expression est une constante entiere :
+        if(tailleMaxDuTableau.getClass().getSimpleName().equals("ConstanteEntiere")){
+            int taille = Integer.parseInt(tailleMaxDuTableau.toString());
+            if(taille <= 0){
+                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Expression de la dimension du tableau "+getIdf()+" incorrecte. Attendue : ConstanteEntiere > 0.\tReçu : "+ tailleMaxDuTableau.toString());
+                ErreurSemantique.getInstance().ajouter(exception);
+            }
+        }
         // Si l'instruction se trouve dans le programme principal, l'expression indiquant la taille du tableau doit être une constante
-        if(TDS.getInstance().getTableCourrante().equals(TDS.getInstance().getRacine())){
+        else if(TDS.getInstance().getTableCourrante().equals(TDS.getInstance().getRacine())){
             if(!tailleMaxDuTableau.getClass().getSimpleName().equals("ConstanteEntiere")){
-                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Expression de la dimension du tableau "+getIdf()+" incorrecte. Attendue : ConstanteEntiere.\tReçu : "+ tailleMaxDuTableau.getClass().getSimpleName());
+                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Expression de la dimension du tableau "+getIdf()+" incorrecte. Attendue : ConstanteEntiere > 0.\tReçu : "+ tailleMaxDuTableau.getClass().getSimpleName());
                 ErreurSemantique.getInstance().ajouter(exception);
             }
         }

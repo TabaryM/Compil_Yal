@@ -91,5 +91,11 @@
         - ~~appel : idf [ EXP ] EXP~~
             - ~~appel d'un tab déclaré dans le PP depuis une fonction~~
         - ~~deux types tableaux concordent SI ils ont la meme longueur ( affectation )~~
-        - deux types tableaux sont égaux si ils ont la meme taille et les memes elements
+        - ~~deux types tableaux sont égaux si ils ont la meme taille et les memes elements~~
+        - ~~inegalites de tableaux~~
+        - ~~operations entres tableaux autres que == et != interdites~~
+        
+        - ~~cast d'un entier en tableau interdit (entier a; ecrire a[0]; ecrire a.longueur;)~~
+        - ~~ecrire tab interdit~~
+        - ~~verification de la taille d'un tableau~~
         

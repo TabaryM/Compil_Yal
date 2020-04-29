@@ -21,6 +21,12 @@ public class TailleTableau extends Idf {
         if(symbole == null){
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Tableau "+getIdf()+" non déclaré.");
             ErreurSemantique.getInstance().ajouter(exception);
+        } else {
+            if(!symbole.getType().equals("tableau")) {
+                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne()
+                        , "La notation idf.longueur est réservée aux tableaux.\tReçu : " + symbole.getType());
+                ErreurSemantique.getInstance().ajouter(exception);
+            }
         }
     }
 

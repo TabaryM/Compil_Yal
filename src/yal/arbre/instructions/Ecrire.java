@@ -2,6 +2,8 @@ package yal.arbre.instructions;
 
 import yal.FabriqueDeNumero;
 import yal.arbre.expressions.Expression;
+import yal.arbre.gestionnaireTDS.ErreurSemantique;
+import yal.exceptions.AnalyseSemantiqueException;
 
 public class Ecrire extends Instruction {
 
@@ -14,6 +16,10 @@ public class Ecrire extends Instruction {
 
     @Override
     public void verifier() {
+        if(exp.getType().equals("tableau")){
+            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Ecriture d'un tableau sans indice");
+            ErreurSemantique.getInstance().ajouter(exception);
+        }
         exp.verifier();
     }
 
