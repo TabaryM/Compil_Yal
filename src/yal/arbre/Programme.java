@@ -269,7 +269,7 @@ public class Programme extends ArbreAbstrait {
         stringBuilder.append("\tjr $ra\n");
 
 
-        // Fonction de test d'égalité des valeurs de deux tableaux TODO : finir de corriger
+        // Fonction de test d'égalité des valeurs de deux tableaux
         stringBuilder.append("\nTestValsTabs:\n");
         stringBuilder.append("\tlw $t8, 4($sp)\t# Récupération du second tableau\n");
         stringBuilder.append("\tlw $t8, ($t8)\t# Récupération de la taille du second tableau\n");
