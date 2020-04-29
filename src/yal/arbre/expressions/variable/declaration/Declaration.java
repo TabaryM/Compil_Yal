@@ -4,15 +4,21 @@ import yal.arbre.ArbreAbstrait;
 
 public abstract class Declaration extends ArbreAbstrait {
     private String idf;
-    public Declaration(String idf, int noLigne) {
+    private final String type;
+    public Declaration(String idf, int noLigne, String type) {
         super(noLigne);
         this.idf = idf;
+        this.type = type;
     }
 
     public abstract void ajouterTDS();
 
     public String getIdf() {
         return idf;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public abstract void initialisationDuCorpsDeLaVariable(StringBuilder stringBuilder);

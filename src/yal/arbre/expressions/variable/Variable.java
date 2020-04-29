@@ -15,6 +15,9 @@ public class Variable extends Idf {
     @Override
     public String getType() {
         Symbole symbole = TDS.getInstance().identifier(new Entree(getIdf()));
+        if(symbole == null){
+            return null;
+        }
         return symbole.getType();
     }
 
@@ -42,5 +45,10 @@ public class Variable extends Idf {
     @Override
     public boolean contientRetourne() {
         return false;
+    }
+
+    @Override
+    public String toString(){
+        return getIdf();
     }
 }

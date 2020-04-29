@@ -26,10 +26,12 @@ public class Affectation extends Instruction {
         if(symbole == null){
             AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Variable "+idf+" non déclarée");
             ErreurSemantique.getInstance().ajouter(exception);
-        } else if(!symbole.getType().equals(e.getType())){
-            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne()
-                    , "Types incompatibles : variable"+symbole.getType()+" avec : "+e.getType());
-            ErreurSemantique.getInstance().ajouter(exception);
+        } else {
+            if(!symbole.getType().equals(e.getType()) && e.getType() != null) {
+                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne()
+                        , "Types incompatibles : variable " + symbole.getType() + " avec : " + e.getType());
+                ErreurSemantique.getInstance().ajouter(exception);
+            }
         }
     }
 

@@ -10,7 +10,7 @@ public class DeclarationTableauEntier extends Declaration {
     private Expression tailleMaxDuTableau;
 
     public DeclarationTableauEntier(String idf, Expression tailleMaxDuTableau, int noLigne) {
-        super(idf, noLigne);
+        super(idf, noLigne, "tableau");
         this.tailleMaxDuTableau = tailleMaxDuTableau;
     }
 

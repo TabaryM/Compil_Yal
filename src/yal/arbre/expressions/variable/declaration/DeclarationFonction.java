@@ -22,7 +22,7 @@ public class DeclarationFonction extends Declaration {
      * @param numLig int : numéro de la ligne où la fonction a été déclarée
      */
     public DeclarationFonction(String idf, ArrayList<Declaration> variablesLocales, ArrayList<DeclarationEntier> parametres, ArbreAbstrait instructions, int numLig){
-        super("fonction_"+idf+"_params_"+parametres.size(), numLig);
+        super("fonction_"+idf+"_params_"+parametres.size(), numLig, "fonction");
         this.variablesLocales = variablesLocales;
         this.parametres = parametres;
         this.instructions = (BlocDInstructions) instructions;
@@ -73,7 +73,9 @@ public class DeclarationFonction extends Declaration {
         TDS.getInstance().entreeBloc(symboleDeFonction.getNumBloc());
         // Vérifications des variables locales
         for(Declaration declaration : variablesLocales){
-            declaration.verifier();
+            if(!declaration.getType().equals("fonction")){
+                declaration.verifier();
+            }
         }
         // Vérification des instructions
         instructions.verifier();
@@ -107,8 +109,8 @@ public class DeclarationFonction extends Declaration {
         }
         for(Declaration entier : variablesLocales){
             try {
-                if(entier.getClass().getSimpleName().equals("DeclarationFonction")){
-                    AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Dans la fonction "+getIdf()+" un parametre ne peut pas être une fonction");
+                if(entier.getType().equals("fonction")){
+                    AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Declaration de fonction interdite dans la fonction "+getIdf());
                     ErreurSemantique.getInstance().ajouter(exception);
                 } else {
                     entier.ajouterTDS();

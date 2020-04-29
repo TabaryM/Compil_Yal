@@ -53,7 +53,11 @@ public class Fonction extends Idf {
         Expression parametre;
         for(int i = 0; i < parametresEffectifs.size(); i++){
             parametre = parametresEffectifs.get(i);
-            if(!parametre.getType().equals("entier")){
+            if(parametre.getType() == null){
+                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne()
+                        , "Fonction "+getIdf()+" : paramètre "+parametre.toString()+" en position "+i+" non déclaré");
+                ErreurSemantique.getInstance().ajouter(exception);
+            } else if(!parametre.getType().equals("entier")){
                 AnalyseSemantiqueException exception = new AnalyseSemantiqueException(super.getNoLigne(), "Fonction "+getIdf()+" : type du paramètre "+i+" incorrecte. Attendu : entier\tReçu : "+parametre.getType());
                 ErreurSemantique.getInstance().ajouter(exception);
             }

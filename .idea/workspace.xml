@@ -7,13 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b9335fe-b57b-4762-b494-42646bacb547" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/operateurs/EgaliteTableaux.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/Binaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/Binaire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/TableauEntier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/TableauEntier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/TailleTableau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/TailleTableau.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/Fonction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/Fonction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/Variable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/Declaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/Declaration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/DeclarationEntier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/DeclarationEntier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/DeclarationFonction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/DeclarationFonction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/DeclarationTableauEntier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/expressions/variable/declaration/DeclarationTableauEntier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/yal/arbre/instructions/Affectation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/instructions/Affectation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/yal/arbre/instructions/Ecrire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/yal/arbre/instructions/Ecrire.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -283,14 +284,7 @@
       <workItem from="1587998091467" duration="10888000" />
       <workItem from="1588067871767" duration="25000" />
       <workItem from="1588083683398" duration="23738000" />
-      <workItem from="1588151443790" duration="4874000" />
-    </task>
-    <task id="LOCAL-00032" summary="Affiche un message cohérent d'erreur de division par zéro&#10;Supporte les programmes en une lignes">
-      <created>1581417559629</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1581417559629</updated>
+      <workItem from="1588151443790" duration="7266000" />
     </task>
     <task id="LOCAL-00033" summary="Ajout de javadoc">
       <created>1581418875580</created>
@@ -628,7 +622,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588107950985</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Verification du pot commun terminé. Touvabien&#10;Implémentation d'inégalité de tableaux.&#10;lire les lignes barrées du README.md">
+      <created>1588162998401</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1588162998401</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,7 +650,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="fix un truc trouvé par pe" />
     <MESSAGE value="Renommage d'un package" />
     <MESSAGE value="Rien ne va" />
     <MESSAGE value="Argh" />
@@ -674,7 +674,8 @@
     <MESSAGE value="Affectation de valeur dans un tableau ok." />
     <MESSAGE value="Ajout d'un TODO" />
     <MESSAGE value="La plupart des choses fonctionnent, on vrifie le pot commun" />
-    <option name="LAST_COMMIT_MESSAGE" value="La plupart des choses fonctionnent, on vrifie le pot commun" />
+    <MESSAGE value="Verification du pot commun terminé. Touvabien&#10;Implémentation d'inégalité de tableaux.&#10;lire les lignes barrées du README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Verification du pot commun terminé. Touvabien&#10;Implémentation d'inégalité de tableaux.&#10;lire les lignes barrées du README.md" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="70" key="#Project_Structure" timestamp="1579532269650" />
@@ -713,12 +714,12 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="0" y="0" key="#org.jetbrains.kotlin.idea.refactoring.safeDelete.KotlinOverridingDialog/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587902363841" />
-    <state x="345" y="2" width="978" height="822" key="CommitChangelistDialog2" timestamp="1588107946383">
+    <state x="345" y="2" width="978" height="822" key="CommitChangelistDialog2" timestamp="1588162993566">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="321" y="6" width="1043" height="809" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1583240102162" />
     <state x="374" y="17" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1580398460506" />
-    <state x="345" y="2" width="978" height="822" key="CommitChangelistDialog2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588107946383" />
+    <state x="345" y="2" width="978" height="822" key="CommitChangelistDialog2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588162993566" />
     <state x="2388" y="16" key="CommitChangelistDialog2/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584643400385" />
     <state x="147" y="70" width="1228" height="686" key="DiffContextDialog" timestamp="1583062088618">
       <screen x="0" y="0" width="1536" height="824" />
@@ -730,58 +731,58 @@
     </state>
     <state x="473" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579532269650" />
     <state x="473" y="153" key="FileChooserDialogImpl/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1585165337897" />
-    <state width="1493" height="184" key="GridCell.Tab.0.bottom" timestamp="1588162736563">
+    <state width="1493" height="240" key="GridCell.Tab.0.bottom" timestamp="1588164965481">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1583144918113" />
     <state width="1493" height="192" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580214759845" />
-    <state width="1493" height="184" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588162736563" />
+    <state width="1493" height="240" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588164965481" />
     <state width="1877" height="286" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584644952061" />
     <state width="1506" height="192" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1536.864@0.0.1536.864" timestamp="1580234182472" />
-    <state width="1493" height="184" key="GridCell.Tab.0.center" timestamp="1588162736562">
+    <state width="1493" height="240" key="GridCell.Tab.0.center" timestamp="1588164965481">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1583144918113" />
     <state width="1493" height="192" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1580214759845" />
-    <state width="1493" height="184" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588162736562" />
+    <state width="1493" height="240" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588164965481" />
     <state width="1877" height="286" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584644952058" />
     <state width="1506" height="192" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1536.864@0.0.1536.864" timestamp="1580234182472" />
-    <state width="1493" height="184" key="GridCell.Tab.0.left" timestamp="1588162736562">
+    <state width="1493" height="240" key="GridCell.Tab.0.left" timestamp="1588164965481">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1583144918112" />
     <state width="1493" height="192" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1580214759845" />
-    <state width="1493" height="184" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588162736562" />
+    <state width="1493" height="240" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588164965481" />
     <state width="1877" height="286" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584644952057" />
     <state width="1506" height="192" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1536.864@0.0.1536.864" timestamp="1580234182472" />
-    <state width="1493" height="184" key="GridCell.Tab.0.right" timestamp="1588162736563">
+    <state width="1493" height="240" key="GridCell.Tab.0.right" timestamp="1588164965481">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1583144918113" />
     <state width="1493" height="192" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1580214759845" />
-    <state width="1493" height="184" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588162736563" />
+    <state width="1493" height="240" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588164965481" />
     <state width="1877" height="286" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584644952059" />
     <state width="1506" height="192" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1536.864@0.0.1536.864" timestamp="1580234182472" />
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1583098784332">
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1588163368376">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579798111284" />
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583098784332" />
-    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1583098784332">
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588163368376" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1588163368375">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1579798111284" />
-    <state width="1493" height="261" key="GridCell.Tab.1.center/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583098784332" />
-    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1583098784332">
+    <state width="1493" height="261" key="GridCell.Tab.1.center/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588163368375" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1588163368375">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1579798111284" />
-    <state width="1493" height="261" key="GridCell.Tab.1.left/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583098784332" />
-    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1583098784332">
+    <state width="1493" height="261" key="GridCell.Tab.1.left/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588163368375" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1588163368375">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1579798111284" />
-    <state width="1493" height="261" key="GridCell.Tab.1.right/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1583098784332" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588163368375" />
     <state x="22" y="0" width="1493" height="824" key="MergeDialog" timestamp="1583184389516">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -804,12 +805,12 @@
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1581417953658" />
     <state x="249" y="0" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1580398296868" />
     <state x="249" y="0" key="SettingsEditor/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588009143423" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1588008916829">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1588162998812">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1583240164871" />
     <state x="361" y="152" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1580398464572" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588008916829" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1588162998812" />
     <state x="2371" y="181" key="Vcs.Push.Dialog.v2/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1584644926662" />
     <state x="485" y="88" key="antBuildFilePropertiesDialogDimension" timestamp="1579532269650" />
     <state x="485" y="88" key="antBuildFilePropertiesDialogDimension/0.0.1536.824@0.0.1536.824" timestamp="1579532269650" />
@@ -858,6 +859,13 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1587818782196" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="exp" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Yal$Test.ic" NAME="Test Coverage Results" MODIFIED="1583084628905" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

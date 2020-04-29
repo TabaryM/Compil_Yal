@@ -6,7 +6,7 @@ import yal.exceptions.AnalyseSemantiqueException;
 
 public class DeclarationEntier extends Declaration {
     public DeclarationEntier(String idf, int noLigne) {
-        super(idf, noLigne);
+        super(idf, noLigne, "entier");
     }
 
     @Override

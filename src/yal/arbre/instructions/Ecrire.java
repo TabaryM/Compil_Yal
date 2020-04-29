@@ -16,11 +16,13 @@ public class Ecrire extends Instruction {
 
     @Override
     public void verifier() {
-        if(exp.getType().equals("tableau")){
-            AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Ecriture d'un tableau sans indice");
-            ErreurSemantique.getInstance().ajouter(exception);
-        }
         exp.verifier();
+        if(exp.getType() != null){
+            if(exp.getType().equals("tableau")){
+                AnalyseSemantiqueException exception = new AnalyseSemantiqueException(getNoLigne(), "Ecriture d'un tableau sans indice");
+                ErreurSemantique.getInstance().ajouter(exception);
+            }
+        }
     }
 
     @Override
